@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light">
+<title>Werk: cases van PlatforMaat</title>
+<meta name="description" content="Zaken waarvoor PlatforMaat software of een website bouwde, en de partner voor vindbaarheid.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FF5B3A'/%3E%3Cpath d='M9 26V6h9a6 6 0 0 1 0 12h-5' fill='none' stroke='%23FFFFFF' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script>/* Voorbeelden: effecten aan of uit. Eén sessiewaarde voor de schakelaar, niets blijvend onthouden. */
+(function () {
+  var d = document.documentElement, f = null, m = /[?&]motion=(aan|uit|auto)/.exec(location.search);
+  try { if (m) sessionStorage.setItem('pm-motion', m[1]); f = sessionStorage.getItem('pm-motion'); } catch (e) { f = m && m[1]; }
+  if (f === 'auto') f = null;
+  var red = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var on = f === 'aan' || (f !== 'uit' && !red);
+  d.className += on ? ' fx' : ' no-fx';
+  d.setAttribute('data-motion', f || 'auto'); d.setAttribute('data-os', red ? 'minder' : 'normaal');
+  if (on) setTimeout(function () { if (!window.__fx) d.className = d.className.replace(/(^| )fx( |$)/, ' no-fx '); }, 3000);
+})();
+</script>
+</head>
+<body class="p-werk">
+<a class="skip" href="#main">Naar de inhoud</a>
+<p class="previewbar"><span>Voorbeeld 11 Lagen</span> · nog niet publiek · teksten over klanten wachten op hun akkoord · <a href="../index.html">alle voorbeelden</a></p>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="index.html" aria-label="PlatforMaat, naar de startpagina"><span class="mk" aria-hidden="true"><i></i><i></i></span>PlatforMaat</a>
+    <nav class="nav" aria-label="Hoofdnavigatie"><a href="index.html#aanbod">Aanbod</a><a href="werk.html" aria-current="page">Werk</a><a href="contact.html">Contact</a></nav>
+    <div class="top-act">
+      <a class="tel" href="tel:+32483851322"><span class="tel-l">Bel</span> 0483 85 13 22</a>
+      <a class="btn btn--s" href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gratis kennismaking</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-h wrap">
+  <p class="mono-l">Werk</p>
+  <h1>Zaken waarvoor PlatforMaat <em>werkt of werkte</em></h1>
+  <p class="hero-p">Geen cijfers of citaten zonder bron en zonder akkoord van de klant. Op deze site staat nooit echte klant- of leveranciersdata.</p>
+</section>
+<section class="wrap wcases" aria-label="Alle cases">
+<article class="wcase wcase--1" id="vekemans" aria-labelledby="vekemans-h" data-r="up">
+  <div class="case-logo" aria-hidden="true"><span class="lg lg--vekemans"><b>VEKEMANS</b><i>RAAMDECORATIE</i></span><span class="logo-note">tekstvariant, logo volgt</span></div>
+  <div class="wcase-b">
+    <ul class="tags" aria-label="Soort werk"><li>PLATFORM OP MAAT</li><li>RAAMDECORATIE</li></ul>
+    <h2 id="vekemans-h" class="h3">Vekemans: Offertes zonder overtypen</h2>
+    <p>Een raamdecoratiezaak waarvoor PlatforMaat de offertetool bouwde. De tool maakt van een leveranciersofferte een klantofferte met de prijzen, de tekst en de huisstijl van de zaak.</p>
+    <p class="muted">Het volledige verhaal volgt zodra de klant de tekst heeft goedgekeurd. Cijfers of citaten komen er alleen met bron en toestemming.</p>
+  </div>
+</article>
+<article class="wcase wcase--2" id="la-mia" aria-labelledby="la-mia-h" data-r="up">
+  <div class="case-logo" aria-hidden="true"><span class="lg lg--la-mia"><b>La Mia</b><i>PIZZAZAAK</i></span><span class="logo-note">tekstvariant, logo volgt</span></div>
+  <div class="wcase-b">
+    <ul class="tags" aria-label="Soort werk"><li>WEBSITE</li><li>HORECA</li></ul>
+    <h2 id="la-mia-h" class="h3">La Mia: Website voor een pizzazaak</h2>
+    <p>La Mia is een pizzazaak in de Abdijstraat. PlatforMaat maakte de website.</p>
+    <p class="muted">Het volledige verhaal volgt zodra de klant de tekst heeft goedgekeurd. Cijfers of citaten komen er alleen met bron en toestemming.</p>
+  </div>
+</article>
+<article class="wcase wcase--3" id="zichtbaar-media" aria-labelledby="zichtbaar-media-h" data-r="up">
+  <div class="case-logo" aria-hidden="true"><span class="lg lg--zichtbaar-media"><b>Zichtbaar</b><i>Media</i></span><span class="logo-note">tekstvariant, logo volgt</span></div>
+  <div class="wcase-b">
+    <ul class="tags" aria-label="Soort werk"><li>PARTNER</li><li>VINDBAARHEID</li></ul>
+    <h2 id="zichtbaar-media-h" class="h3">Zichtbaar Media: Samen voor vindbaarheid</h2>
+    <p>Zichtbaar Media is een zelfstandige eenmanszaak. PlatforMaat werkt met haar samen voor vindbaarheid via Google. Ze is geen onderdeel van PlatforMaat.</p>
+    <p class="muted">Het volledige verhaal volgt zodra de klant de tekst heeft goedgekeurd. Cijfers of citaten komen er alleen met bron en toestemming.</p>
+  </div>
+</article>
+  <article class="wcase wcase--next" id="jouw-project" aria-labelledby="nxt-h" data-r="up">
+    <div class="wcase-b">
+      <ul class="tags" aria-label="Soort werk"><li>BINNENKORT</li></ul>
+      <h2 id="nxt-h" class="h3">Jouw project</h2>
+      <p>Vertel wat er in je zaak misloopt. PlatforMaat zegt eerlijk of het kan helpen.</p>
+      <p class="muted">Voor installateurs en bouwafwerking is er nog geen case. Daarom staat hier ook niets over.</p>
+      <div class="hero-act"><a class="btn " href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gratis kennismaking</span></a><p class="alt">of bel <a href="tel:+32483851322">0483 85 13 22</a></p></div>
+    </div>
+  </article>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-a">
+      <p class="foot-brand">PlatforMaat</p>
+      <p>Maatwerksoftware, apps, websites, koppelingen, hosting en onderhoud voor kleine en middelgrote bedrijven.</p>
+      <p class="small">In samenwerking met Zichtbaar Media, een zelfstandige onderneming en geen onderdeel van PlatforMaat.</p>
+    </div>
+    <div class="foot-b">
+      <p class="mono-l">Contact</p>
+      <p><a href="tel:+32483851322">0483 85 13 22</a><br><a href="mailto:info@platformaat.be">info@platformaat.be</a></p>
+      <p class="small">Meetjeslandstraat 44, 2660 Antwerpen</p>
+    </div>
+    <nav class="foot-c" aria-label="Voetnavigatie">
+      <p class="mono-l">Op deze site</p>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#aanbod">Aanbod</a></li>
+        <li><a href="werk.html">Werk</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="raamdecoratie-zonwering.html">Voor raamdecoratie en zonwering</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap foot-legal">
+    <p>PlatforMaat, handelsnaam van Rayane Errami · Ondernemingsnummer 1004.326.518 · btw BE 1004.326.518 · Meetjeslandstraat 44, 2660 Antwerpen</p>
+    <p><span>Wettelijke vermeldingen</span> · <span>Algemene voorwaarden</span> · <span>Privacyverklaring</span> · <span>Cookieverklaring</span></p>
+  </div>
+</footer>
+<div class="stick" role="group" aria-label="Snel contact">
+  <a class="btn btn--ghost" href="tel:+32483851322"><span>Bel 0483 85 13 22</span></a>
+  <a class="btn " href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gesprek</span></a>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>PlatforMaat: websitepreviews</title>
+<style>
+  :root { --bg:#f4f1ea; --ink:#17171a; --mute:#5b5b63; --line:#cfc9bb; --card:#fffdf8; --accent:#1d3fd1; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui, "Segoe UI", sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height:1.15; margin:0 0 8px; }
+  h2 { font-size: 1.4rem; margin: 0 0 6px; }
+  h3 { margin:0; font-size:1.2rem; }
+  .lead { color:var(--mute); max-width: 68ch; margin: 0 0 20px; }
+  .tip { background:#fff; border:1px solid var(--ink); border-left-width:6px; padding:12px 16px; margin: 0 0 36px; max-width: 78ch; }
+  .tip p { margin:0 0 6px; } .tip p:last-child { margin:0; }
+  .stamp { font: .8rem ui-monospace, Consolas, monospace; color: var(--mute); }
+  .grp { margin: 0 0 44px; }
+  .grp-h { margin-bottom: 14px; border-top: 2px solid var(--ink); padding-top: 12px; }
+  .grp-h p { margin: 0; color:var(--mute); max-width: 80ch; }
+  .grid { display:grid; gap:20px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+  .grid--2 { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:6px; padding:20px; display:flex; flex-direction:column; gap:12px; }
+  .card h2, .card h3 { margin:0; }
+  .card p { margin:0; color:var(--mute); }
+  .card img { width:100%; height:auto; border:1px solid var(--line); border-radius:3px; display:block; background:#eee; }
+  .open { display:inline-block; align-self:flex-start; background:var(--ink); color:#fff; text-decoration:none; padding:10px 16px; border-radius:4px; font-weight:600; }
+  .open:hover, .open:focus-visible { background:var(--accent); }
+  details { border-top:1px solid var(--line); padding-top:10px; }
+  summary { cursor:pointer; color:var(--mute); }
+  ul { margin:10px 0 0; padding:0; list-style:none; display:grid; grid-template-columns: 1fr 1fr; gap:4px 12px; }
+  ul a { color:var(--accent); }
+  a { color: var(--accent); }
+  a:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+  .older { border-top:2px solid var(--ink); padding-top:14px; }
+  footer { margin-top:32px; color:var(--mute); font-size:.9rem; }
+  @media (max-width:420px) { ul { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Acht nieuwe voorbeelden, twee per stijl</h1>
+  <p class="lead">Elk voorbeeld is één lange homepage, bedoeld om te vergelijken. Het gekozen voorbeeld wordt later de volledige site. Scroll rustig door elk voorbeeld: de beweging zit in het scrollen.</p>
+  <div class="tip" role="note">
+    <p><strong>Zie je weinig beweging?</strong> Dan staat in Windows «Animatie-effecten» uit (Instellingen, Toegankelijkheid, Visuele effecten). Elke site volgt die instelling. Bovenaan elk voorbeeld staat een knop <strong>Effecten: aan/uit</strong>; daarmee toon je de beweging toch.</p>
+    <p class="stamp">Concept, niet publiek bedoeld. Niet indexeren.</p>
+  </div>
+  <section class="grp" aria-labelledby="g-apple">
+    <div class="grp-h"><h2 id="g-apple">Stijl Apple AirPods Pro</h2><p>Eén ding vastgepind in beeld terwijl scrollen het laat veranderen: draaien, inzoomen, uit elkaar halen. Grote koppen, veel lucht. <a href="https://www.apple.com/airpods-pro/" target="_blank" rel="noopener noreferrer">Bekijk de referentie</a>.</p></div>
+    <div class="grid grid--2">
+      <section class="card card--new" aria-labelledby="n07">
+        <h3 id="n07">07 Scherm</h3>
+        <p>Licht. Een app-venster dat in lagen uit elkaar schuift in 3D.</p>
+        <img src="_screens/07-scherm_home-desktop.png" alt="Voorbeeld van de startpagina van Scherm" loading="lazy">
+        <a class="open" href="07-scherm/index.html">Open Scherm</a>
+      </section>
+      <section class="card card--new" aria-labelledby="n08">
+        <h3 id="n08">08 Zak</h3>
+        <p>Donker. Een telefoon die meedraait terwijl het scherm per aanbod wisselt.</p>
+        <img src="_screens/08-zak_home-desktop.png" alt="Voorbeeld van de startpagina van Zak" loading="lazy">
+        <a class="open" href="08-zak/index.html">Open Zak</a>
+      </section>
+    </div>
+  </section>
+  <section class="grp" aria-labelledby="g-locomotive">
+    <div class="grp-h"><h2 id="g-locomotive">Stijl Locomotive</h2><p>Reusachtige typografie die regel voor regel binnenkomt, zijwaarts scrollen, kleurvlakken die elkaar wegvegen. <a href="https://locomotive.ca" target="_blank" rel="noopener noreferrer">Bekijk de referentie</a>.</p></div>
+    <div class="grid grid--2">
+      <section class="card card--new" aria-labelledby="n09">
+        <h3 id="n09">09 Lijn</h3>
+        <p>Zwart-wit typografie. Panelen die zijwaarts voorbijschuiven.</p>
+        <img src="_screens/09-lijn_home-desktop.png" alt="Voorbeeld van de startpagina van Lijn" loading="lazy">
+        <a class="open" href="09-lijn/index.html">Open Lijn</a>
+      </section>
+      <section class="card card--new" aria-labelledby="n10">
+        <h3 id="n10">10 Vlak</h3>
+        <p>Felle kleurvlakken die over elkaar schuiven en de pagina van kleur doen wisselen.</p>
+        <img src="_screens/10-vlak_home-desktop.png" alt="Voorbeeld van de startpagina van Vlak" loading="lazy">
+        <a class="open" href="10-vlak/index.html">Open Vlak</a>
+      </section>
+    </div>
+  </section>
+  <section class="grp" aria-labelledby="g-linear">
+    <div class="grp-h"><h2 id="g-linear">Stijl Linear</h2><p>Echte productschermen in HTML, over en tegen elkaar. Precies, ingetogen, het product bestaat. <a href="https://linear.app" target="_blank" rel="noopener noreferrer">Bekijk de referentie</a>.</p></div>
+    <div class="grid grid--2">
+      <section class="card card--new" aria-labelledby="n11">
+        <h3 id="n11">11 Lagen</h3>
+        <p>Licht, betonkleur en seinoranje. Bladen die over elkaar schuiven; de offerte bouwt zichzelf bij het scrollen.</p>
+        <img src="_screens/11-lagen_home-desktop.png" alt="Voorbeeld van de startpagina van Lagen" loading="lazy">
+        <a class="open" href="11-lagen/index.html">Open Lagen</a>
+      </section>
+      <section class="card card--new" aria-labelledby="n12">
+        <h3 id="n12">12 Palet</h3>
+        <p>Donker. Een werkbank-app die zichzelf bedient, met een werkend commandopalet (Ctrl+K).</p>
+        <img src="_screens/12-palet_home-desktop.png" alt="Voorbeeld van de startpagina van Palet" loading="lazy">
+        <a class="open" href="12-palet/index.html">Open Palet</a>
+      </section>
+    </div>
+  </section>
+  <section class="grp" aria-labelledby="g-kvs">
+    <div class="grp-h"><h2 id="g-kvs">Stijl KVS Studio</h2><p>Een scène met diepte: scrollen beweegt de camera door de ruimte. Zwaarste stijl, zonder bibliotheek gebouwd. <a href="https://www.awwwards.com/inspiration/home-page-scroll-kvs-studio" target="_blank" rel="noopener noreferrer">Bekijk de referentie</a>.</p></div>
+    <div class="grid grid--2">
+      <section class="card card--new" aria-labelledby="n13">
+        <h3 id="n13">13 Diepte</h3>
+        <p>Donker. Je vliegt door panelen op verschillende diepte (CSS 3D).</p>
+        <img src="_screens/13-diepte_home-desktop.png" alt="Voorbeeld van de startpagina van Diepte" loading="lazy">
+        <a class="open" href="13-diepte/index.html">Open Diepte</a>
+      </section>
+      <section class="card card--new" aria-labelledby="n14">
+        <h3 id="n14">14 Veld</h3>
+        <p>Licht. Een veld van punten dat het woord vormt en op je muis reageert (WebGL).</p>
+        <img src="_screens/14-veld_home-desktop.png" alt="Voorbeeld van de startpagina van Veld" loading="lazy">
+        <a class="open" href="14-veld/index.html">Open Veld</a>
+      </section>
+    </div>
+  </section>
+  <footer>Alle lettertypen worden zelf gehost; er is geen extern verzoek. Het formulier-gedeelte verstuurt niets. Teksten over klanten wachten op hun akkoord.</footer>
+</main>
+</body>
+</html>

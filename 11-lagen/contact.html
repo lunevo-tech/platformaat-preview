@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light">
+<title>Contact | PlatforMaat</title>
+<meta name="description" content="Plan een gratis kennismaking, bel 0483 85 13 22 of mail info@platformaat.be.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FF5B3A'/%3E%3Cpath d='M9 26V6h9a6 6 0 0 1 0 12h-5' fill='none' stroke='%23FFFFFF' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script>/* Voorbeelden: effecten aan of uit. Eén sessiewaarde voor de schakelaar, niets blijvend onthouden. */
+(function () {
+  var d = document.documentElement, f = null, m = /[?&]motion=(aan|uit|auto)/.exec(location.search);
+  try { if (m) sessionStorage.setItem('pm-motion', m[1]); f = sessionStorage.getItem('pm-motion'); } catch (e) { f = m && m[1]; }
+  if (f === 'auto') f = null;
+  var red = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var on = f === 'aan' || (f !== 'uit' && !red);
+  d.className += on ? ' fx' : ' no-fx';
+  d.setAttribute('data-motion', f || 'auto'); d.setAttribute('data-os', red ? 'minder' : 'normaal');
+  if (on) setTimeout(function () { if (!window.__fx) d.className = d.className.replace(/(^| )fx( |$)/, ' no-fx '); }, 3000);
+})();
+</script>
+</head>
+<body class="p-contact">
+<a class="skip" href="#main">Naar de inhoud</a>
+<p class="previewbar"><span>Voorbeeld 11 Lagen</span> · nog niet publiek · teksten over klanten wachten op hun akkoord · <a href="../index.html">alle voorbeelden</a></p>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="index.html" aria-label="PlatforMaat, naar de startpagina"><span class="mk" aria-hidden="true"><i></i><i></i></span>PlatforMaat</a>
+    <nav class="nav" aria-label="Hoofdnavigatie"><a href="index.html#aanbod">Aanbod</a><a href="werk.html">Werk</a><a href="contact.html" aria-current="page">Contact</a></nav>
+    <div class="top-act">
+      <a class="tel" href="tel:+32483851322"><span class="tel-l">Bel</span> 0483 85 13 22</a>
+      <a class="btn btn--s" href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gratis kennismaking</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-h wrap">
+  <p class="mono-l">Contact</p>
+  <h1>De snelste weg is <em>bellen of een gesprek plannen.</em></h1>
+  <p class="hero-p">Het is gratis en vrijblijvend.</p>
+</section>
+
+<section class="wrap routes" aria-label="Drie manieren om contact op te nemen">
+  <div class="route route--main" data-r="up">
+    <p class="mono-l">Plan</p>
+    <p>Kies zelf een moment in de agenda.</p>
+    <a class="btn " href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gratis kennismaking</span></a>
+  </div>
+  <div class="route" data-r="up">
+    <p class="mono-l">Bel</p>
+    <p><a class="big-l" href="tel:+32483851322">0483 85 13 22</a></p>
+  </div>
+  <div class="route" data-r="up">
+    <p class="mono-l">Mail</p>
+    <p><a class="big-l" href="mailto:info@platformaat.be">info@platformaat.be</a></p>
+  </div>
+</section>
+
+<section class="wrap two" aria-labelledby="form-h">
+  <div data-r="up">
+    <h2 id="form-h" class="h3">Of laat een bericht achter</h2>
+    <form id="formulier" class="form" action="#" novalidate>
+      <p class="field"><label for="f-naam">Naam</label><input id="f-naam" name="naam" type="text" autocomplete="name" required></p>
+      <p class="field"><label for="f-bedrijf">Bedrijf</label><input id="f-bedrijf" name="bedrijf" type="text" autocomplete="organization"></p>
+      <p class="field"><label for="f-mail">E-mail</label><input id="f-mail" name="mail" type="email" autocomplete="email" required></p>
+      <p class="field"><label for="f-gsm">Gsm-nummer <span class="hint">zodat PlatforMaat je kan terugbellen</span></label><input id="f-gsm" name="gsm" type="tel" autocomplete="tel"></p>
+      <p class="field"><label for="f-vraag">Waarmee kan PlatforMaat helpen?</label><textarea id="f-vraag" name="vraag" rows="5"></textarea></p>
+      <p class="field"><button class="btn btn--ghost" type="submit"><span>Verstuur</span></button></p>
+      <p class="form-status" role="status" data-msg="Dit voorbeeld verstuurt nog niets. Bel of mail in de tussentijd."></p>
+      <p class="small">Wat je invult, gebruikt PlatforMaat alleen om je te antwoorden. Lees de <span>privacyverklaring</span>.</p>
+    </form>
+  </div>
+  <div class="gegevens" data-r="up">
+    <h2 class="h3">Bedrijfsgegevens</h2>
+    <p>PlatforMaat is een handelsnaam van Rayane Errami, natuurlijk persoon (eenmanszaak).</p>
+    <dl>
+      <div><dt>Ondernemingsnummer</dt><dd>1004.326.518</dd></div>
+      <div><dt>Btw-nummer</dt><dd>BE 1004.326.518</dd></div>
+      <div><dt>Adres</dt><dd>Meetjeslandstraat 44, 2660 Antwerpen</dd></div>
+      <div><dt>E-mail</dt><dd>info@platformaat.be</dd></div>
+      <div><dt>Telefoon</dt><dd>0483 85 13 22</dd></div>
+    </dl>
+    <p class="small">Alle wettelijke vermeldingen staan op de pagina <span>Juridisch</span>.</p>
+    <h2 class="h3">Vindbaarheid</h2>
+    <p>Voor vindbaarheid via Google werkt PlatforMaat samen met Zichtbaar Media.</p>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-a">
+      <p class="foot-brand">PlatforMaat</p>
+      <p>Maatwerksoftware, apps, websites, koppelingen, hosting en onderhoud voor kleine en middelgrote bedrijven.</p>
+      <p class="small">In samenwerking met Zichtbaar Media, een zelfstandige onderneming en geen onderdeel van PlatforMaat.</p>
+    </div>
+    <div class="foot-b">
+      <p class="mono-l">Contact</p>
+      <p><a href="tel:+32483851322">0483 85 13 22</a><br><a href="mailto:info@platformaat.be">info@platformaat.be</a></p>
+      <p class="small">Meetjeslandstraat 44, 2660 Antwerpen</p>
+    </div>
+    <nav class="foot-c" aria-label="Voetnavigatie">
+      <p class="mono-l">Op deze site</p>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#aanbod">Aanbod</a></li>
+        <li><a href="werk.html">Werk</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="raamdecoratie-zonwering.html">Voor raamdecoratie en zonwering</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap foot-legal">
+    <p>PlatforMaat, handelsnaam van Rayane Errami · Ondernemingsnummer 1004.326.518 · btw BE 1004.326.518 · Meetjeslandstraat 44, 2660 Antwerpen</p>
+    <p><span>Wettelijke vermeldingen</span> · <span>Algemene voorwaarden</span> · <span>Privacyverklaring</span> · <span>Cookieverklaring</span></p>
+  </div>
+</footer>
+<div class="stick" role="group" aria-label="Snel contact">
+  <a class="btn btn--ghost" href="tel:+32483851322"><span>Bel 0483 85 13 22</span></a>
+  <a class="btn " href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gesprek</span></a>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>

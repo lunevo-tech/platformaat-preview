@@ -1,0 +1,7 @@
+/* Voorbeeldbalk bovenaan elk voorbeeld (alleen voor de previews; verdwijnt bij livegang). */
+.previewbar { margin: 0; max-width: none; background: #14161A; color: #fff; padding: 8px clamp(16px, 4vw, 48px); font: 400 .75rem/1.6 ui-monospace, Consolas, "Courier New", monospace; letter-spacing: .02em; position: relative; z-index: 1000; }
+.previewbar span { text-transform: uppercase; letter-spacing: .06em; }
+.previewbar a { color: #fff; }
+.fxsw { font: inherit; color: #fff; background: transparent; border: 1px solid #fff; border-radius: 0; padding: 3px 10px; min-height: 28px; cursor: pointer; letter-spacing: .02em; }
+.fxsw:hover { background: #fff; color: #14161A; }
+.fxsw:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
