@@ -438,16 +438,13 @@ kbd b { font-weight: 500; }
 .pal-f kbd { font-size: .95em; }
 
 /* ---------- beweging: alleen met .fx ---------- */
-.fx [data-r] { opacity: 0; transform: translate3d(0, 14px, 0); }
-.fx [data-r].in { opacity: 1; transform: none; transition: opacity .7s var(--ease) calc(var(--i, 0) * 70ms), transform .8s var(--ease) calc(var(--i, 0) * 70ms); }
-.fx [data-r].done { transition: background-color .15s; }
 .fx h1.split .w { display: inline-block; overflow: clip; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
 .fx h1.split .wi { display: inline-block; transform: translate3d(0, 105%, 0); }
 .fx h1.split.go .wi { transform: none; transition: transform .9s var(--ease) calc(var(--w, 0) * 60ms + 80ms); }
 .fx .hero-t > :not(h1) { opacity: 0; transform: translate3d(0, 12px, 0); }
 .fx .hero-t > :not(h1).in { opacity: 1; transform: none; transition: opacity .7s var(--ease) calc(var(--i, 0) * 80ms), transform .8s var(--ease) calc(var(--i, 0) * 80ms); }
-.fx .hero-stage .hw { transform: translate3d(0, calc(var(--sy, 0) * -.035px), 0); animation: stage-in 1.1s var(--ease) .1s backwards; }
-.fx .hero-stage .hp { transform: translate3d(0, calc(var(--sy, 0) * -.11px), 0); animation: panel-in 1.1s var(--ease) .55s backwards; }
+.fx .hero-stage .hw { animation: stage-in 1.1s var(--ease) .1s backwards; }
+.fx .hero-stage .hp { animation: panel-in 1.1s var(--ease) .55s backwards; }
 @keyframes stage-in { from { opacity: 0; transform: translate3d(5em, 2em, 0); } }
 @keyframes panel-in { from { opacity: 0; transform: translate3d(5em, 0, 0); } }
 .fx .hcur { display: block; transform: translate3d(50em, 9em, 0); }
@@ -463,12 +460,6 @@ kbd b { font-weight: 500; }
 @keyframes rh { 0%, 50% { opacity: 0; } 54%, 70% { opacity: 1; } 74%, 100% { opacity: 0; } }
 
 /* aanbod: schermpjes tikken zichzelf in als ze in beeld zijn */
-.fx .fg .cb.on svg { opacity: 0; }
-.fx .fg.live .cb.on svg { opacity: 1; transition: opacity .3s calc(var(--k, 0) * 220ms + 300ms); }
-.fx .fg.live .m1 li:nth-child(2) .cb svg { --k: 1; }
-.fx .fg .m1 .cb.on { background: transparent; border-color: var(--line2); }
-.fx .fg.live .m1 .cb.on { background: var(--acc); border-color: var(--acc); transition: background-color .3s calc(var(--k, 0) * 220ms + 300ms), border-color .3s calc(var(--k, 0) * 220ms + 300ms); }
-.fx .fg.live .m1 li:nth-child(2) .cb.on { --k: 1; }
 .fx .fg.live .ph-n { animation: notif 7s var(--ease) infinite; }
 .fx .fg .ph-n { transform: translate3d(0, -160%, 0); }
 @keyframes notif { 0%, 12% { transform: translate3d(0, -160%, 0); } 20%, 72% { transform: none; } 82%, 100% { transform: translate3d(0, -160%, 0); } }
@@ -483,10 +474,6 @@ kbd b { font-weight: 500; }
 @keyframes tick { 0%, 6% { opacity: 1; } 14%, 100% { opacity: .32; } }
 .fx .fg.live .m5 .dot.on { animation: blink 3s ease-in-out infinite; }
 @keyframes blink { 0%, 80%, 100% { opacity: 1; } 90% { opacity: .35; } }
-.fx .fg .mini { transform: translate3d(0, 10px, 0); opacity: 0; }
-.fx .fg.live .mini { opacity: 1; transform: none; transition: opacity .6s var(--ease), transform .7s var(--ease); }
-.fx .fg.live .mini:nth-child(2) { transition-delay: .18s; }
-.fx .fg.live .phone { animation: none; }
 .fx .ab-row:hover .fg .m1b, .fx .ab-row:hover .fg .m3b, .fx .ab-row:hover .fg .m4b { transform: translate3d(6px, 4px, 0); }
 
 /* werk: pijl schuift bij hover */
@@ -494,87 +481,19 @@ kbd b { font-weight: 500; }
 .fx .pr:hover .pr-go svg { transform: translate3d(4px, 0, 0); }
 .fx .pr { transition: background-color .15s; }
 
-/* werkwijze: statusbolletjes vullen zich bij scrollen */
-.fx .ws-no { display: none; }
-.fx .ws-i .st, .fx .ci .st { display: block; position: absolute; inset: 0; width: 1.4rem; height: 1.4rem; opacity: 0; }
-.fx .ci .st { width: 1.1em; height: 1.1em; }
-.fx .ws .st-todo, .fx .cyc-l .st-todo { opacity: 1; }
-.fx .ws.is-cur .st-todo, .fx .cyc-l li.is-cur .st-todo, .fx .ws.is-done .st-todo, .fx .cyc-l li.is-done .st-todo { opacity: 0; }
-.fx .ws.is-cur .st-prog, .fx .cyc-l li.is-cur .st-prog { opacity: 1; }
-.fx .ws.is-done .st-prog, .fx .cyc-l li.is-done .st-prog { opacity: 0; }
-.fx .ws.is-done .st-done, .fx .cyc-l li.is-done .st-done { opacity: 1; color: var(--acc); }
-.fx .ws:not(.is-cur):not(.is-done) .ws-b { opacity: .55; }
-.fx .ws .ws-b, .fx .ws .st { transition: opacity .4s var(--ease); }
-.fx .cyc-bar i { transform: scaleX(var(--p, 0)); }
-.fx .cyc-s .cs3 { opacity: 0; }
-.fx .flow[data-cur="0"] .cs0, .fx .flow[data-cur="1"] .cs1, .fx .flow[data-cur="2"] .cs2, .fx .flow[data-cur="3"] .cs3 { opacity: 1; }
-.fx .flow:not([data-cur]) .cs0 { opacity: 1; }
-
-/* afspraken: vinkjes tikken zichzelf aan, de assistent tikt */
-.fx .ab-i .tickb { transform: scale(.6); opacity: 0; }
-.fx .ab-i.in .tickb { transform: none; opacity: 1; transition: transform .5s var(--ease) calc(var(--i, 0) * 70ms + 250ms), opacity .4s calc(var(--i, 0) * 70ms + 250ms); }
-.fx .m-t { display: inline-flex; }
-.fx .chat .chkd { opacity: 0; }
-.fx .chat.live .chkd { animation: okshow 9s linear infinite; }
-.fx .chat.live .m-t { animation: typing 9s linear infinite; }
-.fx .chat.live .m-t i { animation: dotb 1s ease-in-out infinite; }
-.fx .chat.live .m-t i:nth-child(2) { animation-delay: .15s; }
-.fx .chat.live .m-t i:nth-child(3) { animation-delay: .3s; }
-.fx .chat .m-a { opacity: 0; }
-.fx .chat.live .m-a { animation: amsg 9s linear infinite; }
-@keyframes typing { 0%, 4% { opacity: 0; } 8%, 20% { opacity: 1; } 24%, 100% { opacity: 0; } }
-@keyframes amsg { 0%, 24% { opacity: 0; transform: translate3d(0, 6px, 0); } 30%, 92% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; } }
-@keyframes okshow { 0%, 48% { opacity: 0; } 54%, 92% { opacity: 1; } 97%, 100% { opacity: 0; } }
-@keyframes dotb { 0%, 100% { opacity: .35; transform: none; } 50% { opacity: 1; transform: translate3d(0, -2px, 0); } }
-
-.fx .cl-in.live .typ b { animation: typed 7s linear infinite; }
-@keyframes typed { 0%, 6% { clip-path: inset(0 100% 0 0); animation-timing-function: steps(16, end); } 40%, 88% { clip-path: inset(0 0 0 0); } 96%, 100% { clip-path: inset(0 100% 0 0); } }
-
-/* slot: de stapel schuift uit elkaar */
-.fx .cl-stack::before, .fx .cl-stack::after { transition: transform .9s var(--ease) .2s; }
-.fx .cl-stack:not(.open)::before, .fx .cl-stack:not(.open)::after { transform: translate(0, 0) scale(1, 1); }
-
-/* werkbank: sticky scène, gestuurd door scrollen */
-.fx .bench { height: 430vh; padding-top: 0; }
-.fx .bench-stage { position: sticky; top: var(--hh); height: calc(100vh - var(--hh)); display: flex; align-items: center; overflow: clip; }
-.fx .bench-grid { width: min(1240px, 100% - 2 * clamp(16px, 4vw, 40px)); margin-inline: auto; }
-.fx .steps li { opacity: .4; transition: opacity .35s var(--ease), border-color .35s; }
-.fx .steps li.active { opacity: 1; }
-.fx .bp { transform: translate3d(var(--dx, 104%), 0, 0); }
-.fx .bcur { display: block; opacity: 0; transform: translate3d(var(--cx, 60em), var(--cy, 40em), 0); }
-.fx .toast { opacity: 0; transform: translate3d(0, .8em, 0); transition: opacity .3s, transform .4s var(--ease); }
-.fx .s-toast .toast { opacity: 1; transform: none; }
-.fx .palm { display: block; opacity: 0; transform: translate3d(0, -.6em, 0) scale(.98); transition: opacity .25s, transform .3s var(--ease); }
-.fx .s-pal .palm { opacity: 1; transform: none; }
-.fx .bw .bx-c { opacity: 1; }
-.fx .bw .bx-v { opacity: 0; color: var(--acc); }
-.fx .bw.s-sent .bx-c { opacity: 0; }
-.fx .bw.s-sent .bx-v { opacity: 1; }
-.fx .bw .bd-x i { transition: opacity .25s; }
-.fx .bw .bx-v { border-color: var(--acc); }
-.fx .bw .row-t .st-x { position: relative; display: block; width: 1.1em; height: 1.1em; }
+/* werkbank: een gewone weergave van de eindtoestand (offerte verstuurd, regels gecontroleerd) */
+.bp { transform: none; }
+.bw .bx-c { opacity: 0; }
+.bw .bx-v { opacity: 1; color: var(--acc); border-color: var(--acc); }
 .st-x { position: relative; display: block; width: 1.1em; height: 1.1em; }
 .st-x .st { position: absolute; inset: 0; }
 .st-x .st-draft { opacity: 0; }
-.fx .bw .st-x .st-draft { opacity: 1; }
-.fx .bw .st-x .st-done { opacity: 0; color: var(--acc); }
-.fx .bw.s-sent .st-x .st-draft { opacity: 0; }
-.fx .bw.s-sent .st-x .st-done { opacity: 1; }
-.fx .bw .st-x .st { transition: opacity .25s; }
-.fx .bw.s-hov .row-t::after, .fx .bw.s-sel .row-t::after { opacity: 1; }
-.fx .bw.s-sel .row-t { box-shadow: inset 2px 0 0 var(--acc); }
-.fx .bw .ln .cb { background: transparent; border-color: var(--line2); transition: background-color .25s, border-color .25s; }
-.fx .bw .ln .cb svg { opacity: 0; transition: opacity .25s; }
-.fx .bw.s-chk1 .l1 .cb, .fx .bw.s-chk2 .l2 .cb, .fx .bw.s-chk3 .l3 .cb { background: var(--acc); border-color: var(--acc); }
-.fx .bw.s-chk1 .l1 .cb svg, .fx .bw.s-chk2 .l2 .cb svg, .fx .bw.s-chk3 .l3 .cb svg { opacity: 1; }
-.fx .bw .chkd { opacity: 0; transition: opacity .3s; }
-.fx .bw.s-ok .chkd { opacity: 1; }
+.st-x .st-done { opacity: 1; color: var(--acc); }
+.row-t { box-shadow: inset 2px 0 0 var(--acc); }
+.row-t::after { opacity: 1; }
+.fx .bw .bd-x i { transition: opacity .25s; }
 .fx .bw .send { transition: transform .12s; }
-.fx .bw.s-press .send { transform: scale(.94); }
-.fx .bw .key kbd { transition: color .2s, border-color .2s; }
-.fx .bw.s-press .k-ent kbd, .fx .bw.s-k1 .k-cmd kbd { color: var(--acc); border-color: var(--acc); }
-.fx .bw .k-ent kbd { }
-.fx .bw.s-press .send kbd { }
+.fx .bw .send:active { transform: scale(.94); }
 
 .tab-hidden *, .tab-hidden *::before, .tab-hidden *::after { animation-play-state: paused !important; }
 
@@ -604,8 +523,6 @@ kbd b { font-weight: 500; }
   .cl-fig { display: none; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .foot-a { grid-column: 1 / -1; }
-  .fx .bench-t .sec-h { margin-bottom: 14px; }
-  .fx .steps { display: block; }
 }
 @media (max-width: 900px) {
   .menu-btn { display: inline-flex; }
@@ -655,19 +572,9 @@ kbd b { font-weight: 500; }
   .bw .toast { left: 1em; }
   .bw .keys { padding-left: 1em; gap: 1.2em; }
   .bw .key:nth-child(3) { display: none; }
-  .fx .steps li:not(.active) { display: none; }
-  .fx .steps li { padding-block: 10px 0; opacity: 1; }
-  .fx .bench-t .sec-h { margin-bottom: 8px; }
-  .fx .bench-t .mono-l { margin-bottom: 8px; }
-  .fx .bench-t h2 { font-size: 1.45rem; }
-  .fx .bench-grid { row-gap: 16px; align-items: start; }
-  .fx .steps { min-height: 9.6rem; }
   .hero .hint-k { display: none; }
-  .fx .bench { height: 400vh; }
-  .fx .bench-f .fig-l { margin-top: 10px; }
 }
 @media (max-height: 760px) and (min-width: 1001px) {
-  .fx .bench-t .sec-h { margin-bottom: 12px; }
   .steps li { padding-block: 10px 12px; }
   .steps p { font-size: .9rem; }
 }
@@ -793,3 +700,4 @@ kbd b { font-weight: 500; }
 .fx .kl-x { transition: background-color .15s, border-color .15s; }
 .kp.is-drag, .kp.is-drag * { cursor: grabbing; }
 .kopp .sec-h { margin-bottom: clamp(20px, 3vw, 36px); }
+.fx .paused, .fx .paused *, .fx .paused *::after, .fx .paused *::before { animation-play-state: paused !important; }

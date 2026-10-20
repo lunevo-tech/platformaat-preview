@@ -407,47 +407,27 @@
     requestAnimationFrame(function () { requestAnimationFrame(function () { h.classList.add('go'); }); });
   });
 
-  /* ---------- 2. Onthullen bij scrollen; lussen alleen als ze in beeld zijn ---------- */
-  var reveal = function (list) {
-    list.sort(function (a, b) { var x = a.getBoundingClientRect(), y = b.getBoundingClientRect(); return (x.top - y.top) || (x.left - y.left); })
-      .forEach(function (el, k) {
-        el.style.setProperty('--i', k + (el.closest('.hero') ? 4 : 0));
-        el.classList.add('in');
-        setTimeout(function () { el.classList.add('done'); }, 2400);
-      });
-  };
-  var els = $('[data-r], .hero-t > :not(h1)');
+  /* ---------- 2. Lussen draaien alleen als ze in beeld zijn. Niets verschijnt of verandert door scrollen: alle inhoud staat er bij het laden. ---------- */
+  var loops = $('.hero-stage, .fg, .cl-in');
   if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      var v = entries.filter(function (e) { return e.isIntersecting; });
-      v.forEach(function (e) { io.unobserve(e.target); });
-      reveal(v.map(function (e) { return e.target; }));
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    els.forEach(function (el) { io.observe(el); });
     var io2 = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { e.target.classList.toggle('live', e.isIntersecting); });
     }, { threshold: 0.15 });
-    $('.hero-stage, .fg, .chat, .cl-in').forEach(function (el) { io2.observe(el); });
-    var io3 = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('open'); io3.unobserve(e.target); } });
-    }, { threshold: 0.25 });
-    $('.cl-stack').forEach(function (el) { io3.observe(el); });
+    loops.forEach(function (el) { io2.observe(el); });
   } else {
-    reveal(els);
-    $('.hero-stage, .fg, .chat, .cl-in').forEach(function (el) { el.classList.add('live'); });
-    $('.cl-stack').forEach(function (el) { el.classList.add('open'); });
+    loops.forEach(function (el) { el.classList.add('live'); });
   }
-  // pauzeren bij een verborgen tabblad: animaties staan dan stil (CSS-lussen lopen niet door op de achtergrond, dit is extra zeker)
+  // pauzeren bij een verborgen tabblad
   document.addEventListener('visibilitychange', function () { root.classList.toggle('tab-hidden', document.hidden); });
 
-  /* ---------- 3. De werkbank: scrollen stuurt de gebeurtenissen ---------- */
+  /* ---------- 3. De werkbank: staat bij het laden in zijn eindtoestand; «Speel af» (of een klik op de scène) speelt het verhaal één keer af ---------- */
   var B = document.querySelector('.bench');
-  var bench = null;
   if (B) {
-    bench = {
-      el: B, win: B.querySelector('.bw'), cur: B.querySelector('.bcur'), rowT: B.querySelector('.row-t'), send: B.querySelector('.send'),
-      typed: B.querySelector('.palm-t b'), steps: $('.steps li', B), geo: null, last: {}, active: -1
+    var bench = {
+      win: B.querySelector('.bw'), cur: B.querySelector('.bcur'), rowT: B.querySelector('.row-t'), send: B.querySelector('.send'),
+      typed: B.querySelector('.palm-t b'), steps: $('.steps li', B), geo: null, last: {}, p: 0
     };
+    var REST = 0.74, playing = false;
     bench.offset = function (el) {
       var x = 0, y = 0, n = el;
       while (n && n !== bench.win) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
@@ -455,12 +435,11 @@
     };
     bench.measure = function () {
       var w = bench.win.offsetWidth, h = bench.win.offsetHeight, r = bench.offset(bench.rowT), s = bench.offset(bench.send);
-      var em = parseFloat(getComputedStyle(bench.win).fontSize) || 12;
       bench.geo = {
         start: { x: w * 0.96, y: h * 1.04 },
         row: { x: r.x + bench.rowT.offsetWidth * 0.34, y: r.y + bench.rowT.offsetHeight * 0.55 },
         btn: { x: s.x + bench.send.offsetWidth * 0.5, y: s.y + bench.send.offsetHeight * 0.5 },
-        away: { x: w * 0.22, y: h * 0.7 }, em: em
+        away: { x: w * 0.22, y: h * 0.7 }
       };
     };
     bench.pos = function (p) {
@@ -473,13 +452,11 @@
       return { x: lerp(a.x, b.x, t), y: lerp(a.y, b.y, t) };
     };
     bench.set = function (key, val, fn) { if (bench.last[key] !== val) { bench.last[key] = val; fn(val); } };
-    bench.update = function () {
-      var r = B.getBoundingClientRect(), hh = bench.hh || (bench.hh = parseFloat(getComputedStyle(root).getPropertyValue('--hh')) || 56);
-      var total = r.height - window.innerHeight + hh;
-      var p = total > 0 ? clamp((hh - r.top) / total, 0, 1) : 0;
+    // p loopt van 0 tot 1 (tijd, geen scrollpositie); quiet = geen stapmarkering
+    bench.apply = function (p, quiet) {
+      bench.p = p;
       if (!bench.geo) bench.measure();
       var W = bench.win, set = bench.set;
-      // gescrubd: cursor en paneel
       var c = bench.pos(p), cx = c.x.toFixed(1) + 'px', cy = c.y.toFixed(1) + 'px';
       set('cx', cx, function (v) { bench.cur.style.setProperty('--cx', v); });
       set('cy', cy, function (v) { bench.cur.style.setProperty('--cy', v); });
@@ -487,7 +464,6 @@
       set('co', co, function (v) { bench.cur.style.opacity = v; });
       var dx = ((1 - ease(seg(p, .2, .36))) * 104).toFixed(2) + '%';
       set('dx', dx, function (v) { W.querySelector('.bp').style.setProperty('--dx', v); });
-      // met drempels: klassen met een korte overgang
       var on = function (cls, cond) { set(cls, cond, function (v) { W.classList.toggle(cls, v); }); };
       on('s-hov', p >= .11); on('s-sel', p >= .17);
       on('s-chk1', p >= .38); on('s-chk2', p >= .44); on('s-chk3', p >= .50); on('s-ok', p >= .52);
@@ -496,7 +472,7 @@
       on('s-k1', p >= .80); on('s-pal', p >= .84);
       var n = Math.floor(seg(p, .86, .95) * 4 + 0.0001);
       set('typed', n, function (v) { bench.typed.textContent = 'plan'.slice(0, v); });
-      var step = p < .2 ? 0 : p < .5 ? 1 : p < .8 ? 2 : 3;
+      var step = quiet ? -1 : p < .2 ? 0 : p < .5 ? 1 : p < .8 ? 2 : 3;
       set('step', step, function (v) {
         bench.steps.forEach(function (li, k) {
           li.classList.toggle('active', k === v);
@@ -504,58 +480,32 @@
         });
       });
     };
-    bench.measure();
-  }
-
-  /* ---------- 4. Werkwijze: statusbolletjes en voortgang ---------- */
-  var F = document.querySelector('.flow');
-  var flow = null;
-  if (F) {
-    flow = { el: F, steps: $('.ws', F), cyc: $('.cyc-l li', F), bar: F.querySelector('.cyc-bar i'), list: F.querySelector('.wsl'), last: '' };
-    flow.update = function () {
-      var vh = window.innerHeight, rl = flow.list.getBoundingClientRect();
-      if (rl.bottom < -200 || rl.top > vh + 200) return;
-      var read = vh * 0.6, tops = flow.steps.map(function (s) { return s.getBoundingClientRect().top; });
-      var reached = 0;
-      tops.forEach(function (t, i) { if (t <= read) reached = i + 1; });
-      var cur = reached - 1;
-      var allDone = flow.list.getBoundingClientRect().bottom <= read + 40;
-      var key = reached + ':' + allDone;
-      if (key !== flow.last) {
-        flow.last = key;
-        var apply = function (list) {
-          list.forEach(function (n, i) {
-            var done = allDone ? true : i < cur, now = !allDone && i === cur;
-            n.classList.toggle('is-done', done); n.classList.toggle('is-cur', now);
-          });
-        };
-        apply(flow.steps); apply(flow.cyc);
-        F.setAttribute('data-cur', String(clamp(allDone ? 3 : Math.max(cur, 0), 0, 3)));
-      }
-      var p = clamp((read - rl.top) / Math.max(1, rl.height), 0, 1);
-      flow.bar.style.setProperty('--p', p.toFixed(3));
+    var btn = B.querySelector('.bench-btn'), act = B.querySelector('.bench-act');
+    var rest = function () { bench.apply(REST, true); };
+    var play = function () {
+      if (playing) return;
+      playing = true;
+      if (btn) { btn.setAttribute('aria-pressed', 'true'); btn.textContent = 'Speelt af'; }
+      var t0 = performance.now(), D = 11000;
+      var stepFn = function () {
+        var p = clamp((performance.now() - t0) / D, 0, 1);
+        bench.apply(p);
+        if (p < 1) { requestAnimationFrame(stepFn); return; }
+        setTimeout(function () {
+          rest(); playing = false;
+          if (btn) { btn.setAttribute('aria-pressed', 'false'); btn.textContent = 'Speel af'; }
+        }, 1200);
+      };
+      bench.apply(0);
+      requestAnimationFrame(stepFn);
     };
-    flow.update();
+    bench.measure();
+    rest();
+    if (act) act.hidden = false;
+    if (btn) btn.addEventListener('click', play);
+    bench.win.addEventListener('click', play);
+    var onSize = function () { bench.geo = null; bench.last = {}; if (playing) bench.apply(bench.p); else rest(); };
+    window.addEventListener('resize', onSize);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(onSize);
   }
-
-  /* ---------- 5. Eén lus voor alles wat aan scrollen hangt ---------- */
-  var heroStage = document.querySelector('.hero-stage'), hero = document.querySelector('.hero');
-  var queued = false;
-  var frame = function () {
-    queued = false;
-    if (heroStage && hero) {
-      var y = window.scrollY;
-      if (y < hero.offsetHeight + 80) heroStage.style.setProperty('--sy', Math.round(y));
-    }
-    if (bench) {
-      var r = B.getBoundingClientRect();
-      if (r.bottom > -100 && r.top < window.innerHeight + 100) bench.update();
-    }
-    if (flow) flow.update();
-  };
-  var ask = function () { if (!queued) { queued = true; requestAnimationFrame(frame); } };
-  window.addEventListener('scroll', ask, { passive: true });
-  window.addEventListener('resize', function () { if (bench) { bench.geo = null; bench.last = {}; } if (flow) flow.last = ''; ask(); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (bench) { bench.geo = null; bench.last = {}; } ask(); });
-  frame();
 })();

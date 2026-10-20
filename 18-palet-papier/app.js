@@ -1,5 +1,6 @@
 /* 18 Palet papier: de Röntgenlens, het commandopalet (Ctrl+K) en de beweging. Gewone JavaScript, geen bibliotheek, geen externe verzoeken, geen cookies.
-   Het palet werkt ook zonder effecten. De beweging draait alleen als <html> de class «fx» heeft; anders staat alles op zijn eindplek. */
+   Het palet werkt ook zonder effecten. De beweging draait alleen als <html> de class «fx» heeft; anders staat alles op zijn eindplek.
+   Er wordt niets onthuld door te scrollen: bij het laden staat alle inhoud er al. */
 (function () {
   'use strict';
   var root = document.documentElement;
@@ -331,47 +332,29 @@
     requestAnimationFrame(function () { requestAnimationFrame(function () { h.classList.add('go'); }); });
   });
 
-  /* ---------- 2. Onthullen bij scrollen; lussen alleen als ze in beeld zijn ---------- */
-  var reveal = function (list) {
-    list.sort(function (a, b) { var x = a.getBoundingClientRect(), y = b.getBoundingClientRect(); return (x.top - y.top) || (x.left - y.left); })
-      .forEach(function (el, k) {
-        el.style.setProperty('--i', k + (el.closest('.hero') ? 4 : 0));
-        el.classList.add('in');
-        setTimeout(function () { el.classList.add('done'); }, 2400);
-      });
-  };
-  var els = $('[data-r], .hero-t > :not(h1)');
+  /* ---------- 2. Lussen lopen alleen als ze in beeld zijn (er wordt niets door onthuld: alles staat al op zijn plek) ---------- */
+  var liveEls = $('.hero-stage, .fg');
   if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      var v = entries.filter(function (e) { return e.isIntersecting; });
-      v.forEach(function (e) { io.unobserve(e.target); });
-      reveal(v.map(function (e) { return e.target; }));
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    els.forEach(function (el) { io.observe(el); });
     var io2 = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { e.target.classList.toggle('live', e.isIntersecting); });
     }, { threshold: 0.15 });
-    $('.hero-stage, .fg, .chat, .cl-in').forEach(function (el) { io2.observe(el); });
-    var io3 = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('open'); io3.unobserve(e.target); } });
-    }, { threshold: 0.25 });
-    $('.cl-stack').forEach(function (el) { io3.observe(el); });
+    liveEls.forEach(function (el) { io2.observe(el); });
   } else {
-    reveal(els);
-    $('.hero-stage, .fg, .chat, .cl-in').forEach(function (el) { el.classList.add('live'); });
-    $('.cl-stack').forEach(function (el) { el.classList.add('open'); });
+    liveEls.forEach(function (el) { el.classList.add('live'); });
   }
-  // pauzeren bij een verborgen tabblad: animaties staan dan stil (CSS-lussen lopen niet door op de achtergrond, dit is extra zeker)
+  // pauzeren bij een verborgen tabblad
   document.addEventListener('visibilitychange', function () { root.classList.toggle('tab-hidden', document.hidden); });
 
-  /* ---------- 3. De werkbank: scrollen stuurt de gebeurtenissen ---------- */
+  /* ---------- 3. De werkbank: de eindtoestand staat er al; «Speel af» speelt het verhaal één keer af (op een tik of klik, niet door scrollen) ---------- */
   var B = document.querySelector('.bench');
-  var bench = null;
-  if (B) {
-    bench = {
-      el: B, win: B.querySelector('.bw'), cur: B.querySelector('.bcur'), rowT: B.querySelector('.row-t'), send: B.querySelector('.send'),
-      typed: B.querySelector('.palm-t b'), steps: $('.steps li', B), geo: null, last: {}, active: -1
+  var PB = document.querySelector('.play-b');
+  if (B && PB) (function () {
+    var bench = {
+      win: B.querySelector('.bw'), cur: B.querySelector('.bcur'), rowT: B.querySelector('.row-t'), send: B.querySelector('.send'),
+      panel: B.querySelector('.bp'), typed: B.querySelector('.palm-t b'), steps: $('.steps li', B), geo: null, last: {}
     };
+    var label = PB.querySelector('span'), playing = false, raf = 0, t0 = 0;
+    var DURATION = 16000;
     bench.offset = function (el) {
       var x = 0, y = 0, n = el;
       while (n && n !== bench.win) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
@@ -379,12 +362,11 @@
     };
     bench.measure = function () {
       var w = bench.win.offsetWidth, h = bench.win.offsetHeight, r = bench.offset(bench.rowT), s = bench.offset(bench.send);
-      var em = parseFloat(getComputedStyle(bench.win).fontSize) || 12;
       bench.geo = {
         start: { x: w * 0.96, y: h * 1.04 },
         row: { x: r.x + bench.rowT.offsetWidth * 0.34, y: r.y + bench.rowT.offsetHeight * 0.55 },
         btn: { x: s.x + bench.send.offsetWidth * 0.5, y: s.y + bench.send.offsetHeight * 0.5 },
-        away: { x: w * 0.22, y: h * 0.7 }, em: em
+        away: { x: w * 0.22, y: h * 0.7 }
       };
     };
     bench.pos = function (p) {
@@ -397,21 +379,16 @@
       return { x: lerp(a.x, b.x, t), y: lerp(a.y, b.y, t) };
     };
     bench.set = function (key, val, fn) { if (bench.last[key] !== val) { bench.last[key] = val; fn(val); } };
-    bench.update = function () {
-      var r = B.getBoundingClientRect(), hh = bench.hh || (bench.hh = parseFloat(getComputedStyle(root).getPropertyValue('--hh')) || 56);
-      var total = r.height - window.innerHeight + hh;
-      var p = total > 0 ? clamp((hh - r.top) / total, 0, 1) : 0;
+    bench.apply = function (p) {
       if (!bench.geo) bench.measure();
       var W = bench.win, set = bench.set;
-      // gescrubd: cursor en paneel
       var c = bench.pos(p), cx = c.x.toFixed(1) + 'px', cy = c.y.toFixed(1) + 'px';
       set('cx', cx, function (v) { bench.cur.style.setProperty('--cx', v); });
       set('cy', cy, function (v) { bench.cur.style.setProperty('--cy', v); });
       var co = (seg(p, 0, .05) * (1 - seg(p, .8, .86))).toFixed(2);
       set('co', co, function (v) { bench.cur.style.opacity = v; });
       var dx = ((1 - ease(seg(p, .2, .36))) * 104).toFixed(2) + '%';
-      set('dx', dx, function (v) { W.querySelector('.bp').style.setProperty('--dx', v); });
-      // met drempels: klassen met een korte overgang
+      set('dx', dx, function (v) { bench.panel.style.setProperty('--dx', v); });
       var on = function (cls, cond) { set(cls, cond, function (v) { W.classList.toggle(cls, v); }); };
       on('s-hov', p >= .11); on('s-sel', p >= .17);
       on('s-chk1', p >= .38); on('s-chk2', p >= .44); on('s-chk3', p >= .50); on('s-ok', p >= .52);
@@ -428,58 +405,31 @@
         });
       });
     };
-    bench.measure();
-  }
-
-  /* ---------- 4. Werkwijze: statusbolletjes en voortgang ---------- */
-  var F = document.querySelector('.flow');
-  var flow = null;
-  if (F) {
-    flow = { el: F, steps: $('.ws', F), cyc: $('.cyc-l li', F), bar: F.querySelector('.cyc-bar i'), list: F.querySelector('.wsl'), last: '' };
-    flow.update = function () {
-      var vh = window.innerHeight, rl = flow.list.getBoundingClientRect();
-      if (rl.bottom < -200 || rl.top > vh + 200) return;
-      var read = vh * 0.6, tops = flow.steps.map(function (s) { return s.getBoundingClientRect().top; });
-      var reached = 0;
-      tops.forEach(function (t, i) { if (t <= read) reached = i + 1; });
-      var cur = reached - 1;
-      var allDone = flow.list.getBoundingClientRect().bottom <= read + 40;
-      var key = reached + ':' + allDone;
-      if (key !== flow.last) {
-        flow.last = key;
-        var apply = function (list) {
-          list.forEach(function (n, i) {
-            var done = allDone ? true : i < cur, now = !allDone && i === cur;
-            n.classList.toggle('is-done', done); n.classList.toggle('is-cur', now);
-          });
-        };
-        apply(flow.steps); apply(flow.cyc);
-        F.setAttribute('data-cur', String(clamp(allDone ? 3 : Math.max(cur, 0), 0, 3)));
-      }
-      var p = clamp((read - rl.top) / Math.max(1, rl.height), 0, 1);
-      flow.bar.style.setProperty('--p', p.toFixed(3));
+    // terug naar de eindtoestand (alles zichtbaar, niets onderweg)
+    bench.reset = function () {
+      cancelAnimationFrame(raf); raf = 0; playing = false;
+      B.classList.remove('play');
+      Array.prototype.slice.call(bench.win.classList).forEach(function (c) { if (/^s-/.test(c)) bench.win.classList.remove(c); });
+      bench.cur.removeAttribute('style'); bench.panel.style.removeProperty('--dx');
+      bench.typed.textContent = 'plan';
+      bench.steps.forEach(function (li) { li.classList.remove('active'); li.removeAttribute('aria-current'); });
+      bench.last = {};
+      PB.setAttribute('aria-disabled', 'false'); label.textContent = 'Speel af';
     };
-    flow.update();
-  }
-
-  /* ---------- 5. Eén lus voor alles wat aan scrollen hangt ---------- */
-  var heroStage = document.querySelector('.hero-stage'), hero = document.querySelector('.hero');
-  var queued = false;
-  var frame = function () {
-    queued = false;
-    if (heroStage && hero) {
-      var y = window.scrollY;
-      if (y < hero.offsetHeight + 80) heroStage.style.setProperty('--sy', Math.round(y));
-    }
-    if (bench) {
-      var r = B.getBoundingClientRect();
-      if (r.bottom > -100 && r.top < window.innerHeight + 100) bench.update();
-    }
-    if (flow) flow.update();
-  };
-  var ask = function () { if (!queued) { queued = true; requestAnimationFrame(frame); } };
-  window.addEventListener('scroll', ask, { passive: true });
-  window.addEventListener('resize', function () { if (bench) { bench.geo = null; bench.last = {}; } if (flow) flow.last = ''; ask(); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (bench) { bench.geo = null; bench.last = {}; } ask(); });
-  frame();
+    var step = function (now) {
+      var p = clamp((now - t0) / DURATION, 0, 1);
+      bench.apply(p);
+      if (p < 1) raf = requestAnimationFrame(step); else bench.reset();
+    };
+    PB.hidden = false;
+    PB.addEventListener('click', function () {
+      if (playing) return;
+      playing = true; bench.measure(); bench.last = {};
+      PB.setAttribute('aria-disabled', 'true'); label.textContent = 'Speelt af…';
+      B.classList.add('play');
+      bench.apply(0);
+      raf = requestAnimationFrame(function (now) { t0 = now; step(now); });
+    });
+    window.addEventListener('resize', function () { bench.geo = null; });
+  })();
 })();
