@@ -26,7 +26,7 @@
   })();
 
   /* ---------- de voor/na-schuif ----------
-     Links van de lijn de leveranciersofferte, rechts de klantofferte. Waarde = plaats van de lijn in procent van links.
+     Links van de lijn de ruwe notitie, rechts het verzorgd rapport. Waarde = plaats van de lijn in procent van links.
      Bediening: slepen met muis of vinger, ergens tikken (de lijn springt daarheen), pijltjestoetsen (stap per 5 %), Home en End.
      Beide versies staan ook als gewone tekst onder het beeld; niets is alleen via slepen bereikbaar. */
   (function () {
@@ -37,7 +37,7 @@
     var dragging = false, pending = false, id = null, sx = 0, sy = 0, onHandle = false;
 
     var text = function (n) {
-      return 'Lijn op ' + n + ' %: links de leveranciersofferte (' + n + ' % zichtbaar), rechts de klantofferte (' + (100 - n) + ' % zichtbaar)';
+      return 'Lijn op ' + n + ' %: links de ruwe notitie (' + n + ' % zichtbaar), rechts het verzorgd rapport (' + (100 - n) + ' % zichtbaar)';
     };
     var paint = function (v) { shown = v; cmp.style.setProperty('--p', v.toFixed(2) + '%'); };
     var report = function (v) {

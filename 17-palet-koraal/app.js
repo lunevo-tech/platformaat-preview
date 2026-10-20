@@ -514,11 +514,14 @@
   /* ---------- 3. Kleine lussen in de getekende schermen: lopen vanaf het laden, staan stil buiten beeld of bij een verborgen tabblad ---------- */
   var loops = $('.hero-stage, .fg, .chat, .cl-in');
   loops.forEach(function (el) { el.classList.add('live'); });
+  // pas na de intro-animaties (die moeten altijd afspelen, ook als het onderdeel nog onder het eerste scherm staat)
   if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { e.target.classList.toggle('paused', !e.isIntersecting); });
-    }, { threshold: 0 });
-    loops.forEach(function (el) { io.observe(el); });
+    setTimeout(function () {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.target.classList.toggle('paused', !e.isIntersecting); });
+      }, { threshold: 0 });
+      loops.forEach(function (el) { io.observe(el); });
+    }, 2500);
   }
   document.addEventListener('visibilitychange', function () { root.classList.toggle('tab-hidden', document.hidden); });
 })();

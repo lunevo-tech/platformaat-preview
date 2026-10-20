@@ -1,4 +1,4 @@
-/* 16 Palet-groen (variant van 12): het commandopalet (Ctrl+K), het werkbon-bord en de beweging. Gewone JavaScript, geen bibliotheek, geen externe verzoeken, geen cookies.
+/* 16 Palet-groen (variant van 12): het commandopalet (Ctrl+K), het takenbord en de beweging. Gewone JavaScript, geen bibliotheek, geen externe verzoeken, geen cookies.
    Het palet werkt ook zonder effecten. De beweging draait alleen als <html> de class «fx» heeft; anders staat alles op zijn eindplek. */
 (function () {
   'use strict';
@@ -193,7 +193,7 @@
     });
   })();
 
-  /* ---------- werkbon-bord: tikken, klikken, slepen en toetsenbord; werkt ook zonder effecten (dan zonder animatie) ---------- */
+  /* ---------- takenbord: tikken, klikken, slepen en toetsenbord; werkt ook zonder effecten (dan zonder animatie) ---------- */
   (function () {
     var board = document.getElementById('bk');
     if (!board) return;

@@ -339,3 +339,36 @@ p { margin: 0 0 1em; max-width: 62ch; }
   .foot-grid { grid-template-columns: minmax(0, 1fr); }
   .cm-st { margin-left: 0; }
 }
+
+/* W2g: alles onder één dak (hero) en AI als eigen dienst */
+.dak { margin-top: clamp(40px, 5vw, 64px); padding-top: 22px; border-top: 2px solid var(--ink); }
+.dak .lab { margin-bottom: 8px; }
+.dak-l { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
+.dak-l li { display: flex; align-items: center; border-bottom: 1px solid var(--rule); }
+.dak-l a { width: 100%; }
+.dak-l a { display: inline-flex; align-items: center; min-height: 52px; font: 500 clamp(1.25rem, 1rem + .8vw, 1.5rem)/1.2 var(--serif); text-decoration: none; }
+.dak-l a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.dak-p { margin: 6px 0 0; color: var(--ink-2); font-size: 1.0625rem; max-width: none; }
+.dak + .ruler { margin-top: clamp(32px, 4vw, 56px); }
+.aisec { background: var(--paper-lo); }
+.aisec-g { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.aisec-p { font-size: 1.3125rem; margin: 0 0 36px; max-width: 34em; }
+.aip { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 32px; }
+.aip li { padding-top: 14px; border-top: 2px solid var(--ink); }
+.aip-n { display: block; margin-bottom: 4px; font: italic 500 1.6rem/1 var(--serif); color: var(--ink-2); }
+.aip h3 { font-size: 1.3rem; }
+.aip p { margin: 0; font-size: 1.0625rem; }
+.asst { margin: 0; }
+.asst-b { padding: 24px; background: var(--paper-hi); border: 2px solid var(--ink); border-radius: 14px; box-shadow: 6px 6px 0 0 var(--ink); }
+.asst .ai-chip { margin: 0 0 8px; }
+.asl { list-style: none; margin: 0; padding: 0; }
+.asl li { display: grid; gap: 8px; padding: 16px 0; border-top: 1px solid var(--rule); }
+.asl li:last-child { padding-bottom: 4px; }
+.as-n b { display: block; font: 600 1.3rem/1.2 var(--serif); }
+.as-n i { font-style: normal; color: var(--ink-2); font-size: 1.0625rem; }
+.as-s { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 1rem; }
+.as-s svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.as-s svg .fill { fill: currentColor; }
+.wie-a { display: flex; align-items: flex-start; }
+@media (max-width: 1000px) { .aisec-g { grid-template-columns: minmax(0, 1fr); } .asst-b { box-shadow: 4px 4px 0 0 var(--ink); } }
+@media (max-width: 640px) { .aip { grid-template-columns: minmax(0, 1fr); } .dak-l { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; } .dak-l a { font-size: 1.15rem; } .wie-a .btn { width: 100%; } }

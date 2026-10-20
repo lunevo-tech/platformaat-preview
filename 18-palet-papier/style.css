@@ -191,7 +191,7 @@ kbd b { font-weight: 500; }
 
 /* ---------- hero ---------- */
 .hero { position: relative; overflow: clip; border-bottom: 1px solid var(--line); min-height: clamp(660px, calc(100vh - var(--hh) - 40px), 900px); }
-.hero-grid { position: relative; z-index: 3; padding-block: clamp(48px, 9vh, 104px) 0; }
+.hero-grid { position: relative; z-index: 3; padding-block: clamp(48px, 9vh, 104px) 72px; }
 .hero-t { max-width: 520px; }
 .hero h1 { margin-bottom: 24px; }
 .dim { color: var(--tx3); }
@@ -481,7 +481,7 @@ kbd b { font-weight: 500; }
 .fx .pr:hover .pr-go svg { transform: translate3d(4px, 0, 0); }
 .fx .pr { transition: background-color .15s; }
 
-/* werkbank: de eindtoestand staat er al (paneel open, offerte verstuurd). «Speel af» (op een tik of klik) speelt het verhaal één keer af. */
+/* werkbank: de eindtoestand staat er al (paneel open, antwoord verstuurd). «Speel af» (op een tik of klik) speelt het verhaal één keer af. */
 .st-x { position: relative; display: block; width: 1.1em; height: 1.1em; }
 .st-x .st { position: absolute; inset: 0; }
 .st-x .st-draft { opacity: 0; }
@@ -759,3 +759,24 @@ html:not(.fx) .lx-hint .h-fixed { display: inline; }
   .lx-opt { padding-block: 14px 12px; }
   .lx-opt > span:last-child { max-width: none; }
 }
+
+/* ---------- W2g: algemene inhoud: alles onder één dak, AI als volwaardige dienst ---------- */
+.ab-intro { margin: calc(-1 * clamp(32px, 5vw, 64px) + 4px) 0 clamp(28px, 4vw, 48px); max-width: 46ch; color: var(--tx2); font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem); line-height: 1.5; }
+.alles { margin-top: 30px; max-width: 520px; }
+.alles .mono-l { margin-bottom: 10px; }
+.alles-l { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.alles-l li { padding: .4em .75em; background: var(--bg2); border: 1px solid var(--line2); border-radius: 6px; color: var(--tx2); font: 500 .8rem/1.3 var(--mono); letter-spacing: .02em; }
+.alles-l li.is-ai { border-color: var(--acc); color: var(--acc); }
+.m6 { left: 0; top: 1em; width: 31em; }
+.m6 .m-h { gap: 1em; }
+.m6 .msgs { padding: 1em 1em .9em; }
+.m6b { left: 20em; top: 11.6em; width: 19em; background: var(--pnl); border-color: var(--line2); }
+.ai-intro { margin: 0 0 28px; max-width: 46ch; color: var(--tx2); font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem); line-height: 1.5; }
+.ai-w { position: relative; }
+.as { position: relative; font-size: 14px; }
+.as-k { color: var(--tx3); font: 400 .85em var(--mono); }
+.as-l { margin: 0; padding: 0; list-style: none; }
+.as-l li { display: flex; align-items: center; flex-wrap: wrap; gap: .5em .9em; padding: .85em 1.2em; border-top: 1px solid var(--line); }
+.as-n { font-weight: 600; }
+.as-l .ai-c { margin-left: auto; }
+.as .chkd { margin: 0 1.2em; border-top: 1px solid var(--line); }

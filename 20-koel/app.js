@@ -23,7 +23,7 @@
       if (ev.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true' && document.getElementById('pal').hidden) { set(false, true); }
     });
     document.addEventListener('click', function (ev) { if (!top.contains(ev.target)) set(false); });
-    window.matchMedia('(min-width: 901px)').addEventListener('change', function (m) { if (m.matches) set(false); });
+    window.matchMedia('(min-width: 1101px)').addEventListener('change', function (m) { if (m.matches) set(false); });
   })();
 
   /* ---------- Regel-koppelaar ---------- */
@@ -49,7 +49,7 @@
     var lastShown = -2, lastPin = -2, lastKey = '';
     var shown = function () { return hov !== null ? hov : foc !== null ? foc : pin; };
 
-    // rollen en toetsenbordbediening (een tabstop; pijltjes binnen en tussen de offertes)
+    // rollen en toetsenbordbediening (een tabstop; pijltjes binnen en tussen de twee lijsten)
     lists.forEach(function (ul) { ul.setAttribute('role', 'listbox'); ul.setAttribute('aria-label', ul.getAttribute('data-label')); });
     rows.forEach(function (li) { li.setAttribute('role', 'option'); li.setAttribute('tabindex', '-1'); li.setAttribute('aria-selected', pidOf(li) === pin ? 'true' : 'false'); });
     side.l[0].setAttribute('tabindex', '0');
@@ -57,7 +57,7 @@
     function message(p) {
       if (p === null) return status.getAttribute('data-none');
       var a = rowOf('l', p), b = rowOf('r', p);
-      return 'Regel ' + (p + 1) + ': «' + text(a, '.ln-t') + '» wordt «' + text(b, '.ln-t') + '» in de klantofferte, ' + text(b, '.ln-l') + '.';
+      return 'Regel ' + (p + 1) + ': «' + text(a, '.ln-t') + '» wordt «' + text(b, '.ln-t') + '». ' + b.getAttribute('data-a') + ': ' + text(b, '.ln-l') + '.';
     }
 
     // meetpunt in het coördinatenstelsel van het tekenvlak, zonder transform (offsets)

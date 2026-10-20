@@ -618,3 +618,44 @@ kbd b { font-weight: 500; }
   .playing .steps { min-height: 9.6rem; }
   .hero .hint-k { display: none; }
 }
+
+/* ---------- W2g: alles onder één dak, AI als eigen dienst ---------- */
+.alles { margin-top: 34px; }
+.alles .mono-l { margin-bottom: 12px; }
+.alles-l { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.alles-l li { padding: 4px 10px; border: 1px solid var(--line2); border-radius: 6px; color: var(--tx2); font: 400 .78rem/1.5 var(--mono); }
+.alles-l li.is-ai { border-color: var(--acc); color: var(--acc); }
+.fx .hero-t > :nth-child(6) { animation-delay: .65s; }
+.ab-row--ai .ab-n { color: var(--acc); }
+.mai { left: 0; top: .8em; width: 28em; }
+.mai .m-h { gap: 1em; }
+.mai .msgs { padding: 1em 1em 1.2em; }
+.maib { left: 19em; top: 11.6em; width: 21em; background: var(--bg3); border-color: var(--line2); }
+.ais .ai-g { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); column-gap: clamp(32px, 6vw, 96px); align-items: start; }
+.ai-intro { margin: 0 0 32px; font-size: clamp(1.1rem, 1rem + .4vw, 1.3rem); line-height: 1.5; letter-spacing: -.01em; max-width: 34em; }
+.aip { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.aip li { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); column-gap: 14px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.aip-n { margin-top: .3rem; font-size: .75rem; letter-spacing: .06em; color: var(--acc); }
+.aip h3 { font-size: 1.15rem; }
+.aip p { margin: 0; color: var(--tx2); }
+.asst-w { position: relative; padding-bottom: 2.4rem; }
+.asst { font-size: 14px; padding-bottom: 0; }
+.asl { list-style: none; margin: 0; padding: 0 0 4.6em; }
+.asl li { display: flex; align-items: center; gap: .8em; padding: .85em 1.2em; border-top: 1px solid var(--line); }
+.as-n { font-weight: 600; }
+.as-s { margin-left: auto; color: var(--tx3); font-size: .92em; }
+.chat--o { position: relative; margin: -4.2em 0 0 3.2em; z-index: 2; }
+.aimark { font-size: 14px; padding-bottom: 1.1em; }
+.aimark .chkd { padding-top: 1em; }
+.aimark .ph { gap: 1em; }
+@media (max-width: 1000px) {
+  .ais .ai-g { grid-template-columns: 1fr; row-gap: 40px; }
+}
+@media (max-width: 760px) {
+  .mai, .maib { font-size: inherit; }
+  .chat--o { margin-left: 1.6em; }
+  .asl li { flex-wrap: wrap; }
+  .as-s { margin-left: 0; flex-basis: 100%; padding-left: 1.9em; }
+  .asl { padding-bottom: 5.4em; }
+}
+.hero-grid { padding-bottom: 76px; }

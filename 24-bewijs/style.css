@@ -212,10 +212,31 @@ p { margin: 0 0 1em; max-width: 64ch; }
 .foot-legal a { display: inline-block; padding: 6px 0; color: var(--marine); }
 .small { color: var(--mute); }
 
+/* alles onder één dak (eerste scherm) en AI als eigen dienst */
+.onder { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--rule-d); }
+.onder-k { margin: 0 0 12px; color: var(--mute-d); font: 500 .8125rem/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; max-width: none; }
+.onder-l { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.onder-l li { font: 500 .9375rem/1.3 var(--mono); display: inline-flex; align-items: center; gap: 8px; }
+.onder-l li::before { content: ""; width: 6px; height: 6px; background: var(--mute-d); flex: none; }
+.aisec .two-h h2 { max-width: 13em; }
+.ai-i { margin: 22px 0 0; color: var(--paper); max-width: 30em; }
+.aips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 44px); }
+.ai-p { padding: 22px 0 8px; border-top: 1px solid var(--rule-d); }
+.ai-p h3 { margin-bottom: .25em; }
+.ai-p p { margin: 0 0 12px; color: var(--paper); }
+.ai-ex { margin-top: 28px; border: 1px solid var(--mute-d); border-radius: 4px; padding: 18px 20px 6px; }
+.ai-ex ul { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.ai-ex li { border: 1px solid var(--rule-d); background: var(--marine-2); border-radius: 3px; padding: 8px 12px; display: flex; flex-direction: column; gap: 2px; }
+.ai-ex b { font: 600 1.0625rem/1.2 var(--serif); }
+.ai-ex li span { font: 500 .8125rem/1.3 var(--mono); color: var(--mute-d); }
+.ai-ex p { margin: 0 0 10px; font: 400 .875rem/1.4 var(--mono); color: var(--mute-d); max-width: none; }
+
 /* smalle schermen */
 @media (max-width: 900px) {
   .hero-grid, .two, .ctl-g { grid-template-columns: minmax(0, 1fr); }
   .foot-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 1040px) {
   .js .menu-btn { display: inline-flex; }
   .btn--g { display: none; }
   .top-row { gap: 12px; padding: 8px 0; }
@@ -233,6 +254,7 @@ p { margin: 0 0 1em; max-width: 64ch; }
   .geg { padding: 22px 20px 18px; }
   .geg .geg-nr { font-size: 1.5rem; }
   .ab, .ws { grid-template-columns: 44px minmax(0, 1fr); }
+  .aips { grid-template-columns: minmax(0, 1fr); }
   .bl, .bl.is-open { grid-template-columns: 40px minmax(0, 1fr); }
   .bl .wd { grid-column: 2; justify-self: stretch; margin-top: 8px; }
   .src { padding: 14px 14px 4px; }

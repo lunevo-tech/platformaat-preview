@@ -243,6 +243,27 @@ kbd b { font-weight: 500; }
 .cl-links a:hover { background: var(--tint); border-color: var(--acc); }
 .cl-adres { margin: 26px 0 0; font: 400 .95rem var(--mono); color: var(--tx2); max-width: none; }
 
+/* ---------- alles onder één dak ---------- */
+.dak { margin-top: clamp(40px, 5vw, 72px); }
+.dak .mono-l { margin-bottom: 10px; }
+.dak-p { margin: 0 0 20px; font-size: clamp(1.2rem, 1.05rem + .6vw, 1.5rem); line-height: 1.4; letter-spacing: -.01em; max-width: 36em; }
+.dak-l { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--ink); background: var(--paper); }
+.dak-l li { border-right: 1px solid var(--line); }
+.dak-l li:last-child { border-right: 0; }
+.dak-l a { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 96px; height: 100%; padding: 12px 14px 14px; text-decoration: none; font-weight: 600; line-height: 1.25; }
+.dak-l a:hover, .dak-l a:focus-visible { background: var(--tint); }
+.dk-n { font-size: .8rem; font-weight: 400; color: var(--tx3); }
+
+/* ---------- AI als eigen dienst ---------- */
+.aid-g { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(32px, 6vw, 88px); align-items: start; }
+.aid-intro { margin: 0 0 22px; font-size: clamp(1.2rem, 1.05rem + .6vw, 1.45rem); line-height: 1.45; letter-spacing: -.01em; }
+.aid-t .ai { margin: 0; }
+.aid-l { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.aid-i { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.aid-n { margin: 6px 0 0; font-size: .85rem; color: var(--tx3); }
+.aid-i h3 { font-size: 1.3rem; }
+.aid-i p:last-child { margin: 0; color: var(--tx2); }
+
 /* ---------- voet ---------- */
 .foot { background: var(--ink); color: #C3CCD6; padding-block: 56px 40px; font-size: 1rem; }
 .foot a { color: #fff; text-underline-offset: 4px; text-decoration-color: #7C8A99; }
@@ -308,11 +329,14 @@ kbd b { font-weight: 500; }
   .ab-d { grid-column: 3; }
   .pr { grid-template-columns: 160px minmax(0, 1fr) 44px; column-gap: 24px; }
   .wsl { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 44px; }
-  .afs-g, .wie-g { grid-template-columns: 1fr; row-gap: 40px; }
+  .afs-g, .wie-g, .aid-g { grid-template-columns: 1fr; row-gap: 40px; }
+  .dak-l { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .dak-l li:nth-child(3n) { border-right: 0; }
+  .dak-l li:nth-child(n+4) { border-top: 1px solid var(--line); }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .foot-a { grid-column: 1 / -1; }
 }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .menu-btn { display: inline-flex; }
   .js .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; padding: 8px clamp(16px, 4vw, 40px) 14px; background: var(--paper); border-bottom: 1px solid var(--ink); }
   .js .top.menu-open .nav { display: flex; }
@@ -330,7 +354,7 @@ kbd b { font-weight: 500; }
   .hero { padding-top: 28px; }
   .hero-grid { row-gap: 36px; }
   .btn--l { width: 100%; }
-  /* de koppelaar op een gsm: twee offertes onder elkaar, de verbinding wordt een markering (nummer, rand en label) */
+  /* de koppelaar op een gsm: aanvraag en plan onder elkaar, de verbinding wordt een markering (nummer, rand en label) */
   .kp-stage { grid-template-columns: 1fr; row-gap: 22px; padding: 18px 14px 22px; }
   .doc-l, .doc-r { grid-column: 1; }
   .kp-svg { display: none !important; }
@@ -340,6 +364,12 @@ kbd b { font-weight: 500; }
   .kp-status { order: 2; min-height: 6.2em; margin: 0 0 14px; padding: 10px 12px; background: var(--paper); border-left: 3px solid var(--ink); }
   .kp-stage { order: 3; }
   .fx .doc-l .ln.is-on, .fx .doc-r .ln.is-on { transform: none; }
+  .dak-l { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dak-l li:nth-child(n) { border-right: 1px solid var(--line); border-top: 0; }
+  .dak-l li:nth-child(2n) { border-right: 0; }
+  .dak-l li:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .dak-l a { min-height: 80px; }
+  .aid-i { grid-template-columns: 44px minmax(0, 1fr); column-gap: 10px; }
   .tb { grid-template-columns: 1fr; }
   .tb-c, .tb-c:nth-child(n) { border-right: 0; border-bottom: 1px solid var(--line); }
   .tb-c:last-child { border-bottom: 0; }
