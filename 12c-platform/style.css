@@ -500,8 +500,8 @@ kbd b { font-weight: 500; }
 .fx .hp .tg .st-done { animation: sw2 14s linear infinite; }
 .fx .rw-h::after { animation: rh 14s linear infinite; }
 @keyframes hc { 0% { transform: translate3d(50em, 9em, 0); } 15%, 36% { transform: translate3d(28em, 12.4em, 0); } 52%, 70% { transform: translate3d(44em, 23.5em, 0); } 86% { transform: translate3d(24em, 30em, 0); } 100% { transform: translate3d(50em, 9em, 0); } }
-@keyframes sw1 { 0%, 39% { opacity: 1; } 43%, 91% { opacity: 0; } 95%, 100% { opacity: 1; } }
-@keyframes sw2 { 0%, 39% { opacity: 0; } 43%, 91% { opacity: 1; } 95%, 100% { opacity: 0; } }
+@keyframes sw1 { 0%, 39% { opacity: 1; } 41%, 91% { opacity: 0; } 93%, 100% { opacity: 1; } }
+@keyframes sw2 { 0%, 41% { opacity: 0; } 43%, 91% { opacity: 1; } 93%, 100% { opacity: 0; } }
 @keyframes rh { 0%, 50% { opacity: 0; } 54%, 70% { opacity: 1; } 74%, 100% { opacity: 0; } }
 
 /* aanbod: de schermpjes staan er; kleine lussen draaien in de schermpjes zelf */
@@ -724,3 +724,29 @@ kbd b { font-weight: 500; }
 .ab-i { grid-template-columns: 2.4rem minmax(0, 1fr); }
 .ab-i-n { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.9rem; line-height: 1; color: var(--tx3); }
 .cl-in h2 { font-size: clamp(1.9rem, 1.1rem + 2.3vw, 3.1rem); max-width: 11em; }
+.ws-no { display: none; }
+.ainote { margin-top: -.4rem; }
+.aimark { padding-bottom: 2.6em; }
+.ab-cap { margin: 0 0 12px; font: 500 .74rem/1.4 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--tx3); max-width: none; }
+.ab-cap b { color: var(--acc); font-weight: 500; }
+@media (max-width: 1000px) {
+  .ais .ai-g, .afs-g, .wie-g, .flow-g { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .fg .mini { max-width: 100%; }
+  .fg .madb, .fg .mdeb, .fg .m1b, .fg .m3b, .fg .maib, .fg .m4b, .fg .monb { left: auto; right: 0; }
+  .fg .phone--r { left: auto; right: 0; }
+}
+@media (max-width: 760px) {
+  .asst-w .ph, .aimark .ph, .chat .ph { flex-wrap: wrap; gap: 6px 10px; }
+}
+.tabs { display: inline-flex; gap: .2em; }
+button.tab { font: inherit; background: transparent; cursor: pointer; }
+button.tab:hover { color: var(--tx); }
+button.tab.is-on { background: var(--bg3); }
+.ww .tab { min-height: 2.2em; }
+.pr[hidden] { display: none; }
+.alles-l li { padding: 0; }
+.alles-l a { display: block; padding: 4px 10px; color: inherit; text-decoration: none; }
+.alles-l li:hover { border-color: var(--tx2); color: var(--tx); }
+.alles-l li.is-ai:hover { border-color: var(--acc); }

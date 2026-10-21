@@ -204,14 +204,41 @@
       rows.forEach(function (r) { r.classList.toggle('is-on', r === row); });
       var fg = row.querySelector('.fg');
       stage.innerHTML = fg ? fg.outerHTML : '';
+      var cap = wrap.querySelector('.ab-cap b'), h = row.querySelector('h3');
+      if (cap && h) cap.textContent = h.textContent;
     };
     rows.forEach(function (r) {
       r.addEventListener('mouseenter', function () { set(r); });
       r.addEventListener('click', function () { set(r); });
       r.addEventListener('focusin', function () { set(r); });
     });
+    var fromHash = function () {
+      var r = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+      if (r && rows.indexOf(r) > -1) set(r);
+    };
+    window.addEventListener('hashchange', fromHash);
     set(rows[0]);
+    fromHash();
     wrap.classList.add('is-live');
+  })();
+
+  /* ---------- Werk: de filters boven de projectenlijst werken echt ---------- */
+  (function () {
+    var win = document.querySelector('.ww');
+    if (!win) return;
+    var tabs = $('.tab[data-f]', win), items = $('.pr', win), live = document.getElementById('werk-live');
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var f = t.getAttribute('data-f'), n = 0;
+        tabs.forEach(function (o) { var on = o === t; o.classList.toggle('is-on', on); o.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+        items.forEach(function (li) {
+          var show = f === 'alle' || li.getAttribute('data-k') === f;
+          li.hidden = !show;
+          if (show) n++;
+        });
+        if (live) live.textContent = n + (n === 1 ? ' project' : ' projecten');
+      });
+    });
   })();
 
   if (!fx) return;

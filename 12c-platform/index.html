@@ -59,7 +59,7 @@
       </div>
       <div class="alles">
         <p class="alles-p">Advies, ontwerp, software, AI, koppelingen, hosting en onderhoud: alles onder één dak.</p>
-        <ul class="alles-l" aria-label="Alles onder één dak"><li>Advies en analyse</li><li>Ontwerp</li><li>Maatwerksoftware en portalen</li><li>Apps, websites en webshops</li><li class="is-ai">AI</li><li>Koppelingen, automatisering en data</li><li>Hosting en beveiliging</li><li>Onderhoud en support</li></ul>
+        <ul class="alles-l" aria-label="Alles onder één dak"><li><a href="#dienst-advies">Advies en analyse</a></li><li><a href="#dienst-ontwerp">Ontwerp</a></li><li><a href="#dienst-software">Maatwerksoftware en portalen</a></li><li><a href="#dienst-apps">Apps, websites en webshops</a></li><li class="is-ai"><a href="#ai">AI</a></li><li><a href="#dienst-koppelingen">Koppelingen, automatisering en data</a></li><li><a href="#dienst-hosting">Hosting en beveiliging</a></li><li><a href="#dienst-onderhoud">Onderhoud en support</a></li></ul>
       </div>
       <p class="hint-k js-only" hidden>Tip: druk op <kbd class=""><span data-mod><span class="mod-t">Ctrl</span></span></kbd> <kbd class=""><b>K</b></kbd> om door deze pagina te springen.</p>
     </div>
@@ -167,7 +167,7 @@
    <div class="mini monb"><div class="m-h"><span>Doorontwikkeling</span></div><div class="fld"><span>Wens</span><i></i></div><div class="fld"><span>Volgende stap</span><i class="s"></i></div></div></div></div>
 </li>
   </ol>
-  <div class="ab-stage" aria-hidden="true"><div class="ab-stage-in"></div></div>
+  <div class="ab-stage" aria-hidden="true"><p class="ab-cap">Schermvoorbeeld bij <b></b></p><div class="ab-stage-in"></div></div>
   </div>
   <p class="partner">Marketing en zichtbaarheid doen we samen met onze partner Zichtbaar Media, een zelfstandige onderneming en geen onderdeel van PlatforMaat.</p>
   <p class="fig-l fig-l--s">Kleine schermvoorbeelden bij elk onderdeel · voorbeeld met verzonnen gegevens</p>
@@ -234,9 +234,10 @@
   <div class="sec-h"><p class="mono-l">Werk</p><h2 id="werk-h">Zaken waarvoor PlatforMaat werkt of werkte</h2></div>
   <div class="stack">
     <div class="win ww">
-      <div class="mn-h"><span class="crumb">Projecten</span><span class="tab is-on">Alle</span><span class="tab">Software</span><span class="tab">Website</span><span class="tab">Partner</span></div>
+      <div class="mn-h"><span class="crumb">Projecten</span><span class="tabs" role="group" aria-label="Filter op soort werk"><button type="button" class="tab is-on" data-f="alle" aria-pressed="true">Alle</button><button type="button" class="tab" data-f="software" aria-pressed="false">Software</button><button type="button" class="tab" data-f="website" aria-pressed="false">Website</button><button type="button" class="tab" data-f="partner" aria-pressed="false">Partner</button></span></div>
+      <p class="vh" id="werk-live" role="status" aria-live="polite"></p>
       <ul class="prs">
-<li class="pr" id="kaart-vekemans">
+<li class="pr" id="kaart-vekemans" data-k="software">
   <div class="pr-logo lg-1" aria-hidden="true"><b>VEKEMANS</b><i>RAAMDECORATIE</i></div>
   <div class="pr-b">
     <ul class="tags" aria-label="Soort werk"><li>PLATFORM OP MAAT</li><li>RAAMDECORATIE</li></ul>
@@ -245,7 +246,7 @@
   </div>
   <span class="pr-go" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span>
 </li>
-<li class="pr" id="kaart-la-mia">
+<li class="pr" id="kaart-la-mia" data-k="website">
   <div class="pr-logo lg-2" aria-hidden="true"><b>La Mia</b><i>PIZZAZAAK</i></div>
   <div class="pr-b">
     <ul class="tags" aria-label="Soort werk"><li>WEBSITE</li><li>HORECA</li></ul>
@@ -254,7 +255,7 @@
   </div>
   <span class="pr-go" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span>
 </li>
-<li class="pr" id="kaart-zichtbaar-media">
+<li class="pr" id="kaart-zichtbaar-media" data-k="partner">
   <div class="pr-logo lg-3" aria-hidden="true"><b>Zichtbaar</b><i>Media</i></div>
   <div class="pr-b">
     <ul class="tags" aria-label="Soort werk"><li>PARTNER</li><li>VINDBAARHEID</li></ul>
@@ -263,7 +264,7 @@
   </div>
   <span class="pr-go" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span>
 </li>
-        <li class="pr pr--next" id="kaart-jouw-project">
+        <li class="pr pr--next" id="kaart-jouw-project" data-k="alle">
           <div class="pr-logo lg-next" aria-hidden="true"><b>+</b></div>
           <div class="pr-b">
             <ul class="tags" aria-label="Soort werk"><li>BINNENKORT</li></ul>
