@@ -199,10 +199,15 @@ p { margin: 0 0 1em; max-width: 62ch; }
 .aanbod-g { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
 .aanbod .sec-h { position: static; }
 .abl { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
-.ab { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: 8px; padding: 26px 0; border-bottom: 1px solid var(--rule); }
+.ab { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: 8px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
 .ab-n { grid-row: 1 / span 2; font: italic 500 1.9rem/1.1 var(--serif); color: var(--ink-2); }
 .ab h3 { margin: 0 0 6px; }
-.ab p { margin: 0; }
+.ab-v { list-style: none; margin: 0; padding: 0; }
+.ab-v li { position: relative; padding: 3px 0 3px 22px; }
+.ab-v li::before { content: ""; position: absolute; left: 2px; top: .8em; width: 8px; height: 8px; background: var(--ink); }
+.aanbod-p { font-size: 1.3125rem; margin: 0; max-width: 24em; }
+.aanbod .sec-h { margin-bottom: 24px; }
+.partner { margin: 28px 0 0; padding: 16px 0 0; border-top: 2px dashed var(--edge); font-size: 1.0625rem; max-width: 40em; }
 
 /* werk */
 .wkl { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 2px solid var(--ink); }
@@ -343,7 +348,7 @@ p { margin: 0 0 1em; max-width: 62ch; }
 /* W2g: alles onder één dak (hero) en AI als eigen dienst */
 .dak { margin-top: clamp(40px, 5vw, 64px); padding-top: 22px; border-top: 2px solid var(--ink); }
 .dak .lab { margin-bottom: 8px; }
-.dak-l { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
+.dak-l { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(20px, 2.4vw, 32px); }
 .dak-l li { display: flex; align-items: center; border-bottom: 1px solid var(--rule); }
 .dak-l a { width: 100%; }
 .dak-l a { display: inline-flex; align-items: center; min-height: 52px; font: 500 clamp(1.25rem, 1rem + .8vw, 1.5rem)/1.2 var(--serif); text-decoration: none; }
@@ -372,3 +377,9 @@ p { margin: 0 0 1em; max-width: 62ch; }
 .wie-a { display: flex; align-items: flex-start; }
 @media (max-width: 1000px) { .aisec-g { grid-template-columns: minmax(0, 1fr); } .asst-b { box-shadow: 4px 4px 0 0 var(--ink); } }
 @media (max-width: 640px) { .aip { grid-template-columns: minmax(0, 1fr); } .dak-l { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; } .dak-l a { font-size: 1.15rem; } .wie-a .btn { width: 100%; } }
+
+/* W2h: acht cellen in het blok «Alles onder één dak» */
+.dak-l a { padding-block: 8px; font-size: clamp(1.1rem, .9rem + .55vw, 1.3rem); }
+@media (max-width: 1000px) { .dak-l { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+@media (min-width: 1001px) { .aanbod-h { position: sticky; top: calc(var(--hh) + 28px); } }

@@ -334,7 +334,7 @@ input[aria-invalid="true"] { border-width: 6px; padding: 0 17px; }
 /* alles onder één dak */
 .alles { border-bottom: var(--b) solid var(--ink); }
 .alles-g { padding-block: clamp(32px, 4vw, 56px); display: grid; gap: 20px; }
-.alles-l { display: flex; flex-wrap: wrap; gap: 4px 0; font: 800 clamp(24px, 3vw, 44px)/1.2 var(--f); letter-spacing: -.02em; }
+.alles-l { display: flex; flex-wrap: wrap; gap: 4px 0; font: 800 clamp(22px, 2.5vw, 36px)/1.2 var(--f); letter-spacing: -.02em; }
 .alles-l li { display: inline-flex; align-items: center; }
 .alles-l li::after { content: "/"; font-weight: 400; color: var(--grey); margin-inline: .35em; }
 .alles-l li:last-child::after { content: ""; margin: 0; }
@@ -371,3 +371,13 @@ input[aria-invalid="true"] { border-width: 6px; padding: 0 17px; }
 .case--n .goal { align-self: flex-end; margin-left: 0; }
 
 @media (max-width: 560px) { .t--xl .t-h { font-size: 24px; } }
+
+/* W2h: acht onderdelen met voorbeelden, partner-regel */
+.aanbod h2 { max-width: 22ch; }
+.dn-intro { margin: calc(-1 * clamp(16px, 2vw, 32px)) 0 clamp(28px, 3vw, 44px); color: var(--grey); max-width: 52ch; }
+.vb { display: grid; gap: 10px; max-width: 60ch; }
+.vb li { display: flex; gap: 14px; align-items: flex-start; }
+.vb li::before { content: ""; flex: none; width: 12px; height: 12px; margin-top: .55em; background: var(--ink); }
+.partner { margin-top: clamp(28px, 3vw, 40px); padding-left: 20px; border-left: var(--bb) solid var(--ink); max-width: 60ch; font-weight: 600; }
+
+@media (max-width: 430px) { .t-h, .tile--stap .t-h, .t--xl .t-h { font-size: 22px; } }

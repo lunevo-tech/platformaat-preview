@@ -707,7 +707,7 @@ kbd b { font-weight: 500; }
 .alles .mono-l { margin-bottom: 12px; }
 .alles-l { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .alles-l li { padding: 4px 10px; border: 1px solid var(--line2); border-radius: 6px; font: 400 .78rem/1.4 var(--mono); letter-spacing: .02em; color: var(--tx2); }
-.alles-l li:nth-child(4) { border-color: var(--acc); color: var(--acc); }
+.alles-l li.ai { border-color: var(--acc); color: var(--acc); }
 .aanbod .sec-h { margin-bottom: 20px; }
 .alles-p { margin: 0 0 clamp(28px, 4vw, 44px); max-width: 52ch; font-size: 1.1rem; color: var(--tx2); }
 .ab-row--ai .ab-n { color: var(--acc); }
@@ -743,3 +743,27 @@ kbd b { font-weight: 500; }
   .aip-s { margin-left: 0; text-align: left; flex-basis: 100%; }
 }
 @media (min-width: 1001px) { .cl-in h2 { max-width: 58%; } }
+
+/* ---------- W2h: het aanbod in acht onderdelen met voorbeelden ---------- */
+.ab-ex { list-style: none; margin: 0; padding: 0; }
+.ab-ex li { position: relative; padding: .28em 0 .28em 20px; color: var(--tx2); }
+.ab-ex li::before { content: ""; position: absolute; left: 0; top: 1.05em; width: 10px; height: 2px; background: var(--acc); }
+.partner-r { margin: 32px 0 0; padding-left: 16px; border-left: 2px solid var(--acc); max-width: 62ch; color: var(--tx2); }
+.alles-p { max-width: 62ch; }
+.fg-apps .phone { left: 28em; }
+.fg-advies .madv { left: 0; top: 1em; width: 29em; }
+.fg-advies .madv-b { left: 21em; top: 10.8em; width: 18em; background: var(--bg3); border-color: var(--line2); }
+.mdes { left: 0; top: 1em; width: 30em; }
+.mdes-b { left: 22em; top: 12em; width: 17em; padding-bottom: 1em; background: var(--bg3); border-color: var(--line2); }
+.mdes-b .pill { margin: 1em 1em 0; }
+.wf { display: flex; gap: .9em; padding: 1em; }
+.wf-s { flex: none; width: 7em; height: 9em; border: 1px dashed var(--line3); border-radius: .5em; }
+.wf-m { flex: 1; display: grid; gap: .6em; align-content: start; }
+.wf-m b { display: block; width: 55%; height: 1.1em; border-radius: .25em; background: var(--tx); }
+.wf-m i { display: block; height: .55em; border-radius: .3em; background: var(--line2); }
+.wf-m i.s { width: 60%; }
+.wf-g { display: grid; grid-template-columns: 1fr 1fr; gap: .6em; margin-top: .4em; }
+.wf-g em { display: block; height: 3.6em; border: 1px dashed var(--line3); border-radius: .4em; }
+.mon { left: 0; top: .8em; width: 31em; }
+.mon-b { left: 20em; top: 11.4em; width: 19em; background: var(--bg3); border-color: var(--line2); }
+.fx .ab-row:hover .fg .madv-b, .fx .ab-row:hover .fg .mdes-b, .fx .ab-row:hover .fg .mon-b, .fx .ab-row:hover .fg .mai-b { transform: translate3d(6px, 4px, 0); }

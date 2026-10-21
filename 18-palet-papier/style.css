@@ -762,7 +762,7 @@ html:not(.fx) .lx-hint .h-fixed { display: inline; }
 
 /* ---------- W2g: algemene inhoud: alles onder één dak, AI als volwaardige dienst ---------- */
 .ab-intro { margin: calc(-1 * clamp(32px, 5vw, 64px) + 4px) 0 clamp(28px, 4vw, 48px); max-width: 46ch; color: var(--tx2); font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem); line-height: 1.5; }
-.alles { margin-top: 30px; max-width: 520px; }
+.alles { margin-top: 22px; max-width: 520px; }
 .alles .mono-l { margin-bottom: 10px; }
 .alles-l { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .alles-l li { padding: .4em .75em; background: var(--bg2); border: 1px solid var(--line2); border-radius: 6px; color: var(--tx2); font: 500 .8rem/1.3 var(--mono); letter-spacing: .02em; }
@@ -780,3 +780,21 @@ html:not(.fx) .lx-hint .h-fixed { display: inline; }
 .as-n { font-weight: 600; }
 .as-l .ai-c { margin-left: auto; }
 .as .chkd { margin: 0 1.2em; border-top: 1px solid var(--line); }
+
+/* ---------- W2h: acht onderdelen met voorbeelden ---------- */
+.ab-ex { margin: 0; padding: 0; list-style: none; display: grid; gap: .45em; color: var(--tx2); }
+.ab-ex li { position: relative; padding-left: 1.35em; }
+.ab-ex li::before { content: ""; position: absolute; left: 0; top: .62em; width: .6em; height: 2px; background: var(--acc); }
+.ab-more { margin: 1em 0 0; }
+.ab-row.is-ai .ab-t h3 { color: var(--acc); }
+.ab-partner { margin: 28px 0 0; max-width: 62ch; padding-left: 14px; border-left: 3px solid var(--acc); color: var(--tx2); font-size: .98rem; }
+.m7 { left: 0; top: 1.2em; width: 27em; }
+.m7b { left: 20em; top: 10.8em; width: 19em; padding-bottom: 1em; background: var(--pnl); border-color: var(--line2); }
+.m8 { left: 0; top: 1em; width: 29em; }
+.wf { display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: 2.4em 5.4em; gap: .6em; padding: 1em; }
+.wf span { background: var(--bg3); border: 1px dashed var(--line2); border-radius: .4em; }
+.wf-a { grid-column: 1 / -1; }
+.m8b { left: 22em; top: 10.4em; width: 15em; padding-bottom: 1em; background: var(--pnl); border-color: var(--line2); }
+.wf-p { padding: 1.1em 1em 0; }
+.m9 { left: 0; top: 1em; width: 30em; }
+.m9b { left: 17em; top: 12.2em; width: 21em; background: var(--pnl); border-color: var(--line2); }

@@ -171,11 +171,15 @@ kbd b { font-weight: 500; }
 
 /* ---------- aanbod ---------- */
 .ab-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
-.ab-row { display: grid; grid-template-columns: 72px 56px minmax(0, 4fr) minmax(0, 6fr); column-gap: 24px; align-items: center; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.ab-row { display: grid; grid-template-columns: 72px 56px minmax(0, 4fr) minmax(0, 6fr); column-gap: 24px; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--line); }
 .ab-n { margin: 0; font-size: .85rem; color: var(--tx3); }
 .gl { width: 48px; height: 48px; fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .ab-row h3 { margin: 0; font-size: clamp(1.35rem, 1.1rem + .8vw, 1.8rem); letter-spacing: -.025em; }
-.ab-d { margin: 0; color: var(--tx2); }
+.ab-v { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; color: var(--tx2); }
+.ab-v li { position: relative; padding-left: 18px; }
+.ab-v li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border: 1px solid var(--ink); }
+.ab-intro { margin: -28px 0 36px; font-size: 1.2rem; color: var(--tx2); max-width: 40em; }
+.partner { margin: 24px 0 0; padding: 14px 18px; border: 1px solid var(--ink); border-left-width: 4px; background: var(--paper); max-width: none; }
 
 /* ---------- werk ---------- */
 .prs { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
@@ -247,10 +251,11 @@ kbd b { font-weight: 500; }
 .dak { margin-top: clamp(40px, 5vw, 72px); }
 .dak .mono-l { margin-bottom: 10px; }
 .dak-p { margin: 0 0 20px; font-size: clamp(1.2rem, 1.05rem + .6vw, 1.5rem); line-height: 1.4; letter-spacing: -.01em; max-width: 36em; }
-.dak-l { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--ink); background: var(--paper); }
+.dak-l { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--ink); background: var(--paper); }
 .dak-l li { border-right: 1px solid var(--line); }
-.dak-l li:last-child { border-right: 0; }
-.dak-l a { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 96px; height: 100%; padding: 12px 14px 14px; text-decoration: none; font-weight: 600; line-height: 1.25; }
+.dak-l li:nth-child(4n) { border-right: 0; }
+.dak-l li:nth-child(n+5) { border-top: 1px solid var(--line); }
+.dak-l a { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 92px; height: 100%; padding: 12px 14px 14px; text-decoration: none; font-weight: 600; font-size: 1.05rem; line-height: 1.25; }
 .dak-l a:hover, .dak-l a:focus-visible { background: var(--tint); }
 .dk-n { font-size: .8rem; font-weight: 400; color: var(--tx3); }
 
@@ -326,13 +331,10 @@ kbd b { font-weight: 500; }
   .tb-c:nth-child(n+4) { border-bottom: 1px solid var(--line); }
   .tb-c:nth-child(n+5) { border-bottom: 0; }
   .ab-row { grid-template-columns: 56px 56px minmax(0, 1fr); row-gap: 8px; }
-  .ab-d { grid-column: 3; }
+  .ab-v { grid-column: 3; }
   .pr { grid-template-columns: 160px minmax(0, 1fr) 44px; column-gap: 24px; }
   .wsl { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 44px; }
   .afs-g, .wie-g, .aid-g { grid-template-columns: 1fr; row-gap: 40px; }
-  .dak-l { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .dak-l li:nth-child(3n) { border-right: 0; }
-  .dak-l li:nth-child(n+4) { border-top: 1px solid var(--line); }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .foot-a { grid-column: 1 / -1; }
 }
@@ -368,6 +370,7 @@ kbd b { font-weight: 500; }
   .dak-l li:nth-child(n) { border-right: 1px solid var(--line); border-top: 0; }
   .dak-l li:nth-child(2n) { border-right: 0; }
   .dak-l li:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .ab-intro { margin-top: -20px; font-size: 1.1rem; }
   .dak-l a { min-height: 80px; }
   .aid-i { grid-template-columns: 44px minmax(0, 1fr); column-gap: 10px; }
   .tb { grid-template-columns: 1fr; }
@@ -376,7 +379,7 @@ kbd b { font-weight: 500; }
   .ab-row { grid-template-columns: 48px minmax(0, 1fr); column-gap: 14px; padding: 24px 0; }
   .ab-n { display: none; }
   .gl { grid-row: span 2; align-self: start; }
-  .ab-d { grid-column: 2; }
+  .ab-v { grid-column: 2; }
   .pr { grid-template-columns: 1fr; row-gap: 14px; padding: 24px 4px; }
   .pr-logo { height: 72px; width: 190px; }
   .pr-go { display: none; }

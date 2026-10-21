@@ -659,3 +659,34 @@ kbd b { font-weight: 500; }
   .asl { padding-bottom: 5.4em; }
 }
 .hero-grid { padding-bottom: 76px; }
+
+/* ---------- W2h: acht onderdelen met voorbeelden ---------- */
+.ab-intro { margin: -28px 0 40px; color: var(--tx2); font-size: 1.1rem; max-width: 40em; }
+.alles-p { margin: 0 0 12px; color: var(--tx2); font-size: .95rem; max-width: 40em; }
+.ab-ex { list-style: none; margin: 0; padding: 0; display: grid; gap: .4em; }
+.ab-ex li { position: relative; padding-left: 20px; color: var(--tx2); }
+.ab-ex li::before { content: ""; position: absolute; left: 0; top: .78em; width: 10px; height: 1px; background: var(--tx3); }
+.ab-row--ai .ab-ex li::before { background: var(--acc); }
+.ab-row { scroll-margin-top: calc(var(--hh) + 16px); }
+.partner { margin: 28px 0 0; padding-left: 16px; border-left: 2px solid var(--acc); color: var(--tx2); max-width: 52em; }
+.mad, .mon { left: 0; top: 1em; width: 28em; }
+.madb, .monb { left: 21em; top: 11.2em; width: 17em; padding-bottom: 1em; background: var(--bg3); border-color: var(--line2); }
+.mde { left: 0; top: .8em; width: 28em; }
+.mdeb { left: 20em; top: 10em; width: 18em; background: var(--bg3); border-color: var(--line2); }
+.wf { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: .7em; padding: 1.1em; }
+.wf span { display: block; border: 1px dashed var(--line2); border-radius: .45em; }
+.wf-b { grid-column: 1 / -1; height: 3.4em; background: var(--bg3); border-style: solid !important; border-color: var(--line) !important; }
+.wf-s { grid-row: 2 / span 2; height: 7em; }
+.wf-s2 { grid-column: 2 / span 2; grid-row: 2; height: 3.2em; }
+.wf-c { height: 3.2em; }
+.wf-s2 + .wf-c { grid-column: 2; }
+.wf2 { display: grid; gap: .5em; justify-items: start; padding: 1.1em; }
+.wf2 i { display: block; height: .55em; width: 100%; border-radius: .3em; background: var(--line2); }
+.wf2 i.s { width: 55%; }
+.wf2 .pill { margin-top: .5em; }
+.phone--r { left: 28em; }
+.fx .fg .mini { }
+@media (max-width: 760px) {
+  .ab-intro { margin-top: -20px; }
+  .fg-apps .phone--r { left: 24em; }
+}

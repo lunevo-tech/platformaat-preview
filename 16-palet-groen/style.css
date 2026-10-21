@@ -181,7 +181,7 @@ kbd b { font-weight: 500; }
 
 /* ---------- hero ---------- */
 .hero { position: relative; overflow: clip; border-bottom: 1px solid var(--line); min-height: clamp(660px, calc(100vh - var(--hh) - 40px), 900px); }
-.hero-grid { position: relative; z-index: 3; padding-block: clamp(48px, 9vh, 104px) 0; }
+.hero-grid { position: relative; z-index: 3; padding-block: clamp(48px, 9vh, 104px) 64px; }
 .hero-t { max-width: 520px; }
 .hero h1 { margin-bottom: 24px; }
 .dim { color: var(--tx3); }
@@ -689,3 +689,24 @@ kbd b { font-weight: 500; }
 @media (max-width: 1000px) {
   .ai-g { grid-template-columns: 1fr; row-gap: 40px; }
 }
+
+/* aanbod in acht onderdelen: voorbeelden als korte lijst, nieuwe minischermpjes, partner-regel */
+.alles-p + .alles-p { margin-top: 8px; color: var(--tx3); font-size: .95rem; }
+.alles li { font-size: .7rem; }
+.ab-v { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ab-v li { position: relative; padding-left: 20px; color: var(--tx2); line-height: 1.45; }
+.ab-v li::before { content: ""; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; border: 1px solid var(--line2); border-radius: 2px; }
+.ab-row--ai .ab-v li::before { background: var(--acc); border-color: var(--acc); }
+.partner-r { margin: 28px 0 0; padding-left: 14px; border-left: 2px solid var(--line2); color: var(--tx2); max-width: 62ch; }
+.m7 { left: 0; top: 1em; width: 29em; }
+.m7b { left: 21em; top: 9.6em; width: 18em; padding-bottom: 1em; background: var(--bg3); border-color: var(--line2); }
+.m8 { left: 0; top: .5em; width: 30em; }
+.wf { display: grid; gap: .8em; padding: 1.2em; }
+.wf-h { display: block; height: 2.4em; border: 1px dashed var(--line2); border-radius: .4em; }
+.wf-g { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7em; }
+.wf-g span { height: 4.4em; border: 1px dashed var(--line2); border-radius: .4em; }
+.wf-b { display: block; width: 8em; height: 2em; border: 1px dashed var(--acc); border-radius: .4em; }
+.m8b { left: 22em; top: 12.4em; width: 17em; background: var(--bg3); border-color: var(--line2); }
+.fg4 .phone { left: 27em; top: 1.6em; width: 10.5em; height: 19em; }
+.m9 { left: 0; top: 1em; width: 31em; }
+.m9b { left: 20em; top: 12.4em; width: 19em; background: var(--bg3); border-color: var(--line2); }
