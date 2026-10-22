@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark">
+<title>Conception | PlatforMaat</title>
+<meta name="description" content="Conception d'écrans et de prototypes cliquables pour logiciels, apps et sites web, afin que vous voyiez et puissiez essayer ce qui sera développé.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E0F11'/%3E%3Cpath d='M10 25V7h8a5.5 5.5 0 0 1 0 11h-4' fill='none' stroke='%23C5F04A' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="nl" href="../../diensten/ontwerp.html">
+<link rel="alternate" hreflang="en" href="../../en/services/design.html">
+<link rel="alternate" hreflang="fr" href="conception.html">
+<link rel="alternate" hreflang="de" href="../../de/leistungen/design.html">
+<link rel="stylesheet" href="../../../_shared/previewbar.css">
+<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="../../platform.css">
+<script>document.documentElement.className += ' js';</script>
+<script>/* Voorbeelden: effecten aan of uit. Eén sessiewaarde voor de schakelaar, niets blijvend onthouden. */
+(function () {
+  var d = document.documentElement, f = null, m = /[?&]motion=(aan|uit|auto)/.exec(location.search);
+  try { if (m) sessionStorage.setItem('pm-motion', m[1]); f = sessionStorage.getItem('pm-motion'); } catch (e) { f = m && m[1]; }
+  if (f === 'auto') f = null;
+  var red = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var on = f === 'aan' || (f !== 'uit' && !red);
+  d.className += on ? ' fx' : ' no-fx';
+  d.setAttribute('data-motion', f || 'auto'); d.setAttribute('data-os', red ? 'minder' : 'normaal');
+  if (on) setTimeout(function () { if (!window.__fx) d.className = d.className.replace(/(^| )fx( |$)/, ' no-fx '); }, 3000);
+})();
+</script>
+</head>
+<body>
+<p class="previewbar"><span>Exemple 12d Compleet</span> · pas encore public · <a href="../../../index.html">tous les exemples</a></p>
+<svg class="sym" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<symbol id="st-draft" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2.2 2.2"/></symbol>
+<symbol id="st-todo" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.6" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="st-prog" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 3.6a3.4 3.4 0 0 1 0 6.8z" fill="currentColor"/></symbol>
+<symbol id="st-done" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6.3" fill="currentColor"/><path d="M4.4 7.2l1.9 1.9 3.4-3.8" fill="none" stroke="#0E0F11" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="top" id="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../index.html#top" aria-label="PlatforMaat, retour en haut de page"><span class="mk" aria-hidden="true"><i></i></span>PlatforMaat</a>
+    <nav class="nav" id="nav" aria-label="Navigation principale"><a href="../index.html#aanbod">Services</a><a href="../index.html#ai">IA</a><a href="../exemple.html">Exemple</a><a href="../index.html#werk">Réalisations</a><a href="../index.html#werkwijze">Méthode</a><a href="#contact">Contact</a><a class="nav-x nav-x--cta" href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer">Prendre rendez-vous</a><a class="nav-x" href="tel:+32483851322">0483 85 13 22</a><a class="nav-x" href="mailto:info@platformaat.be">info@platformaat.be</a></nav>
+    <div class="top-act">
+      <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav" hidden><span>Menu</span><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 5h11M2.5 11h11"/></svg></button>
+      <button type="button" class="pal-btn" data-pal-open aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K" hidden><svg class="ic" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M10.8 10.8l3 3"/></svg><span class="pal-bl">Rechercher ou aller à</span><kbd class=""><span data-mod><span class="mod-t">Ctrl</span></span><b>K</b></kbd></button>
+      <div class="lang" role="group" aria-label="Langue"><a href="../../diensten/ontwerp.html" lang="nl" hreflang="nl" aria-label="Nederlands">NL</a><a href="../../en/services/design.html" lang="en" hreflang="en" aria-label="English">EN</a><span class="lang-on" lang="fr" aria-current="true"><span class="vh">Français, </span>FR</span><a href="../../de/leistungen/design.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a></div>
+      <a class="tel" href="tel:+32483851322">0483 85 13 22</a>
+      <a class="btn btn--s" href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Prendre rendez-vous</span><span class="vh"> (Ouvre l'agenda dans un nouvel onglet)</span></a>
+    </div>
+  </div>
+</header>
+<main id="main" class="dp">
+<div class="wrap">
+  <nav class="crumbs" aria-label="Fil d'Ariane"><ol><li><a href="../index.html">Accueil</a></li><li><a href="../index.html#aanbod">Services</a></li><li aria-current="page">Conception</li></ol></nav>
+  <div class="dp-head">
+    <div class="dp-t">
+      <p class="mono-l">Service 2 sur 8</p>
+      <h1 class="pg-h" id="h1">Conception</h1>
+      <p class="dp-lead">Vous voyez à quoi ressemblera le résultat et ce qu'il donne avant qu'il soit développé. Cela évite les malentendus et rend les ajustements plus simples qu'après coup.</p>
+      <div class="hero-act">
+        <a class="btn " href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Prendre rendez-vous</span><span class="vh"> (Ouvre l'agenda dans un nouvel onglet)</span></a>
+        <p class="alt">ou appelez le <a href="tel:+32483851322">0483 85 13 22</a></p>
+      </div>
+    </div>
+    <div class="dp-f" aria-hidden="true"><div class="fg fg-ontwerp"><div class="mini mde"><div class="m-h"><span>Maquette d'écran</span><span class="m-k">Brouillon</span></div><div class="wf"><span class="wf-b"></span><span class="wf-s"></span><span class="wf-s wf-s2"></span><span class="wf-c"></span><span class="wf-c"></span></div></div>
+   <div class="mini mdeb"><div class="m-h"><span>Prototype</span></div><div class="wf2"><i></i><i class="s"></i><span class="pill pill--a">Essayer</span></div></div></div></div>
+  </div>
+  <section class="dp-wat" aria-labelledby="dp-wat-h">
+    <h2 id="dp-wat-h">Ce que cela peut être</h2>
+    <ul class="dp-list">
+<li><h3>Maquettes d'écran pour votre logiciel, app ou site web</h3><p>Des dessins des écrans de votre logiciel, app ou site web, dans le style de votre entreprise.</p></li>
+<li><h3>Prototypes cliquables à essayer avant de développer</h3><p>Une version sur laquelle vous pouvez déjà cliquer, pour que vous et votre équipe puissiez essayer si cela fonctionne comme vous travaillez.</p></li>
+    </ul>
+    
+  </section>
+  
+  <section class="dp-hangt" aria-labelledby="dp-hangt-h">
+    <h2 id="dp-hangt-h">Va de pair avec</h2>
+    <ul class="dp-rel">
+<li><a href="conseil.html"><strong>Conseil et analyse</strong><span>La conception part de ce que nous avons cartographié ensemble.</span><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></a></li>
+<li><a href="logiciels-sur-mesure.html"><strong>Logiciels sur mesure et portails</strong><span>Après la conception, nous développons le logiciel lui-même.</span><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></a></li>
+<li><a href="apps-sites-web-boutiques.html"><strong>Apps, sites web et boutiques en ligne</strong><span>Les apps, sites web et boutiques en ligne commencent aussi par une conception.</span><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></a></li>
+    </ul>
+  </section>
+  <nav class="dp-pn" aria-label="Tous les services">
+    <a class="dp-prev" href="conseil.html"><span>Service précédent</span><strong>Conseil et analyse</strong></a>
+    <a class="dp-all" href="../index.html#aanbod">Tous les services</a>
+    <a class="dp-next" href="logiciels-sur-mesure.html"><span>Service suivant</span><strong>Logiciels sur mesure et portails</strong></a>
+  </nav>
+</div>
+<section class="wrap sec closing" id="contact" tabindex="-1" aria-labelledby="sl-h">
+  <div class="cl-stack">
+    <div class="cl-in">
+      <p class="mono-l">Contact</p>
+      <h2 id="sl-h">Dites-nous ce dont vous avez besoin. Vous recevrez une réponse honnête : pouvons-nous aider ou non ?</h2>
+      <div class="cl-act">
+        <a class="btn " href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Prendre rendez-vous</span><span class="vh"> (Ouvre l'agenda dans un nouvel onglet)</span></a>
+        <p class="alt">ou appelez le <a href="tel:+32483851322">0483 85 13 22</a> · écrivez à <a href="mailto:info@platformaat.be">info@platformaat.be</a></p>
+      </div>
+      
+      <p class="hint-k js-only" hidden>Aller rapidement ailleurs sur cette page : <button type="button" class="lnk-b" data-pal-open>Rechercher ou aller à <kbd class=""><span data-mod><span class="mod-t">Ctrl</span></span><b>K</b></kbd></button></p>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-a">
+      <p class="foot-brand">PlatforMaat</p>
+      <p>Logiciels sur mesure, apps, sites web, IA, connexions, hébergement et maintenance pour petites et moyennes entreprises.</p>
+      <p class="small">En collaboration avec Zichtbaar Media, une entreprise indépendante qui ne fait pas partie de PlatforMaat.</p>
+    </div>
+    <div class="foot-b">
+      <p class="mono-l">Contact</p>
+      <p><a href="tel:+32483851322">0483 85 13 22</a><br><a href="mailto:info@platformaat.be">info@platformaat.be</a></p>
+      <p class="small">Meetjeslandstraat 44, 2660 Anvers, Belgique</p>
+      <p><a class="btn btn--s" href="https://cal.com/platformaat/15min" target="_blank" rel="noopener noreferrer"><span>Prendre rendez-vous</span><span class="vh"> (Ouvre l'agenda dans un nouvel onglet)</span></a></p>
+    </div>
+    <nav class="foot-c" aria-label="Navigation de pied de page">
+      <p class="mono-l">Services</p>
+      <ul>
+        <li><a href="conseil.html">Conseil et analyse</a></li>
+        <li><a href="conception.html">Conception</a></li>
+        <li><a href="logiciels-sur-mesure.html">Logiciels sur mesure et portails</a></li>
+        <li><a href="apps-sites-web-boutiques.html">Apps, sites web et boutiques en ligne</a></li>
+        <li><a href="ia.html">IA</a></li>
+        <li><a href="connexions.html">Connexions, automatisation et données</a></li>
+        <li><a href="hebergement.html">Hébergement et sécurité</a></li>
+        <li><a href="maintenance.html">Maintenance et support</a></li>
+      </ul>
+    </nav>
+    <nav class="foot-c" aria-label="Navigation de pied de page 2">
+      <p class="mono-l">Sur cette page</p>
+      <ul>
+        <li><a href="../index.html#aanbod">Services</a></li>
+        <li><a href="../index.html#ai">IA</a></li>
+        <li><a href="../exemple.html">Exemple</a></li>
+        <li><a href="../index.html#werk">Réalisations</a></li>
+        <li><a href="../index.html#werkwijze">Méthode</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap foot-legal">
+    <p>PlatforMaat, nom commercial de Rayane Errami · Numéro d'entreprise 1004.326.518 · TVA BE 1004.326.518 · Meetjeslandstraat 44, 2660 Anvers, Belgique</p>
+    
+  </div>
+</footer>
+<div class="pal" id="pal" hidden>
+  <div class="pal-back" data-pal-close></div>
+  <div class="pal-box" role="dialog" aria-modal="true" aria-label="Rechercher ou aller à">
+    <div class="pal-in">
+      <svg class="ic" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M10.8 10.8l3 3"/></svg>
+      <label class="vh" for="pal-input">Rechercher ou aller à</label>
+      <input id="pal-input" type="text" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Rechercher ou aller à…">
+      <button type="button" class="pal-x" data-pal-close aria-label="Fermer la palette">Esc</button>
+    </div>
+    <ul id="pal-list" class="pal-l" role="listbox" aria-label="Résultats">
+<li role="presentation" class="pal-g" aria-hidden="true">Aller à</li>
+<li role="option" id="po-home" class="pal-o" aria-selected="false" data-href="../index.html" data-label="Accueil" data-k="accueil page d'accueil début"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Accueil</span><span class="pal-oh">Page</span></li>
+<li role="option" id="po-aanbod" class="pal-o" aria-selected="false" data-href="../index.html#aanbod" data-label="Services" data-k="services offre prestations"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Services</span><span class="pal-oh">Section</span></li>
+<li role="option" id="po-ai" class="pal-o" aria-selected="false" data-href="../index.html#ai" data-label="AI" data-k="assistant chatbot automatisation intelligence artificielle ia"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">AI</span><span class="pal-oh">Section</span></li>
+<li role="option" id="po-voorbeeld" class="pal-o" aria-selected="false" data-href="../exemple.html" data-label="Exemple" data-k="démo plateforme portail dossiers planning assistant connexions portail client essayer exemple"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Exemple</span><span class="pal-oh">Page</span></li>
+<li role="option" id="po-werk" class="pal-o" aria-selected="false" data-href="../index.html#werk" data-label="Réalisations" data-k="références projets clients cas réalisations"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Réalisations</span><span class="pal-oh">Section</span></li>
+<li role="option" id="po-werkwijze" class="pal-o" aria-selected="false" data-href="../index.html#werkwijze" data-label="Méthode" data-k="étapes méthode processus projet développement livraison"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Méthode</span><span class="pal-oh">Section</span></li>
+<li role="option" id="po-afspraken" class="pal-o" aria-selected="false" data-href="../index.html#afspraken" data-label="Engagements" data-k="engagements attendre ia assistant données hébergement ue prix fixe"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Engagements</span><span class="pal-oh">Section</span></li>
+<li role="option" id="po-contact" class="pal-o" aria-selected="false" data-href="#contact" data-label="Contact" data-k="appeler mail adresse"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Contact</span><span class="pal-oh">Section</span></li>
+<li role="option" id="po-d-advies" class="pal-o" aria-selected="false" data-href="conseil.html" data-label="Conseil et analyse" data-k="cartographier votre méthode de travail et vos processus vérifier ce qui est faisable et ce qui ne l'est pas un plan et un devis sur mesure conseil et analyse"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Conseil et analyse</span><span class="pal-oh">Page</span></li>
+<li role="option" id="po-d-ontwerp" class="pal-o" aria-selected="false" data-href="conception.html" data-label="Conception" data-k="maquettes d'écran pour votre logiciel, app ou site web prototypes cliquables à essayer avant de développer conception"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Conception</span><span class="pal-oh">Page</span></li>
+<li role="option" id="po-d-software" class="pal-o" aria-selected="false" data-href="logiciels-sur-mesure.html" data-label="Logiciels sur mesure et portails" data-k="des outils internes autour de votre façon de travailler un crm ou un erp sur mesure portails clients et portails collaborateurs logiciels sur mesure et portails"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Logiciels sur mesure et portails</span><span class="pal-oh">Page</span></li>
+<li role="option" id="po-d-apps" class="pal-o" aria-selected="false" data-href="apps-sites-web-boutiques.html" data-label="Apps, sites web et boutiques en ligne" data-k="apps web et mobiles pour vos clients ou votre équipe un site d'entreprise qui se fait trouver une boutique en ligne apps, sites web et boutiques en ligne"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Apps, sites web et boutiques en ligne</span><span class="pal-oh">Page</span></li>
+<li role="option" id="po-d-ai" class="pal-o" aria-selected="false" data-href="ia.html" data-label="IA" data-k="assistants ia et chatbots traiter automatiquement documents et e-mails l'ia intégrée aux logiciels que vous utilisez déjà ia"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">IA</span><span class="pal-oh">Page</span></li>
+<li role="option" id="po-d-koppelingen" class="pal-o" aria-selected="false" data-href="connexions.html" data-label="Connexions, automatisation et données" data-k="faire collaborer vos outils entre eux tableaux de bord et rapports migrer des données vers un nouveau système connexions, automatisation et données"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Connexions, automatisation et données</span><span class="pal-oh">Page</span></li>
+<li role="option" id="po-d-hosting" class="pal-o" aria-selected="false" data-href="hebergement.html" data-label="Hébergement et sécurité" data-k="hébergement dans le cloud, dans l'ue nom de domaine et e-mail sauvegardes hébergement et sécurité"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Hébergement et sécurité</span><span class="pal-oh">Page</span></li>
+<li role="option" id="po-d-onderhoud" class="pal-o" aria-selected="false" data-href="maintenance.html" data-label="Maintenance et support" data-k="mises à jour et surveillance un service d'assistance pour vos questions évolutions formation maintenance et support"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8h9 M9 4.5L12.5 8 9 11.5"/></svg></span><span class="pal-ol">Maintenance et support</span><span class="pal-oh">Page</span></li>
+<li role="presentation" class="pal-g" aria-hidden="true">Actions</li>
+<li role="option" id="po-plan" class="pal-o" aria-selected="false" data-href="https://cal.com/platformaat/15min" data-label="Prendre rendez-vous" data-k="rendez-vous agenda rencontre planifier prendre cal"><span class="pal-oi" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M12.5 3.5v5h-8 M7.5 5.5l-3 3 3 3"/></svg></span><span class="pal-ol">Prendre rendez-vous</span><span class="pal-oh">Première rencontre de 15 minutes</span></li>
+<li role="option" id="po-bel" class="pal-o" aria-selected="false" data-href="tel:+32483851322" data-label="Appeler 0483 85 13 22" data-k="téléphone gsm appeler"><span class="pal-oi" aria-hidden="true"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M10.8 10.8l3 3"/></svg></span><span class="pal-ol">Appeler 0483 85 13 22</span><span class="pal-oh">Téléphone</span></li>
+<li role="option" id="po-mail" class="pal-o" aria-selected="false" data-href="mailto:info@platformaat.be" data-label="Écrire à info@platformaat.be" data-k="écrire e-mail message"><span class="pal-oi" aria-hidden="true"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M10.8 10.8l3 3"/></svg></span><span class="pal-ol">Écrire à info@platformaat.be</span><span class="pal-oh">E-mail</span></li>
+    </ul>
+    <p class="pal-e" id="pal-empty" hidden>Aucun résultat. Essayez « réalisations » ou « contact ».</p>
+    <div class="pal-f" aria-hidden="true"><span><kbd class=""><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 12.5v-9 M4.5 7L8 3.5 11.5 7"/></svg></kbd><kbd class=""><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3.5v9 M4.5 9L8 12.5 11.5 9"/></svg></kbd> choisir</span><span><kbd class=""><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M12.5 3.5v5h-8 M7.5 5.5l-3 3 3 3"/></svg></kbd> ouvrir</span><span><kbd class="">Esc</kbd> fermer</span></div>
+    <p class="vh" id="pal-live" role="status" aria-live="polite"></p>
+  </div>
+</div>
+<script src="../../../_shared/preview-switch.js" defer></script>
+<script src="../../app.js" defer></script>
+
+</body>
+</html>

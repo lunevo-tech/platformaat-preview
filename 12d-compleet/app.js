@@ -9,7 +9,9 @@
   var lerp = function (a, b, t) { return a + (b - a) * t; };
   var ease = function (t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
   var fx = root.classList.contains('fx');
-  var EN = root.getAttribute('lang') === 'en';
+  var LG = root.getAttribute('lang') || 'nl';
+  var RES = { nl: ['resultaat', 'resultaten', 'Niets gevonden'], en: ['result', 'results', 'Nothing found'], fr: ['résultat', 'résultats', 'Aucun résultat'], de: ['Ergebnis', 'Ergebnisse', 'Nichts gefunden'] }[LG] || ['result', 'results', 'Nothing found'];
+  var PRJ = { nl: ['project', 'projecten'], en: ['project', 'projects'], fr: ['projet', 'projets'], de: ['Projekt', 'Projekte'] }[LG] || ['project', 'projects'];
 
   /* ---------- menu op smalle schermen ---------- */
   (function () {
@@ -27,7 +29,7 @@
       if (ev.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true' && document.getElementById('pal').hidden) { set(false, true); }
     });
     document.addEventListener('click', function (ev) { if (!top.contains(ev.target)) set(false); });
-    window.matchMedia('(min-width: 901px)').addEventListener('change', function (m) { if (m.matches) set(false); });
+    window.matchMedia('(min-width: 1101px)').addEventListener('change', function (m) { if (m.matches) set(false); });
   })();
 
   /* ---------- commandopalet ---------- */
@@ -103,7 +105,7 @@
       empty.hidden = vis.length > 0;
       list.hidden = vis.length === 0;
       setActive(0, true);
-      live.textContent = vis.length ? vis.length + (EN ? (vis.length === 1 ? ' result' : ' results') : (vis.length === 1 ? ' resultaat' : ' resultaten')) : (EN ? 'Nothing found' : 'Niets gevonden');
+      live.textContent = vis.length ? vis.length + ' ' + (vis.length === 1 ? RES[0] : RES[1]) : RES[2];
     }
     // groepsnummer per optie onthouden (voor het terugzetten van de volgorde)
     (function () {
@@ -237,7 +239,7 @@
           li.hidden = !show;
           if (show) n++;
         });
-        if (live) live.textContent = n + (EN ? (n === 1 ? ' project' : ' projects') : (n === 1 ? ' project' : ' projecten'));
+        if (live) live.textContent = n + ' ' + (n === 1 ? PRJ[0] : PRJ[1]);
       });
     });
   })();
