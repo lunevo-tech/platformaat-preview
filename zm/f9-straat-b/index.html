@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="nl-BE" class="mo-b">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 22B: Eerst de straat</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},4000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calm.css"><link rel="stylesheet" href="../assets/f.css">
+<style>
+:root{--bg:#E8E4DA;--fg:#141414;--ac:#A8432B;--acf:#fff;--pad:clamp(20px,4.5vw,64px)}
+.sf{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:.96}
+.sf em{font-style:italic;color:var(--ac)}
+.top{position:absolute;left:0;right:0;top:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad);color:#fff}
+.top .zmlogo{width:128px}
+.pano{position:relative;height:100vh;min-height:600px;overflow:hidden;background:#222;color:#fff}
+.pano img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
+.pano::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,20,.7),transparent 55%)}
+.pano .c{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(28px,6vh,64px);z-index:3}
+.pano h1,.pano h2{font-size:clamp(3rem,9vw,9rem);max-width:10em}
+.pano .sf em{color:#F2CE7A}
+.pano .cap{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-top:16px;flex-wrap:wrap}
+.pano p{max-width:36ch;font-size:1.1rem}
+.pano .no{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;position:absolute;right:var(--pad);top:90px;z-index:3}
+.vol{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.vol .p{position:relative;min-height:70vh;overflow:hidden;color:#fff;display:flex;align-items:flex-end}
+.vol .p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vol .p::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,20,.75),transparent 60%)}
+.vol .p div{position:relative;z-index:2;padding:var(--pad)}
+.vol h3{font-size:clamp(2.4rem,4.6vw,4.6rem);margin-bottom:8px}
+.vol p{max-width:30ch;opacity:.95}
+.sec{padding:clamp(60px,9vw,120px) 0}
+h2.t{font-size:clamp(2.2rem,5vw,5rem);margin-bottom:clamp(26px,4vw,52px);max-width:13em}
+.zes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,5vw,80px)}
+.zes h3{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--ac);margin-bottom:8px}
+.zes ul{list-style:none;padding:0}
+.zes li{padding:15px 0;border-top:1px solid rgba(20,20,20,.3);font-size:clamp(1.5rem,2.4vw,2.2rem)}
+.zes li small{display:block;font-family:"Hanken Grotesk";font-size:.88rem;opacity:.7}
+.cs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,28px)}
+.cs figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.cs h3{font-size:clamp(2rem,3vw,3rem);margin:12px 0 4px}.cs p{font-size:.96rem;opacity:.85}
+.stap{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,28px)}
+.stap div{border-top:2px solid var(--fg);padding-top:14px}.stap .nn{font-size:3.4rem;color:var(--ac);display:block;line-height:1}
+.stap h3{font-size:1.6rem;margin:6px 0 4px}.stap p{font-size:.96rem;opacity:.8;max-width:24ch}
+.ct{background:#141414;color:#E8E4DA;--ac:#D7A93F}
+.ct h2{font-size:clamp(2.8rem,7vw,7rem);margin-bottom:20px}.ct .btn{background:#D7A93F;color:#141414}
+@media (max-width:860px){.vol,.zes,.cs{grid-template-columns:1fr}.vol .p{min-height:56vh}.stap{grid-template-columns:1fr 1fr}.cs figure img{aspect-ratio:4/3}}
+@media (max-width:520px){.stap{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../assets/motion.css">
+</head>
+<body>
+<div class="mo-curtain" aria-hidden="true"><span class="zmlogo" data-logo></span></div>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<div class="vtag">Voorbeeld 22B · teksten en cases verzonnen</div>
+<header class="top"><a href="index.html" aria-label="Zichtbaar Media, naar boven"><span class="zmlogo" data-logo></span></a><nav class="nav" aria-label="Hoofdmenu"><a class="hm" href="aanbod.html">Aanbod</a><a class="hm" href="werk.html">Werk</a><a href="contact.html">Contact</a></nav></header>
+<main id="inhoud">
+<section class="pano" id="top"><img src="../assets/media/foto/gevel-winkel.jpg" alt="Winkelgevel aan een straathoek"><span class="no">Marketingbureau · online en offline</span>
+ <div class="c"><h1 class="sf rv">Eerst op straat, <em>dan op het scherm.</em></h1><div class="cap rv" style="--d:.1s"><p>Mensen zien je zaak eerst waar ze wonen en werken. Daarna zoeken ze je op. Zichtbaar Media zorgt dat beide kloppen.</p><a class="btn" href="contact.html">Plan een kennismaking</a></div></div></section>
+
+<div class="vol">
+ <div class="p"><img src="../assets/media/foto/bestelwagen-b.jpg" alt="Witte bestelwagen op een zonnige straat" loading="lazy"><div class="rv"><h3 class="sf">Op de weg</h3><p>Belettering van wagens, affiches en panelen langs de route.</p></div></div>
+ <div class="p"><img src="../assets/media/foto/telefoon-schetsen.jpg" alt="Hand met smartphone boven schetsen van een app" loading="lazy"><div class="rv" style="--d:.1s"><h3 class="sf">In de zak</h3><p>Een site en sociale media die dezelfde zaak laten zien.</p></div></div>
+</div>
+
+<section class="sec" id="aanbod"><div class="w"><h2 class="t sf rv">Beide kanten, <em>één bureau.</em></h2><div class="zes">
+ <div class="rv"><h3>Offline</h3><ul><li class="sf">Gevel en signalisatie<small>Borden, raamfolie, wegwijzers</small></li><li class="sf">Wagens en affiches<small>Belettering en panelen</small></li><li class="sf">Drukwerk en huisstijl<small>Folders, menukaarten, verpakking</small></li><li class="sf">Radio, pers, beurzen<small>Spots, berichten, stand</small></li></ul></div>
+ <div class="rv" style="--d:.1s"><h3>Online</h3><ul><li class="sf">Strategie en merk<small>Eén blad waar alles uit volgt</small></li><li class="sf">Websites en webshops<small>Snel en gebouwd voor aanvragen</small></li><li class="sf">Vindbaarheid<small>SEO en Google-advertenties</small></li><li class="sf">Sociale media, foto en video<small>Beeld dat je zaak echt toont</small></li></ul></div></div></div></section>
+
+<section class="sec" id="werk" style="padding-top:0"><div class="w"><span class="k stempel rv" style="margin-bottom:14px">Voorbeeldwerk, verzonnen bedrijven</span><h2 class="t sf rv">Drie zaken.</h2><div class="cs">
+ <figure class="rv"><img src="../assets/media/foto/bakkerij-toonbank.jpg" alt="Toonbank van een bakkerij" loading="lazy"><h3 class="sf">Kruimelkeet</h3><p>Tweede winkel: raamfolie, menukaart, folder en een site met voorbestelling.</p></figure>
+ <figure class="rv" style="--d:.08s"><img src="../assets/media/foto/bloemist.jpg" alt="Bloemiste wikkelt een boeket" loading="lazy"><h3 class="sf">Lenteveld</h3><p>Rustiger jaar: gevelbord, abonnementskaarten en webshop.</p></figure>
+ <figure class="rv" style="--d:.16s"><img src="../assets/media/foto/installateur.jpg" alt="Installateur plaatst een leiding" loading="lazy"><h3 class="sf">Dakruiter</h3><p>Vaste klanten en personeel: belettering, radio, vacaturepagina.</p></figure></div></div></section>
+
+<section class="sec" style="padding-top:0"><div class="w"><h2 class="t sf rv">Vier stappen.</h2><div class="stap">
+ <div class="rv"><span class="nn sf">1</span><h3 class="sf">Kennismaking</h3><p>We luisteren en zeggen eerlijk wat we zouden laten liggen.</p></div>
+ <div class="rv" style="--d:.06s"><span class="nn sf">2</span><h3 class="sf">Plan</h3><p>Doelen, kanalen, budget en kalender op één blad.</p></div>
+ <div class="rv" style="--d:.12s"><span class="nn sf">3</span><h3 class="sf">Uitvoering</h3><p>Eén contactpersoon die met drukker en plaatser praat.</p></div>
+ <div class="rv" style="--d:.18s"><span class="nn sf">4</span><h3 class="sf">Opvolging</h3><p>Elke maand een korte balans.</p></div></div></div></section>
+
+<section class="sec ct" id="contact"><div class="w row2"><div><h2 class="sf rv">Laat je <em>zien.</em></h2><p class="rv">Je krijgt antwoord van een mens, met een voorstel voor een eerste gesprek.</p></div>
+ <form onsubmit="return false" class="rv"><label>Naam<input type="text" name="naam" autocomplete="name"></label><label>E-mail<input type="email" name="email" autocomplete="email"></label><label>Waarmee kunnen we helpen?<textarea name="vraag"></textarea></label><button class="btn" type="submit" style="justify-self:start">Vraag een offerte</button><p class="nota">Voorbeeld: dit formulier is nog niet verbonden en verstuurt niets.</p></form></div></section>
+</main>
+<footer style="background:#141414;color:#E8E4DA"><div class="w foot"><span class="zmlogo" data-logo></span><span>Voorbeeldontwerp 22B · <a href="../index.html">Terug naar alle ontwerpen</a></span></div></footer>
+<script src="../assets/zm-logo.js"></script><script src="../assets/calm.js"></script><script src="../assets/motion.js"></script>
+</body>
+</html>

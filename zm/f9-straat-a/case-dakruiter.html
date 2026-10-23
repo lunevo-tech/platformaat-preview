@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="nl-BE" class="mo-a">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 22A: Dakruiter</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},4000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calm.css"><link rel="stylesheet" href="../assets/f.css"><link rel="stylesheet" href="../assets/sub.css">
+<style>
+:root{--bg:#E8E4DA;--fg:#141414;--ac:#A8432B;--acf:#fff;--pad:clamp(20px,4.5vw,64px)}
+.sf{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:.96}
+.sf em{font-style:italic;color:var(--ac)}
+.top{position:absolute;left:0;right:0;top:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad);color:#fff}
+.top .zmlogo{width:128px}
+.pano{position:relative;height:100vh;min-height:600px;overflow:hidden;background:#222;color:#fff}
+.pano img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
+.pano::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,20,.7),transparent 55%)}
+.pano .c{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(28px,6vh,64px);z-index:3}
+.pano h1,.pano h2{font-size:clamp(3rem,9vw,9rem);max-width:10em}
+.pano .sf em{color:#F2CE7A}
+.pano .cap{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-top:16px;flex-wrap:wrap}
+.pano p{max-width:36ch;font-size:1.1rem}
+.pano .no{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;position:absolute;right:var(--pad);top:90px;z-index:3}
+.vol{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.vol .p{position:relative;min-height:70vh;overflow:hidden;color:#fff;display:flex;align-items:flex-end}
+.vol .p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vol .p::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,20,.75),transparent 60%)}
+.vol .p div{position:relative;z-index:2;padding:var(--pad)}
+.vol h3{font-size:clamp(2.4rem,4.6vw,4.6rem);margin-bottom:8px}
+.vol p{max-width:30ch;opacity:.95}
+.sec{padding:clamp(60px,9vw,120px) 0}
+h2.t{font-size:clamp(2.2rem,5vw,5rem);margin-bottom:clamp(26px,4vw,52px);max-width:13em}
+.zes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,5vw,80px)}
+.zes h3{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--ac);margin-bottom:8px}
+.zes ul{list-style:none;padding:0}
+.zes li{padding:15px 0;border-top:1px solid rgba(20,20,20,.3);font-size:clamp(1.5rem,2.4vw,2.2rem)}
+.zes li small{display:block;font-family:"Hanken Grotesk";font-size:.88rem;opacity:.7}
+.cs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,28px)}
+.cs figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.cs h3{font-size:clamp(2rem,3vw,3rem);margin:12px 0 4px}.cs p{font-size:.96rem;opacity:.85}
+.stap{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,28px)}
+.stap div{border-top:2px solid var(--fg);padding-top:14px}.stap .nn{font-size:3.4rem;color:var(--ac);display:block;line-height:1}
+.stap h3{font-size:1.6rem;margin:6px 0 4px}.stap p{font-size:.96rem;opacity:.8;max-width:24ch}
+.ct{background:#141414;color:#E8E4DA;--ac:#D7A93F}
+.ct h2{font-size:clamp(2.8rem,7vw,7rem);margin-bottom:20px}.ct .btn{background:#D7A93F;color:#141414}
+@media (max-width:860px){.vol,.zes,.cs{grid-template-columns:1fr}.vol .p{min-height:56vh}.stap{grid-template-columns:1fr 1fr}.cs figure img{aspect-ratio:4/3}}
+@media (max-width:520px){.stap{grid-template-columns:1fr}}
+.s-hf{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.02em}.top{position:relative!important;color:#141414!important;background:var(--bg)}
+</style>
+<link rel="stylesheet" href="../assets/motion.css">
+</head>
+<body>
+<div class="mo-curtain" aria-hidden="true"><span class="zmlogo" data-logo></span></div>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<div class="vtag">Voorbeeld 22A · teksten en cases verzonnen</div>
+<header class="top"><a href="index.html" aria-label="Zichtbaar Media, naar boven"><span class="zmlogo" data-logo></span></a><nav class="nav" aria-label="Hoofdmenu"><a class="hm" href="aanbod.html">Aanbod</a><a class="hm" href="werk.html" aria-current="page">Werk</a><a href="contact.html">Contact</a></nav></header>
+<main id="inhoud">
+<section class="s-sec s-top" style="padding-bottom:30px"><div class="w"><span class="s-kick rv">Installatiebedrijf · voorbeeldcase, verzonnen bedrijf</span><h1 class="s-hf s-title rv">Dakruiter</h1><p class="s-lead rv" style="--d:.08s">Vaste klanten en nieuwe collega's.</p></div></section><div class="w"><figure class="s-hero rvi"><img src="../assets/media/foto/installateur.jpg" alt="Dakruiter"></figure></div><section class="s-sec s-tight"><div class="w"><div class="s-feit rv"><div><b>Vraag</b><span>Een familiebedrijf met drie wagens leeft te veel van mond-aan-mondreclame en zoekt vaste klanten én nieuwe collega's.</span></div><div><b>Offline</b><span>Belettering op drie wagens, werfborden, radiospot in de streek</span></div><div><b>Online</b><span>Offerteformulier, zoekadvertenties op spoed, vacaturepagina</span></div><div><b>Doel</b><span>Meer aanvragen buiten het stookseizoen</span></div></div></div></section><section class="s-sec" style="padding-top:20px"><div class="w s-contact"><div><h2 class="s-hf s-h2 rv">Het verhaal</h2></div><div class="s-tekst rv"><p>Het bedrijf is druk in de winter en veel rustiger in de zomer, en vindt moeilijk nieuw personeel. Mond-aan-mondreclame werkt, maar is niet genoeg.</p><p>De drie wagens worden bewegende reclame met een duidelijke naam en een telefoonnummer. Op werven komt een bord. Een korte radiospot in de streek zegt waar het bedrijf voor staat. Online krijgen mensen met een dringend probleem een zoekadvertentie die naar een eenvoudig offerteformulier leidt, en wie wil komen werken, vindt een vacaturepagina.</p><p>Zo ziet de klant het bedrijf onderweg, hoort hij het op de radio en vindt hij het terug op zijn gsm, steeds met dezelfde naam.</p></div></div></section><section class="s-sec" style="padding-top:0"><div class="w"><div class="s-twee"><img class="rvi" src="../assets/media/foto/bestelwagen-a.jpg" alt="Dakruiter" loading="lazy"><img class="rvi" src="../assets/media/foto/installateur.jpg" alt="Dakruiter" loading="lazy"></div></div></section><section class="s-sec" style="padding-top:0"><div class="w"><h2 class="s-hf s-h2 rv">Wat we zouden doen</h2><div class="s-stappen"><div class="s-stap rv"><span class="nn s-hf">1</span><h3 class="s-hf">Wagens</h3><div><p>Belettering met een duidelijke naam en nummer op alle drie.</p></div></div><div class="s-stap rv"><span class="nn s-hf">2</span><h3 class="s-hf">Streek</h3><div><p>Werfborden en een korte radiospot.</p></div></div><div class="s-stap rv"><span class="nn s-hf">3</span><h3 class="s-hf">Aanvragen</h3><div><p>Zoekadvertenties en een offerteformulier dat snel antwoordt.</p></div></div><div class="s-stap rv"><span class="nn s-hf">4</span><h3 class="s-hf">Personeel</h3><div><p>Een vacaturepagina die zegt hoe het is om er te werken.</p></div></div></div></div></section><div class="w"><div class="s-volg"><a href="werk.html">&larr; Alle voorbeeldwerk</a><a href="case-kruimelkeet.html">Volgende: Kruimelkeet &rarr;</a></div></div><section class="s-cta"><div class="w in"><h2 class="s-hf rv">Vertel kort wat je zoekt.</h2><a class="btn rv" href="contact.html">Plan een kennismaking</a></div></section>
+</main>
+<footer style="background:#141414;color:#E8E4DA"><div class="w foot"><span class="zmlogo" data-logo></span><span>Voorbeeldontwerp 22A · <a href="../index.html">Terug naar alle ontwerpen</a></span></div></footer>
+<script src="../assets/zm-logo.js"></script><script src="../assets/calm.js"></script><script src="../assets/motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+/* Beweging voor de A- en B-versies van de tien uitgewerkte sites.
+   A = rustiger, B = levendiger. Alles zit achter prefers-reduced-motion: no-preference. */
+@media (prefers-reduced-motion:no-preference){
+/* paginaovergang: een gordijn dat bij het laden wegschuift (puur CSS, dus ook zonder script) */
+.mo-curtain{position:fixed;inset:0;z-index:99999;background:var(--ac);display:grid;place-items:center;pointer-events:none;color:var(--bg)}
+.mo-curtain .zmlogo{width:min(220px,46vw);opacity:0}
+html.mo-a .mo-curtain{animation:moFadeOut .7s .12s cubic-bezier(.3,.7,.2,1) forwards}
+html.mo-b .mo-curtain{animation:moWipeOut .95s .22s cubic-bezier(.76,0,.24,1) forwards}
+html.mo-b .mo-curtain .zmlogo{animation:moLogo .9s .05s ease forwards}
+html.mo-a .mo-curtain.go{animation:moFadeIn .38s ease forwards;pointer-events:all}
+html.mo-b .mo-curtain.go{animation:moWipeIn .55s cubic-bezier(.76,0,.24,1) forwards;pointer-events:all}
+html.mo-b .mo-curtain.go .zmlogo{animation:moLogo2 .5s ease forwards}
+@keyframes moFadeOut{to{opacity:0;visibility:hidden}}
+@keyframes moFadeIn{from{opacity:0;visibility:visible}to{opacity:1;visibility:visible}}
+@keyframes moWipeOut{0%{transform:translateY(0)}100%{transform:translateY(-101%);visibility:hidden}}
+@keyframes moWipeIn{from{transform:translateY(101%);visibility:visible}to{transform:translateY(0);visibility:visible}}
+@keyframes moLogo{0%{opacity:0;transform:translateY(14px)}35%{opacity:1;transform:none}100%{opacity:1}}
+@keyframes moLogo2{from{opacity:0}to{opacity:1}}
+
+/* kop die bij het laden woord voor woord inschuift */
+.mo-w{display:inline-block;overflow:hidden;vertical-align:top;padding:.08em .06em .14em;margin:-.08em -.06em -.14em}
+.mo-w>span{display:inline-block;animation-fill-mode:both}
+html.mo-a .mo-w>span{animation:moRiseA .9s calc(var(--i)*70ms + .55s) cubic-bezier(.2,.7,.2,1) both}
+html.mo-b .mo-w>span{animation:moRiseB 1.05s calc(var(--i)*85ms + .85s) cubic-bezier(.16,1,.3,1) both}
+@keyframes moRiseA{from{transform:translateY(60%);opacity:0}to{transform:none;opacity:1}}
+@keyframes moRiseB{from{transform:translateY(115%) rotate(5deg);opacity:0}to{transform:none;opacity:1}}
+
+/* foto's bewegen zelf (langzame ken-burns) */
+.vw img,.s-hero img,.s-card .im img,.pano>img,.vol .p img,.hero .ph img{animation:moKbA 20s ease-in-out infinite alternate}
+html.mo-b .vw img,html.mo-b .s-hero img,html.mo-b .s-card .im img,html.mo-b .pano>img,html.mo-b .vol .p img,html.mo-b .hero .ph img{animation:moKbB 10s ease-in-out infinite alternate}
+@keyframes moKbA{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.07) translate3d(-1%,-1%,0)}}
+@keyframes moKbB{from{transform:scale(1.02) translate3d(1%,1%,0)}to{transform:scale(1.18) translate3d(-3%,-2%,0)}}
+.vw,.s-hero,.s-card .im{overflow:hidden}
+
+/* lopende regel */
+.mo-marq{overflow:hidden;white-space:nowrap;border-top:1px solid currentColor;border-bottom:1px solid currentColor;padding:12px 0;position:relative;z-index:2}
+.mo-marq .tr{display:inline-flex;will-change:transform}
+html.mo-a .mo-marq .tr{animation:moMarq 70s linear infinite}
+html.mo-b .mo-marq .tr{animation:moMarq 26s linear infinite}
+.mo-marq.rev .tr{animation-direction:reverse}
+.mo-marq:hover .tr{animation-play-state:paused}
+.mo-marq span{font-size:clamp(1.5rem,3.2vw,3.2rem);line-height:1.1;padding:0 .7em;display:inline-flex;align-items:center;gap:1.4em}
+.mo-marq span::after{content:"";width:.34em;height:.34em;background:var(--ac);transform:rotate(45deg);display:inline-block;flex:none}
+html.mo-b .mo-marq.b2{border-top:0}
+html.mo-b .mo-marq.b2 span{font-style:italic;opacity:.75}
+@keyframes moMarq{to{transform:translateX(-50%)}}
+
+/* filmband met roterend woord */
+.mo-band{position:relative;overflow:hidden;background:#111;color:#fff;height:clamp(300px,38vw,680px);display:grid;align-items:end}
+.mo-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.8}
+.mo-band::after{content:"";position:absolute;inset:0;background:rgba(10,10,10,.42);pointer-events:none}
+.mo-band .tx{position:relative;z-index:3;padding:clamp(20px,4vw,56px)}
+.mo-band .l1{display:block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;opacity:.85;margin-bottom:8px}
+.mo-band .rot{display:block;font-size:clamp(2.6rem,8vw,8rem);line-height:.95;height:1.02em;overflow:hidden;position:relative}
+.mo-band .rot b{display:block;font-weight:inherit;position:absolute;left:0;top:0;white-space:nowrap;transform:translateY(105%);opacity:0}
+.mo-band .rot b.on{transform:none;opacity:1;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.mo-band .rot b.off{transform:translateY(-105%);opacity:0;transition:transform .6s cubic-bezier(.7,0,.8,.3),opacity .4s}
+html.mo-a .mo-band .rot b.on{transition-duration:1s}
+.mo-band .pb{position:absolute;right:16px;bottom:16px;z-index:5;background:#fff;color:#111;border:0;border-radius:99px;padding:6px 14px;font:inherit;font-size:.8rem;cursor:pointer}
+.mo-band .pb:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.mo-band .bar{position:absolute;left:0;bottom:0;height:4px;background:var(--ac);width:100%;transform-origin:0 50%;transform:scaleX(0);z-index:4}
+
+/* doorlopende fotostrook */
+.mo-strip{overflow:hidden;padding:clamp(14px,2vw,26px) 0}
+.mo-strip .tr{display:inline-flex;gap:clamp(10px,1.4vw,20px);will-change:transform}
+html.mo-a .mo-strip .tr{animation:moMarq 90s linear infinite}
+html.mo-b .mo-strip .tr{animation:moMarq 38s linear infinite}
+.mo-strip:hover .tr{animation-play-state:paused}
+.mo-strip figure{margin:0;flex:none;width:clamp(180px,24vw,340px);aspect-ratio:4/5;overflow:hidden;background:#222}
+.mo-strip figure:nth-child(even){margin-top:clamp(14px,2vw,34px)}
+.mo-strip img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.mo-strip figure:hover img{transform:scale(1.08)}
+
+/* knoppen en links: zichtbare reactie bij aanwijzen */
+.btn,.ul,.s-volg a,.nav a{position:relative}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:0 50%;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.nav a:hover::after,.nav a:focus-visible::after,.nav a[aria-current="page"]::after{transform:scaleX(1)}
+.btn{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+html.mo-b .btn:hover{box-shadow:0 10px 0 -2px color-mix(in srgb,var(--fg) 25%,transparent)}
+.s-card .go{background:linear-gradient(currentColor,currentColor) 0 100%/0 1.5px no-repeat;border-bottom:0;transition:background-size .5s cubic-bezier(.2,.7,.2,1)}
+.s-card:hover .go,.s-card:focus-visible .go{background-size:100% 1.5px}
+.s-card{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+html.mo-b .s-card:hover{transform:translateY(-6px)}
+
+/* logo: de vier zoekerhoeken ademen */
+html.mo-a .zmlogo svg g path{transform-origin:center;transform-box:fill-box}
+html.mo-b .zmlogo svg g{animation:moCorners 3.6s ease-in-out infinite}
+html.mo-a .zmlogo:hover svg g{animation:moCorners 1.6s ease-in-out}
+@keyframes moCorners{0%,100%{transform:scale(1);transform-origin:390px 200px}50%{transform:scale(1.045);transform-origin:390px 200px}}
+
+/* zwevende vormen achter de kop (B) */
+.mo-orb{position:absolute;border-radius:50%;background:var(--ac);opacity:.22;pointer-events:none;z-index:0}
+.mo-orb.o1{width:clamp(120px,18vw,300px);aspect-ratio:1;right:6%;top:14%;animation:moFloat1 11s ease-in-out infinite}
+.mo-orb.o2{width:clamp(70px,10vw,170px);aspect-ratio:1;right:24%;bottom:8%;animation:moFloat2 8s ease-in-out infinite}
+.mo-orb.o3{width:clamp(50px,6vw,100px);aspect-ratio:1;left:46%;top:8%;opacity:.16;animation:moFloat1 14s ease-in-out infinite reverse}
+@keyframes moFloat1{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-30px,40px,0)}}
+@keyframes moFloat2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(36px,-34px,0)}}
+
+/* muiscursor (B, alleen met muis) */
+.mo-cur{position:fixed;left:0;top:0;pointer-events:none;z-index:99998;mix-blend-mode:difference}
+.mo-cur i{position:fixed;left:0;top:0;border-radius:50%;transform:translate(-50%,-50%);background:#fff}
+.mo-cur .d{width:7px;height:7px}
+.mo-cur .r{width:36px;height:36px;background:transparent;border:1.5px solid #fff;transition:width .35s,height .35s,background .3s}
+.mo-cur.big .r{width:68px;height:68px;background:#fff}
+@media (hover:none),(pointer:coarse){.mo-cur{display:none}}
+html.mo-cursor,html.mo-cursor a,html.mo-cursor button{cursor:none}
+
+/* inhoud schuift ruimer in (B) */
+html.mo-b .rv{transform:translateY(40px)}
+html.mo-b .rvi{transform:scale(.96)}
+html.mo-b .rv.in,html.mo-b .rvi.in{transform:none}
+html.mo-b .rvi{transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+}
+@media (prefers-reduced-motion:reduce){.mo-curtain,.mo-orb,.mo-cur{display:none}}

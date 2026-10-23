@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="nl-BE" class="mo-b">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 14B: Contact</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},4000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,800;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calm.css"><link rel="stylesheet" href="../assets/f.css"><link rel="stylesheet" href="../assets/sub.css">
+<style>
+:root{--bg:#2a1822;--fg:#F1E8E0;--ac:#E9A892;--acf:#2a1822;--pad:clamp(20px,5vw,72px)}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:.92}
+body{background:var(--bg)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:20px var(--pad)}
+.top .zmlogo{width:128px;color:var(--fg)}
+.hero{position:relative;height:100vh;min-height:620px;overflow:hidden;display:grid;align-items:end;padding:0 var(--pad) clamp(28px,6vh,70px)}
+.hero .vw{position:absolute;inset:0}
+.hero .vw video{opacity:.55;filter:saturate(.8)}
+.hero .wash{position:absolute;inset:0;background:radial-gradient(60% 60% at 80% 20%,rgba(233,120,110,.5),transparent 60%),linear-gradient(180deg,rgba(42,24,34,.1),rgba(42,24,34,.8));pointer-events:none;z-index:2}
+.hero .c{position:relative;z-index:3}
+.hero h1{font-size:clamp(4.4rem,17vw,19rem)}
+.hero h1 em{color:var(--ac)}
+.hero p{margin-top:18px;max-width:34ch;font-size:1.1rem}
+.sec{padding:clamp(70px,11vw,150px) 0}
+h2.t{font-size:clamp(2.4rem,6vw,6rem);margin-bottom:clamp(30px,5vw,64px);max-width:12em}
+.lijst{list-style:none;padding:0;border-top:1px solid rgba(241,232,224,.35)}
+.lijst li{display:flex;justify-content:space-between;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(241,232,224,.35);font-size:clamp(1.4rem,2.6vw,2.4rem)}
+.lijst small{font-size:.9rem;opacity:.7;text-align:right}
+.kolom{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px)}
+.kolom h3{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:10px;font-weight:800}
+.case{display:grid;grid-template-columns:7fr 5fr;gap:clamp(20px,4vw,64px);align-items:center;margin-bottom:clamp(40px,7vw,100px)}
+.case:nth-child(odd) .vw{order:2}
+.case .vw{aspect-ratio:4/3;border-radius:14px}
+.case h3{font-size:clamp(2.6rem,5vw,5rem);margin:8px 0 14px}
+.case p{max-width:34ch;margin-bottom:14px}
+.stap{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,3vw,50px)}
+.stap div{border-top:1px solid var(--fg);padding-top:14px}.stap .nn{font-size:3.4rem;color:var(--ac);display:block;line-height:1}
+.stap h3{font-size:1.5rem;margin:8px 0 4px}.stap p{opacity:.8;font-size:.97rem;max-width:24ch}
+.ct{background:#E9A892;color:#2a1822;--ac:#2a1822}
+.ct .btn{background:#2a1822;color:#F1E8E0}
+.ct h2{font-size:clamp(3rem,8vw,8rem);margin-bottom:30px}
+@media (max-width:860px){.kolom,.case,.stap{grid-template-columns:1fr 1fr}.kolom,.case{grid-template-columns:1fr}.case:nth-child(odd) .vw{order:0}.lijst li{flex-direction:column;gap:2px}.lijst small{text-align:left}}
+@media (max-width:520px){.stap{grid-template-columns:1fr}}
+.s-hf{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.02em}
+</style>
+<link rel="stylesheet" href="../assets/motion.css">
+</head>
+<body>
+<div class="mo-curtain" aria-hidden="true"><span class="zmlogo" data-logo></span></div>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<div class="vtag">Voorbeeld 14B · teksten en cases verzonnen</div>
+<header class="hd-fixed top"><a href="index.html" aria-label="Zichtbaar Media, naar boven"><span class="zmlogo" data-logo></span></a><nav class="nav" aria-label="Hoofdmenu"><a class="hm" href="aanbod.html">Aanbod</a><a class="hm" href="werk.html">Werk</a><a href="contact.html" aria-current="page">Contact</a></nav></header>
+<main id="inhoud">
+<section class="s-sec s-top"><div class="w s-contact"><div><span class="s-kick rv">Contact</span><h1 class="s-hf s-title rv">Vertel kort wat je zoekt.</h1><p class="s-lead rv" style="--d:.08s">Je krijgt antwoord van een mens, met een voorstel voor een eerste gesprek.</p><div class="s-gegevens rv" style="--d:.12s"><div><b>E-mail</b>nog in te vullen (voorbeeldpagina)</div><div><b>Telefoon</b>nog in te vullen</div><div><b>Adres</b>nog in te vullen</div></div></div><form onsubmit="return false" class="rv" style="--d:.1s"><label>Naam<input type="text" name="naam" autocomplete="name"></label><label>E-mail<input type="email" name="email" autocomplete="email"></label><label>Waarmee kunnen we helpen?<textarea name="vraag"></textarea></label><button class="btn" type="submit" style="justify-self:start">Vraag een offerte</button><p class="nota">Voorbeeld: dit formulier is nog niet verbonden en verstuurt niets.</p></form></div></section>
+</main>
+<footer style="background:#2a1822"><div class="w foot"><span class="zmlogo" data-logo></span><span>Voorbeeldontwerp 14B · <a href="../index.html">Terug naar alle ontwerpen</a></span></div></footer>
+<script src="../assets/zm-logo.js"></script><script src="../assets/calm.js"></script><script src="../assets/motion.js"></script>
+</body>
+</html>

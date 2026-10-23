@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="nl-BE" class="mo-b">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 23B: Werkwijze</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},4000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calm.css"><link rel="stylesheet" href="../assets/f.css"><link rel="stylesheet" href="../assets/sub.css">
+<style>
+:root{--bg:#EDEBE5;--fg:#141414;--ac:#141414;--acf:#fff;--pad:clamp(20px,4vw,56px)}
+h1,h2,h3{font-weight:800;letter-spacing:-.04em;line-height:.95;text-transform:none}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad);position:sticky;top:0;background:rgba(237,235,229,.94);z-index:60}
+.top .zmlogo{width:120px}
+.reel{position:relative;margin:0 var(--pad);aspect-ratio:16/8.5;min-height:360px;border-radius:14px;overflow:hidden;background:#222}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
+.reel .rb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(110px,11vw,160px);aspect-ratio:1;border-radius:50%;background:#fff;color:#141414;display:grid;place-items:center;text-align:center;font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform .4s;z-index:3}
+.reel .rb:hover,.reel .rb:focus-visible{transform:translate(-50%,-50%) scale(1.08);outline:none}
+.reel .vid-toggle{z-index:4}
+.reel .ln{position:absolute;left:24px;bottom:20px;color:#fff;font-size:clamp(.9rem,1.4vw,1.2rem);z-index:3;max-width:30ch}
+.reel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,20,.5),transparent 50%)}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:end;padding:clamp(60px,9vw,130px) var(--pad)}
+.intro h1{font-size:clamp(3rem,9vw,9rem)}
+.intro p{font-size:clamp(1.1rem,1.6vw,1.5rem);max-width:30ch;line-height:1.35}
+.sec{padding:clamp(60px,9vw,120px) var(--pad)}
+.sec h2.t{font-size:clamp(2.4rem,6vw,6rem);margin-bottom:clamp(26px,4vw,52px)}
+.rij{border-top:1.5px solid #141414}
+.rij a,.rij div.r{display:grid;grid-template-columns:3em 1fr 1fr;gap:12px 24px;padding:22px 0;border-bottom:1.5px solid #141414;text-decoration:none;align-items:baseline;transition:padding .3s,background .3s}
+.rij a:hover,.rij a:focus-visible{padding-left:14px;background:#fff;outline:none}
+.rij .n{font-size:.78rem;font-weight:500}.rij h3{font-size:clamp(1.6rem,3vw,3rem)}.rij p{opacity:.75;max-width:36ch}
+.rij .o .n{color:#A8432B}
+.cs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,28px)}
+.cs figure img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px}
+.cs h3{font-size:1.5rem;margin:12px 0 4px;text-transform:uppercase;letter-spacing:-.01em}
+.cs p{font-size:.88rem;text-transform:uppercase;letter-spacing:.04em;opacity:.75;line-height:1.35}
+.stap{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,28px)}
+.stap div{border-top:1.5px solid #141414;padding-top:14px}.stap .nn{font-size:3.6rem;font-weight:800;display:block;line-height:1;letter-spacing:-.05em}
+.stap h3{font-size:1.4rem;margin:8px 0 4px}.stap p{font-size:.96rem;opacity:.8;max-width:24ch}
+.ct{background:#141414;color:#EDEBE5;--ac:#EDEBE5;border-radius:14px;margin:0 var(--pad) 40px;padding:clamp(40px,6vw,90px) clamp(24px,5vw,72px)}
+.ct h2{font-size:clamp(3rem,8vw,8rem);margin-bottom:18px}.ct .btn{background:#EDEBE5;color:#141414}
+.zl{font-size:clamp(8rem,32vw,26rem);font-weight:800;letter-spacing:-.08em;line-height:.8;text-align:right;padding:0 var(--pad);overflow:hidden;opacity:.9}
+@media (max-width:860px){.intro,.cs{grid-template-columns:1fr}.rij a,.rij div.r{grid-template-columns:2.4em 1fr}.rij p{grid-column:2}.stap{grid-template-columns:1fr 1fr}.reel{aspect-ratio:4/3;min-height:0}.cs figure img{aspect-ratio:4/3}}
+@media (max-width:520px){.stap{grid-template-columns:1fr}}
+.s-hf{font-weight:800;letter-spacing:-.04em}
+</style>
+<link rel="stylesheet" href="../assets/motion.css">
+</head>
+<body>
+<div class="mo-curtain" aria-hidden="true"><span class="zmlogo" data-logo></span></div>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<div class="vtag">Voorbeeld 23B · teksten en cases verzonnen</div>
+<header class="top"><a href="index.html" aria-label="Zichtbaar Media, naar boven"><span class="zmlogo" data-logo></span></a><nav class="nav" aria-label="Hoofdmenu"><a class="hm" href="aanbod.html">Aanbod</a><a class="hm" href="werk.html">Werk</a><a class="hm" href="werkwijze.html" aria-current="page">Werkwijze</a><a href="contact.html">Contact</a></nav></header>
+<main id="inhoud">
+<section class="s-sec s-top"><div class="w"><span class="s-kick rv">Werkwijze</span><h1 class="s-hf s-title rv">Vier stappen, zonder verrassingen.</h1><p class="s-lead rv" style="--d:.08s">Je ziet elke proef vóór er iets gedrukt of gepubliceerd wordt, en elke maand een korte balans.</p></div></section><section class="s-sec" style="padding-top:0"><div class="w s-stappen"><div class="s-stap rv"><span class="nn s-hf">1</span><h3 class="s-hf">Kennismaking</h3><div><p>We komen langs of we ontmoeten elkaar bij ons. We kijken naar wat je nu al doet, online en op papier en aan de gevel, en zeggen eerlijk wat we zouden laten liggen.</p><p style="opacity:.75">Van jou: een uur en je bestaande materiaal.</p></div></div><div class="s-stap rv"><span class="nn s-hf">2</span><h3 class="s-hf">Plan op één blad</h3><div><p>Doelen, kanalen, budget en kalender naast elkaar. Je ziet in één oogopslag hoe bestelwagen, site en advertentie op elkaar aansluiten.</p><p style="opacity:.75">Van jou: een keuze en een akkoord.</p></div></div><div class="s-stap rv"><span class="nn s-hf">3</span><h3 class="s-hf">Uitvoering</h3><div><p>Eén contactpersoon bij ons praat met de drukker, de plaatser, de adverteerder en de fotograaf. Jij ziet proeven vóór er iets gedrukt of gepubliceerd wordt.</p><p style="opacity:.75">Van jou: proeven goedkeuren.</p></div></div><div class="s-stap rv"><span class="nn s-hf">4</span><h3 class="s-hf">Opvolging</h3><div><p>Elke maand een korte balans van wat het opleverde en wat we daarom anders doen. Geen rapport van dertig pagina's.</p><p style="opacity:.75">Van jou: vijftien minuten voor het gesprek.</p></div></div></div></section><section class="s-sec s-line"><div class="w s-kol"><div class="rv"><h3 class="s-hf">Wat je van ons mag verwachten</h3><ul><li>Eerlijk advies, ook als dat minder werk voor ons betekent</li><li>Eén aanspreekpunt voor alles, online en offline</li><li>Proeven vooraf en een duidelijke kalender</li><li>Een korte, leesbare balans elke maand</li></ul></div><div class="rv" style="--d:.08s"><h3 class="s-hf">Wat we van jou vragen</h3><ul><li>Een uur voor de kennismaking en je bestaande materiaal</li><li>Een keuze en een akkoord op het plan</li><li>Proeven goedkeuren</li><li>Vijftien minuten voor het maandgesprek</li></ul></div></div></section><section class="s-sec s-line"><div class="w"><h2 class="s-hf s-h2 rv">Vragen die we vaak krijgen</h2><div class="s-faq rv"><details><summary>Wat kost het?</summary><p>Dat hangt af van wat je nodig hebt. We maken eerst een voorstel op één blad, met wat erin zit en wat het kost, zodat je kan kiezen.</p></details><details><summary>Moet ik alles bij jullie nemen?</summary><p>Nee. Je neemt wat je nodig hebt. Wat je neemt, sluit wel op elkaar aan: dezelfde kleuren, dezelfde woorden, dezelfde afspraken.</p></details><details><summary>Wie is mijn aanspreekpunt?</summary><p>Eén persoon bij ons. Die praat met de drukker, de plaatser, de adverteerder en de fotograaf, zodat jij dat niet hoeft te doen.</p></details><details><summary>Hoe snel kan het starten?</summary><p>Na de kennismaking krijg je een voorstel. Zodra je akkoord gaat, maken we een kalender en plannen we de eerste stukken.</p></details><details><summary>Doen jullie ook maar één ding, bijvoorbeeld alleen een site?</summary><p>Ja, dat kan. We vertellen er wel bij wat er ontbreekt als je klanten je ook op straat of op papier tegenkomen.</p></details></div></div></section><section class="s-cta"><div class="w in"><h2 class="s-hf rv">Vertel kort wat je zoekt.</h2><a class="btn rv" href="contact.html">Plan een kennismaking</a></div></section>
+</main>
+<footer><div class="foot" style="padding-left:var(--pad);padding-right:var(--pad)"><span class="zmlogo" data-logo></span><span>Voorbeeldontwerp 23B · <a href="../index.html">Terug naar alle ontwerpen</a></span></div></footer>
+<script src="../assets/zm-logo.js"></script><script src="../assets/calm.js"></script><script src="../assets/motion.js"></script>
+</body>
+</html>
