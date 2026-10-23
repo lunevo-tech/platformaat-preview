@@ -1,0 +1,14 @@
+/* Rustige beweging voor de gewone ontwerpen: zacht verschijnen, verder niets.
+   Zonder script of bij "minder beweging" staat alles meteen zichtbaar. */
+html.anim .rv{opacity:0;transform:translateY(14px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+html.anim .rv.in{opacity:1;transform:none}
+html.anim .rvi{opacity:0;transition:opacity 1.2s ease;transition-delay:var(--d,0s)}
+html.anim .rvi.in{opacity:1}
+html.reduce *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+img,video{display:block;max-width:100%}
+.skip{position:absolute;left:-9999px;top:8px;background:#fff;color:#000;padding:8px 14px;z-index:999}
+.skip:focus{left:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.zmlogo{display:inline-block;line-height:0}
+.zmlogo svg{display:block;width:100%;height:auto}
+.vtag{position:fixed;left:12px;bottom:12px;z-index:200;font-size:.72rem;padding:6px 13px;border-radius:99px;max-width:calc(100vw - 24px);background:#141414;color:#fff;font-family:"Hanken Grotesk",system-ui,sans-serif}
