@@ -1,0 +1,25 @@
+/* Thema 5: Buurt. Vriendelijk, lokaal, bosgroen en afgeronde vormen. */
+:root{--bg:#F6F1E4;--fg:#14241c;--mut:#4a5a50;--ac:#1E5C45;--acf:#F6F1E4;--card:#ECE5D2;--line:rgba(20,36,28,.2);--hf:"Instrument Serif",Georgia,serif;--hw:400;--hls:-.015em;--r:22px}
+h1{font-size:clamp(2.7rem,6.6vw,6.2rem);line-height:.98}
+h2{font-size:clamp(2.1rem,4.4vw,4.2rem)}
+h3{font-size:clamp(1.5rem,2.2vw,2rem)}
+.btn{border-radius:99px}.btn:hover{background:#14241c;border-color:#14241c}
+.btn.ghost{border-color:var(--ac);color:var(--ac)}.btn.ghost:hover{background:var(--ac);color:var(--acf)}
+.coll{position:relative;aspect-ratio:1/1.05}
+.coll figure{position:absolute;overflow:hidden;border-radius:var(--r);box-shadow:0 0 0 6px var(--bg)}
+.coll .c1{left:0;top:6%;width:56%;aspect-ratio:4/5;transform:rotate(-3deg)}
+.coll .c2{right:0;top:0;width:44%;aspect-ratio:1/1;transform:rotate(4deg)}
+.coll .c3{right:6%;bottom:0;width:52%;aspect-ratio:4/3;transform:rotate(-2deg)}
+.beloftes .b3 li,.st4 li{background:var(--card);border-top:0;border-radius:var(--r);padding:24px}
+.chips li{background:var(--ac);color:var(--acf);border-color:var(--ac)}
+.ctastrip{background:var(--ac);color:var(--acf);border-top:0}
+.ctastrip .btn{background:var(--acf);color:var(--ac);border-color:var(--acf)}
+.ctastrip .btn.ghost{background:transparent;color:var(--acf)}
+.ctastrip .btn.ghost:hover{background:var(--acf);color:var(--ac)}
+.faq details{border-radius:12px;padding:16px 20px;border:0;background:var(--card);margin-bottom:10px}
+.faq details:last-child{border:0}
+.mini li{background:var(--card);border-color:transparent}
+.ft{background:#14241c;color:#F6F1E4;border-top:0}
+.ft .fb p,.fbot{color:#cfd8cf}.fbot{border-top-color:rgba(246,241,228,.25)}
+.ft h3{color:#D7A93F}
+@media (max-width:980px){.coll{max-width:420px}}

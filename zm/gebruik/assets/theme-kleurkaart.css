@@ -1,0 +1,27 @@
+/* Thema 3: Kleurkaart. De merkkleuren als blokken. */
+:root{--bg:#EFE9DD;--fg:#141414;--mut:#4d4a44;--ac:#A8432B;--acf:#fff;--card:#E4DCCB;--line:rgba(20,20,20,.22);--hf:"Hanken Grotesk",system-ui,sans-serif;--hw:800;--hls:-.04em;--r:0px}
+h1{font-size:clamp(2.8rem,7.4vw,7.2rem);line-height:.94}
+h2{font-size:clamp(2.1rem,4.6vw,4.4rem);line-height:.96}
+.btn{border-radius:0}
+main>section.sec:nth-of-type(4n+3){--bg:#6E3D6B;--fg:#F3EAF1;--mut:#e2d3e0;--ac:#F0C86B;--acf:#2a1428;--card:#7f4c7c;--line:rgba(243,234,241,.35);background:var(--bg);color:var(--fg)}
+main>section.sec:nth-of-type(4n+4){--bg:#1E5C45;--fg:#EFE9DD;--mut:#d3e4da;--ac:#F0C86B;--acf:#10301f;--card:#27704f;--line:rgba(239,233,221,.35);background:var(--bg);color:var(--fg)}
+main>section.sec:nth-of-type(4n+5){--bg:#D7A93F;--fg:#141414;--mut:#3b3118;--ac:#6E3D6B;--acf:#fff;--card:#e3bc62;--line:rgba(20,20,20,.3);background:var(--bg);color:var(--fg)}
+main>section.sec:nth-of-type(4n+6){--bg:#C7563A;--fg:#fff;--mut:#fbe2d9;--ac:#141414;--acf:#fff;--card:#d3694e;--line:rgba(255,255,255,.4);background:var(--bg);color:var(--fg)}
+main>section.sec .btn.ghost{border-color:var(--fg);color:var(--fg)}
+main>section.sec .btn.ghost:hover{background:var(--fg);color:var(--bg)}
+.hero.hb{padding:0;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(150px,auto)}
+.hb .blk{padding:clamp(20px,3vw,44px);min-width:0}
+.hb .b1{grid-column:1/8;grid-row:1/3;background:#6E3D6B;color:#F3EAF1;display:flex;flex-direction:column;justify-content:center}
+.hb .b1 .lead,.hb .b1 .eyebrow{color:#e2d3e0}
+.hb .b1 em{color:#F0C86B}
+.hb .b1 .btn{background:#F0C86B;border-color:#F0C86B;color:#2a1428}
+.hb .b2{grid-column:8/13;grid-row:1/2;background:#1E5C45;color:#EFE9DD;display:grid;place-items:center}
+.hb .b2 .logo-svg{width:min(340px,80%)}
+.hb .b3{grid-column:8/13;grid-row:2/4;padding:0;position:relative;overflow:hidden}
+.hb .b3 figure,.hb .b3 img{width:100%;height:100%;object-fit:cover}
+.hb .b4{grid-column:1/5;background:#D7A93F;color:#141414}
+.hb .b5{grid-column:5/8;background:#C7563A;color:#fff}
+.hb .k{font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.marq{background:#141414;color:#EFE9DD;border-color:#141414}
+.marq span::after{background:#D7A93F}
+@media (max-width:980px){.hero.hb{display:block}.hb .blk{min-height:160px}.hb .b3{aspect-ratio:4/3;padding:0}}
