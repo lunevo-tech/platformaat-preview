@@ -1,0 +1,72 @@
+/* Onderpagina's van de tien uitgewerkte ontwerpen (14 t/m 23). Gebruikt de kleurvariabelen van elk ontwerp. */
+.s-hf{margin:0}
+.s-sec{padding:clamp(56px,8vw,110px) 0}
+.s-tight{padding:clamp(30px,4vw,56px) 0}
+.s-line{border-top:1px solid color-mix(in srgb,var(--fg) 28%,transparent)}
+.s-top{padding-top:clamp(90px,12vw,150px)}
+.s-title{font-size:clamp(2.8rem,7.4vw,7.4rem);line-height:.95;margin-bottom:22px;max-width:12em}
+.s-lead{font-size:clamp(1.1rem,1.6vw,1.45rem);max-width:44ch;opacity:.9;line-height:1.45}
+.s-h2{font-size:clamp(1.8rem,3.6vw,3.4rem);line-height:1;margin-bottom:clamp(20px,3vw,40px);max-width:14em}
+.s-kick{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;opacity:.75;display:block;margin-bottom:12px}
+.s-grp{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(20px,5vw,80px);padding:clamp(34px,5vw,70px) 0;border-top:1px solid color-mix(in srgb,var(--fg) 28%,transparent)}
+.s-dienst{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(16px,3vw,48px);padding:24px 0;border-top:1px solid color-mix(in srgb,var(--fg) 20%,transparent)}
+.s-dienst:first-child{border-top:0;padding-top:0}
+.s-dienst h3{font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.1}
+.s-dienst p{margin:0 0 10px;max-width:52ch;opacity:.92}
+.s-dienst ul{margin:0;padding-left:1.1em;opacity:.85;font-size:.96rem}
+.s-dienst li{padding:2px 0}
+.s-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.2vw,32px)}
+.s-card{display:block;text-decoration:none;color:inherit}
+.s-card .im{overflow:hidden;aspect-ratio:4/3;background:#222}
+.s-card .im img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.s-card:hover .im img,.s-card:focus-visible .im img{transform:scale(1.04)}
+.s-card:focus-visible{outline:3px solid var(--ac);outline-offset:4px}
+.s-card h3{font-size:clamp(1.6rem,2.4vw,2.2rem);margin:14px 0 4px}
+.s-card p{margin:0;opacity:.85;font-size:.96rem}
+.s-card .go{display:inline-block;margin-top:8px;font-weight:500;border-bottom:1.5px solid currentColor}
+.s-hero{aspect-ratio:21/9;overflow:hidden;background:#222;margin:0}
+.s-hero img{width:100%;height:100%;object-fit:cover}
+.s-feit{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,28px)}
+.s-feit div{border-top:2px solid var(--ac);padding-top:12px}
+.s-feit b{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;opacity:.8}
+.s-feit span{font-size:1rem}
+.s-twee{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,28px)}
+.s-twee img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.s-tekst{max-width:62ch}
+.s-tekst p{margin:0 0 16px;line-height:1.7}
+.s-stappen{counter-reset:s}
+.s-stap{display:grid;grid-template-columns:4em minmax(0,4fr) minmax(0,7fr);gap:clamp(12px,3vw,48px);padding:28px 0;border-top:1px solid color-mix(in srgb,var(--fg) 28%,transparent);align-items:baseline}
+.s-stap .nn{font-size:clamp(2.4rem,4vw,3.6rem);line-height:1;color:var(--ac);filter:saturate(1.3)}
+.s-stap h3{font-size:clamp(1.5rem,2.4vw,2.2rem);line-height:1.05}
+.s-stap p{margin:0 0 8px;max-width:52ch;opacity:.92}
+.s-kol{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,4vw,64px)}
+.s-kol h3{font-size:1.2rem;margin-bottom:10px}
+.s-kol ul{margin:0;padding-left:1.1em}.s-kol li{padding:4px 0}
+.s-faq details{border-top:1px solid color-mix(in srgb,var(--fg) 28%,transparent);padding:16px 0}
+.s-faq details:last-child{border-bottom:1px solid color-mix(in srgb,var(--fg) 28%,transparent)}
+.s-faq summary{cursor:pointer;font-size:1.15rem;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.s-faq summary::-webkit-details-marker{display:none}
+.s-faq summary::after{content:"+";font-size:1.4rem;line-height:1}
+.s-faq details[open] summary::after{content:"\2212"}
+.s-faq summary:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.s-faq p{margin:10px 0 0;max-width:62ch;opacity:.9}
+.s-contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,6vw,100px);align-items:start}
+.s-gegevens{display:grid;gap:14px;margin-top:26px;font-size:.98rem}
+.s-gegevens div b{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+.s-cta{padding:clamp(44px,6vw,90px) 0;border-top:1px solid color-mix(in srgb,var(--fg) 28%,transparent)}
+.s-cta .in{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.s-cta h2{font-size:clamp(2rem,4vw,3.8rem);line-height:1;max-width:12em}
+.s-volg{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:30px 0;border-top:1px solid color-mix(in srgb,var(--fg) 28%,transparent)}
+.s-volg a{font-weight:500;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
+.s-volg a:hover,.s-volg a:focus-visible{opacity:.7;outline:none}
+.s-nav-act{border-bottom-color:currentColor!important}
+@media (max-width:860px){
+ .s-grp,.s-dienst,.s-contact,.s-kol{grid-template-columns:1fr}
+ .s-cards{grid-template-columns:1fr}
+ .s-feit{grid-template-columns:1fr 1fr}
+ .s-twee{grid-template-columns:1fr}
+ .s-stap{grid-template-columns:2.6em 1fr}.s-stap>div:last-child{grid-column:2}
+ .s-hero{aspect-ratio:4/3}
+}
+
+.hd-fixed{background:var(--bg)}

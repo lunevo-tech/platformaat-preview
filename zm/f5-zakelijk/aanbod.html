@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 18: Aanbod</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},4000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calm.css"><link rel="stylesheet" href="../assets/f.css"><link rel="stylesheet" href="../assets/sub.css">
+<style>
+:root{--bg:#101114;--fg:#F3F0E8;--ac:#D7A93F;--acf:#101114;--card:#1a1c21;--line:#2a2d34;--pad:clamp(20px,4.5vw,64px)}
+h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.04}
+.top{position:sticky;top:0;z-index:60;background:rgba(16,17,20,.94);border-bottom:1px solid var(--line)}
+.top .w{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
+.top .zmlogo{width:118px}
+.top .btn{padding:10px 18px}
+.hero{padding:clamp(50px,8vw,110px) 0 clamp(40px,6vw,80px);text-align:center}
+.hero .pil{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:6px 16px;font-size:.8rem;margin-bottom:22px;color:var(--ac)}
+.hero h1{font-size:clamp(2.6rem,6.4vw,6rem);max-width:13em;margin:0 auto}
+.hero h1 em{font-style:normal;color:var(--ac)}
+.hero p{max-width:46ch;margin:22px auto 28px;opacity:.85;font-size:1.15rem}
+.hero .bt{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center}
+.hero .ph{margin-top:clamp(36px,5vw,64px);border-radius:18px;aspect-ratio:21/9}
+.vertrouw{display:flex;justify-content:center;gap:clamp(18px,4vw,60px);flex-wrap:wrap;padding:30px 0 0;font-size:.9rem;opacity:.7}
+.sec{padding:clamp(60px,9vw,120px) 0}
+.sec h2.t{font-size:clamp(2rem,4vw,3.8rem);text-align:center;margin-bottom:clamp(30px,4vw,56px);max-width:16em;margin-inline:auto}
+.kaarten{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,24px)}
+.kaart{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;transition:border-color .3s,transform .4s}
+.kaart:hover{border-color:var(--ac);transform:translateY(-3px)}
+.kaart .n{font-size:.78rem;color:var(--ac);letter-spacing:.12em}
+.kaart h3{font-size:1.3rem;margin:10px 0 8px}
+.kaart p{opacity:.8;font-size:.97rem}
+.kaart.of .n{color:#e57a5a}
+.kaart.of:hover{border-color:#e57a5a}
+.dubbel{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,48px);align-items:center;margin-bottom:clamp(40px,6vw,80px)}
+.dubbel:nth-of-type(even) .ph{order:2}
+.dubbel .ph{border-radius:16px;aspect-ratio:4/3}
+.dubbel h3{font-size:clamp(1.8rem,3vw,2.8rem);margin:8px 0 10px}.dubbel p{margin-bottom:14px;max-width:38ch;opacity:.9}
+.stap{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,28px)}
+.stap div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.stap .nn{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--ac);color:#101114;font-weight:800;margin-bottom:12px}
+.stap h3{font-size:1.15rem;margin-bottom:4px}.stap p{font-size:.95rem;opacity:.8}
+.ct{background:#D7A93F;color:#101114;--ac:#101114}
+.ct h2{font-size:clamp(2.4rem,5vw,4.6rem);margin-bottom:14px}
+.ct .btn{background:#101114;color:#F3F0E8}
+@media (max-width:860px){.kaarten,.dubbel{grid-template-columns:1fr}.dubbel:nth-of-type(even) .ph{order:0}.stap{grid-template-columns:1fr 1fr}.top .nav a.hm{display:none}}
+@media (max-width:520px){.stap{grid-template-columns:1fr}}
+.s-hf{font-weight:800;letter-spacing:-.03em}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<div class="vtag">Voorbeeld 18 · teksten en cases verzonnen</div>
+<header class="top"><div class="w"><a href="index.html" aria-label="Zichtbaar Media, naar boven"><span class="zmlogo" data-logo></span></a><nav class="nav" aria-label="Hoofdmenu"><a class="hm" href="aanbod.html" aria-current="page">Diensten</a><a class="hm" href="werk.html">Cases</a><a class="hm" href="werkwijze.html">Werkwijze</a><a class="btn" href="contact.html">Kennismaking</a></nav></div></header>
+<main id="inhoud">
+<section class="s-sec s-top"><div class="w"><span class="s-kick rv">Aanbod</span><h1 class="s-hf s-title rv">Alles wat een zaak zichtbaar maakt.</h1><p class="s-lead rv" style="--d:.08s">Online en offline, van dezelfde tafel. Je neemt wat je nodig hebt. Wat je neemt, sluit op elkaar aan.</p></div></section><div class="w"><div class="s-grp"><div><span class="s-kick rv">Aanbod</span><h2 class="s-hf s-h2 rv">Online</h2></div><div><div class="s-dienst rv"><h3 class="s-hf">Strategie en merk</h3><div><p>Wie ben je, voor wie, en wat moet de markt onthouden? We zetten dat op één blad, zodat elk ander stuk werk daaruit volgt.</p><ul><li>Positionering in één zin</li><li>Huisstijl: kleuren, letters, toon</li><li>Kanaalplan met kalender</li></ul></div></div><div class="s-dienst rv"><h3 class="s-hf">Websites en webshops</h3><div><p>Een site die snel laadt, op een gsm leest als een boek en aanvragen binnenbrengt. We ontwerpen, bouwen en onderhouden.</p><ul><li>Ontwerp en bouw</li><li>Webshop als je verkoopt</li><li>Onderhoud en aanpassingen</li></ul></div></div><div class="s-dienst rv"><h3 class="s-hf">Vindbaarheid en advertenties</h3><div><p>Gevonden worden op het moment dat iemand je dienst zoekt, organisch en met betaalde advertenties.</p><ul><li>Zoekmachine-optimalisatie (SEO)</li><li>Google-advertenties (SEA)</li><li>Google-bedrijfsprofiel</li></ul></div></div><div class="s-dienst rv"><h3 class="s-hf">Sociale media</h3><div><p>Planning, beeld, tekst en opvolging van reacties, op de kanalen waar je klanten zitten.</p><ul><li>Kalender per maand</li><li>Beeld en tekst</li><li>Reacties beantwoorden</li></ul></div></div><div class="s-dienst rv"><h3 class="s-hf">Foto en video</h3><div><p>Beeld dat je zaak echt toont, voor site, sociale media en toonbank.</p><ul><li>Fotoreportage op locatie</li><li>Korte video's</li><li>Beeldbank voor later gebruik</li></ul></div></div></div></div><div class="s-grp"><div><span class="s-kick rv">Aanbod</span><h2 class="s-hf s-h2 rv">Offline</h2></div><div><div class="s-dienst rv"><h3 class="s-hf">Drukwerk en huisstijl</h3><div><p>Folders, brochures, menukaarten, visitekaartjes en verpakking, met proeven die jij goedkeurt vóór het naar de drukker gaat.</p><ul><li>Ontwerp en tekst</li><li>Proef voor goedkeuring</li><li>Contact met de drukker</li></ul></div></div><div class="s-dienst rv"><h3 class="s-hf">Gevel en signalisatie</h3><div><p>Uithangborden, raamfolie en wegwijzers, zodat de eerste indruk van je zaak klopt.</p><ul><li>Ontwerp en advies</li><li>Contact met de plaatser</li><li>Controle na plaatsing</li></ul></div></div><div class="s-dienst rv"><h3 class="s-hf">Voertuigen en affiches</h3><div><p>Belettering van bestelwagens en affiches of panelen langs de weg.</p><ul><li>Ontwerp per voertuig</li><li>Plaatsing</li><li>Affiches en aanplakking</li></ul></div></div><div class="s-dienst rv"><h3 class="s-hf">Radio en pers</h3><div><p>Een korte spot die klinkt zoals je zaak, en berichten die de streekkrant wil drukken.</p><ul><li>Tekst en regie van de spot</li><li>Persbericht</li><li>Contact met de redactie</li></ul></div></div><div class="s-dienst rv"><h3 class="s-hf">Beurzen en evenementen</h3><div><p>Een stand die opvalt, een opening met publiek en opvolging nadien.</p><ul><li>Standontwerp en materiaal</li><li>Uitnodigingen</li><li>Opvolging na het evenement</li></ul></div></div></div></div></div><section class="s-cta"><div class="w in"><h2 class="s-hf rv">Vertel kort wat je zoekt.</h2><a class="btn rv" href="contact.html">Plan een kennismaking</a></div></section>
+</main>
+<footer><div class="w foot"><span class="zmlogo" data-logo></span><span>Voorbeeldontwerp 18 · <a href="../index.html">Terug naar alle ontwerpen</a></span></div></footer>
+<script src="../assets/zm-logo.js"></script><script src="../assets/calm.js"></script>
+</body>
+</html>
