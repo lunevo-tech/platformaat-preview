@@ -1,0 +1,87 @@
+/* Richting 5: Straat. Asfalt en betonkleur, signaalgeel, Space Grotesk met IBM Plex Mono voor kilometerpalen. */
+@font-face{font-family:"Space Grotesk";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/space-grotesk-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-weight:500;font-style:normal;font-display:swap;src:url(fonts/space-grotesk-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-weight:700;font-style:normal;font-display:swap;src:url(fonts/space-grotesk-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:500;font-style:normal;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2")}
+:root{--bg:#E9E7E0;--fg:#16181a;--mut:#4a4d50;--ac:#FFD21F;--acf:#111;--card:#DEDBD2;--line:rgba(22,24,26,.25);--hf:"Space Grotesk",system-ui,sans-serif;--hw:700;--hls:-.04em;--r:0px;--ink:#8a6a00;--screen:#13233b}
+body{font-family:"Space Grotesk",system-ui,sans-serif}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;font-size:.76rem;font-weight:500}
+em{font-style:normal;color:var(--ink);background:linear-gradient(transparent 62%,var(--ac) 62% 92%,transparent 92%)}
+.dn,.gk,.nn,.faq summary::after{color:var(--ink)}
+.eyebrow{font-family:"IBM Plex Mono";letter-spacing:.08em}
+.btn{border-radius:0;background:var(--ac);color:#111;border-color:#111;font-weight:700}
+.btn:hover{background:#111;color:var(--ac)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg)}.btn.ghost:hover{background:var(--fg);color:var(--bg)}
+.hd{background:rgba(233,231,224,.92);backdrop-filter:blur(8px);border-bottom:3px solid #111}
+.nav a:not(.btn)::after{background:var(--ac);height:6px;bottom:-2px;z-index:-1}
+.nav a:not(.btn){z-index:0}
+.chips li{border-radius:0;border-color:#111;background:#fff;font-family:"IBM Plex Mono";font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}
+.mini li{border-radius:0}
+.t-straat.home .conceptbar{position:relative}
+/* intro */
+.s-intro{position:relative;min-height:calc(100vh - 66px);display:grid;align-items:center;color:#fff;overflow:hidden;background:#111;isolation:isolate}
+.s-intro .bgp{position:absolute;inset:0;z-index:-1}
+.s-intro .bgp img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4) contrast(1.05);opacity:.55}
+.s-intro .bgp::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,17,.85),rgba(17,17,17,.2))}
+.s-intro .in{padding-bottom:140px;padding-top:60px}
+.s-intro h1{font-size:clamp(3rem,9vw,9rem);line-height:.9}
+.s-intro .lead{color:#e8e4d8;max-width:40ch}
+.s-intro .btn.ghost{color:#fff;border-color:#fff}.s-intro .btn.ghost:hover{background:#fff;color:#111}
+.s-intro em{color:#111;background:var(--ac)}
+.roadline{position:absolute;left:0;right:0;bottom:44px;height:46px;background:#1b1c1e;border-top:3px solid #fff3;border-bottom:3px solid #fff3}
+.roadline i{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;background:repeating-linear-gradient(90deg,#fff 0 36px,transparent 36px 72px)}
+.van-w{position:absolute;left:4%;bottom:10px;width:150px;transition:left .1s linear}
+.van{width:100%;height:auto;overflow:visible}
+.scrollcue{position:absolute;left:var(--pad);bottom:10px;color:#cfcabc}
+@media (prefers-reduced-motion:no-preference){
+ .roadline i{animation:road 1.4s linear infinite}
+ @keyframes road{to{background-position-x:-72px}}
+ .roadline .van{animation:bump .5s ease-in-out infinite alternate}
+ @keyframes bump{to{transform:translateY(-2px)}}
+}
+/* de reis */
+.straat{position:relative}
+.pinwrap{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--bg)}
+.track{display:flex;align-items:center;height:100%;width:max-content;padding:80px 8vw 120px 8vw;gap:6vw;background:linear-gradient(90deg,#E9E7E0 0,#E9E7E0 38%,#13233b 62%,#13233b 100%);background-size:100% 100%}
+.sp{flex:none;width:min(54vw,860px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(18px,2.6vw,40px);align-items:center;color:var(--fg)}
+.sp.scherm{color:#e7eefb}
+.sp figure{overflow:hidden;aspect-ratio:4/5;max-height:62vh;background:#cfcabc;border:3px solid currentColor;box-shadow:8px 8px 0 var(--ac)}
+.sp figure img{width:112%;max-width:none;height:100%;object-fit:cover;margin-left:-6%}
+.sp.scherm figure{box-shadow:8px 8px 0 #3f6fd8;border-color:#e7eefb}
+.sp h2{font-size:clamp(1.9rem,3.2vw,3.2rem);line-height:.98;margin:8px 0 12px}
+.sp p{font-size:1rem;max-width:32ch}
+.km{display:inline-block;background:#111;color:var(--ac);padding:4px 10px}
+.sp.scherm .km{background:#3f6fd8;color:#fff}
+.sp.scherm .ul{border-color:#9db8ef}
+.sp.gate{width:34vw;display:block;text-align:left;color:#fff;padding-left:2vw}
+.sp.gate b{display:block;font-size:clamp(5rem,12vw,12rem);line-height:.9;color:var(--ac)}
+.road{position:absolute;left:0;right:0;bottom:0;height:62px;background:#1b1c1e;border-top:4px solid #111}
+.road .dash{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;background:repeating-linear-gradient(90deg,#fff 0 36px,transparent 36px 72px)}
+.road .van-w{bottom:20px}
+.mile{position:absolute;right:var(--pad);top:-34px}
+.mile b{background:var(--ac);color:#111;padding:5px 12px;font-weight:500}
+@media (max-width:760px){
+ .pinwrap{height:auto;overflow:visible}
+ .track{display:block;width:auto;padding:60px var(--pad);background:linear-gradient(180deg,#E9E7E0 0,#E9E7E0 48%,#13233b 52%,#13233b 100%)}
+ .sp{width:auto;grid-template-columns:1fr;margin-bottom:46px}
+ .sp figure{max-height:none;aspect-ratio:4/3}
+ .sp.gate{display:none}
+ .road{display:none}
+}
+/* route */
+.beloftes .b3 li{border-top:3px solid #111}
+.stops{position:relative;display:grid;gap:0;margin-left:14px}
+.stops::before{content:"";position:absolute;left:20px;top:10px;bottom:10px;width:4px;background:repeating-linear-gradient(180deg,#111 0 18px,transparent 18px 30px)}
+.stops li{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:18px 0;position:relative}
+.stops .nn{width:44px;height:44px;display:grid;place-items:center;background:var(--ac);border:3px solid #111;font-size:1.3rem;margin:0;color:#111;font-family:"IBM Plex Mono"}
+.stops h3{margin-bottom:4px}.stops p{color:var(--mut);max-width:56ch}.van-t{color:var(--fg)!important;font-weight:500;margin-top:6px}
+.scard .im{border:3px solid #111}
+.ctastrip{background:#111;color:#fff;border:0}
+.ctastrip .btn.ghost{color:#fff;border-color:#fff}.ctastrip .btn.ghost:hover{background:#fff;color:#111}
+.ft{background:#16181a;color:#e9e7e0;border-top:6px solid var(--ac)}
+.ft .fb p,.fbot{color:#c9c6bc}.ft h3{color:var(--ac);font-family:"IBM Plex Mono";font-weight:500}
+.pagehead{border-bottom:3px solid #111}
+.pagehead h1{font-size:clamp(2.6rem,7vw,6.4rem)}
+.dienst,.scen{border-top:3px solid #111}
+.dim,.sci figure{border:3px solid #111}

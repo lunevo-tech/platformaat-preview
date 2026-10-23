@@ -1,0 +1,116 @@
+/* Richting 3: Krant. Papier, zwarte inkt, één rode accentkleur. Playfair Display voor koppen. */
+@font-face{font-family:"Playfair Display";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/playfair-display-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/playfair-display-latin-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-weight:700;font-style:normal;font-display:swap;src:url(fonts/playfair-display-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-weight:700;font-style:italic;font-display:swap;src:url(fonts/playfair-display-latin-700-italic.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-weight:900;font-style:normal;font-display:swap;src:url(fonts/playfair-display-latin-900-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter Tight";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/inter-tight-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter Tight";font-weight:500;font-style:normal;font-display:swap;src:url(fonts/inter-tight-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter Tight";font-weight:700;font-style:normal;font-display:swap;src:url(fonts/inter-tight-latin-700-normal.woff2) format("woff2")}
+:root{--bg:#EEE7D4;--fg:#16130e;--mut:#4f493c;--ac:#B3261E;--acf:#fff;--card:#E6DEC8;--line:rgba(22,19,14,.55);--hf:"Playfair Display",Georgia,serif;--hw:900;--hls:-.02em;--r:0px;--max:1320px}
+body{font-family:"Inter Tight",system-ui,sans-serif;background:var(--bg);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .1  0 0 0 0 .08  0 0 0 0 .05  0 0 0 .07 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");font-size:1.04rem}
+em{font-family:"Playfair Display",serif;font-style:italic;font-weight:700;color:var(--ac)}
+.btn{border-radius:0;text-transform:uppercase;letter-spacing:.1em;font-size:.8rem;font-weight:700;padding:14px 22px}
+.btn.ghost{border-width:2px}
+.eyebrow,.gk{font-family:"Inter Tight";font-weight:700}
+/* kop van de krant */
+.kr-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:var(--max);margin:0 auto;padding:10px var(--pad);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--fg)}
+.kr-date::first-letter{text-transform:uppercase}
+.kr-mast{max-width:var(--max);margin:0 auto;padding:clamp(18px,3vw,34px) var(--pad) 14px;text-align:center;border-bottom:4px double var(--fg)}
+.kr-logo{display:block;width:min(520px,72vw);margin:0 auto;color:var(--fg)}
+.kr-motto{font-family:"Playfair Display";font-style:italic;font-size:clamp(.95rem,1.4vw,1.2rem);margin-top:8px;color:var(--mut)}
+.hd{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--fg);z-index:100}
+.hdin{justify-content:center;position:relative}
+.hd .mini{position:absolute;left:var(--pad);top:50%;width:84px;transform:translateY(-50%);color:var(--fg);opacity:0;pointer-events:none;transition:opacity .3s}
+.hd.stuck .mini{opacity:1;pointer-events:auto}
+.nav{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;font-weight:500;gap:clamp(18px,3vw,44px)}
+.nav a:not(.btn)::after{background:var(--ac)}
+.burger{border-radius:0;position:absolute;right:var(--pad)}
+@media (max-width:980px){.hdin{justify-content:flex-end;min-height:56px}.nav{text-transform:none;letter-spacing:0;font-size:1.1rem}.hd .mini{opacity:1;pointer-events:auto}}
+.ticker{display:flex;max-width:var(--max);margin:0 auto;border-bottom:1px solid var(--fg);overflow:hidden;font-size:.82rem}
+.ticker b{flex:none;background:var(--ac);color:#fff;padding:9px 16px;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;position:relative;z-index:2}
+.ticker .tr{display:inline-flex;white-space:nowrap}
+.ticker span{padding:9px 26px;border-right:1px solid rgba(22,19,14,.3)}
+@media (prefers-reduced-motion:no-preference){.ticker .tr{animation:mq 70s linear infinite}}
+/* voorpagina */
+.rh{font-size:clamp(1.1rem,1.7vw,1.5rem);text-transform:uppercase;letter-spacing:.18em;font-weight:900;border-top:4px solid var(--fg);border-bottom:1px solid var(--fg);padding:9px 0;margin-bottom:clamp(18px,2.4vw,30px);font-family:"Inter Tight";font-weight:700;font-size:.9rem}
+.rh span{display:inline-block}
+.front{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,3.4fr);gap:clamp(20px,3vw,48px);padding-top:clamp(22px,3vw,40px);padding-bottom:clamp(30px,5vw,70px)}
+.main{border-right:1px solid var(--fg);padding-right:clamp(20px,3vw,48px)}
+.kick{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:10px}
+.front h1{font-size:clamp(2.8rem,6.6vw,6.6rem);line-height:.94;letter-spacing:-.035em;font-weight:900}
+.wd{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+.wd>span{display:inline-block;transform:translateY(110%);animation:wup .9s var(--ease) forwards}
+@keyframes wup{to{transform:none}}
+.deck{font-family:"Playfair Display";font-style:italic;font-size:clamp(1.15rem,1.7vw,1.6rem);line-height:1.35;margin-top:18px;max-width:34em;color:var(--mut)}
+.by{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0;padding:8px 0;border-top:1px solid var(--fg);border-bottom:1px solid var(--fg);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.fig img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:grayscale(1) contrast(1.08)}
+.fig figcaption{font-size:.8rem;color:var(--mut);margin:8px 0 22px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.fig figcaption i{display:block;font-size:.72rem;opacity:.8}
+@media (prefers-reduced-motion:no-preference){.fig img{animation:tint 2.2s 1.2s ease forwards}@keyframes tint{to{filter:grayscale(.1) contrast(1.02)}}}
+@media (prefers-reduced-motion:reduce){.fig img{filter:none}}
+.cols{column-count:3;column-gap:2rem;column-rule:1px solid rgba(22,19,14,.4);font-size:1.02rem;line-height:1.55;text-align:justify;hyphens:auto}
+.cols p{margin-bottom:.9em}
+.dc::first-letter{float:left;font-family:"Playfair Display";font-weight:900;font-size:4.6em;line-height:.78;padding:.06em .08em 0 0;color:var(--ac)}
+.pull{margin:.4em 0 1em;padding:.6em 0;border-top:3px solid var(--fg);border-bottom:3px solid var(--fg);font-family:"Playfair Display";font-weight:700;font-style:italic;font-size:1.5rem;line-height:1.2;text-align:center;break-inside:avoid}
+.main .cta-row{margin-top:18px}
+.box{border:1px solid var(--fg);padding:16px 18px;margin-bottom:22px;background:rgba(255,255,255,.25)}
+.bh{font-family:"Inter Tight";text-transform:uppercase;letter-spacing:.16em;font-size:.8rem;font-weight:700;border-bottom:3px double var(--fg);padding-bottom:8px;margin-bottom:6px}
+.toc li a{display:flex;align-items:baseline;gap:6px;text-decoration:none;padding:7px 0;font-size:.95rem}
+.toc li i{flex:1;border-bottom:1px dotted var(--fg);transform:translateY(-3px)}
+.toc li a:hover span{color:var(--ac)}
+.toc b{font-weight:700;font-family:"Playfair Display"}
+.ad{border:3px double var(--fg);text-align:center}
+.bh2{text-transform:uppercase;letter-spacing:.3em;font-size:.7rem;font-weight:700;color:var(--ac)}
+.adt{font-family:"Playfair Display";font-weight:900;font-size:1.5rem;line-height:1.1;margin:8px 0}
+.ad .btn{margin-top:12px}
+@media (max-width:1000px){.front{grid-template-columns:1fr}.main{border-right:0;padding-right:0}.cols{column-count:2}}
+@media (max-width:620px){.cols{column-count:1;text-align:left}}
+/* rubrieken, kleine advertenties, reportages */
+.rubs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,60px);padding-bottom:clamp(30px,5vw,70px)}
+.rubriek article{padding:14px 0;border-bottom:1px solid rgba(22,19,14,.4)}
+.rubriek h3{font-size:clamp(1.3rem,2vw,1.8rem);line-height:1.1;font-weight:700;letter-spacing:-.01em}
+.rubriek h3 a{text-decoration:none}.rubriek h3 a:hover{color:var(--ac)}
+.rubriek p{color:var(--mut);font-size:.95rem;margin-top:4px}
+@media (max-width:800px){.rubs{grid-template-columns:1fr}}
+.kleine{padding-bottom:clamp(30px,5vw,70px)}
+.kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.klein{display:block;text-decoration:none;text-align:center;padding:22px 18px;border:1px solid var(--fg);outline:1px solid var(--fg);outline-offset:-6px;background:rgba(255,255,255,.3);transition:transform .35s var(--ease),background .3s}
+.klein span{display:block;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:6px}
+.klein b{font-family:"Playfair Display";font-size:1.35rem;line-height:1.15;font-weight:700}
+.klein:hover{transform:rotate(-1.2deg) scale(1.02);background:#fff}
+@media (max-width:800px){.kgrid{grid-template-columns:1fr 1fr}}@media (max-width:520px){.kgrid{grid-template-columns:1fr}}
+.reps{padding-bottom:clamp(30px,5vw,70px)}
+.reps .lead{margin:0 0 24px;color:var(--mut)}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.6vw,36px)}
+.rep{display:block;text-decoration:none;border-top:1px solid var(--fg);padding-top:14px}
+.rep figure img{aspect-ratio:4/3;width:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);transition:filter .6s}
+.rep:hover figure img{filter:none}
+.rep figcaption{font-size:.72rem;color:var(--mut);margin:6px 0 10px}
+.rep h3{font-size:clamp(1.4rem,2vw,1.9rem);line-height:1.08;margin:4px 0 6px;font-weight:900}
+.rep p:last-child{color:var(--mut);font-size:.95rem}
+@media (max-width:900px){.rgrid{grid-template-columns:1fr}}
+.stp{padding-bottom:clamp(30px,5vw,70px)}
+.st4{gap:0}
+.st4 li{border:0;border-right:1px solid rgba(22,19,14,.45);padding:0 clamp(14px,2vw,28px)}
+.st4 li:first-child{padding-left:0}.st4 li:last-child{border-right:0}
+.st4 .nn{font-family:"Playfair Display";font-weight:900;color:var(--ac)}
+@media (max-width:980px){.st4 li{border-right:0;padding:0;border-top:1px solid var(--fg);padding-top:12px}}
+.vw{padding-bottom:clamp(30px,5vw,70px)}
+.chips li{border-radius:0;border-width:1px;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}
+.brv{padding-bottom:clamp(30px,5vw,70px)}
+.faq{columns:2;column-gap:clamp(20px,4vw,60px)}
+.faq details{break-inside:avoid;border-top:1px solid var(--line);padding:14px 0}
+.faq details:last-child{border-bottom:0}
+.faq summary{font-family:"Playfair Display";font-weight:700;font-size:1.2rem;display:block}
+.faq summary::after{content:none}
+.faq .q{display:block;font-family:"Inter Tight";font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:3px}
+@media (max-width:760px){.faq{columns:1}}
+.ctastrip{border-top:4px double var(--fg);border-bottom:4px double var(--fg);margin:0 auto;max-width:var(--max);background:transparent}
+.ctastrip h2{font-family:"Playfair Display";font-weight:900}
+.ft{background:transparent;border-top:1px solid var(--fg);margin-top:30px}
+.ft h3{font-family:"Inter Tight";color:var(--ac)}
+.pagehead h1{font-weight:900;font-size:clamp(2.6rem,6.4vw,5.8rem)}
+.pagehead{border-bottom:1px solid var(--fg);padding-bottom:30px}
+.alt{background:rgba(255,255,255,.28)}
+input,select,textarea{background:rgba(255,255,255,.55)}
