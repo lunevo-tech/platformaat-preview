@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 3: Bioscoop</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},5000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/logo.css">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+:root{--black:#0b0a09;--off:#EDE6D8;--gold:#D7A93F;--rust:#A8432B;--bg:var(--black);--prog:var(--gold);--pad:clamp(16px,4vw,60px);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box}
+html{background:var(--black)}
+body{margin:0;background:var(--black);color:var(--off);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;overflow-x:hidden}
+main{overflow-x:clip}
+a{color:inherit;text-decoration:none}
+.sf{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:.9}
+.sf i{font-style:italic;color:var(--gold)}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.voorbeeld{position:fixed;left:12px;bottom:calc(12px + 2vh);z-index:200;background:var(--off);color:var(--black);font-size:.72rem;padding:6px 13px;border-radius:99px;max-width:calc(100vw - 24px)}
+
+header.top{position:fixed;left:0;right:0;top:0;z-index:100;mix-blend-mode:difference;color:#fff;pointer-events:none}
+header.top .in{display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad)}
+header.top a{pointer-events:auto}
+header.top nav{display:flex;gap:28px;font-size:.9rem;font-weight:500;align-items:center}
+header.top .pill{border:1.5px solid #fff;border-radius:99px;padding:8px 18px;font-weight:800}
+.tc{position:fixed;right:var(--pad);bottom:calc(14px + 2vh);z-index:100;color:#fff;mix-blend-mode:difference}
+
+/* intro */
+.intro{display:none}
+html.anim .intro{display:block;position:fixed;inset:0;z-index:10000;background:var(--black)}
+.intro .t{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;white-space:nowrap}
+.intro .t small{display:block;margin-bottom:14px;opacity:.7}
+.intro .t .sf{font-size:clamp(2.4rem,6vw,5.4rem);overflow:hidden;display:block;padding-bottom:.1em}
+.intro .bar{position:absolute;left:0;right:0;height:50vh;background:var(--black);z-index:2}
+.intro .b1{top:0}.intro .b2{bottom:0}
+
+/* balken van het scherm */
+.lb{position:fixed;left:0;right:0;height:2vh;background:#000;z-index:90;pointer-events:none}
+.lb.t{top:0}.lb.b{bottom:0}
+
+/* hero */
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;background:var(--black)}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+.hero .tt{position:absolute;left:var(--pad);right:var(--pad);bottom:15vh}
+.hero h1{margin:0;font-size:clamp(3.6rem,10.4vw,12rem)}
+.hero .cr{display:flex;justify-content:space-between;gap:20px;margin-top:22px;flex-wrap:wrap}
+.hero .sub{margin:0;max-width:40ch;font-size:1.05rem}
+.hero .vid-toggle{position:absolute;right:var(--pad);top:90px;background:transparent;color:var(--off);border:1px solid rgba(237,230,216,.6);padding:5px 12px;border-radius:99px;z-index:5}
+.hero .bars i{position:absolute;left:0;right:0;height:9vh;background:#000;z-index:4}
+.hero .bars i:first-child{top:0}.hero .bars i:last-child{bottom:0}
+
+/* scènes */
+.scenes{position:relative;height:560vh}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--black)}
+.stage .layer{position:absolute;inset:0}
+.stage .layer video,.stage .layer img{width:100%;height:100%;object-fit:cover}
+.stage .dim{position:absolute;inset:0;background:#000;opacity:.5;z-index:3}
+.stage .cap{position:absolute;left:var(--pad);right:var(--pad);bottom:12vh;z-index:5;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:5vw;align-items:end}
+.stage .sc{grid-column:1;grid-row:1;opacity:0}
+.stage .sc.on{opacity:1}
+.stage .side{grid-column:2;grid-row:1}
+.stage .sc .n{display:block;margin-bottom:12px;color:var(--gold)}
+.stage h2{margin:0;font-size:clamp(3.2rem,9vw,10rem)}
+.stage .sc p{margin:0 0 14px;max-width:34ch}
+.stage .sc ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.stage .sc li{border:1px solid rgba(237,230,216,.6);padding:4px 12px;border-radius:99px;font-size:.8rem}
+.stage .idx{position:absolute;right:var(--pad);top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+.stage .idx span{display:block;opacity:.45;transition:opacity .4s}
+.stage .idx span.on{opacity:1;color:var(--gold)}
+.stage .lbl2{position:absolute;left:var(--pad);top:clamp(80px,12vh,120px);z-index:6}
+html:not(.anim) .stage .sc,.stage .sc.static{grid-row:auto;opacity:1;margin-bottom:60px}
+html:not(.anim) .stage .side{display:none}
+
+/* aftiteling */
+.credits{padding:22vh var(--pad) 20vh;background:var(--black);position:relative}
+.credits .ttl{text-align:center;margin-bottom:16vh}
+.credits .ttl h2{margin:0;font-size:clamp(2.6rem,7vw,7.6rem)}
+.credits .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4vw;align-items:baseline;border-top:1px solid rgba(237,230,216,.22);padding:3.2vh 0;max-width:1100px;margin:0 auto}
+.credits .row:last-child{border-bottom:1px solid rgba(237,230,216,.22)}
+.credits .role{text-align:right;color:var(--gold)}
+.credits .nm{font-size:clamp(1.6rem,3.6vw,3.6rem)}
+.credits .row:hover .nm{color:var(--gold)}
+.credits .row .nm,.credits .row .role{transition:color .3s}
+
+/* filmrol */
+.reel{position:relative;height:100vh;min-height:640px;background:#14110e;overflow:hidden}
+.reel .hd{position:absolute;left:var(--pad);top:clamp(80px,12vh,110px);z-index:6;display:flex;gap:24px;align-items:baseline}
+.reel h2{margin:0;font-size:clamp(2.6rem,6vw,6rem)}
+.reel .track{display:flex;align-items:center;gap:3vw;height:100%;padding:0 var(--pad);width:max-content}
+.frm{flex:0 0 auto;width:min(60vw,860px);position:relative}
+.frm .strip{background:#000;padding:26px 0;position:relative}
+.frm .strip::before,.frm .strip::after{content:"";position:absolute;left:0;right:0;height:10px;background:repeating-linear-gradient(90deg,#14110e 0 14px,transparent 14px 30px)}
+.frm .strip::before{top:8px}.frm .strip::after{bottom:8px}
+.frm .pic{aspect-ratio:16/9;overflow:hidden;position:relative;background:#222}
+.frm .pic img{width:122%;max-width:none;height:100%;object-fit:cover;margin-left:-11%}
+.frm .meta{display:grid;grid-template-columns:auto 1fr;gap:6px 24px;margin-top:16px;align-items:baseline}
+.frm h3{margin:0;font-size:clamp(2.4rem,4.4vw,4.6rem)}
+.frm p{margin:0;font-size:.95rem;max-width:46ch}
+.frm .stamp{position:absolute;right:14px;top:34px;z-index:3;background:var(--off);color:var(--black);padding:3px 10px}
+.frm.intro-f{width:min(34vw,460px)}
+.frm.intro-f p.sf{font-size:clamp(2rem,3.6vw,3.8rem)}
+.reel:not(.is-pinned){height:auto;overflow:visible;padding:110px 0 60px}
+.reel:not(.is-pinned) .hd{position:static;padding:0 var(--pad) 20px}
+.reel:not(.is-pinned) .track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;height:auto;padding-bottom:20px}
+.reel:not(.is-pinned) .frm{scroll-snap-align:start;width:84vw}
+.reel:not(.is-pinned) .frm.intro-f{display:none}
+
+/* productieschema */
+.plan{background:var(--off);color:var(--black);padding:16vh var(--pad) 14vh;position:relative}
+.plan h2{margin:0 0 9vh;font-size:clamp(2.8rem,8vw,9rem)}
+.plan .takes{display:grid;grid-template-columns:repeat(4,1fr);gap:3vw}
+.take{border-top:3px solid var(--black);padding-top:14px}
+.take .slate{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.take .slate b{display:block;width:70%;height:20px;background:repeating-linear-gradient(115deg,var(--black) 0 18px,var(--off) 18px 36px);border:2px solid var(--black)}
+.take h3{margin:0 0 10px;font-size:clamp(2rem,3.4vw,3.6rem)}
+.take p{margin:0;max-width:26ch}
+
+/* slot */
+.slot{background:var(--black);padding:20vh var(--pad) 12vh;position:relative;text-align:center;overflow:hidden}
+.slot h2{margin:0 auto;font-size:clamp(3.4rem,12vw,13rem);max-width:10em}
+.slot .go{margin:7vh auto 0;display:grid;place-items:center;width:clamp(150px,13vw,210px);aspect-ratio:1;border-radius:50%;background:var(--gold);color:var(--black);font-weight:800;line-height:1.15;padding:14px}
+.slot form{max-width:560px;margin:10vh auto 0;display:grid;gap:16px;text-align:left}
+label{display:grid;gap:5px}
+input,textarea{font:inherit;font-size:1.05rem;background:transparent;color:var(--off);border:0;border-bottom:1.5px solid rgba(237,230,216,.5);padding:9px 0;border-radius:0}
+input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+textarea{min-height:80px;resize:vertical}
+.send{justify-self:start;font:inherit;font-weight:800;background:var(--off);color:var(--black);border:0;border-radius:99px;padding:14px 26px;cursor:pointer}
+.send:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.nota{font-size:.78rem;opacity:.7;margin:0}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:12vh;padding-top:22px;border-top:1px solid rgba(237,230,216,.25);font-size:.85rem;text-align:left}
+
+@media (max-width:900px){
+ header.top nav a:not(.pill){display:none}
+ .stage .cap{grid-template-columns:1fr;bottom:9vh}
+ .stage .idx{display:none}
+ .credits .row{grid-template-columns:1fr;gap:4px}.credits .role{text-align:left}
+ .plan .takes{grid-template-columns:1fr 1fr;gap:34px 4vw}
+ .scenes{height:auto}
+ .stage{position:relative;height:auto;overflow:visible}
+ .stage .layer,.stage .dim{display:none}
+ .stage .sc,html .stage .sc{display:block;position:relative;opacity:1;min-height:88vh;padding:14vh var(--pad) 8vh;background:#14110e;border-bottom:1px solid rgba(237,230,216,.2)}
+ .stage .cap{position:static;display:block}
+ .stage .lbl2{display:none}
+ .sc .mimg{display:block!important;aspect-ratio:16/10;margin-top:24px;overflow:hidden}
+ .sc .mimg img{width:100%;height:100%;object-fit:cover}
+}
+.sc .mimg{display:none}
+@media (max-width:520px){.plan .takes{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<div class="voorbeeld">Voorbeeld 3 van 7 · teksten en cases verzonnen</div>
+<div class="intro" data-intro aria-hidden="true"><div class="bar b1"></div><div class="bar b2"></div><div class="t"><small class="mono">Zichtbaar Media presenteert</small><span class="sf"><span class="il">Alles wat <i>zichtbaar</i> maakt</span></span></div></div>
+<header class="top"><div class="in">
+ <a class="zm-logo" href="#top" aria-label="Zichtbaar Media"><b>zichtbaar</b><i>media</i></a>
+ <nav aria-label="Hoofdmenu"><a href="#scenes" data-roll>Aanbod</a><a href="#reel" data-roll>Werk</a><a href="#plan" data-roll>Werkwijze</a><a class="pill" href="#slot" data-magnetic>Contact</a></nav>
+</div></header>
+<div class="lb t" aria-hidden="true"></div><div class="lb b" aria-hidden="true"></div>
+<div class="tc mono" id="tc" aria-hidden="true">00:00:00:00</div>
+
+<main id="top">
+<section class="hero" data-pwrap>
+ <video data-loop muted loop playsinline preload="auto" poster="../assets/media/video/microfoon-zaal.jpg" aria-hidden="true" data-parallax="8"><source src="../assets/media/video/microfoon-zaal.mp4" type="video/mp4"></video>
+ <div class="bars" aria-hidden="true"><i></i><i></i></div>
+ <button class="vid-toggle mono" type="button" aria-pressed="false">Pauzeer</button>
+ <div class="tt">
+  <span class="mono" data-load>Een marketingbureau · online én offline</span>
+  <h1 class="sf" data-load data-split>Alles wat <i>zichtbaar</i> maakt.</h1>
+  <div class="cr"><p class="sub" data-load data-delay=".6">Van gevel tot feed, met één plan en één aanspreekpunt. Scroll om de film te starten.</p><span class="mono" data-load data-delay=".8">Voorbeeldfilm · 1 van 7</span></div>
+ </div>
+</section>
+
+<section class="scenes" id="scenes" aria-label="Aanbod in vijf scènes">
+ <div class="stage" id="stage">
+  <div class="layer" data-l="0"><video data-loop muted loop playsinline preload="none" poster="../assets/media/video/team-vergadering.jpg" aria-hidden="true"><source src="../assets/media/video/team-vergadering.mp4" type="video/mp4"></video></div>
+  <div class="layer" data-l="1"><video data-loop muted loop playsinline preload="none" poster="../assets/media/video/webontwikkelaar.jpg" aria-hidden="true"><source src="../assets/media/video/webontwikkelaar.mp4" type="video/mp4"></video></div>
+  <div class="layer" data-l="2"><video data-loop muted loop playsinline preload="none" poster="../assets/media/video/microfoon.jpg" aria-hidden="true"><source src="../assets/media/video/microfoon.mp4" type="video/mp4"></video></div>
+  <div class="layer" data-l="3"><video data-loop muted loop playsinline preload="none" poster="../assets/media/video/neonreclame.jpg" aria-hidden="true"><source src="../assets/media/video/neonreclame.mp4" type="video/mp4"></video></div>
+  <div class="layer" data-l="4"><img src="../assets/media/foto/beurshal.jpg" alt=""></div>
+  <div class="dim"></div>
+  <span class="lbl2 mono">Vijf scènes, één plan</span>
+  <div class="idx mono" aria-hidden="true"><span class="on">01</span><span>02</span><span>03</span><span>04</span><span>05</span></div>
+  <div class="cap">
+   <div class="sc on" data-s="0"><span class="n mono">Scène 01 · Basis</span><h2 class="sf">Strategie <i>en merk</i></h2><div class="mimg"><img src="../assets/media/foto/team-plakbriefjes.jpg" alt="Team plant met plakbriefjes"></div></div>
+   <div class="sc" data-s="1"><span class="n mono">Scène 02 · Online</span><h2 class="sf">Websites <i>en vindbaarheid</i></h2><div class="mimg"><img src="../assets/media/foto/wireframe.jpg" alt="Schets van een website"></div></div>
+   <div class="sc" data-s="2"><span class="n mono">Scène 03 · Audio en beeld</span><h2 class="sf">Radio, foto <i>en video</i></h2><div class="mimg"><img src="../assets/media/foto/radiostudio.jpg" alt="Radiostudio"></div></div>
+   <div class="sc" data-s="3"><span class="n mono">Scène 04 · Offline</span><h2 class="sf">Gevel, wagen <i>en drukwerk</i></h2><div class="mimg"><img src="../assets/media/foto/gevel-winkel.jpg" alt="Winkelgevel"></div></div>
+   <div class="sc" data-s="4"><span class="n mono">Scène 05 · Publiek</span><h2 class="sf">Beurzen, pers <i>en evenementen</i></h2><div class="mimg"><img src="../assets/media/foto/beurshal.jpg" alt="Beurshal"></div></div>
+   <div class="side" id="side">
+    <p id="sp">Wie ben je, voor wie, en wat moet de markt onthouden? Eén blad waar al het andere werk uit volgt.</p>
+    <ul id="sl"><li>Positionering</li><li>Huisstijl</li><li>Kanaalplan</li></ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="credits" aria-label="Aftiteling">
+ <div class="ttl"><span class="mono" data-reveal>Rolverdeling</span><h2 class="sf" data-split>Wie doet <i>wat</i></h2></div>
+ <div class="row" data-reveal><span class="nm sf">Strategie</span><span class="role mono">Positionering · kanaalplan</span></div>
+ <div class="row" data-reveal><span class="nm sf">Websites en webshops</span><span class="role mono">Ontwerp · bouw · beheer</span></div>
+ <div class="row" data-reveal><span class="nm sf">Vindbaarheid</span><span class="role mono">SEO · Google-advertenties</span></div>
+ <div class="row" data-reveal><span class="nm sf">Sociale media</span><span class="role mono">Planning · beeld · opvolging</span></div>
+ <div class="row" data-reveal><span class="nm sf">Foto en video</span><span class="role mono">Beeld dat je zaak echt toont</span></div>
+ <div class="row" data-reveal><span class="nm sf">Drukwerk en huisstijl</span><span class="role mono">Folders · menukaarten · verpakking</span></div>
+ <div class="row" data-reveal><span class="nm sf">Gevel en voertuigen</span><span class="role mono">Borden · folie · belettering</span></div>
+ <div class="row" data-reveal><span class="nm sf">Radio, beurzen en pers</span><span class="role mono">Spots · stands · berichten</span></div>
+ <div class="row" data-reveal><span class="nm sf">Data en opvolging</span><span class="role mono">Maandbalans · bijsturen</span></div>
+</section>
+
+<section class="reel" id="reel" data-hscroll data-pad="60" aria-label="Voorbeeldcases">
+ <div class="hd"><h2 class="sf">Uit de <i>filmrol</i></h2><span class="mono">Voorbeeldcases, verzonnen bedrijven</span></div>
+ <div class="track" data-track>
+  <div class="frm intro-f"><p class="sf">Drie verzonnen zaken, elk met <i>gevel, papier, scherm en straat.</i></p></div>
+  <article class="frm" data-cursor="Play"><div class="strip"><div class="pic"><img data-hp src="../assets/media/foto/bakkerij-toonbank.jpg" alt="Toonbank van een bakkerij"></div></div><span class="stamp mono">Voorbeeld</span><div class="meta"><h3 class="sf">Kruimelkeet</h3><p>Bakkerij die een tweede winkel opent: raamfolie, menukaart, folder in de wijk, site met voorbestelling.</p></div></article>
+  <article class="frm" data-cursor="Play"><div class="strip"><div class="pic"><img data-hp src="../assets/media/foto/bloemist.jpg" alt="Bloemiste wikkelt een boeket"></div></div><span class="stamp mono">Voorbeeld</span><div class="meta"><h3 class="sf">Lenteveld</h3><p>Bloemisterij die buiten de feestdagen wil groeien: gevelbord, abonnementskaarten, markstand, webshop.</p></div></article>
+  <article class="frm" data-cursor="Play"><div class="strip"><div class="pic"><img data-hp src="../assets/media/foto/installateur.jpg" alt="Installateur plaatst een leiding"></div></div><span class="stamp mono">Voorbeeld</span><div class="meta"><h3 class="sf">Dakruiter</h3><p>Installatiebedrijf op zoek naar vaste klanten en personeel: belettering, radiospot, zoekadvertenties.</p></div></article>
+  <article class="frm" data-cursor="Play"><div class="strip"><div class="pic"><img data-hp src="../assets/media/foto/bestelwagen-b.jpg" alt="Witte bestelwagen"></div></div><span class="stamp mono">Voorbeeld</span><div class="meta"><h3 class="sf">Jouw zaak</h3><p>De volgende scène is van jou.</p></div></article>
+ </div>
+</section>
+
+<section class="plan" id="plan">
+ <h2 class="sf" data-split>Vier <i>takes</i>, geen verrassingen.</h2>
+ <div class="takes">
+  <div class="take" data-reveal><div class="slate mono"><span>Take 1</span><b></b></div><h3 class="sf">Kennismaking</h3><p>We luisteren en zeggen eerlijk wat we zouden laten liggen.</p></div>
+  <div class="take" data-reveal data-delay=".1"><div class="slate mono"><span>Take 2</span><b></b></div><h3 class="sf">Plan op één blad</h3><p>Doelen, kanalen, budget en kalender naast elkaar.</p></div>
+  <div class="take" data-reveal data-delay=".2"><div class="slate mono"><span>Take 3</span><b></b></div><h3 class="sf">Uitvoering</h3><p>Eén contactpersoon die met de drukker en de plaatser praat.</p></div>
+  <div class="take" data-reveal data-delay=".3"><div class="slate mono"><span>Take 4</span><b></b></div><h3 class="sf">Opvolging</h3><p>Elke maand een korte balans, geen rapport van dertig pagina's.</p></div>
+ </div>
+</section>
+
+<section class="slot" id="slot">
+ <span class="mono" data-reveal>Volgende scène</span>
+ <h2 class="sf" data-split style="margin-top:18px">Plan je eerste <i>scène.</i></h2>
+ <a class="go" href="#slot" data-magnetic><span data-mag-in>Plan een kennismaking</span></a>
+ <form onsubmit="return false">
+  <label class="mono">Naam<input type="text" name="naam" autocomplete="name"></label>
+  <label class="mono">E-mail<input type="email" name="email" autocomplete="email"></label>
+  <label class="mono">Waarmee kunnen we helpen?<textarea name="vraag"></textarea></label>
+  <button class="send" type="submit">Vraag een offerte</button>
+  <p class="nota">Voorbeeld: dit formulier is nog niet verbonden en verstuurt niets.</p>
+ </form>
+ <div class="foot"><span>Zichtbaar Media, voorbeeldontwerp 3 van 7</span><a href="../index.html">Terug naar alle ontwerpen</a></div>
+</section>
+</main>
+
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
+<script src="../assets/zm-engine.js"></script>
+<script>
+(function(){
+  var data=[
+   {p:'Wie ben je, voor wie, en wat moet de markt onthouden? Eén blad waar al het andere werk uit volgt.',l:['Positionering','Huisstijl','Kanaalplan']},
+   {p:'Een site die snel laadt, op een gsm leest als een boek en aanvragen binnenbrengt. En gevonden worden in Google.',l:['Website','Webshop','SEO','Google-advertenties']},
+   {p:'Spots die klinken zoals je zaak en beeld dat je zaak echt toont, voor site, sociale media en toonbank.',l:['Radio','Foto','Video','Sociale media']},
+   {p:'Uithangborden, raamfolie, belettering van bestelwagens, drukwerk en panelen langs de weg.',l:['Gevelreclame','Belettering','Drukwerk','Affiches']},
+   {p:'Een stand die opvalt, een opening met publiek en een verhaal dat de streekkrant wil drukken.',l:['Beurzen','Evenementen','Pers']}
+  ];
+  function setSide(i){ document.getElementById('sp').textContent=data[i].p; document.getElementById('sl').innerHTML=data[i].l.map(function(x){return '<li>'+x+'</li>'}).join(''); }
+  var anim=document.documentElement.classList.contains('anim');
+  var tcEl=document.getElementById('tc');
+  function pad(n){return (n<10?'0':'')+n}
+  function tc(prog){ var f=Math.round(prog*86400*24*0+prog*5400*25); var fr=f%25, s=Math.floor(f/25)%60, m=Math.floor(f/1500)%60, h=Math.floor(f/90000); tcEl.textContent=pad(h)+':'+pad(m)+':'+pad(s)+':'+pad(fr); }
+  if(!window.gsap||!window.ZM||!anim){
+    /* zonder beweging: alle scènes onder elkaar met hun foto */
+    document.querySelectorAll('.stage .sc').forEach(function(s){ s.classList.add('static'); });
+    document.querySelectorAll('.sc .mimg').forEach(function(m){ m.style.display='block'; m.style.aspectRatio='16/10'; m.style.overflow='hidden'; });
+    var side=document.getElementById('side'); if(side) side.style.display='none';
+    return;
+  }
+  var desk=matchMedia('(min-width:901px)').matches;
+  ScrollTrigger.create({start:0,end:'max',onUpdate:function(s){tc(s.progress)}});
+
+  /* intro: de zaal gaat open */
+  var intro=document.querySelector('.intro');
+  if(window.ZM.lenis) ZM.lenis.stop();
+  var itl=gsap.timeline({onComplete:function(){ if(intro) intro.remove(); if(window.ZM.lenis) ZM.lenis.start(); ScrollTrigger.refresh(); }});
+  itl.from('.intro .il',{yPercent:110,duration:1,ease:'expo.out'},0.1)
+     .from('.intro small',{opacity:0,duration:.8},0.1)
+     .to('.intro .t',{opacity:0,duration:.5},1.5)
+     .to('.intro .b1',{yPercent:-100,duration:1.1,ease:'expo.inOut'},1.7)
+     .to('.intro .b2',{yPercent:100,duration:1.1,ease:'expo.inOut'},1.7)
+     .set(intro,{background:'transparent'},1.7)
+     .add(function(){ ZM.start(); },2.1);
+
+  /* hero: balken schuiven weg, titel zakt */
+  gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}})
+    .to('.hero .bars i:first-child',{yPercent:-100,ease:'none'},0).to('.hero .bars i:last-child',{yPercent:100,ease:'none'},0)
+    .to('.hero .tt',{yPercent:-18,opacity:.2,ease:'none'},0);
+
+  /* scènes met vastgepinde beeldkamer */
+  if(desk){
+    var layers=gsap.utils.toArray('#stage .layer'), scs=gsap.utils.toArray('#stage .sc'), idx=gsap.utils.toArray('#stage .idx span');
+    var N=layers.length;
+    gsap.set(layers.slice(1),{clipPath:'inset(100% 0% 0% 0%)'});
+    gsap.set(layers[4].querySelector('img'),{scale:1.3});
+    var cur=-1;
+    function show(i){ if(i===cur) return; cur=i;
+      scs.forEach(function(s,k){ if(k===i){ gsap.fromTo(s,{opacity:0,y:40},{opacity:1,y:0,duration:.8,ease:'power3.out',overwrite:true}); s.classList.add('on'); } else { gsap.to(s,{opacity:0,y:-30,duration:.35,overwrite:true}); s.classList.remove('on'); } });
+      idx.forEach(function(x,k){ x.classList.toggle('on',k===i); });
+      gsap.fromTo('#side',{opacity:0,y:20},{opacity:1,y:0,duration:.8,delay:.1,overwrite:true}); setSide(i);
+    }
+    gsap.set(scs,{opacity:0}); show(0);
+    var tl=gsap.timeline({scrollTrigger:{trigger:'#scenes',start:'top top',end:'bottom bottom',scrub:.5,onUpdate:function(s){ show(Math.min(N-1,Math.floor(s.progress*N*0.999))); }}});
+    for(var i=1;i<N;i++){
+      tl.fromTo(layers[i],{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'none',duration:.8},i-1+0.1);
+      tl.fromTo(layers[i-1],{yPercent:0},{yPercent:-14,ease:'none',duration:1},i-1+0.1);
+    }
+    tl.to(layers[4].querySelector('img'),{scale:1,ease:'none',duration:1},3.2);
+    tl.to({},{duration:.25});
+  }
+})();
+</script>
+</body>
+</html>

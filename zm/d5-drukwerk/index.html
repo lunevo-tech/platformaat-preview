@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 5: Drukwerk</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},5000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,100..900,0..100;1,9..144,100..900,0..100&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/logo.css">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+:root{--paper:#F1EADB;--paper2:#E6DCC6;--ink:#1B1612;--roest:#A8432B;--marine:#1E327D;--goud:#D7A93F;--bg:var(--paper);--prog:var(--roest);--pad:clamp(16px,4vw,60px);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;overflow-x:hidden}
+main{overflow-x:clip}
+a{color:inherit;text-decoration:none}
+.fr{font-family:"Fraunces",Georgia,serif;font-variation-settings:"SOFT" 60,"opsz" 144;font-weight:800;letter-spacing:-.035em;line-height:.9}
+.fr em{font-style:italic;font-weight:400;font-variation-settings:"SOFT" 100,"opsz" 144}
+.lbl{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.voorbeeld{position:fixed;left:12px;bottom:12px;z-index:200;background:var(--ink);color:var(--paper);font-size:.72rem;padding:6px 13px;border-radius:99px;max-width:calc(100vw - 24px)}
+.duo{position:relative;background:var(--c1,var(--roest));overflow:hidden}
+.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.2) brightness(1.08);mix-blend-mode:multiply}
+.duo.m{--c1:var(--marine)}.duo.g{--c1:var(--goud)}
+
+header.top{position:fixed;left:0;right:0;top:0;z-index:100;mix-blend-mode:difference;color:#fff;pointer-events:none}
+header.top .in{display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad)}
+header.top a{pointer-events:auto}
+header.top nav{display:flex;gap:28px;font-weight:500;font-size:.9rem;align-items:center}
+header.top .pill{border:1.5px solid #fff;border-radius:99px;padding:8px 18px;font-weight:800}
+
+/* hero: misregistratie */
+.hero{position:relative;min-height:max(100vh,760px);padding:clamp(90px,14vh,130px) var(--pad) 40px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.mis{margin:0;display:grid;isolation:isolate;font-size:clamp(3.8rem,11.4vw,13rem);position:relative;z-index:3}
+.mis .m{grid-area:1/1;mix-blend-mode:multiply;display:block;will-change:transform}
+.mis .a{color:var(--roest);transform:translate(calc(var(--dx,0px)*-1),calc(var(--dy,0px)*-1))}
+.mis .b{color:var(--marine);transform:translate(var(--dx,0px),var(--dy,0px))}
+.mis .ln{display:block}
+.hero .row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;position:relative;z-index:4}
+.hero .row p{margin:0;max-width:36ch;font-size:1.1rem}
+.hero .hint{display:flex;gap:10px;align-items:center}
+.hero .hint i{display:block;width:44px;height:2px;background:var(--ink)}
+.reg{position:absolute;width:38px;height:38px;pointer-events:none;z-index:2}
+.reg::before,.reg::after{content:"";position:absolute;background:var(--ink)}
+.reg::before{left:50%;top:0;bottom:0;width:1px}.reg::after{top:50%;left:0;right:0;height:1px}
+.reg i{position:absolute;inset:9px;border:1px solid var(--ink);border-radius:50%}
+.reg.r1{right:var(--pad);top:96px}.reg.r2{left:calc(var(--pad) + 40vw);bottom:60px}
+.hphoto{position:absolute;z-index:2;overflow:hidden;box-shadow:0 0 0 8px var(--paper)}
+.hp1{right:9vw;top:26vh;width:clamp(170px,18vw,320px);aspect-ratio:4/5;transform:rotate(4deg)}
+.hp2{right:24vw;bottom:15vh;width:clamp(130px,12vw,220px);aspect-ratio:1;transform:rotate(-6deg)}
+
+/* vellen */
+.vellen{position:relative;height:100vh;min-height:640px;background:var(--paper2);overflow:hidden}
+.vstage{position:relative;height:100%;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:center;padding:0 var(--pad);gap:3vw}
+.vtext h2{margin:12px 0 16px;font-size:clamp(2.8rem,6vw,6.4rem)}
+.vtext p{margin:0 0 18px;max-width:34ch}
+.vtext ul{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.vtext li{border:1.5px solid var(--ink);padding:3px 12px;border-radius:99px;font-size:.82rem;font-weight:500}
+.vtext .ct{display:flex;gap:6px}.vtext .ct i{display:block;width:34px;height:4px;background:rgba(27,22,18,.2)}.vtext .ct i.on{background:var(--roest)}
+.vpile{position:relative;height:74vh;display:grid;place-items:center}
+.vel{position:absolute;width:min(32vw,460px);height:min(70vh,640px);background:var(--paper);box-shadow:0 0 0 2px var(--ink),14px 14px 0 var(--ink);padding:22px;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.vel .nm{display:flex;justify-content:space-between}
+.vel h3{margin:0;font-size:clamp(2rem,3.6vw,3.8rem)}
+.v1 .duo{flex:1;min-height:0}
+.v1 .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}.v1 .cols i{display:block;height:6px;background:var(--ink);opacity:.5;margin-bottom:8px}
+.v2{background:#F8F3E7}
+.v2 ul{list-style:none;margin:0;padding:0;display:grid;gap:14px;flex:1;align-content:center}
+.v2 li{display:flex;align-items:baseline;gap:8px;font-size:clamp(1.3rem,2vw,1.9rem)}
+.v2 li::after{content:"";flex:1;order:1;border-bottom:2px dotted var(--ink);transform:translateY(-4px)}
+.v2 li span{order:0}.v2 li b{order:2;font-weight:400}
+.v3{background:var(--roest);color:var(--paper);justify-content:space-between}
+.v3 .big{font-size:clamp(2.8rem,5.6vw,6.2rem);line-height:.85}
+.v3 .circ{position:absolute;right:-10%;bottom:-8%;width:62%;aspect-ratio:1;border-radius:50%;background:var(--marine);mix-blend-mode:multiply}
+.v4{background:var(--paper)}
+.v4 .cards{position:relative;flex:1}
+.v4 .cards b{position:absolute;left:8%;width:78%;height:32%;box-shadow:0 0 0 2px var(--ink);padding:12px 14px;display:flex;flex-direction:column;justify-content:space-between;font-weight:400}
+.v4 .cards b:nth-child(1){top:2%;background:var(--paper2);transform:rotate(-5deg)}
+.v4 .cards b:nth-child(2){top:30%;background:var(--goud);transform:rotate(3deg);left:14%}
+.v4 .cards b:nth-child(3){top:58%;background:var(--ink);color:var(--paper);transform:rotate(-2deg)}
+
+/* tafel */
+.tafel{position:relative;height:110vh;min-height:720px;background:var(--paper);overflow:hidden;border-top:2px solid var(--ink)}
+.tafel .hd{position:absolute;left:var(--pad);top:clamp(70px,10vh,100px);z-index:1;max-width:14em}
+.tafel h2{margin:0;font-size:clamp(2.8rem,6.6vw,7rem)}
+.tafel .tip{margin:12px 0 0;max-width:30ch}
+.it{position:absolute;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;transform:rotate(var(--r,0deg))}
+.it:active{cursor:grabbing}
+html.has-cursor .it,html.has-cursor .it:active{cursor:none}
+.it.ph{width:var(--w,16vw);aspect-ratio:var(--ar,4/5);padding:.6vw;background:var(--paper);box-shadow:0 0 0 2px var(--ink),8px 8px 0 rgba(27,22,18,.9)}
+.it.ph .duo{width:100%;height:100%}
+.it.ph .tape{position:absolute;left:50%;top:-14px;width:84px;height:26px;background:rgba(215,169,63,.9);transform:translateX(-50%) rotate(-4deg);z-index:3}
+.it.note{padding:16px 20px;font-size:clamp(1.4rem,2.4vw,2.4rem);box-shadow:0 0 0 2px var(--ink),6px 6px 0 var(--ink)}
+.it.n1{background:var(--goud)}.it.n2{background:var(--roest);color:var(--paper)}.it.n3{background:var(--marine);color:var(--paper)}.it.n4{background:var(--paper2)}
+.t1{left:30vw;top:10vh;--w:15vw;--r:-4deg}.t2{left:46vw;top:30vh;--w:19vw;--ar:4/3;--r:3deg}.t3{left:68vw;top:8vh;--w:14vw;--r:6deg}
+.t4{left:8vw;top:54vh;--w:17vw;--ar:1;--r:-5deg}.t5{left:60vw;top:56vh;--w:15vw;--r:-3deg}.t6{left:80vw;top:46vh;--w:13vw;--ar:3/4;--r:5deg}
+.q1{left:30vw;top:60vh;--r:-4deg}.q2{left:48vw;top:68vh;--r:3deg}.q3{left:22vw;top:78vh;--r:5deg}.q4{left:74vw;top:76vh;--r:-5deg}
+
+/* menukaart */
+.menu{background:var(--paper2);padding:14vh var(--pad);position:relative}
+.menu .tt{text-align:center;margin-bottom:8vh}
+.menu h2{margin:8px 0 0;font-size:clamp(2.8rem,7vw,7.6rem)}
+.menu .kol{display:grid;grid-template-columns:1fr 1fr;gap:8vw;max-width:1200px;margin:0 auto}
+.menu h3{margin:0 0 3vh;font-size:clamp(1.6rem,2.6vw,2.6rem);padding-bottom:12px;border-bottom:3px double var(--ink)}
+.menu ul{list-style:none;margin:0;padding:0}
+.menu li{display:flex;align-items:baseline;gap:10px;padding:1.4vh 0;font-size:clamp(1.3rem,2.2vw,2.1rem);font-family:"Fraunces",serif;font-variation-settings:"SOFT" 100,"opsz" 72;font-weight:400}
+.menu li::after{content:"";flex:1;order:1;border-bottom:2px dotted rgba(27,22,18,.6);transform:translateY(-.3em)}
+.menu li span{order:0}.menu li small{order:2;font-family:"Hanken Grotesk",sans-serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--roest)}
+.menu li:hover span{font-style:italic;color:var(--roest)}
+
+/* cases: waaier van kranten */
+.cases{position:relative;height:100vh;min-height:680px;background:var(--ink);color:var(--paper);overflow:hidden}
+.cases .hd{position:absolute;left:var(--pad);top:clamp(70px,10vh,100px);z-index:8;mix-blend-mode:difference;color:#fff}
+.cases h2{margin:0;font-size:clamp(2.6rem,6vw,6.4rem)}
+.fan{position:relative;height:100%}
+.pg{position:absolute;left:50%;top:54%;width:min(30vw,440px);height:min(70vh,620px);background:var(--paper);color:var(--ink);transform:translate(-50%,-50%);padding:18px 20px;display:flex;flex-direction:column;gap:12px;overflow:hidden;box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--ink)}
+.pg .mast{display:flex;justify-content:space-between;border-bottom:3px double var(--ink);padding-bottom:6px}
+.pg h3{margin:0;font-size:clamp(2.2rem,3.8vw,4rem)}
+.pg .duo{flex:1;min-height:0}
+.pg p{margin:0;font-size:.88rem;columns:2;column-gap:14px}
+.pg .stamp{position:absolute;right:14px;top:48px;background:var(--roest);color:var(--paper);padding:3px 10px;z-index:3;transform:rotate(4deg)}
+
+/* werkwijze */
+.wz{padding:14vh var(--pad);position:relative}
+.wz h2{margin:0 0 8vh;font-size:clamp(2.8rem,7vw,7.6rem)}
+.wz .row{display:grid;grid-template-columns:repeat(4,1fr);gap:3vw}
+.proef{position:relative;padding:28px 22px 24px;background:var(--paper)}
+.proef i{position:absolute;width:18px;height:18px;border:0 solid var(--ink)}
+.proef i:nth-child(1){left:0;top:0;border-left-width:2px;border-top-width:2px}
+.proef i:nth-child(2){right:0;top:0;border-right-width:2px;border-top-width:2px}
+.proef i:nth-child(3){left:0;bottom:0;border-left-width:2px;border-bottom-width:2px}
+.proef i:nth-child(4){right:0;bottom:0;border-right-width:2px;border-bottom-width:2px}
+.proef .no{display:block;font-size:clamp(4rem,7vw,7.4rem);color:var(--roest);margin-bottom:10px}
+.proef h3{margin:0 0 8px;font-size:1.6rem}
+.proef p{margin:0;max-width:26ch}
+.wz .row .proef:nth-child(even){margin-top:5vh}
+
+/* bestelbon */
+.bon{background:var(--paper2);padding:12vh var(--pad) 40px;position:relative;overflow:hidden}
+.bon h2{margin:0;font-size:clamp(3.6rem,12vw,14rem)}
+.bon .slip{position:relative;margin:8vh 0 0 auto;width:min(620px,100%);background:var(--paper);padding:34px 34px 30px;box-shadow:0 0 0 2px var(--ink),10px 10px 0 var(--ink);transform:rotate(-1.2deg)}
+.bon .slip::before{content:"";position:absolute;left:0;right:0;top:-2px;height:10px;background:radial-gradient(circle at 8px 0,var(--paper2) 6px,transparent 7px) repeat-x;background-size:16px 10px}
+.bon .stamp{position:absolute;right:20px;top:-30px;border:4px solid var(--roest);color:var(--roest);padding:6px 16px;transform:rotate(-12deg);background:var(--paper);font-size:clamp(1.6rem,2.6vw,2.6rem)}
+form{display:grid;gap:16px}
+label{display:grid;gap:5px}
+input,textarea{font:inherit;font-size:1.05rem;text-transform:none;letter-spacing:0;background:transparent;color:var(--ink);border:0;border-bottom:2px solid var(--ink);padding:8px 0;border-radius:0}
+input:focus-visible,textarea:focus-visible{outline:3px solid var(--marine);outline-offset:3px}
+textarea{min-height:72px;resize:vertical}
+.send{justify-self:start;font:inherit;font-weight:800;background:var(--ink);color:var(--paper);border:0;padding:14px 26px;cursor:pointer}
+.send:focus-visible{outline:3px solid var(--marine);outline-offset:3px}
+.nota{font-size:.78rem;margin:0}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:10vh;padding-top:18px;border-top:2px solid var(--ink);font-size:.85rem}
+
+@media (max-width:900px){
+ header.top nav a:not(.pill){display:none}
+ .hp1{right:5vw;top:34vh;width:32vw}.hp2{display:none}
+ .mis{font-size:clamp(3rem,12.4vw,7rem)}
+ .vellen{height:auto;overflow:visible;padding:100px 0 60px}
+ .vstage{display:block;height:auto;padding:0 var(--pad)}
+ .vpile{height:auto;display:grid;gap:26px;margin-top:26px}
+ .vel{position:relative;width:100%;height:auto;min-height:340px;transform:none!important;box-shadow:0 0 0 2px var(--ink),8px 8px 0 var(--ink)}
+ .tafel{height:auto;padding:100px var(--pad) 50px;display:block}
+ .tafel .hd{position:static;margin-bottom:30px}
+ .tafel .stage{display:grid;grid-template-columns:1fr 1fr;gap:26px 20px;align-items:start}
+ .it{position:relative;left:auto!important;top:auto!important;width:auto!important;touch-action:auto}
+ .it.ph{--w:auto}
+ .menu .kol{grid-template-columns:1fr;gap:6vh}
+ .cases{height:auto;overflow:visible;padding:100px var(--pad) 60px}
+ .cases .hd{position:static;mix-blend-mode:normal;color:var(--paper);margin-bottom:24px}
+ .fan{height:auto;display:grid;gap:26px}
+ .pg{position:relative;left:auto;top:auto;width:100%;height:auto;min-height:420px;transform:none!important}
+ .wz .row{grid-template-columns:1fr 1fr;gap:30px 4vw}.wz .row .proef:nth-child(even){margin-top:0}
+ .bon .slip{transform:none;margin-top:9vh}
+}
+@media (max-width:520px){.wz .row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<div class="voorbeeld">Voorbeeld 5 van 7 · teksten en cases verzonnen</div>
+<header class="top"><div class="in">
+ <a class="zm-logo" href="#top" aria-label="Zichtbaar Media"><b>zichtbaar</b><i>media</i></a>
+ <nav aria-label="Hoofdmenu"><a href="#vellen" data-roll>Drukwerk</a><a href="#menu" data-roll>Aanbod</a><a href="#cases" data-roll>Werk</a><a class="pill" href="#bon" data-magnetic>Contact</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero" id="hero">
+ <span class="reg r1"><i></i></span><span class="reg r2"><i></i></span>
+ <figure class="hphoto hp1 duo" data-drift="-80"><img src="../assets/media/foto/drukpers.jpg" alt="Drukpers met oranje papier"></figure>
+ <figure class="hphoto hp2 duo m" data-drift="-120"><img src="../assets/media/foto/gevel-winkel.jpg" alt="Winkelgevel aan een straathoek"></figure>
+ <h1 class="mis fr" aria-label="Zichtbaar op papier én op scherm">
+  <span class="m a" aria-hidden="true"><span class="ln">Zichtbaar</span><span class="ln">op <em>papier</em></span><span class="ln">én op scherm.</span></span>
+  <span class="m b" aria-hidden="true"><span class="ln">Zichtbaar</span><span class="ln">op <em>papier</em></span><span class="ln">én op scherm.</span></span>
+ </h1>
+ <div class="row">
+  <p data-load data-delay=".3">Zichtbaar Media is een full-service marketingbureau. Online en offline, van drukproef tot zoekresultaat, met één plan en één aanspreekpunt.</p>
+  <span class="hint lbl" data-load data-delay=".5"><i></i>Beweeg je muis, kijk naar de kleuren</span>
+ </div>
+</section>
+
+<section class="vellen" id="vellen" aria-label="Vier soorten drukwerk">
+ <div class="vstage">
+  <div class="vtext" id="vtext">
+   <span class="lbl" id="vk">Vel 1 van 4</span>
+   <h2 class="fr" id="vh">Brochure</h2>
+   <p id="vp">Wat je klanten kunnen vasthouden: een brochure in jouw toon, met foto's die jouw zaak echt tonen.</p>
+   <ul id="vl"><li>Ontwerp</li><li>Tekst</li><li>Druk</li></ul>
+   <div class="ct" id="vc" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="vpile">
+   <article class="vel v4"><div class="nm lbl"><span>04</span><span>Visitekaartjes</span></div><h3 class="fr">Je naam, <em>onthouden.</em></h3><div class="cards"><b><span class="lbl">Zichtbaar Media</span><span class="fr" style="font-size:1.6rem">Jouw zaak</span></b><b><span class="lbl">Eén aanspreekpunt</span><span class="fr" style="font-size:1.6rem">Voor alles</span></b><b><span class="lbl">Online én offline</span><span class="fr" style="font-size:1.6rem">Eén plan</span></b></div></article>
+   <article class="vel v3"><div class="nm lbl"><span>03</span><span>Affiche</span></div><span class="big fr">Grote<br><em>opening</em></span><span class="lbl">Zaterdag · voorbeeld</span><i class="circ" aria-hidden="true"></i></article>
+   <article class="vel v2"><div class="nm lbl"><span>02</span><span>Menukaart</span></div><h3 class="fr">Vers, <em>elke dag.</em></h3><ul><li><span>Brood</span><b>vers</b></li><li><span>Koffie</span><b>warm</b></li><li><span>Gebak</span><b>zoet</b></li><li><span>Boterkoek</span><b>vandaag</b></li></ul></article>
+   <article class="vel v1"><div class="nm lbl"><span>01</span><span>Brochure</span></div><h3 class="fr">Ons <em>verhaal</em></h3><div class="duo"><img src="../assets/media/foto/brochure-kleurstalen.jpg" alt="Twee mensen bekijken een brochure met kleurstalen"></div><div class="cols"><div><i></i><i></i><i></i></div><div><i></i><i></i></div></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="tafel" id="tafel" aria-label="Tafel met beeld">
+ <div class="hd"><h2 class="fr" data-split>Leg het <em>zelf</em> op tafel.</h2><p class="tip">Sleep de foto's en briefjes rond. Zo voelt een plan dat online en offline samenvalt.</p></div>
+ <div class="stage">
+  <figure class="it ph t1" data-cursor="Sleep"><span class="tape"></span><div class="duo"><img src="../assets/media/foto/gevel-winkel.jpg" alt="Winkelgevel"></div></figure>
+  <figure class="it ph t2" data-cursor="Sleep"><div class="duo m"><img src="../assets/media/foto/team-plakbriefjes.jpg" alt="Team plant met plakbriefjes"></div></figure>
+  <figure class="it ph t3" data-cursor="Sleep"><span class="tape"></span><div class="duo g"><img src="../assets/media/foto/radiostudio.jpg" alt="Radiostudio"></div></figure>
+  <figure class="it ph t4" data-cursor="Sleep"><div class="duo"><img src="../assets/media/foto/telefoon-schetsen.jpg" alt="Hand met smartphone boven schetsen"></div></figure>
+  <figure class="it ph t5" data-cursor="Sleep"><span class="tape"></span><div class="duo m"><img src="../assets/media/foto/bestelwagen-a.jpg" alt="Witte bestelwagen"></div></figure>
+  <figure class="it ph t6" data-cursor="Sleep"><div class="duo g"><img src="../assets/media/foto/bloemist.jpg" alt="Bloemiste wikkelt een boeket"></div></figure>
+  <div class="it note n1 fr q1" data-cursor="Sleep">Gevel</div>
+  <div class="it note n2 fr q2" data-cursor="Sleep">Folder</div>
+  <div class="it note n3 fr q3" data-cursor="Sleep">Website</div>
+  <div class="it note n4 fr q4" data-cursor="Sleep">Feed</div>
+ </div>
+</section>
+
+<section class="menu" id="menu" aria-label="Aanbod als menukaart">
+ <div class="tt"><span class="lbl" data-reveal>De kaart</span><h2 class="fr" data-split>Wat we <em>serveren</em></h2></div>
+ <div class="kol">
+  <div data-reveal><h3 class="fr">Online</h3><ul><li><span>Strategie en merk</span><small>basis</small></li><li><span>Websites en webshops</span><small>site</small></li><li><span>Vindbaarheid, SEO</span><small>google</small></li><li><span>Google-advertenties</span><small>sea</small></li><li><span>Sociale media</span><small>feed</small></li><li><span>Foto en video</span><small>beeld</small></li><li><span>Data en opvolging</span><small>maandelijks</small></li></ul></div>
+  <div data-reveal data-delay=".15"><h3 class="fr">Offline</h3><ul><li><span>Drukwerk en huisstijl</span><small>papier</small></li><li><span>Gevelreclame</span><small>straat</small></li><li><span>Raamfolie en signalisatie</span><small>etalage</small></li><li><span>Voertuigbelettering</span><small>wagen</small></li><li><span>Affiches en panelen</span><small>weg</small></li><li><span>Radio en audio</span><small>streek</small></li><li><span>Beurzen, pers, evenementen</span><small>publiek</small></li></ul></div>
+ </div>
+</section>
+
+<section class="cases" id="cases" aria-label="Voorbeeldcases">
+ <div class="hd"><h2 class="fr">Op de voorpagina</h2></div>
+ <div class="fan" id="fan">
+  <article class="pg" data-cursor="Lees"><div class="mast lbl"><span>De Buurtkrant</span><span>Voorbeeld</span></div><span class="stamp lbl">Verzonnen</span><h3 class="fr">Kruimelkeet <em>opent</em> tweede winkel</h3><div class="duo"><img src="../assets/media/foto/bakkerij-toonbank.jpg" alt="Toonbank van een bakkerij"></div><p>Raamfolie, menukaart en folder in de wijk, een site met voorbestelling en een opening waar de buurt bij was.</p></article>
+  <article class="pg" data-cursor="Lees"><div class="mast lbl"><span>De Buurtkrant</span><span>Voorbeeld</span></div><span class="stamp lbl">Verzonnen</span><h3 class="fr">Lenteveld <em>groeit</em> buiten de feestdagen</h3><div class="duo m"><img src="../assets/media/foto/bloemist.jpg" alt="Bloemiste wikkelt een boeket"></div><p>Gevelbord, abonnementskaarten, markstand en een webshop met leveringen, voor een rustiger en regelmatiger jaar.</p></article>
+  <article class="pg" data-cursor="Lees"><div class="mast lbl"><span>De Buurtkrant</span><span>Voorbeeld</span></div><span class="stamp lbl">Verzonnen</span><h3 class="fr">Dakruiter zoekt <em>nieuwe</em> collega's</h3><div class="duo g"><img src="../assets/media/foto/installateur.jpg" alt="Installateur plaatst een leiding"></div><p>Belettering op drie wagens, een radiospot, zoekadvertenties op spoed en een vacaturepagina.</p></article>
+ </div>
+</section>
+
+<section class="wz" id="werkwijze">
+ <h2 class="fr" data-split>Vier <em>drukproeven</em></h2>
+ <div class="row">
+  <div class="proef" data-reveal><i></i><i></i><i></i><i></i><span class="no fr">1</span><h3 class="fr">Kennismaking</h3><p>We luisteren en zeggen eerlijk wat we zouden laten liggen.</p></div>
+  <div class="proef" data-reveal data-delay=".1"><i></i><i></i><i></i><i></i><span class="no fr">2</span><h3 class="fr">Plan op één blad</h3><p>Doelen, kanalen, budget en kalender naast elkaar.</p></div>
+  <div class="proef" data-reveal data-delay=".2"><i></i><i></i><i></i><i></i><span class="no fr">3</span><h3 class="fr">Uitvoering</h3><p>Eén contactpersoon die met de drukker en de plaatser praat.</p></div>
+  <div class="proef" data-reveal data-delay=".3"><i></i><i></i><i></i><i></i><span class="no fr">4</span><h3 class="fr">Opvolging</h3><p>Elke maand een korte balans, geen rapport van dertig pagina's.</p></div>
+ </div>
+</section>
+
+<section class="bon" id="bon">
+ <h2 class="fr" data-split>Laat het <em>drukken.</em></h2>
+ <div class="slip" data-tilt="3"><span class="stamp fr" id="stamp">Akkoord</span>
+  <form onsubmit="return false">
+   <label class="lbl">Naam<input type="text" name="naam" autocomplete="name"></label>
+   <label class="lbl">E-mail<input type="email" name="email" autocomplete="email"></label>
+   <label class="lbl">Waarmee kunnen we helpen?<textarea name="vraag"></textarea></label>
+   <button class="send" type="submit" data-magnetic>Vraag een offerte</button>
+   <p class="nota">Voorbeeld: dit formulier is nog niet verbonden en verstuurt niets.</p>
+  </form>
+ </div>
+ <div class="foot"><span>Zichtbaar Media, voorbeeldontwerp 5 van 7</span><a href="../index.html">Terug naar alle ontwerpen</a></div>
+</section>
+</main>
+
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
+<script src="../assets/zm-engine.js"></script>
+<script>
+(function(){
+  var V=[
+   ['Brochure','Wat je klanten kunnen vasthouden: een brochure in jouw toon, met foto\'s die jouw zaak echt tonen.',['Ontwerp','Tekst','Druk']],
+   ['Menukaart','Voor de toonbank en de tafel: leesbaar, in jouw huisstijl en klaar om te hergebruiken online.',['Menukaart','Verpakking','Etiketten']],
+   ['Affiche','Op de muur van de buurt: één boodschap, één blik, en dezelfde kleuren als je site.',['Affiches','Panelen','Aanplakking']],
+   ['Visitekaartjes','Klein, maar het eerste wat iemand van je meeneemt. Dezelfde naam als op je gevel en je scherm.',['Kaartjes','Briefpapier','Stempels']]
+  ];
+  var anim=document.documentElement.classList.contains('anim');
+  var desk=matchMedia('(min-width:901px)').matches;
+  function setV(i){ document.getElementById('vk').textContent='Vel '+(i+1)+' van 4'; document.getElementById('vh').textContent=V[i][0]; document.getElementById('vp').textContent=V[i][1];
+    document.getElementById('vl').innerHTML=V[i][2].map(function(x){return '<li>'+x+'</li>'}).join('');
+    var d=document.querySelectorAll('#vc i'); d.forEach(function(x,k){ x.classList.toggle('on',k===i); }); }
+
+  if(!window.gsap||!window.ZM||!anim) return;
+
+  /* misregistratie: kleuren schuiven met de muis en bij scrollen */
+  var mis=document.querySelector('.mis'), tx=0,ty=0,sx=0,sy=0;
+  function set(){ mis.style.setProperty('--dx',(tx+sx).toFixed(1)+'px'); mis.style.setProperty('--dy',(ty+sy).toFixed(1)+'px'); }
+  var qx=gsap.quickTo({v:0},'v');
+  window.addEventListener('mousemove',function(e){ var nx=(e.clientX/innerWidth-.5), ny=(e.clientY/innerHeight-.5); gsap.to(window.__m||(window.__m={}),{}); tx=nx*38; ty=ny*22; set(); });
+  ScrollTrigger.create({trigger:'.hero',start:'top top',end:'bottom top',scrub:true,onUpdate:function(s){ sx=s.progress*60; sy=s.progress*30; set(); }});
+  gsap.set(mis,{opacity:0}); ZM.queue.push(function(){ gsap.to(mis,{opacity:1,duration:.1}); gsap.fromTo('.mis .a',{x:-90},{x:0,duration:1.6,ease:'expo.out'}); gsap.fromTo('.mis .b',{x:90},{x:0,duration:1.6,ease:'expo.out'}); });
+  gsap.set('.hphoto',{opacity:0,y:60}); ZM.queue.push(function(){ gsap.to('.hphoto',{opacity:1,y:0,duration:1.2,stagger:.2,ease:'power3.out',delay:.4}); });
+
+  /* vellen: het bovenste vel vliegt weg */
+  if(desk){
+    var vels=gsap.utils.toArray('.vel').reverse(); /* v1 eerst */
+    var rots=[0,-3,2,-2];
+    vels.forEach(function(v,i){ gsap.set(v,{rotate:rots[i],zIndex:10-i}); });
+    var cur=-1;
+    var tl=gsap.timeline({scrollTrigger:{trigger:'#vellen',start:'top top',end:'+=300%',pin:true,scrub:.6,anticipatePin:1,onUpdate:function(s){ var k=Math.min(3,Math.floor(s.progress*4*0.999)); if(k!==cur){ cur=k; setV(k); gsap.fromTo('#vtext',{opacity:.2,y:16},{opacity:1,y:0,duration:.5,overwrite:true}); } }}});
+    vels.slice(0,3).forEach(function(v,i){
+      tl.to(v,{x:'-110vw',y:'-20vh',rotate:-28+(i*8),ease:'power2.in',duration:1},i);
+    });
+    tl.to({},{duration:.4});
+  }
+
+  /* tafel: foto's vallen neer en zijn te slepen */
+  var items=gsap.utils.toArray('.it');
+  items.forEach(function(el,i){
+    var r=parseFloat(getComputedStyle(el).getPropertyValue('--r'))||0;
+    gsap.set(el,{rotate:r});
+    if(desk) gsap.fromTo(el,{y:-window.innerHeight*0.9,opacity:0,rotate:r+gsap.utils.random(-30,30)},{y:0,opacity:1,rotate:r,duration:1.2,ease:'back.out(1.2)',delay:i*.08,scrollTrigger:{trigger:'#tafel',start:'top 65%',once:true}});
+  });
+  if(desk){
+    var z=20;
+    items.forEach(function(el){
+      var down=false,ox=0,oy=0,cx=0,cy=0;
+      el.addEventListener('pointerdown',function(e){ down=true; el.setPointerCapture(e.pointerId); z++; el.style.zIndex=z; ox=e.clientX; oy=e.clientY; cx=gsap.getProperty(el,'x'); cy=gsap.getProperty(el,'y'); gsap.to(el,{scale:1.06,duration:.2}); });
+      el.addEventListener('pointermove',function(e){ if(!down) return; gsap.set(el,{x:cx+(e.clientX-ox),y:cy+(e.clientY-oy)}); });
+      function up(){ if(!down) return; down=false; gsap.to(el,{scale:1,duration:.5,ease:'elastic.out(1,.5)'}); }
+      el.addEventListener('pointerup',up); el.addEventListener('pointercancel',up);
+    });
+  }
+
+  /* krantenwaaier */
+  var pgs=gsap.utils.toArray('.pg');
+  if(desk){
+    gsap.set(pgs,{rotate:function(i){return [-4,3,-2][i]},x:function(i){return [-10,10,0][i]}});
+    var ft=gsap.timeline({scrollTrigger:{trigger:'#cases',start:'top top',end:'+=160%',pin:true,scrub:.7,anticipatePin:1}});
+    ft.to(pgs[0],{xPercent:-62,rotate:-6,duration:1,ease:'power2.out'},0).to(pgs[2],{xPercent:62,rotate:6,duration:1,ease:'power2.out'},0).to(pgs[1],{yPercent:-4,rotate:0,duration:1},0).to({},{duration:.5});
+  }
+
+  /* stempel slaat neer */
+  gsap.fromTo('#stamp',{scale:3,opacity:0,rotate:-30},{scale:1,opacity:1,rotate:-12,duration:.5,ease:'power4.in',scrollTrigger:{trigger:'#bon .slip',start:'top 70%',once:true}});
+})();
+</script>
+</body>
+</html>

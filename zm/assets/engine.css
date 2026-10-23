@@ -1,0 +1,49 @@
+/* Gedeelde beweging voor de premium voorbeeldontwerpen (werkt samen met zm-engine.js).
+   Regel: zonder script of bij "minder beweging" staat alles meteen zichtbaar. */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* beginstanden, alleen als animatie aan staat */
+html.anim [data-reveal],html.anim [data-load]:not([data-split]){opacity:0}
+html.anim [data-split]:not(.is-split),html.anim [data-words]:not(.is-split){visibility:hidden}
+html.anim [data-mask]:not(.is-ready){visibility:hidden}
+
+/* woorden en letters */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.06em .08em .12em;margin:-.06em -.08em -.12em}
+.wi{display:inline-block;will-change:transform}
+.ch{display:inline-block}
+[data-words] .w{overflow:visible;padding:0;margin:0}
+[data-words] .wi{will-change:opacity}
+
+/* afdekking voor onthulling van beeld */
+[data-mask]{position:relative;overflow:hidden}
+[data-mask] .cover{position:absolute;inset:0;background:var(--cover,var(--bg,#fff));z-index:4;pointer-events:none}
+
+/* link met rolletekst */
+.roll{display:inline-flex;overflow:hidden;vertical-align:bottom;position:relative}
+.roll>span{display:block;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.roll>span+span{position:absolute;left:0;top:0;transform:translateY(105%)}
+a:hover .roll>span:first-child,a:focus-visible .roll>span:first-child,button:hover .roll>span:first-child,button:focus-visible .roll>span:first-child{transform:translateY(-105%)}
+a:hover .roll>span+span,a:focus-visible .roll>span+span,button:hover .roll>span+span,button:focus-visible .roll>span+span{transform:none}
+
+/* eigen cursor, alleen met muis */
+.zm-cursor{position:fixed;left:0;top:0;pointer-events:none;z-index:9999;mix-blend-mode:difference}
+.zm-cursor .dot,.zm-cursor .ring{position:fixed;left:0;top:0;border-radius:50%;background:#fff;transform:translate(-50%,-50%)}
+.zm-cursor .dot{width:8px;height:8px}
+.zm-cursor .ring{width:34px;height:34px;background:transparent;border:1.5px solid #fff;display:grid;place-items:center;transition:width .4s cubic-bezier(.2,.8,.2,1),height .4s cubic-bezier(.2,.8,.2,1),background .3s}
+.zm-cursor .ring b{font:800 .7rem/1 "Hanken Grotesk",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#000;opacity:0;transition:opacity .25s;text-align:center}
+.zm-cursor.is-link .ring{width:60px;height:60px}
+.zm-cursor.is-label .ring{width:104px;height:104px;background:#fff}
+.zm-cursor.is-label .ring b{opacity:1}
+.zm-cursor.is-hidden{opacity:0}
+@media (hover:none),(pointer:coarse){.zm-cursor{display:none}}
+html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor [data-cursor]{cursor:none}
+
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;z-index:9000;background:var(--prog,#A8432B)}
+
+.vid-toggle{font:inherit;font-size:.8125rem;cursor:pointer}
+
+img,video{display:block;max-width:100%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

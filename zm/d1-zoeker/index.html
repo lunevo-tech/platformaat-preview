@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 1: Zoeker</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},5000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,800;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/logo.css">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+:root{--paper:#EFE9DD;--paper2:#E3DAC8;--ink:#14110E;--roest:#A8432B;--marine:#1E327D;--goud:#D7A93F;--bg:var(--paper);--prog:var(--roest);--pad:clamp(16px,4vw,56px);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.disp{font-family:"Bricolage Grotesque",sans-serif;font-variation-settings:"wdth" 80,"opsz" 96;font-weight:800;letter-spacing:-.035em;line-height:.9}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.lbl{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.voorbeeld{position:fixed;left:12px;bottom:12px;z-index:200;background:var(--ink);color:var(--paper);font-size:.72rem;padding:6px 13px;border-radius:99px;max-width:calc(100vw - 24px)}
+main{overflow-x:clip}
+
+/* intro */
+.intro{display:none}
+html.anim .intro{display:block;position:fixed;inset:0;z-index:10000;background:var(--paper)}
+.intro .vf{position:absolute}
+.intro .vf i{position:absolute;width:42px;height:42px;border:0 solid var(--ink)}
+.intro .vf i:nth-child(1){left:0;top:0;border-left-width:4px;border-top-width:4px}
+.intro .vf i:nth-child(2){right:0;top:0;border-right-width:4px;border-top-width:4px}
+.intro .vf i:nth-child(3){left:0;bottom:0;border-left-width:4px;border-bottom-width:4px}
+.intro .vf i:nth-child(4){right:0;bottom:0;border-right-width:4px;border-bottom-width:4px}
+.intro .name{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.03em;white-space:nowrap;display:flex;gap:.2em;align-items:baseline}
+.intro .name b{font-weight:800}.intro .name em{font-weight:400}
+.intro .name span{display:inline-block;overflow:hidden;padding:0 .04em .1em}
+.intro .name span>*{display:inline-block}
+.intro .rec{position:absolute;left:50%;top:calc(50% + 64px);transform:translateX(-50%);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+
+/* kop */
+header.top{position:fixed;left:0;right:0;top:0;z-index:100;color:#fff;mix-blend-mode:difference;pointer-events:none}
+header.top .in{display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad);pointer-events:none}
+header.top a,header.top button{pointer-events:auto}
+header.top nav{display:flex;gap:30px;font-size:.9rem;font-weight:500}
+header.top .pill{border:1.5px solid #fff;border-radius:99px;padding:9px 18px;font-weight:800;font-size:.85rem;display:inline-block}
+.zm-logo{font-size:1.15rem}
+
+/* hero */
+.hero{position:relative;min-height:max(100vh,780px);overflow:hidden;background:var(--paper)}
+.hero .top{position:absolute;left:var(--pad);right:var(--pad);top:clamp(88px,13vh,130px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:40px;align-items:start;z-index:6}
+.hero h1{margin:0;font-size:clamp(1.7rem,3.5vw,3.4rem);line-height:1.04;letter-spacing:-.02em;font-weight:400}
+.hero h1 em{color:var(--roest)}
+.hero .sub{margin:0;font-size:1rem;max-width:34ch;border-top:2px solid var(--ink);padding-top:14px}
+.word{position:absolute;left:0;right:0;bottom:0;isolation:isolate;height:clamp(250px,31vw,600px);overflow:hidden;z-index:3}
+.word video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.05)}
+.word .letters{position:absolute;inset:0;background:#fff;mix-blend-mode:screen;display:flex;align-items:center;justify-content:center}
+.word .letters span{display:block;color:#000;font-size:clamp(230px,27.8vw,540px);line-height:.8;white-space:nowrap;transform-origin:50% 50%;padding-bottom:.02em}
+.word .tint{position:absolute;inset:0;background:var(--paper);mix-blend-mode:multiply}
+.frame-ph{position:absolute;z-index:5;background:var(--paper);padding:8px;box-shadow:0 0 0 1.5px var(--ink)}
+.frame-ph img{width:100%;height:100%;object-fit:cover}
+.frame-ph .vf-c{position:absolute;inset:-10px;pointer-events:none}
+.frame-ph .vf-c i{position:absolute;width:18px;height:18px;border:0 solid var(--roest)}
+.frame-ph .vf-c i:nth-child(1){left:0;top:0;border-left-width:3px;border-top-width:3px}
+.frame-ph .vf-c i:nth-child(2){right:0;top:0;border-right-width:3px;border-top-width:3px}
+.frame-ph .vf-c i:nth-child(3){left:0;bottom:0;border-left-width:3px;border-bottom-width:3px}
+.frame-ph .vf-c i:nth-child(4){right:0;bottom:0;border-right-width:3px;border-bottom-width:3px}
+.frame-ph figcaption{position:absolute;left:8px;bottom:-26px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.fp1{left:7vw;top:36vh;width:clamp(150px,15vw,250px);aspect-ratio:4/5;transform:rotate(-5deg)}
+.fp2{right:8vw;top:31vh;width:clamp(160px,17vw,290px);aspect-ratio:1/1;transform:rotate(4deg)}
+.fp3{left:45vw;top:44vh;width:clamp(120px,11vw,190px);aspect-ratio:3/4;transform:rotate(7deg);z-index:5}
+.hero .cue{position:absolute;left:var(--pad);bottom:clamp(14px,3vh,30px);z-index:7;display:flex;gap:12px;align-items:center;color:#fff;mix-blend-mode:difference}
+.hero .cue i{display:block;width:1px;height:44px;background:#fff;transform-origin:50% 0}
+.hero .vid-toggle{position:absolute;right:var(--pad);bottom:18px;z-index:7;background:var(--ink);color:var(--paper);border:0;padding:6px 12px;border-radius:99px}
+
+/* lint */
+.ribbon{position:relative;z-index:20;background:var(--roest);color:var(--paper);transform:rotate(-1.6deg);margin:-26px -2vw -26px;padding:14px 0;overflow:hidden;white-space:nowrap}
+.ribbon .mq{display:inline-flex}
+.ribbon span{font-size:clamp(1.6rem,3.4vw,3.2rem);padding:0 1.1rem;display:inline-flex;align-items:center;gap:2.2rem;letter-spacing:-.02em}
+.ribbon span::after{content:"";width:.5em;height:.5em;background:var(--goud);display:inline-block;transform:rotate(45deg)}
+
+/* manifest */
+.manifest{height:240vh;position:relative}
+.manifest .stick{position:sticky;top:0;height:100vh;display:flex;align-items:center;padding:0 var(--pad)}
+.manifest p{margin:0;font-size:clamp(2rem,5.6vw,5.8rem);max-width:19em}
+.manifest .chip{display:inline-block;width:1.7em;height:.82em;border-radius:99px;overflow:hidden;vertical-align:-.1em;margin:0 .08em;background:var(--paper2)}
+.manifest .chip img{width:100%;height:100%;object-fit:cover}
+.manifest .acc{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--roest);letter-spacing:-.01em}
+
+/* aanbod: kaarten over elkaar */
+.aanbod{padding:6vh var(--pad) 10vh}
+.aanbod .kop{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:5vh;flex-wrap:wrap}
+.aanbod h2{margin:0;font-size:clamp(2.6rem,7.4vw,7.6rem)}
+.aanbod .kop p{margin:0;max-width:36ch;color:#4a4338}
+.stack{position:relative}
+.card{position:sticky;top:calc(84px + var(--i)*16px);margin-bottom:10vh;height:calc(100vh - 118px - var(--i)*16px);min-height:480px}
+.card:last-child{margin-bottom:0}
+.card-in{position:relative;height:100%;border-radius:30px;padding:clamp(22px,3.4vw,52px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:30px;background:var(--c);color:var(--t)}
+.card-shade{position:absolute;inset:0;border-radius:30px;background:#000;opacity:0;pointer-events:none;z-index:6}
+.card .no{font-size:.8rem;letter-spacing:.16em;font-weight:500;margin-bottom:auto}
+.card .txt{display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.card h3{margin:0 0 18px;font-size:clamp(2.2rem,5.2vw,5.4rem)}
+.card p{margin:0;max-width:40ch;font-size:1.02rem}
+.card .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0;list-style:none}
+.card .tags li{border:1.5px solid currentColor;border-radius:99px;padding:5px 13px;font-size:.8rem;font-weight:500}
+.card .ph{position:relative;align-self:center;justify-self:center;width:min(100%,430px);aspect-ratio:4/5;transform:rotate(var(--r,3deg));box-shadow:0 0 0 10px var(--paper);z-index:3;margin-top:-12%}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .ph .tag{position:absolute;left:-14px;top:18px;background:var(--ink);color:var(--paper);padding:5px 12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;z-index:2}
+.c1{--c:var(--paper2);--t:var(--ink)}.c2{--c:var(--marine);--t:var(--paper)}.c3{--c:var(--roest);--t:var(--paper)}.c4{--c:var(--ink);--t:var(--paper)}.c5{--c:var(--goud);--t:var(--ink)}.c6{--c:#1E5C45;--t:var(--paper)}.c7{--c:var(--paper2);--t:var(--ink)}
+
+/* reis */
+.journey{position:relative;height:100vh;overflow:hidden;background:var(--ink);color:var(--paper)}
+.journey .hd{position:absolute;left:var(--pad);top:clamp(70px,11vh,110px);z-index:8;display:flex;gap:30px;align-items:baseline;mix-blend-mode:difference;color:#fff}
+.journey .hd h2{margin:0;font-size:clamp(1.8rem,3.6vw,3.4rem)}
+.journey .track{display:flex;align-items:center;gap:5vw;height:100%;padding:0 var(--pad) 0 var(--pad);width:max-content;position:relative}
+.journey .bgtxt{position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:clamp(14rem,30vw,32rem);white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(239,233,221,.22);pointer-events:none;line-height:.8;z-index:0}
+.journey .pn{flex:0 0 auto;position:relative;z-index:1;width:min(40vw,560px)}
+.journey .pn.w{width:min(52vw,760px)}
+.journey .pn .fr{position:relative;overflow:hidden;background:#222;aspect-ratio:4/5}
+.journey .pn.w .fr{aspect-ratio:16/11}
+.journey .pn .fr img{width:122%;max-width:none;height:100%;object-fit:cover;margin-left:-11%}
+.journey .pn figcaption{display:flex;gap:14px;align-items:baseline;padding-top:12px}
+.journey .pn figcaption b{font-size:clamp(1.4rem,2.4vw,2.2rem);font-weight:800;letter-spacing:-.02em;font-family:"Bricolage Grotesque",sans-serif;font-variation-settings:"wdth" 80}
+.journey .pn figcaption span{font-size:.9rem;opacity:.75;max-width:26ch}
+.journey .pn:nth-child(odd){margin-top:9vh}.journey .pn:nth-child(even){margin-top:-9vh}
+.journey .pn .n{position:absolute;right:-14px;top:-30px;z-index:3;font-size:clamp(3rem,6vw,6rem);color:var(--goud)}
+.journey .scr{flex:0 0 auto;width:min(46vw,640px);position:relative;z-index:1}
+.journey .scr .bar{background:var(--paper);color:var(--ink);padding:18px 22px;border-radius:14px 14px 0 0;display:flex;gap:8px;align-items:center}
+.journey .scr .bar i{width:11px;height:11px;border-radius:50%;background:var(--ink);opacity:.35}
+.journey .scr .page{background:var(--marine);padding:26px;border-radius:0 0 14px 14px;min-height:300px}
+.journey .scr .page b{display:block;font-size:clamp(2rem,4vw,3.6rem);line-height:.95;font-family:"Bricolage Grotesque",sans-serif;font-variation-settings:"wdth" 80;font-weight:800;letter-spacing:-.03em}
+.journey .meter{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(18px,4vh,38px);z-index:8;display:flex;justify-content:space-between;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+.journey .meter::before{content:"";position:absolute;left:0;right:0;top:-12px;height:2px;background:rgba(239,233,221,.25)}
+.journey .meter::after{content:"";position:absolute;left:0;top:-12px;height:2px;width:100%;background:var(--goud);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+.journey:not(.is-pinned){height:auto;overflow:visible;padding:110px 0 70px}
+.journey:not(.is-pinned) .hd{position:static;padding:0 var(--pad) 30px}
+.journey:not(.is-pinned) .track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;gap:22px;height:auto;padding-bottom:20px}
+.journey:not(.is-pinned) .pn,.journey:not(.is-pinned) .scr{scroll-snap-align:start;width:78vw;margin-top:0!important}
+.journey:not(.is-pinned) .bgtxt,.journey:not(.is-pinned) .meter{display:none}
+
+/* cases */
+.case{position:relative;height:100vh;min-height:620px;background:var(--ink);overflow:hidden;color:var(--paper)}
+[data-frame]{position:absolute;inset:0;overflow:hidden}
+[data-frame] img{width:100%;height:100%;object-fit:cover}
+.case .stamp{position:absolute;left:var(--pad);top:clamp(74px,11vh,100px);z-index:6;border:1.5px solid var(--paper);padding:4px 10px;font-size:.7rem;letter-spacing:.14em}
+.case h3{position:absolute;left:0;bottom:21vh;z-index:5;margin:0;white-space:nowrap;font-size:clamp(5rem,15vw,15rem);mix-blend-mode:difference;color:#fff;line-height:.82;padding-left:var(--pad)}
+.case .meta{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(16px,4vh,34px);z-index:6;display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:26px;background:var(--paper);color:var(--ink);padding:18px 22px;border-radius:16px}
+.case .meta h4{margin:0 0 4px;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--roest);font-weight:500}
+.case .meta p{margin:0;font-size:.92rem;line-height:1.4}
+.case .meta .big{font-size:1.15rem;font-family:"Bricolage Grotesque",sans-serif;font-variation-settings:"wdth" 85;font-weight:800;line-height:1.05}
+.case:not(.live) [data-frame]{position:relative;height:100%}
+
+/* aan het werk */
+.werk{padding:14vh var(--pad) 12vh;position:relative;overflow:hidden}
+.werk .hd{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:8vh}
+.werk h2{margin:0;font-size:clamp(2.6rem,7.4vw,7.6rem)}
+.werk .hd p{margin:0;max-width:34ch;color:#4a4338}
+.fan{position:relative;display:flex;justify-content:center;align-items:center;height:min(58vh,520px)}
+.fan figure{position:relative;margin:0;width:min(31vw,470px);aspect-ratio:3/4;overflow:hidden;border-radius:18px;box-shadow:0 0 0 8px var(--paper);flex:0 0 auto;background:#222}
+.fan figure+figure{margin-left:-6vw}
+.fan figure video{width:100%;height:100%;object-fit:cover}
+.fan figcaption{position:absolute;left:14px;top:14px;background:var(--paper);padding:4px 10px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;z-index:2}
+.fan .vid-toggle{position:absolute;right:12px;bottom:12px;background:var(--paper);border:0;padding:5px 11px;border-radius:99px;z-index:3}
+
+/* werkwijze */
+.wijze{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:6vw;padding:8vh var(--pad) 16vh}
+.wijze .l{position:sticky;top:12vh;align-self:start}
+.wijze h2{margin:0 0 28px;font-size:clamp(2.6rem,6.4vw,6.4rem)}
+.wijze .l p{margin:0;max-width:30ch;color:#4a4338}
+.wijze .r{position:relative;padding-left:46px}
+.wijze .line{position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(20,17,14,.18)}
+.wijze .line i{display:block;width:100%;height:100%;background:var(--roest);transform:scaleY(0)}
+.st{position:relative;padding:0 0 18vh}
+.st:last-child{padding-bottom:0}
+.st::before{content:"";position:absolute;left:-44px;top:.7em;width:12px;height:12px;background:var(--paper);border:2px solid var(--roest);border-radius:50%}
+.st .nn{font-size:clamp(4rem,9vw,9rem);color:var(--roest);display:block;margin-bottom:8px}
+.st h3{margin:0 0 12px;font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:-.02em;font-family:"Bricolage Grotesque",sans-serif;font-variation-settings:"wdth" 85;font-weight:800}
+.st p{margin:0;max-width:44ch;color:#4a4338;font-size:1.05rem}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper);padding:16vh var(--pad) 40px;position:relative;overflow:hidden}
+.contact h2{margin:0;font-size:clamp(4.2rem,17vw,19rem);line-height:.8}
+.contact h2 .serif{color:var(--goud)}
+.contact .row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:6vw;margin-top:8vh;align-items:start}
+.contact .row p{margin:0 0 24px;max-width:36ch;opacity:.85}
+.cta{position:relative;width:clamp(150px,13vw,210px);aspect-ratio:1;border-radius:50%;background:var(--roest);color:var(--paper);display:grid;place-items:center;text-align:center;font-weight:800;font-size:.98rem;line-height:1.15;border:0;cursor:pointer;font-family:inherit}
+.cta span{display:block;padding:0 14px}
+form{display:grid;gap:18px}
+label{display:grid;gap:6px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+input,textarea{font:inherit;font-size:1.05rem;letter-spacing:0;text-transform:none;background:transparent;color:var(--paper);border:0;border-bottom:1.5px solid rgba(239,233,221,.5);padding:10px 0;border-radius:0}
+input:focus-visible,textarea:focus-visible{outline:3px solid var(--goud);outline-offset:3px}
+textarea{min-height:86px;resize:vertical}
+.send{justify-self:start;font:inherit;font-weight:800;background:var(--paper);color:var(--ink);border:0;border-radius:99px;padding:14px 26px;cursor:pointer}
+.send:focus-visible{outline:3px solid var(--goud);outline-offset:3px}
+.nota{font-size:.78rem;opacity:.7;margin:0}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:12vh;padding-top:22px;border-top:1px solid rgba(239,233,221,.3);font-size:.85rem}
+
+@media (max-width:900px){
+ header.top nav a:not(.pill){display:none}
+ .hero{min-height:max(100vh,640px)}
+ .hero .top{grid-template-columns:1fr;gap:16px}
+ .hero .sub{display:none}
+ .word{height:clamp(130px,31vw,240px)}
+ .word .letters span{font-size:clamp(120px,31.5vw,260px)}
+ .fp1{left:5vw;top:44vh;width:30vw}.fp2{right:5vw;top:40vh;width:34vw}.fp3{display:none}
+ .manifest{height:auto}.manifest .stick{position:static;height:auto;padding:12vh var(--pad)}
+ .card{position:sticky;top:calc(72px + var(--i)*10px);height:auto;min-height:0;margin-bottom:6vh}
+ .card-in{grid-template-columns:1fr;gap:16px;min-height:calc(100vh - 110px)}
+ .card .ph{width:60%;margin-top:0;align-self:start}
+ .card h3{font-size:clamp(2rem,10vw,3.6rem)}
+ .case{height:auto;min-height:0}
+ .case:not(.live) [data-frame]{height:62vh}
+ .case h3{position:relative;bottom:auto;white-space:normal;font-size:clamp(3.4rem,18vw,6rem);padding:20px var(--pad) 0}
+ .case .meta{position:relative;left:auto;right:auto;bottom:auto;grid-template-columns:1fr 1fr;margin:16px var(--pad)}
+ .case .stamp{top:16px}
+ .case{background:var(--ink)}
+ .fan{height:auto;flex-direction:column;gap:14px}.fan figure{width:78vw;aspect-ratio:4/3}.fan figure+figure{margin-left:0}
+ .wijze{grid-template-columns:1fr}.wijze .l{position:static}
+ .contact .row{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+ .hero .top{top:84px}
+ .hero h1{font-size:1.7rem}
+ .case .meta{grid-template-columns:1fr}
+ .card-in{padding:20px}
+}
+</style>
+</head>
+<body data-bg-fix>
+<div id="progress" aria-hidden="true"></div>
+<div class="intro" data-intro aria-hidden="true">
+ <div class="vf" id="vf"><i></i><i></i><i></i><i></i></div>
+ <div class="name disp"><span><b>zichtbaar</b></span><span><em class="serif">media</em></span></div>
+ <div class="rec">Laden</div>
+</div>
+<div class="voorbeeld">Voorbeeld 1 van 7 · teksten en cases verzonnen</div>
+
+<header class="top"><div class="in">
+ <a class="zm-logo" href="#top" aria-label="Zichtbaar Media, naar boven"><b>zichtbaar</b><i>media</i></a>
+ <nav aria-label="Hoofdmenu"><a href="#aanbod" data-roll>Aanbod</a><a href="#werk" data-roll>Werk</a><a href="#werkwijze" data-roll>Werkwijze</a><a class="pill" href="#contact" data-magnetic>Contact</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero" data-pwrap>
+ <div class="top">
+  <h1 class="serif" data-load data-split>Eén bureau voor alles wat je zaak <em>zichtbaar</em> maakt, op het scherm én op straat.</h1>
+  <p class="sub" data-load data-delay=".5">Zichtbaar Media is een full-service marketingbureau, online en offline, met één plan en één aanspreekpunt.</p>
+ </div>
+
+ <figure class="frame-ph fp1" data-drift="-90" data-cursor="Bekijk"><img src="../assets/media/foto/drukpers.jpg" alt="Drukpers met oranje papier"><span class="vf-c"><i></i><i></i><i></i><i></i></span><figcaption>Drukwerk</figcaption></figure>
+ <figure class="frame-ph fp2" data-drift="-150" data-cursor="Bekijk"><img src="../assets/media/foto/gevel-winkel.jpg" alt="Winkelgevel aan een straathoek"><span class="vf-c"><i></i><i></i><i></i><i></i></span><figcaption>Gevel</figcaption></figure>
+ <figure class="frame-ph fp3" data-drift="-40"><img src="../assets/media/foto/telefoon-schetsen.jpg" alt="Smartphone boven schetsen van een app"><span class="vf-c"><i></i><i></i><i></i><i></i></span><figcaption>Feed</figcaption></figure>
+
+ <div class="word" data-vwrap aria-hidden="true">
+  <video data-loop muted loop playsinline preload="auto" poster="../assets/media/video/neonreclame.jpg"><source src="../assets/media/video/neonreclame.mp4" type="video/mp4"></video>
+  <div class="letters disp"><span id="hw">zichtbaar</span></div>
+  <div class="tint"></div>
+ </div>
+ <h2 class="sr">zichtbaar</h2>
+ <div class="cue lbl" data-load data-delay="1"><i></i>Scroll</div>
+</section>
+
+<div class="ribbon" aria-hidden="true" data-marquee data-skew data-duration="46"><div class="mq serif"><span>Online</span><span>Offline</span><span>Op straat</span><span>Op scherm</span><span>Gevel</span><span>Feed</span><span>Papier</span><span>Pixels</span></div></div>
+
+<section class="manifest" data-wtrig aria-label="Manifest">
+ <div class="stick">
+  <p class="disp" data-words>Iemand ziet je <span class="chip" data-nosplit><img src="../assets/media/foto/bestelwagen-b.jpg" alt=""></span> bestelwagen op de ring, zoekt je naam op zijn <span class="chip" data-nosplit><img src="../assets/media/foto/telefoon-schetsen.jpg" alt=""></span> gsm en komt op een site die er <span class="acc">hetzelfde uitziet.</span> Dat is geen toeval. Dat is <span class="acc">plannen.</span></p>
+ </div>
+</section>
+
+<section class="aanbod" id="aanbod">
+ <div class="kop"><h2 class="disp" data-split>Alles wat zichtbaar maakt.</h2><p data-reveal>Zeven vakken, online en offline. Je neemt wat je nodig hebt, wat je neemt sluit op elkaar aan.</p></div>
+ <div class="stack" data-stack>
+  <article class="card c1" style="--i:0"><div class="card-in"><div class="txt"><span class="no lbl">01 / Basis</span><div><h3 class="disp">Strategie en merk</h3><p>Wie ben je, voor wie, en wat moet de markt onthouden. Eén blad waar al het andere werk uit volgt.</p><ul class="tags"><li>Positionering</li><li>Huisstijl</li><li>Kanaalplan</li></ul></div></div><figure class="ph" style="--r:3deg" data-cursor="Bekijk"><span class="tag">Plan</span><img src="../assets/media/foto/team-plakbriefjes.jpg" alt="Team plant met plakbriefjes op een bord"></figure><div class="card-shade"></div></div></article>
+  <article class="card c2" style="--i:1"><div class="card-in"><div class="txt"><span class="no lbl">02 / Online</span><div><h3 class="disp">Websites en vindbaarheid</h3><p>Een site die snel laadt, op een gsm leest als een boek en aanvragen binnenbrengt. Gevonden worden in Google, organisch en betaald.</p><ul class="tags"><li>Website</li><li>Webshop</li><li>SEO</li><li>Google-advertenties</li></ul></div></div><figure class="ph" style="--r:-3deg" data-cursor="Bekijk"><span class="tag">Schets</span><img src="../assets/media/foto/wireframe.jpg" alt="Schets van een websiteontwerp op papier"></figure><div class="card-shade"></div></div></article>
+  <article class="card c3" style="--i:2"><div class="card-in"><div class="txt"><span class="no lbl">03 / Online</span><div><h3 class="disp">Sociale media, foto en video</h3><p>Planning, beeld en opvolging van reacties op de kanalen waar je klanten zitten, met beeld dat je zaak echt toont.</p><ul class="tags"><li>Sociale media</li><li>Foto</li><li>Video</li><li>Content</li></ul></div></div><figure class="ph" style="--r:4deg" data-cursor="Bekijk"><span class="tag">Feed</span><img src="../assets/media/foto/telefoon-schetsen.jpg" alt="Hand met smartphone boven schetsen"></figure><div class="card-shade"></div></div></article>
+  <article class="card c4" style="--i:3"><div class="card-in"><div class="txt"><span class="no lbl">04 / Offline</span><div><h3 class="disp">Drukwerk en huisstijl</h3><p>Visitekaartjes, brochures, menukaarten en verpakking, met proeven die jij goedkeurt vóór het naar de drukker gaat.</p><ul class="tags"><li>Drukwerk</li><li>Verpakking</li><li>Menukaarten</li></ul></div></div><figure class="ph" style="--r:-4deg" data-cursor="Bekijk"><span class="tag">Drukker</span><img src="../assets/media/foto/drukpers.jpg" alt="Drukpers met oranje papier"></figure><div class="card-shade"></div></div></article>
+  <article class="card c5" style="--i:4"><div class="card-in"><div class="txt"><span class="no lbl">05 / Offline</span><div><h3 class="disp">Gevel, voertuigen en affiches</h3><p>Uithangborden, raamfolie, belettering van bestelwagens en panelen langs de weg. Je zaak, zichtbaar zodra iemand voorbijkomt.</p><ul class="tags"><li>Gevelreclame</li><li>Belettering</li><li>Affiches</li></ul></div></div><figure class="ph" style="--r:3deg" data-cursor="Bekijk"><span class="tag">Straat</span><img src="../assets/media/foto/bestelwagen-b.jpg" alt="Witte bestelwagen op een zonnige straat"></figure><div class="card-shade"></div></div></article>
+  <article class="card c6" style="--i:5"><div class="card-in"><div class="txt"><span class="no lbl">06 / Offline</span><div><h3 class="disp">Radio, beurzen en pers</h3><p>Spots die klinken zoals je zaak, een stand die opvalt en een verhaal dat de streekkrant wil drukken.</p><ul class="tags"><li>Radio</li><li>Beurzen</li><li>Evenementen</li><li>Pers</li></ul></div></div><figure class="ph" style="--r:-3deg" data-cursor="Bekijk"><span class="tag">Studio</span><img src="../assets/media/foto/radiostudio.jpg" alt="Twee vrouwen presenteren een radioprogramma"></figure><div class="card-shade"></div></div></article>
+  <article class="card c7" style="--i:6"><div class="card-in"><div class="txt"><span class="no lbl">07 / Meten</span><div><h3 class="disp">Data en opvolging</h3><p>Elke maand een korte balans: wat werkte, wat niet, en wat we de volgende maand anders doen.</p><ul class="tags"><li>Rapportering</li><li>Bijsturen</li></ul></div></div><figure class="ph" style="--r:3deg" data-cursor="Bekijk"><span class="tag">Balans</span><img src="../assets/media/foto/cijfers-bureau.jpg" alt="Laptop met grafieken en papieren"></figure><div class="card-shade"></div></div></article>
+ </div>
+</section>
+
+<section class="journey" data-hscroll data-pad="80" aria-label="Van gevel tot feed">
+ <div class="hd"><h2 class="disp">Van gevel tot feed</h2><span class="lbl">Scroll mee</span></div>
+ <div class="track" data-track>
+  <div class="bgtxt disp" data-hdrift="140" aria-hidden="true">GEVEL STRAAT SCHERM FEED</div>
+  <figure class="pn"><div class="fr"><img data-hp src="../assets/media/foto/gevel-winkel.jpg" alt="Winkelgevel aan een straathoek"></div><span class="n serif">01</span><figcaption><b>Gevel</b><span>Het eerste wat iemand ziet.</span></figcaption></figure>
+  <figure class="pn w"><div class="fr"><img data-hp src="../assets/media/foto/raamfolie.jpg" alt="Raamfolie met tekst op een winkelraam"></div><span class="n serif">02</span><figcaption><b>Etalage</b><span>Folie, belettering en sfeer aan het raam.</span></figcaption></figure>
+  <figure class="pn"><div class="fr"><img data-hp src="../assets/media/foto/bestelwagen-a.jpg" alt="Witte bestelwagen in een straat"></div><span class="n serif">03</span><figcaption><b>Straat</b><span>Je wagen rijdt reclame voor je.</span></figcaption></figure>
+  <figure class="pn w"><div class="fr"><img data-hp src="../assets/media/foto/affiche-plakken.jpg" alt="Man plakt een affiche op een raam"></div><span class="n serif">04</span><figcaption><b>Wand</b><span>Affiches op de plekken waar de buurt passeert.</span></figcaption></figure>
+  <div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="page"><span class="lbl">Dan op het scherm</span><b>Zelfde zaak, zelfde toon.</b></div></div>
+  <figure class="pn"><div class="fr"><img data-hp src="../assets/media/foto/telefoon-schetsen.jpg" alt="Hand met smartphone boven schetsen"></div><span class="n serif">05</span><figcaption><b>Feed</b><span>Dezelfde kleuren, dezelfde woorden.</span></figcaption></figure>
+  <figure class="pn w"><div class="fr"><img data-hp src="../assets/media/foto/cijfers-bureau.jpg" alt="Laptop met grafieken en papieren"></div><span class="n serif">06</span><figcaption><b>Meting</b><span>Zien wat werkt en bijsturen.</span></figcaption></figure>
+ </div>
+ <div class="meter"><span>Offline</span><span>Online</span></div>
+</section>
+
+<div id="werk"></div>
+<section class="case" data-expand data-pwrap aria-label="Voorbeeldcase bakkerij">
+ <div data-frame><img data-parallax="6" src="../assets/media/foto/bakkerij-toonbank.jpg" alt="Toonbank van een bakkerij met croissants en muffins"></div>
+ <span class="stamp lbl">Voorbeeldcase, verzonnen bedrijf</span>
+ <h3 class="disp" data-ex-slide="6">Kruimelkeet</h3>
+ <div class="meta" data-ex-in><div><h4>Bakkerij</h4><p class="big">Opent een tweede winkel in de wijk</p></div><div><h4>Offline</h4><p>Raamfolie, menukaart, folder in de buurt</p></div><div><h4>Online</h4><p>Site met voorbestelling, Google-bedrijfsprofiel</p></div><div><h4>Doel</h4><p>Nieuwe klanten in de wijk</p></div></div>
+</section>
+<section class="case" data-expand data-pwrap aria-label="Voorbeeldcase bloemist">
+ <div data-frame><img data-parallax="6" src="../assets/media/foto/bloemist.jpg" alt="Bloemiste wikkelt een boeket in papier"></div>
+ <span class="stamp lbl">Voorbeeldcase, verzonnen bedrijf</span>
+ <h3 class="disp" data-ex-slide="-6">Lenteveld</h3>
+ <div class="meta" data-ex-in><div><h4>Bloemisterij</h4><p class="big">Wil buiten de feestdagen groeien</p></div><div><h4>Offline</h4><p>Gevelbord, abonnementskaarten, markstand</p></div><div><h4>Online</h4><p>Webshop met leveringen, nieuwsbrief</p></div><div><h4>Doel</h4><p>Boeketabonnementen</p></div></div>
+</section>
+<section class="case" data-expand data-pwrap aria-label="Voorbeeldcase installatiebedrijf">
+ <div data-frame><img data-parallax="6" src="../assets/media/foto/installateur.jpg" alt="Handen met handschoenen plaatsen een leiding bij een radiator"></div>
+ <span class="stamp lbl">Voorbeeldcase, verzonnen bedrijf</span>
+ <h3 class="disp" data-ex-slide="6">Dakruiter</h3>
+ <div class="meta" data-ex-in><div><h4>Installatiebedrijf</h4><p class="big">Zoekt vaste klanten en nieuw personeel</p></div><div><h4>Offline</h4><p>Belettering op drie wagens, radiospot</p></div><div><h4>Online</h4><p>Offerteformulier, zoekadvertenties, vacaturepagina</p></div><div><h4>Doel</h4><p>Meer aanvragen buiten het stookseizoen</p></div></div>
+</section>
+
+<section class="werk" aria-label="Aan het werk">
+ <div class="hd"><h2 class="disp" data-split>Aan het werk.</h2><p data-reveal>Beeld in beweging, voor site, sociale media en etalage. Hier nog stockmateriaal, later jouw eigen zaak.</p></div>
+ <div class="fan" id="fan">
+  <figure data-vwrap data-cursor="Speel"><figcaption>Web</figcaption><video data-loop muted loop playsinline preload="none" poster="../assets/media/video/webontwikkelaar.jpg" aria-hidden="true"><source src="../assets/media/video/webontwikkelaar.mp4" type="video/mp4"></video></figure>
+  <figure data-vwrap data-cursor="Speel"><figcaption>Overleg</figcaption><video data-loop muted loop playsinline preload="none" poster="../assets/media/video/team-vergadering.jpg" aria-hidden="true"><source src="../assets/media/video/team-vergadering.mp4" type="video/mp4"></video><button class="vid-toggle" type="button" aria-pressed="false">Pauzeer</button></figure>
+  <figure data-vwrap data-cursor="Speel"><figcaption>Radio</figcaption><video data-loop muted loop playsinline preload="none" poster="../assets/media/video/microfoon.jpg" aria-hidden="true"><source src="../assets/media/video/microfoon.mp4" type="video/mp4"></video></figure>
+ </div>
+</section>
+
+<section class="wijze" id="werkwijze" data-draw-wrap>
+ <div class="l"><h2 class="disp" data-split>Zo werken we.</h2><p>Vier stappen, zonder verrassingen. Je ziet elke proef vóór er iets gedrukt of gepubliceerd wordt.</p></div>
+ <div class="r"><div class="line"><i data-draw></i></div>
+  <div class="st" data-reveal><span class="nn serif">1</span><h3>Kennismaking</h3><p>We luisteren, bekijken wat je nu al doet, online en op papier, en zeggen eerlijk wat we zouden laten liggen.</p></div>
+  <div class="st" data-reveal><span class="nn serif">2</span><h3>Plan op één blad</h3><p>Doelen, kanalen, budget en kalender naast elkaar. Je ziet hoe bestelwagen, site en advertentie samenhangen.</p></div>
+  <div class="st" data-reveal><span class="nn serif">3</span><h3>Uitvoering</h3><p>Eén contactpersoon bij ons praat met de drukker, de plaatser, de adverteerder en de fotograaf.</p></div>
+  <div class="st" data-reveal><span class="nn serif">4</span><h3>Opvolging</h3><p>Elke maand een korte balans van wat het opleverde en wat we daarom anders doen. Geen rapport van dertig pagina's.</p></div>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <h2 class="disp" data-split="chars">Laat je <span class="serif">zien.</span></h2>
+ <div class="row">
+  <div><p>Vertel kort wat je zoekt. Je krijgt antwoord van een mens, met een voorstel voor een eerste gesprek.</p><a class="cta" href="#contact" data-magnetic><span data-mag-in>Plan een kennismaking</span></a></div>
+  <form onsubmit="return false">
+   <label>Naam<input type="text" name="naam" autocomplete="name"></label>
+   <label>E-mail<input type="email" name="email" autocomplete="email"></label>
+   <label>Waarmee kunnen we helpen?<textarea name="vraag"></textarea></label>
+   <button class="send" type="submit">Vraag een offerte</button>
+   <p class="nota">Voorbeeld: dit formulier is nog niet verbonden en verstuurt niets.</p>
+  </form>
+ </div>
+ <div class="foot"><span>Zichtbaar Media, voorbeeldontwerp 1 van 7</span><a href="../index.html">Terug naar alle ontwerpen</a></div>
+</section>
+</main>
+
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
+<script src="../assets/zm-engine.js"></script>
+<script>
+(function(){
+  if(!window.gsap||!window.ZM) return;
+  var root=document.documentElement;
+  var anim=root.classList.contains('anim');
+  var intro=document.querySelector('.intro');
+  if(!anim){ if(intro) intro.remove(); return; }
+
+  /* intro: zoekerhoeken sluiten zich om het merk */
+  var vf=document.getElementById('vf');
+  var W=innerWidth,H=innerHeight,bw=Math.min(430,W-40),bh=130;
+  gsap.set(vf,{left:W*0.06,top:H*0.08,width:W*0.88,height:H*0.84});
+  if(window.ZM.lenis) ZM.lenis.stop();
+  var tl=gsap.timeline({onComplete:function(){ if(intro) intro.remove(); if(window.ZM.lenis) ZM.lenis.start(); ScrollTrigger.refresh(); }});
+  tl.from('.intro .name span>*',{yPercent:120,duration:.9,ease:'expo.out',stagger:.12},0.1)
+    .to(vf,{left:(W-bw)/2,top:(H-bh)/2,width:bw,height:bh,duration:1.15,ease:'expo.inOut'},0.35)
+    .to('.intro .rec',{opacity:0,duration:.3},0.35)
+    .add(function(){ ZM.start(); },'+=0.15')
+    .to(intro,{yPercent:-100,duration:.95,ease:'expo.inOut'},'<');
+
+  /* hero: woord loopt mee met scrollen */
+  gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}})
+    .to('#hw',{scale:1.22,ease:'none'},0)
+    .to('.word',{yPercent:12,ease:'none'},0)
+    .to('.cue i',{scaleY:0,ease:'none'},0);
+
+  /* aan het werk: waaier die rechttrekt */
+  var figs=document.querySelectorAll('#fan figure');
+  if(figs.length===3 && innerWidth>900){
+    gsap.set(figs[0],{rotate:-9,x:'8vw',y:30});gsap.set(figs[2],{rotate:9,x:'-8vw',y:30});gsap.set(figs[1],{y:-20});
+    var ft=gsap.timeline({scrollTrigger:{trigger:'#fan',start:'top 85%',end:'center 45%',scrub:.8}});
+    ft.to(figs[0],{rotate:0,x:'-2vw',y:0,ease:'none'},0).to(figs[2],{rotate:0,x:'2vw',y:0,ease:'none'},0).to(figs[1],{y:0,ease:'none'},0);
+  }
+})();
+</script>
+</body>
+</html>

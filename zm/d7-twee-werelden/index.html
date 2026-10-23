@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 7: Twee werelden</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},5000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/logo.css">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+:root{--roest:#A8432B;--marine:#1E327D;--paper:#EFE9DD;--ink:#14110E;--goud:#D7A93F;--bg:var(--paper);--prog:var(--goud);--pad:clamp(16px,4vw,60px);--ease:cubic-bezier(.2,.8,.2,1);--s:50%}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;overflow-x:hidden}
+main{overflow-x:clip}
+a{color:inherit;text-decoration:none}
+.sy{font-family:"Syne",sans-serif;font-weight:800;letter-spacing:-.035em;line-height:.92}
+.lbl{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.voorbeeld{position:fixed;left:12px;bottom:12px;z-index:200;background:var(--ink);color:var(--paper);font-size:.72rem;padding:6px 13px;border-radius:99px;max-width:calc(100vw - 24px)}
+
+header.top{position:fixed;left:0;right:0;top:0;z-index:100;mix-blend-mode:difference;color:#fff;pointer-events:none}
+header.top .in{display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad)}
+header.top a{pointer-events:auto}
+header.top nav{display:flex;gap:28px;font-weight:500;font-size:.9rem;align-items:center}
+header.top .pill{border:1.5px solid #fff;border-radius:99px;padding:8px 18px;font-weight:800}
+
+/* hero: sleepbare scheiding */
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;background:var(--roest);user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.side{position:absolute;inset:0;padding:clamp(90px,14vh,130px) var(--pad) clamp(70px,10vh,100px);display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)}
+.side .ph{position:absolute;inset:0;z-index:0}
+.side .ph img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.side>*:not(.ph){position:relative;z-index:1}
+.side.off{background:var(--roest)}
+.side.on{background:var(--marine);clip-path:inset(0 0 0 var(--s))}
+.side h1,.side .h{display:block;font-size:clamp(3.2rem,8.4vw,10rem)}
+.side.off .h{text-align:left;margin-top:-9vh}
+.side.on .h{text-align:right;margin-top:9vh}
+.side p{margin:0;max-width:30ch;font-size:1.1rem}
+.side.on p{margin-left:auto;text-align:right}
+.side .lbl{opacity:.9}
+.side.on .lbl{text-align:right;display:block}
+.handle{position:absolute;top:0;bottom:0;left:var(--s);width:44px;margin-left:-22px;z-index:20;cursor:ew-resize;touch-action:none;display:grid;place-items:center;background:none;border:0;padding:0}
+.handle::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:var(--paper)}
+.handle .kn{position:relative;width:74px;height:74px;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-items:center;font-weight:800;font-size:1.2rem;box-shadow:0 0 0 2px var(--ink)}
+.handle:focus-visible .kn{outline:3px solid var(--goud);outline-offset:4px}
+html.has-cursor .handle{cursor:none}
+.hero .cap{position:absolute;left:50%;bottom:clamp(26px,5vh,50px);transform:translateX(-50%);z-index:25;background:var(--paper);color:var(--ink);padding:10px 18px;border-radius:99px;font-weight:500;font-size:.92rem;white-space:nowrap}
+.hero .vid-toggle{display:none}
+
+/* tegengestelde scroll */
+.duo{position:relative;height:100vh;min-height:640px;overflow:hidden;background:var(--paper)}
+.duo .col{position:absolute;top:0;bottom:0;width:50%;overflow:hidden}
+.duo .col.off{left:0;background:var(--roest);color:var(--paper)}
+.duo .col.on{right:0;background:var(--marine);color:var(--paper)}
+.trk{will-change:transform}
+.rw{height:50vh;min-height:300px;padding:0 var(--pad);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:2vw;align-items:center;border-bottom:1px solid rgba(239,233,221,.35)}
+.rw .no{display:block;margin-bottom:10px}
+.rw h3{margin:0 0 10px;font-size:clamp(1.6rem,2.7vw,3rem)}
+.rw p{margin:0;max-width:30ch;font-size:.98rem}
+.rw .im{aspect-ratio:4/5;max-height:68%;overflow:hidden;background:#222;justify-self:end;width:100%;max-width:230px}
+.col.on .rw .im{justify-self:start}
+.rw .im img{width:100%;height:100%;object-fit:cover}
+.duo .seam{position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:var(--paper);z-index:5}
+.duo .tag{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);z-index:6;background:var(--paper);color:var(--ink);padding:6px 16px;white-space:nowrap}
+.duo .hd{position:absolute;left:var(--pad);top:clamp(70px,10vh,96px);z-index:7;color:var(--paper);mix-blend-mode:difference;pointer-events:none}
+.duo:not(.is-p){height:auto;overflow:visible}
+.duo:not(.is-p) .col{position:relative;width:100%;overflow:visible}
+.duo:not(.is-p) .seam,.duo:not(.is-p) .tag,.duo:not(.is-p) .hd{display:none}
+.duo:not(.is-p) .rw{height:auto;min-height:0;padding:7vh var(--pad);grid-template-columns:1fr}
+.duo:not(.is-p) .rw .im{max-height:none;max-width:none;aspect-ratio:16/10;justify-self:stretch}
+.duo:not(.is-p) .col.on .rw .im{justify-self:stretch}
+
+/* samenkomen */
+.merge{position:relative;height:100vh;min-height:620px;background:var(--paper);overflow:hidden;display:grid;place-items:center}
+.merge .w{position:absolute;font-size:clamp(4rem,14.5vw,17rem);white-space:nowrap;mix-blend-mode:multiply;line-height:.8}
+.merge .w1{left:6vw;top:14%;color:var(--roest)}
+.merge .w2{right:6vw;top:40%;color:var(--marine)}
+.merge .st{position:absolute;left:var(--pad);right:var(--pad);bottom:12vh;text-align:center;font-size:clamp(1.4rem,3vw,2.8rem)}
+.merge .st p{margin:0 auto;max-width:28em}
+.merge:not(.is-p){height:auto;display:block;padding:14vh var(--pad)}
+.merge:not(.is-p) .w{position:static;transform:none;display:block;font-size:clamp(4rem,22vw,9rem)}
+.merge:not(.is-p) .st{position:static;margin-top:6vh}
+
+/* cases: draaikaarten */
+.cases{padding:14vh var(--pad) 10vh;background:var(--ink);color:var(--paper);position:relative}
+.cases .hd{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:8vh}
+.cases h2{margin:0;font-size:clamp(2.8rem,7.6vw,8rem)}
+.cases .hd p{margin:0;max-width:34ch;opacity:.85}
+.flips{display:flex;gap:2vw;justify-content:center;align-items:stretch}
+.fc{position:relative;flex:1 1 0;max-width:460px;aspect-ratio:3/4;perspective:1400px;background:none;border:0;padding:0;color:inherit;text-align:left;font:inherit;cursor:pointer}
+.fc:nth-child(1){transform:rotate(-2.5deg)}.fc:nth-child(2){margin-top:6vh}.fc:nth-child(3){transform:rotate(2.5deg)}
+.fc .in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s var(--ease)}
+.fc:hover .in,.fc:focus-visible .in,.fc[aria-pressed=true] .in{transform:rotateY(180deg)}
+.fc:focus-visible{outline:3px solid var(--goud);outline-offset:6px}
+.fc .fa,.fc .fb{position:absolute;inset:0;backface-visibility:hidden;overflow:hidden}
+.fc .fa img{width:100%;height:100%;object-fit:cover}
+.fc .fa .nm{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;background:var(--paper);color:var(--ink);font-size:clamp(1.8rem,3vw,3rem)}
+.fc .fa .nm small{display:block;font-family:"Hanken Grotesk",sans-serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-top:4px}
+.fc .fb{transform:rotateY(180deg);padding:clamp(18px,2.4vw,32px);display:flex;flex-direction:column;justify-content:space-between;background:var(--c)}
+.fc:nth-child(1) .fb{--c:var(--roest)}.fc:nth-child(2) .fb{--c:var(--marine)}.fc:nth-child(3) .fb{--c:var(--goud);color:var(--ink)}
+.fc .fb h3{margin:0 0 10px;font-size:clamp(2rem,3.2vw,3.4rem)}
+.fc .fb dl{margin:0;display:grid;grid-template-columns:5em 1fr;gap:8px 12px;font-size:.92rem}
+.fc .fb dt{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;padding-top:.2em}
+.fc .fb dd{margin:0}
+.fc .st{position:absolute;right:12px;top:12px;z-index:3;background:var(--goud);color:var(--ink);padding:3px 10px}
+
+/* twee sporen */
+.sp{padding:14vh var(--pad);background:var(--paper);position:relative}
+.sp h2{margin:0 0 8vh;font-size:clamp(2.8rem,7.6vw,8rem)}
+.sp .tbl{display:grid;grid-template-columns:minmax(0,1fr) 5.5em minmax(0,1fr);gap:0 2vw}
+.sp .hh{padding-bottom:12px;font-weight:800;font-size:clamp(1.2rem,2vw,2rem)}
+.sp .hh.o{color:var(--roest)}.sp .hh.n{color:var(--marine);text-align:right}
+.sp .c{padding:3.2vh 0;border-top:2px solid var(--ink)}
+.sp .c.o p{margin:0}.sp .c.n{text-align:right}.sp .c.n p{margin:0 0 0 auto}
+.sp .c p{max-width:30ch}
+.sp .num{font-size:clamp(3rem,6vw,6rem);text-align:center;border-top:2px solid var(--ink);padding:1.4vh 0}
+.sp .num span{display:block}
+.sp .c strong{display:block;font-size:1.2rem;margin-bottom:4px}
+
+/* contact */
+.ct{position:relative;color:var(--paper);overflow:hidden;padding:14vh var(--pad) 40px;background:linear-gradient(90deg,var(--roest) 50%,var(--marine) 50%)}
+.ct h2{margin:0;font-size:clamp(4.4rem,16vw,19rem);line-height:.84;color:var(--paper);position:relative;z-index:2}
+.ct .slip{position:relative;z-index:3;width:min(560px,100%);margin:8vh auto 0;background:var(--paper);color:var(--ink);padding:30px;box-shadow:0 0 0 2px var(--ink),10px 10px 0 var(--ink)}
+.ct .slip p.k{margin:0 0 14px}
+form{display:grid;gap:16px}
+label{display:grid;gap:5px}
+input,textarea{font:inherit;font-size:1.05rem;text-transform:none;letter-spacing:0;background:transparent;color:var(--ink);border:0;border-bottom:2px solid var(--ink);padding:9px 0;border-radius:0}
+input:focus-visible,textarea:focus-visible{outline:3px solid var(--marine);outline-offset:3px}
+textarea{min-height:72px;resize:vertical}
+.send{justify-self:start;font:inherit;font-weight:800;background:var(--ink);color:var(--paper);border:0;border-radius:99px;padding:14px 26px;cursor:pointer}
+.send:focus-visible{outline:3px solid var(--marine);outline-offset:3px}
+.nota{font-size:.78rem;margin:0}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:10vh;padding-top:20px;border-top:1px solid rgba(239,233,221,.5);font-size:.85rem;position:relative;z-index:3}
+
+@media (max-width:900px){
+ header.top nav a:not(.pill){display:none}
+ .side h1,.side .h{font-size:clamp(3.4rem,17vw,8rem)}
+ .flips{flex-direction:column;align-items:center}
+ .fc{width:min(86vw,420px);max-width:none;flex:none}
+ .fc:nth-child(2){margin-top:0}
+ .sp .tbl{grid-template-columns:1fr 3em 1fr;gap:0 2vw}
+ .sp .c{font-size:.9rem}
+ .hero .cap{white-space:normal;text-align:center;width:calc(100% - 32px)}
+ .side{padding-bottom:170px}
+}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<div class="voorbeeld">Voorbeeld 7 van 7 · teksten en cases verzonnen</div>
+<header class="top"><div class="in">
+ <a class="zm-logo" href="#top" aria-label="Zichtbaar Media"><b>zichtbaar</b><i>media</i></a>
+ <nav aria-label="Hoofdmenu"><a href="#duo" data-roll>Aanbod</a><a href="#cases" data-roll>Werk</a><a href="#sporen" data-roll>Werkwijze</a><a class="pill" href="#contact" data-magnetic>Contact</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero" id="hero" aria-label="Twee werelden, één bureau">
+ <div class="side off">
+  <div class="ph"><img src="../assets/media/foto/gevel-winkel.jpg" alt=""></div>
+  <span class="lbl">Wereld 1 · op straat</span>
+  <div><span class="h sy" data-load>Offline.</span></div>
+  <p data-load data-delay=".3">Gevel, etalage, drukwerk, wagen, affiche, radio en beurs.</p>
+ </div>
+ <div class="side on" id="on">
+  <div class="ph"><img src="../assets/media/foto/wireframe.jpg" alt=""></div>
+  <span class="lbl">Wereld 2 · op scherm</span>
+  <div><h1 class="h sy" data-load data-delay=".15">Online.</h1></div>
+  <p data-load data-delay=".45">Site, zoekmachine, sociale media, video en data.</p>
+ </div>
+ <button class="handle" id="handle" type="button" role="slider" aria-label="Verschuif de scheiding tussen offline en online" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" data-cursor="Sleep"><span class="kn">&lt; &gt;</span></button>
+ <div class="cap">Zichtbaar Media is één full-service bureau voor beide werelden. Sleep de lijn.</div>
+</section>
+
+<section class="duo" id="duo" aria-label="Aanbod in twee werelden">
+ <div class="hd"><span class="lbl">Twee werelden, één plan</span></div>
+ <div class="col off"><div class="trk" id="t1">
+  <div class="rw"><div><span class="no lbl">Offline 01</span><h3 class="sy">Drukwerk en huisstijl</h3><p>Folders, menukaarten en verpakking, met proeven die jij goedkeurt.</p></div><div class="im"><img src="../assets/media/foto/drukpers.jpg" alt="Drukpers met oranje papier" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Offline 02</span><h3 class="sy">Gevel en etalage</h3><p>Uithangborden, raamfolie en signalisatie, zodat de eerste indruk klopt.</p></div><div class="im"><img src="../assets/media/foto/raamfolie.jpg" alt="Raamfolie met tekst op een winkelraam" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Offline 03</span><h3 class="sy">Voertuigen en affiches</h3><p>Belettering van bestelwagens en panelen langs de weg.</p></div><div class="im"><img src="../assets/media/foto/bestelwagen-a.jpg" alt="Witte bestelwagen in een straat" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Offline 04</span><h3 class="sy">Radio en audio</h3><p>Spots die klinken zoals je zaak zelf.</p></div><div class="im"><img src="../assets/media/foto/radiostudio.jpg" alt="Radiostudio" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Offline 05</span><h3 class="sy">Beurzen en pers</h3><p>Een stand die opvalt en een verhaal dat de streekkrant wil drukken.</p></div><div class="im"><img src="../assets/media/foto/beurshal.jpg" alt="Beurshal gezien van boven" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Offline 06</span><h3 class="sy">Evenementen</h3><p>Openingen en klantenavonden waar alles samenkomt.</p></div><div class="im"><img src="../assets/media/foto/affiche-plakken.jpg" alt="Man plakt een affiche op een raam" loading="lazy"></div></div>
+ </div></div>
+ <div class="col on"><div class="trk" id="t2">
+  <div class="rw"><div><span class="no lbl">Online 01</span><h3 class="sy">Strategie en merk</h3><p>Wie ben je, voor wie, en wat moet de markt onthouden.</p></div><div class="im"><img src="../assets/media/foto/team-plakbriefjes.jpg" alt="Team plant met plakbriefjes" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Online 02</span><h3 class="sy">Websites en webshops</h3><p>Snel, helder en gebouwd om aanvragen binnen te brengen.</p></div><div class="im"><img src="../assets/media/foto/wireframe.jpg" alt="Schets van een website" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Online 03</span><h3 class="sy">Vindbaarheid</h3><p>Gevonden worden in Google, organisch en betaald.</p></div><div class="im"><img src="../assets/media/foto/cijfers-bureau.jpg" alt="Laptop met grafieken" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Online 04</span><h3 class="sy">Sociale media</h3><p>Planning, beeld en opvolging op de kanalen van je klanten.</p></div><div class="im"><img src="../assets/media/foto/telefoon-schetsen.jpg" alt="Hand met smartphone boven schetsen" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Online 05</span><h3 class="sy">Foto en video</h3><p>Beeld dat je zaak echt toont, voor site, feed en toonbank.</p></div><div class="im"><img src="../assets/media/foto/bakkerij-rek.jpg" alt="Broden en gebak in een rek" loading="lazy"></div></div>
+  <div class="rw"><div><span class="no lbl">Online 06</span><h3 class="sy">Data en opvolging</h3><p>Elke maand een korte balans van wat werkte en wat niet.</p></div><div class="im"><img src="../assets/media/foto/brochure-kleurstalen.jpg" alt="Brochure met kleurstalen" loading="lazy"></div></div>
+ </div></div>
+ <div class="seam"></div><span class="tag lbl">Eén plan</span>
+</section>
+
+<section class="merge" id="merge" aria-label="Eén plan">
+ <span class="w w1 sy" id="w1">Offline</span><span class="w w2 sy" id="w2">Online</span>
+ <div class="st" id="st"><p class="sy">Offline en online komen van dezelfde tafel. Eén plan, één aanspreekpunt, één uitstraling.</p></div>
+</section>
+
+<section class="cases" id="cases" aria-label="Voorbeeldcases">
+ <div class="hd"><h2 class="sy" data-split>Draai het om.</h2><p data-reveal>Drie verzonnen zaken. Beweeg over een kaart (of tik erop) en zie wat we voor ze zouden doen, online en offline.</p></div>
+ <div class="flips">
+  <button class="fc" type="button" aria-pressed="false" data-cursor="Draai"><span class="in"><span class="fa"><img src="../assets/media/foto/bakkerij-toonbank.jpg" alt="Toonbank van een bakkerij" loading="lazy"><span class="nm sy">Kruimelkeet<small>Bakkerij · voorbeeld</small></span></span><span class="fb"><span><h3 class="sy">Tweede winkel</h3><dl><dt>Offline</dt><dd>Raamfolie, menukaart, folder in de buurt</dd><dt>Online</dt><dd>Site met voorbestelling, Google-bedrijfsprofiel</dd><dt>Doel</dt><dd>Nieuwe klanten in de wijk</dd></dl></span><span class="lbl">Verzonnen bedrijf</span></span></span></button>
+  <button class="fc" type="button" aria-pressed="false" data-cursor="Draai"><span class="in"><span class="fa"><img src="../assets/media/foto/bloemist.jpg" alt="Bloemiste wikkelt een boeket" loading="lazy"><span class="nm sy">Lenteveld<small>Bloemisterij · voorbeeld</small></span></span><span class="fb"><span><h3 class="sy">Een rustiger jaar</h3><dl><dt>Offline</dt><dd>Gevelbord, abonnementskaarten, markstand</dd><dt>Online</dt><dd>Webshop met leveringen, nieuwsbrief</dd><dt>Doel</dt><dd>Boeketabonnementen</dd></dl></span><span class="lbl">Verzonnen bedrijf</span></span></span></button>
+  <button class="fc" type="button" aria-pressed="false" data-cursor="Draai"><span class="in"><span class="fa"><img src="../assets/media/foto/installateur.jpg" alt="Installateur plaatst een leiding" loading="lazy"><span class="nm sy">Dakruiter<small>Installatie · voorbeeld</small></span></span><span class="fb"><span><h3 class="sy">Vaste klanten</h3><dl><dt>Offline</dt><dd>Belettering op drie wagens, radiospot</dd><dt>Online</dt><dd>Offerteformulier, zoekadvertenties, vacaturepagina</dd><dt>Doel</dt><dd>Meer aanvragen buiten het stookseizoen</dd></dl></span><span class="lbl">Verzonnen bedrijf</span></span></span></button>
+ </div>
+</section>
+
+<section class="sp" id="sporen">
+ <h2 class="sy" data-split>Twee sporen, vier stappen.</h2>
+ <div class="tbl">
+  <div class="hh o">Offline</div><div></div><div class="hh n">Online</div>
+  <div class="c o" data-reveal><strong>Gesprek op jouw zaak</strong><p>We bekijken gevel, etalage en drukwerk.</p></div><div class="num sy"><span>1</span></div><div class="c n" data-reveal><strong>Gesprek over je site</strong><p>We bekijken je site, zoekresultaten en kanalen.</p></div>
+  <div class="c o" data-reveal><strong>Plan voor straat en papier</strong><p>Gevel, folder, wagen en affiche op een kalender.</p></div><div class="num sy"><span>2</span></div><div class="c n" data-reveal><strong>Plan voor scherm en zoekmachine</strong><p>Site, advertenties en feed op dezelfde kalender.</p></div>
+  <div class="c o" data-reveal><strong>Drukker en plaatser</strong><p>Eén contactpersoon regelt het, jij ziet proeven.</p></div><div class="num sy"><span>3</span></div><div class="c n" data-reveal><strong>Bouwen en publiceren</strong><p>Dezelfde contactpersoon, dezelfde uitstraling.</p></div>
+  <div class="c o" data-reveal><strong>Wat kwam er binnen?</strong><p>Telefoons, bezoekers aan de zaak, reacties.</p></div><div class="num sy"><span>4</span></div><div class="c n" data-reveal><strong>Maandbalans</strong><p>Bezoekers, aanvragen en wat we bijsturen.</p></div>
+ </div>
+</section>
+
+<section class="ct" id="contact">
+ <h2 class="sy" data-split="chars">Laat je zien.</h2>
+ <div class="slip" data-tilt="3">
+  <p class="k">Vertel kort wat je zoekt. Je krijgt antwoord van een mens, met een voorstel voor een eerste gesprek.</p>
+  <form onsubmit="return false">
+   <label class="lbl">Naam<input type="text" name="naam" autocomplete="name"></label>
+   <label class="lbl">E-mail<input type="email" name="email" autocomplete="email"></label>
+   <label class="lbl">Waarmee kunnen we helpen?<textarea name="vraag"></textarea></label>
+   <button class="send" type="submit" data-magnetic>Vraag een offerte</button>
+   <p class="nota">Voorbeeld: dit formulier is nog niet verbonden en verstuurt niets.</p>
+  </form>
+ </div>
+ <div class="foot"><span>Zichtbaar Media, voorbeeldontwerp 7 van 7</span><a href="../index.html">Terug naar alle ontwerpen</a></div>
+</section>
+</main>
+
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
+<script src="../assets/zm-engine.js"></script>
+<script>
+(function(){
+  var hero=document.getElementById('hero'), handle=document.getElementById('handle');
+  function setS(p){ p=Math.max(4,Math.min(96,p)); hero.style.setProperty('--s',p+'%'); handle.setAttribute('aria-valuenow',Math.round(p)); hero._p=p; }
+  setS(50);
+  /* sleep, ook met toetsenbord */
+  var drag=false;
+  function pos(e){ var b=hero.getBoundingClientRect(); setS((e.clientX-b.left)/b.width*100); }
+  handle.addEventListener('pointerdown',function(e){ drag=true; handle.setPointerCapture(e.pointerId); if(window.gsap) gsap.killTweensOf(hero._o||{}); });
+  handle.addEventListener('pointermove',function(e){ if(drag) pos(e); });
+  handle.addEventListener('pointerup',function(){ drag=false; });
+  handle.addEventListener('pointercancel',function(){ drag=false; });
+  handle.addEventListener('keydown',function(e){ if(e.key==='ArrowLeft'){ setS((hero._p||50)-5); e.preventDefault(); } if(e.key==='ArrowRight'){ setS((hero._p||50)+5); e.preventDefault(); } });
+  hero.addEventListener('click',function(e){ if(e.target.closest('.handle')||e.target.closest('.cap')) return; if(matchMedia('(hover:none)').matches) pos(e); });
+
+  /* kaarten draaien ook met tik */
+  document.querySelectorAll('.fc').forEach(function(c){ c.addEventListener('click',function(){ c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')==='true'?'false':'true'); }); });
+
+  var anim=document.documentElement.classList.contains('anim');
+  if(!window.gsap||!window.ZM||!anim) return;
+  var desk=matchMedia('(min-width:901px)').matches;
+
+  /* de scheiding zwaait bij het laden en bij scrollen */
+  var o={p:92}; hero._o=o;
+  ZM.queue.push(function(){ gsap.fromTo(o,{p:96},{p:50,duration:1.8,ease:'elastic.out(1,.55)',delay:.2,onUpdate:function(){ if(!drag) setS(o.p); }}); });
+  ScrollTrigger.create({trigger:hero,start:'top top',end:'bottom top',scrub:true,onUpdate:function(s){ if(!drag) setS(50+(s.progress*18*(s.direction>0?1:1))); }});
+
+  /* tegengestelde scroll */
+  var duo=document.getElementById('duo');
+  if(desk){
+    duo.classList.add('is-p');
+    var t1=document.getElementById('t1'), t2=document.getElementById('t2');
+    var dist=function(){ return t1.scrollHeight-duo.clientHeight; };
+    gsap.fromTo(t1,{y:0},{y:function(){return -dist()},ease:'none',scrollTrigger:{trigger:duo,start:'top top',end:function(){return '+='+dist()},pin:true,scrub:.6,invalidateOnRefresh:true,anticipatePin:1}});
+    gsap.fromTo(t2,{y:function(){return -dist()}},{y:0,ease:'none',scrollTrigger:{trigger:duo,start:'top top',end:function(){return '+='+dist()},scrub:.6,invalidateOnRefresh:true}});
+  }
+
+  /* samenkomen */
+  var mg=document.getElementById('merge');
+  if(desk){
+    mg.classList.add('is-p');
+    var w1=document.getElementById('w1'), w2=document.getElementById('w2');
+    gsap.set(w1,{x:'-70vw'}); gsap.set(w2,{x:'70vw'}); gsap.set('#st',{opacity:0,y:40});
+    var mt=gsap.timeline({scrollTrigger:{trigger:mg,start:'top top',end:'+=160%',pin:true,scrub:.6,anticipatePin:1}});
+    mt.to(w1,{x:0,ease:'none',duration:1},0)
+      .to(w2,{x:0,ease:'none',duration:1},0)
+      .to('#st',{opacity:1,y:0,duration:.5,ease:'none'},.8).to({},{duration:.4});
+  } else {
+    gsap.from('#merge .w',{yPercent:60,opacity:0,stagger:.15,duration:1,ease:'expo.out',scrollTrigger:{trigger:mg,start:'top 75%',once:true}});
+  }
+})();
+</script>
+</body>
+</html>

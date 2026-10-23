@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 6: Neonlicht</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},5000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/logo.css">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+:root{--night:#080B1A;--night2:#101530;--off:#F3EEE2;--kor:#FF5C3A;--gold:#FFC93C;--blue:#4262FF;--bg:var(--night);--prog:var(--gold);--pad:clamp(16px,4vw,60px);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box}
+html{background:var(--night)}
+body{margin:0;background:var(--night);color:var(--off);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;overflow-x:hidden}
+main{overflow-x:clip}
+a{color:inherit;text-decoration:none}
+.an{font-family:"Anton",Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.9}
+.lbl{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.voorbeeld{position:fixed;left:12px;bottom:12px;z-index:200;background:var(--off);color:var(--night);font-size:.72rem;padding:6px 13px;border-radius:99px;max-width:calc(100vw - 24px)}
+.out{color:transparent;-webkit-text-stroke:2px rgba(243,238,226,.55)}
+
+header.top{position:fixed;left:0;right:0;top:0;z-index:100;pointer-events:none}
+header.top .in{display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad)}
+header.top a{pointer-events:auto}
+header.top nav{display:flex;gap:28px;font-weight:500;font-size:.9rem;align-items:center}
+header.top .pill{border:1.5px solid var(--gold);color:var(--gold);border-radius:99px;padding:8px 18px;font-weight:800}
+
+/* spotlight */
+.spot{--x:60vw;--y:40vh;--r:20vmin;position:relative}
+.hero{min-height:max(100vh,720px);height:100vh;overflow:hidden;background:var(--night)}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.35);transform-origin:50% 0}
+.hero .shade{position:absolute;inset:0;background:var(--night);opacity:.97;-webkit-mask-image:radial-gradient(circle at var(--x) var(--y),transparent calc(var(--r) - .5px),#000 var(--r));mask-image:radial-gradient(circle at var(--x) var(--y),transparent calc(var(--r) - .5px),#000 var(--r))}
+.hero .txt{position:absolute;left:var(--pad);right:var(--pad);top:50%;transform:translateY(-52%)}
+.hero .txt h1,.hero .txt .h{margin:0;font-size:clamp(5rem,21vw,26rem);line-height:.82;display:block}
+.hero .txt .l2{display:block;font-size:clamp(3.6rem,11vw,14rem)}
+.hero .dark{pointer-events:none}
+.hero .lit{clip-path:circle(var(--r) at var(--x) var(--y));pointer-events:none}
+.hero .lit .h{color:var(--gold)}
+.hero .lit .l2{color:var(--kor)}
+.hero .ring{position:absolute;left:0;top:0;width:calc(var(--r)*2);height:calc(var(--r)*2);border:2px solid var(--gold);border-radius:50%;transform:translate(calc(var(--x) - var(--r)),calc(var(--y) - var(--r)));pointer-events:none}
+.hero .row{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(40px,7vh,70px);display:flex;justify-content:space-between;gap:24px;align-items:end;flex-wrap:wrap}
+.hero .row p{margin:0;max-width:36ch;font-size:1.05rem}
+.hero .vid-toggle{background:transparent;color:var(--off);border:1px solid rgba(243,238,226,.6);padding:5px 12px;border-radius:99px}
+
+/* lopende regel */
+.strip{background:var(--gold);color:var(--night);overflow:hidden;white-space:nowrap;padding:10px 0}
+.strip .mq{display:inline-flex}
+.strip span{font-size:clamp(1.6rem,3.4vw,3.2rem);padding:0 1rem;display:inline-flex;gap:2rem;align-items:center}
+.strip span::after{content:"";width:.4em;height:.4em;background:var(--night);display:inline-block}
+
+/* etalages */
+.eta{padding:14vh var(--pad) 12vh;position:relative}
+.eta .hd{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:7vh}
+.eta h2{margin:0;font-size:clamp(3rem,8.4vw,9rem)}
+.eta .hd p{margin:0;max-width:32ch;opacity:.85}
+.rij{display:flex;gap:1.2vw;height:min(74vh,700px)}
+.win{position:relative;flex:1 1 0;min-width:0;border:2px solid var(--off);overflow:hidden;background:var(--night2);transition:flex-grow .8s var(--ease)}
+.win:hover,.win:focus-within{flex-grow:2.6}
+.win .ph{position:absolute;inset:0}
+.win .ph img{width:100%;height:100%;object-fit:cover}
+.win .cov.z{-webkit-mask-image:none;mask-image:none;opacity:.82}
+.win .cov{position:absolute;inset:0;background:var(--night);-webkit-mask-image:radial-gradient(circle at var(--x,50%) var(--y,50%),transparent calc(var(--r,0px) - .5px),#000 var(--r,0px));mask-image:radial-gradient(circle at var(--x,50%) var(--y,50%),transparent calc(var(--r,0px) - .5px),#000 var(--r,0px));opacity:.82}
+.win .sg{position:absolute;left:14px;top:14px;right:14px;z-index:3;font-size:clamp(1.6rem,2.6vw,3rem);color:var(--c,var(--gold));writing-mode:horizontal-tb}
+.win:nth-child(3n+1){--c:var(--gold)}.win:nth-child(3n+2){--c:var(--kor)}.win:nth-child(3n){--c:var(--blue)}
+.win .sg.fl{animation:fl 5s steps(1) infinite}
+.win:nth-child(2) .sg.fl{animation-delay:.9s}.win:nth-child(3) .sg.fl{animation-delay:2.1s}.win:nth-child(5) .sg.fl{animation-delay:1.4s}
+@keyframes fl{0%,100%{opacity:1}6%{opacity:.25}8%{opacity:1}10%{opacity:.4}12%{opacity:1}70%{opacity:1}72%{opacity:.3}74%{opacity:1}}
+.win .tx{position:absolute;left:14px;right:14px;bottom:14px;z-index:3;font-size:.92rem;background:var(--night);padding:8px 10px;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .5s var(--ease)}
+.win:hover .tx,.win:focus-within .tx,html:not(.anim) .win .tx{opacity:1;transform:none}
+.win .n{position:absolute;right:14px;bottom:14px;z-index:3;color:var(--off)}
+.win:hover .n{opacity:0}
+
+/* neonborden */
+.nb{padding:12vh var(--pad);background:var(--night2);position:relative;overflow:hidden}
+.nb .l{display:block;font-size:clamp(3.4rem,10vw,12rem);line-height:.98;color:transparent;-webkit-text-stroke:2px rgba(243,238,226,.35);transition:color .15s;white-space:nowrap}
+.nb .l.on{color:var(--c);-webkit-text-stroke:2px var(--c)}
+.nb .l:nth-child(4n+1){--c:var(--gold)}.nb .l:nth-child(4n+2){--c:var(--kor)}.nb .l:nth-child(4n+3){--c:var(--blue)}.nb .l:nth-child(4n){--c:var(--off)}
+.nb .l small{font-family:"Hanken Grotesk",sans-serif;font-size:.9rem;letter-spacing:.14em;margin-left:1.2rem;-webkit-text-stroke:0;color:rgba(243,238,226,.7);vertical-align:middle}
+.nb .intro{max-width:34ch;margin:0 0 7vh}
+
+/* wisselbord */
+.bb{position:relative;height:100vh;min-height:680px;background:var(--night);overflow:hidden}
+.bb .hd{position:absolute;left:var(--pad);top:clamp(70px,10vh,100px);z-index:8;pointer-events:none}
+.bb h2{margin:0;font-size:clamp(2.6rem,7vw,7rem)}
+.bb .scene{position:absolute;left:50%;top:56%;width:min(78vw,1100px);height:min(62vh,560px);transform:translate(-50%,-50%);perspective:1800px}
+.bb .prism{position:absolute;inset:0;transform-style:preserve-3d}
+.face{position:absolute;inset:0;border:3px solid var(--off);background:var(--night2);backface-visibility:hidden;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.face .ph{position:relative;overflow:hidden}
+.face .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.face .tx{padding:clamp(16px,2.4vw,34px);display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.face h3{margin:0;font-size:clamp(3rem,6.4vw,7rem);color:var(--c)}
+.face p{margin:0;max-width:30ch}
+.face dl{margin:0;display:grid;grid-template-columns:5.5em 1fr;gap:6px 12px;font-size:.9rem}
+.face dt{color:var(--c);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem;padding-top:.25em}
+.face dd{margin:0}
+.face .st{position:absolute;right:12px;top:12px;background:var(--gold);color:var(--night);padding:3px 10px;z-index:3}
+.f1{--c:var(--gold)}.f2{--c:var(--kor)}.f3{--c:var(--blue)}
+.bb .lamps{position:absolute;left:50%;top:calc(56% - min(31vh,280px) - 26px);transform:translateX(-50%);width:min(78vw,1100px);display:flex;justify-content:space-around;z-index:4}
+.bb .lamps i{width:16px;height:16px;border-radius:50%;background:var(--gold)}
+.bb:not(.is-p){height:auto;overflow:visible;padding:100px var(--pad) 60px}
+.bb:not(.is-p) .hd{position:static;margin-bottom:24px}
+.bb:not(.is-p) .scene,.bb:not(.is-p) .prism{position:relative;left:auto;top:auto;transform:none;width:auto;height:auto;perspective:none}
+.bb:not(.is-p) .face{position:relative;margin-bottom:22px;grid-template-columns:1fr;min-height:380px}
+.bb:not(.is-p) .face .ph{height:260px}
+.bb:not(.is-p) .lamps{display:none}
+
+/* werkwijze */
+.wz{padding:14vh var(--pad);position:relative}
+.wz h2{margin:0 0 8vh;font-size:clamp(3rem,8.4vw,9rem)}
+.wz .row{display:grid;grid-template-columns:repeat(4,1fr);gap:3vw}
+.wz .c{border-top:3px solid var(--c);padding-top:18px}
+.wz .c:nth-child(1){--c:var(--gold)}.wz .c:nth-child(2){--c:var(--kor)}.wz .c:nth-child(3){--c:var(--blue)}.wz .c:nth-child(4){--c:var(--off)}
+.wz .no{font-size:clamp(5rem,10vw,10rem);color:transparent;-webkit-text-stroke:2px var(--c);display:block;margin-bottom:10px}
+.wz .c:hover .no{color:var(--c)}
+.wz h3{margin:0 0 8px;font-size:clamp(1.8rem,2.6vw,2.6rem)}
+.wz p{margin:0;max-width:26ch;opacity:.9}
+
+/* contact */
+.ct{position:relative;overflow:hidden;background:var(--night);padding:14vh var(--pad) 40px}
+.ct .big{position:relative;display:block}
+.ct .big .h{display:block;font-size:clamp(4.6rem,19vw,22rem);line-height:.84}
+.ct .big{--r:18vmin}
+.ct .lit{position:absolute;inset:0;clip-path:circle(var(--r) at var(--x) var(--y));pointer-events:none}
+.ct .lit .h{color:var(--gold)}
+.ct .row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:6vw;margin-top:8vh;align-items:start}
+.ct .row p{margin:0 0 24px;max-width:36ch}
+.cta{display:grid;place-items:center;width:clamp(150px,13vw,210px);aspect-ratio:1;border-radius:50%;background:var(--gold);color:var(--night);font-weight:800;line-height:1.15;text-align:center;padding:14px}
+form{display:grid;gap:16px}
+label{display:grid;gap:5px}
+input,textarea{font:inherit;font-size:1.05rem;text-transform:none;letter-spacing:0;background:transparent;color:var(--off);border:0;border-bottom:1.5px solid rgba(243,238,226,.5);padding:9px 0;border-radius:0}
+input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+textarea{min-height:76px;resize:vertical}
+.send{justify-self:start;font:inherit;font-weight:800;background:var(--off);color:var(--night);border:0;border-radius:99px;padding:14px 26px;cursor:pointer}
+.send:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.nota{font-size:.78rem;margin:0;opacity:.75}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:12vh;padding-top:20px;border-top:1px solid rgba(243,238,226,.3);font-size:.85rem}
+
+@media (max-width:900px){
+ header.top nav a:not(.pill){display:none}
+ .rij{flex-direction:column;height:auto}
+ .win{flex:none;height:260px}.win:hover,.win:focus-within{flex-grow:0}
+ .win .tx{opacity:1;transform:none}
+ .win .cov{opacity:.55}
+ .wz .row{grid-template-columns:1fr 1fr;gap:34px 4vw}
+ .ct .row{grid-template-columns:1fr}
+ .face{grid-template-columns:1fr}
+ .nb .l{white-space:normal}
+}
+@media (max-width:520px){.wz .row{grid-template-columns:1fr}.hero .txt h1,.hero .txt .h{font-size:clamp(4rem,24vw,8rem)}}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<div class="voorbeeld">Voorbeeld 6 van 7 · teksten en cases verzonnen</div>
+<header class="top"><div class="in">
+ <a class="zm-logo" href="#top" aria-label="Zichtbaar Media"><b>zichtbaar</b><i>media</i></a>
+ <nav aria-label="Hoofdmenu"><a href="#eta" data-roll>Aanbod</a><a href="#bb" data-roll>Werk</a><a href="#werkwijze" data-roll>Werkwijze</a><a class="pill" href="#contact" data-magnetic>Contact</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero spot" id="hero">
+ <video data-loop muted loop playsinline preload="auto" poster="../assets/media/video/neonreclame.jpg" aria-hidden="true"><source src="../assets/media/video/neonreclame.mp4" type="video/mp4"></video>
+ <div class="shade"></div>
+ <div class="txt dark" data-vwrap><h1 class="h an out" data-load>Zichtbaar<span class="l2 an out">maken we.</span></h1></div>
+ <div class="txt lit" aria-hidden="true"><span class="h an">Zichtbaar<span class="l2 an">maken we.</span></span></div>
+ <i class="ring" aria-hidden="true"></i>
+ <div class="row">
+  <p data-load data-delay=".4">Zichtbaar Media is een full-service marketingbureau. Online én offline, met één plan en één aanspreekpunt. Beweeg je muis, we laten zien wat er is.</p>
+  <span class="lbl" data-load data-delay=".6">Voorbeeld 6 / 7<button class="vid-toggle" type="button" aria-pressed="false" style="margin-left:14px">Pauzeer</button></span>
+ </div>
+</section>
+
+<div class="strip an" aria-hidden="true" data-marquee data-skew data-duration="44"><div class="mq"><span>Open</span><span>Online</span><span>Offline</span><span>Gevel</span><span>Feed</span><span>Drukwerk</span><span>Affiches</span><span>Radio</span><span>Open</span><span>Zichtbaar</span></div></div>
+
+<section class="eta" id="eta" aria-label="Aanbod in etalages">
+ <div class="hd"><h2 class="an" data-split>Zes etalages</h2><p data-reveal>Beweeg over een etalage en doe het licht aan. Elk raam is een vak van het bureau.</p></div>
+ <div class="rij">
+  <article class="win" tabindex="0" data-cursor="Licht"><div class="ph"><img src="../assets/media/foto/gevel-winkel.jpg" alt="Winkelgevel aan een straathoek"></div><div class="cov"></div><span class="sg an fl">Gevel</span><span class="n lbl">01</span><p class="tx">Uithangborden, raamfolie en signalisatie, zodat de eerste indruk klopt.</p></article>
+  <article class="win" tabindex="0" data-cursor="Licht"><div class="ph"><img src="../assets/media/foto/wireframe.jpg" alt="Schets van een website"></div><div class="cov"></div><span class="sg an fl">Site</span><span class="n lbl">02</span><p class="tx">Websites en webshops die snel laden en aanvragen binnenbrengen.</p></article>
+  <article class="win" tabindex="0" data-cursor="Licht"><div class="ph"><img src="../assets/media/foto/telefoon-schetsen.jpg" alt="Hand met smartphone boven schetsen"></div><div class="cov"></div><span class="sg an fl">Feed</span><span class="n lbl">03</span><p class="tx">Sociale media, foto en video op de kanalen waar je klanten zitten.</p></article>
+  <article class="win" tabindex="0" data-cursor="Licht"><div class="ph"><img src="../assets/media/foto/bestelwagen-b.jpg" alt="Witte bestelwagen op een zonnige straat"></div><div class="cov"></div><span class="sg an fl">Wagen</span><span class="n lbl">04</span><p class="tx">Belettering van voertuigen en affiches langs de weg.</p></article>
+  <article class="win" tabindex="0" data-cursor="Licht"><div class="ph"><img src="../assets/media/foto/radiostudio.jpg" alt="Radiostudio"></div><div class="cov"></div><span class="sg an fl">Radio</span><span class="n lbl">05</span><p class="tx">Spots die klinken zoals je zaak, plus pers en evenementen.</p></article>
+  <article class="win" tabindex="0" data-cursor="Licht"><div class="ph"><img src="../assets/media/foto/drukpers.jpg" alt="Drukpers met oranje papier"></div><div class="cov"></div><span class="sg an fl">Druk</span><span class="n lbl">06</span><p class="tx">Folders, menukaarten en verpakking, met proeven vóór het drukt.</p></article>
+ </div>
+</section>
+
+<section class="nb" aria-label="Alles wat we doen">
+ <p class="intro" data-reveal>Alles wat we doen, op één lijn. Scroll en zie de borden aangaan.</p>
+ <span class="l an">Strategie<small>basis</small></span>
+ <span class="l an">Websites<small>online</small></span>
+ <span class="l an">Vindbaarheid<small>online</small></span>
+ <span class="l an">Sociale media<small>online</small></span>
+ <span class="l an">Foto en video<small>beeld</small></span>
+ <span class="l an">Drukwerk<small>offline</small></span>
+ <span class="l an">Gevel en wagen<small>offline</small></span>
+ <span class="l an">Radio en beurs<small>offline</small></span>
+</section>
+
+<section class="bb" id="bb" aria-label="Voorbeeldcases op een wisselbord">
+ <div class="hd"><h2 class="an">Op het wisselbord</h2><span class="lbl">Voorbeeldcases, verzonnen bedrijven</span></div>
+ <i class="lamps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></i>
+ <div class="scene"><div class="prism" id="prism">
+  <article class="face f1"><div class="ph"><img src="../assets/media/foto/bakkerij-toonbank.jpg" alt="Toonbank van een bakkerij"></div><div class="tx"><div><h3 class="an">Kruimelkeet</h3><p>Bakkerij die een tweede winkel opent in de volgende wijk.</p></div><dl><dt>Offline</dt><dd>Raamfolie, menukaart, folder in de buurt</dd><dt>Online</dt><dd>Site met voorbestelling, Google-bedrijfsprofiel</dd><dt>Doel</dt><dd>Nieuwe klanten in de wijk</dd></dl></div><span class="st lbl">Voorbeeld</span></article>
+  <article class="face f2"><div class="ph"><img src="../assets/media/foto/bloemist.jpg" alt="Bloemiste wikkelt een boeket"></div><div class="tx"><div><h3 class="an">Lenteveld</h3><p>Bloemisterij die buiten de feestdagen wil groeien.</p></div><dl><dt>Offline</dt><dd>Gevelbord, abonnementskaarten, markstand</dd><dt>Online</dt><dd>Webshop met leveringen, nieuwsbrief</dd><dt>Doel</dt><dd>Boeketabonnementen</dd></dl></div><span class="st lbl">Voorbeeld</span></article>
+  <article class="face f3"><div class="ph"><img src="../assets/media/foto/installateur.jpg" alt="Installateur plaatst een leiding"></div><div class="tx"><div><h3 class="an">Dakruiter</h3><p>Installatiebedrijf op zoek naar vaste klanten en nieuwe collega's.</p></div><dl><dt>Offline</dt><dd>Belettering op drie wagens, radiospot</dd><dt>Online</dt><dd>Offerteformulier, zoekadvertenties, vacaturepagina</dd><dt>Doel</dt><dd>Meer aanvragen buiten het stookseizoen</dd></dl></div><span class="st lbl">Voorbeeld</span></article>
+ </div></div>
+</section>
+
+<section class="wz" id="werkwijze">
+ <h2 class="an" data-split>Vier stappen</h2>
+ <div class="row">
+  <div class="c" data-reveal><span class="no an">1</span><h3 class="an">Kennismaking</h3><p>We luisteren en zeggen eerlijk wat we zouden laten liggen.</p></div>
+  <div class="c" data-reveal data-delay=".1"><span class="no an">2</span><h3 class="an">Plan op één blad</h3><p>Doelen, kanalen, budget en kalender naast elkaar.</p></div>
+  <div class="c" data-reveal data-delay=".2"><span class="no an">3</span><h3 class="an">Uitvoering</h3><p>Eén contactpersoon die met de drukker en de plaatser praat.</p></div>
+  <div class="c" data-reveal data-delay=".3"><span class="no an">4</span><h3 class="an">Opvolging</h3><p>Elke maand een korte balans, geen rapport van dertig pagina's.</p></div>
+ </div>
+</section>
+
+<section class="ct" id="contact">
+ <div class="big spot"><span class="h an out" aria-hidden="true">Laat je<br>zien.</span><div class="lit" aria-hidden="true"><span class="h an">Laat je<br>zien.</span></div></div>
+ <h2 class="sr">Laat je zien</h2>
+ <div class="row">
+  <div><p>Vertel kort wat je zoekt. Je krijgt antwoord van een mens, met een voorstel voor een eerste gesprek.</p><a class="cta" href="#contact" data-magnetic><span data-mag-in>Plan een kennismaking</span></a></div>
+  <form onsubmit="return false">
+   <label class="lbl">Naam<input type="text" name="naam" autocomplete="name"></label>
+   <label class="lbl">E-mail<input type="email" name="email" autocomplete="email"></label>
+   <label class="lbl">Waarmee kunnen we helpen?<textarea name="vraag"></textarea></label>
+   <button class="send" type="submit">Vraag een offerte</button>
+   <p class="nota">Voorbeeld: dit formulier is nog niet verbonden en verstuurt niets.</p>
+  </form>
+ </div>
+ <div class="foot"><span>Zichtbaar Media, voorbeeldontwerp 6 van 7</span><a href="../index.html">Terug naar alle ontwerpen</a></div>
+</section>
+</main>
+
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
+<script src="../assets/zm-engine.js"></script>
+<script>
+(function(){
+  var anim=document.documentElement.classList.contains('anim');
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  function setVars(el,x,y,r){ el.style.setProperty('--x',x+'px'); el.style.setProperty('--y',y+'px'); el.style.setProperty('--r',r+'px'); }
+  /* zonder beweging: licht staat overal aan */
+  if(!window.gsap||!window.ZM||!anim){
+    document.querySelectorAll('.spot').forEach(function(s){ s.style.setProperty('--r','2000px'); });
+    document.querySelectorAll('.win .cov').forEach(function(c){ c.style.display='none'; });
+    document.querySelectorAll('.nb .l').forEach(function(l){ l.classList.add('on'); });
+    return;
+  }
+
+  /* spotlight op hero en contact */
+  document.querySelectorAll('.spot').forEach(function(sp){
+    var st={x:innerWidth*.62,y:innerHeight*.42,r:Math.min(innerWidth,innerHeight)*.2}, tgt={x:st.x,y:st.y,r:st.r}, active=false;
+    var isHero=sp.id==='hero';
+    function upd(){ var b=sp.getBoundingClientRect(); setVars(sp,st.x,st.y-(isHero?0:b.top)+(isHero?0:0),st.r); }
+    function aim(cx,cy){ var b=sp.getBoundingClientRect(); tgt.x=cx-b.left; tgt.y=cy-b.top; }
+    var base=Math.min(innerWidth,innerHeight)*(isHero?.2:.17);
+    tgt.r=base;
+    gsap.ticker.add(function(){ st.x+=(tgt.x-st.x)*.16; st.y+=(tgt.y-st.y)*.16; st.r+=(tgt.r-st.r)*.14; setVars(sp,st.x.toFixed(1),st.y.toFixed(1),st.r.toFixed(1)); });
+    var host=sp.closest('section')||sp;
+    if(fine){
+      host.addEventListener('mousemove',function(e){ active=true; aim(e.clientX,e.clientY); });
+      host.addEventListener('mousedown',function(){ tgt.r=base*1.9; });
+      window.addEventListener('mouseup',function(){ tgt.r=base; });
+      host.addEventListener('mouseleave',function(){ active=false; });
+    }
+    /* zonder muis, of tot de muis komt: licht dwaalt zelf rond */
+    var t=0;
+    gsap.ticker.add(function(time,dt){ if(active) return; t+=dt/1000; var b=sp.getBoundingClientRect(); tgt.x=b.width*(.5+.32*Math.sin(t*.7)); tgt.y=b.height*(.5+.22*Math.sin(t*1.1+1)); });
+  });
+
+  /* etalages: licht volgt de muis per raam */
+  document.querySelectorAll('.win').forEach(function(w){
+    var cov=w.querySelector('.cov'); var R=0,tR=0;
+    function r(){ cov.style.setProperty('--r',R.toFixed(1)+'px'); cov.classList.toggle('z',R<2); }
+    gsap.set(cov,{'--x':'50%','--y':'50%'});
+    gsap.ticker.add(function(){ R+=(tR-R)*.12; r(); });
+    w.addEventListener('mouseenter',function(){ tR=Math.max(w.clientWidth,w.clientHeight)*.5; });
+    w.addEventListener('focus',function(){ tR=Math.max(w.clientWidth,w.clientHeight); });
+    w.addEventListener('mousemove',function(e){ var b=w.getBoundingClientRect(); cov.style.setProperty('--x',(e.clientX-b.left)+'px'); cov.style.setProperty('--y',(e.clientY-b.top)+'px'); });
+    w.addEventListener('mouseleave',function(){ tR=0; });
+    w.addEventListener('blur',function(){ tR=0; });
+    /* touch of eerste keer: laat kort licht zien */
+    ScrollTrigger.create({trigger:w,start:'top 70%',once:true,onEnter:function(){ if(!fine){ tR=Math.max(w.clientWidth,w.clientHeight); } else { tR=70; setTimeout(function(){ if(!w.matches(':hover')) tR=0; },700); } }});
+  });
+
+  /* neonborden gaan aan met flikker */
+  document.querySelectorAll('.nb .l').forEach(function(l,i){
+    ScrollTrigger.create({trigger:l,start:'top 78%',end:'bottom 22%',onToggle:function(self){
+      if(self.isActive){ var tl=gsap.timeline(); tl.call(function(){l.classList.add('on')}).to({},{duration:.08}).call(function(){l.classList.remove('on')}).to({},{duration:.07}).call(function(){l.classList.add('on')}).to({},{duration:.05}).call(function(){l.classList.remove('on')}).to({},{duration:.1}).call(function(){l.classList.add('on')}); }
+      else l.classList.remove('on'); }});
+  });
+
+  /* wisselbord: drie vlakken draaien om een as */
+  var bb=document.getElementById('bb'), prism=document.getElementById('prism');
+  var faces=gsap.utils.toArray('.face');
+  var desk=matchMedia('(min-width:901px)').matches;
+  var mm=gsap.matchMedia();
+  mm.add('(min-width:700px)',function(){
+    bb.classList.add('is-p');
+    function geo(){ var h=faces[0].offsetHeight; var tz=(h/2)/Math.tan(Math.PI/3);
+      faces.forEach(function(f,i){ gsap.set(f,{rotationX:i*120,transformOrigin:'50% 50% '+(-tz)+'px'}); });
+      gsap.set(prism,{transformOrigin:'50% 50% '+(-tz)+'px'}); return tz; }
+    geo();
+    gsap.timeline({scrollTrigger:{trigger:bb,start:'top top',end:'+=260%',pin:true,scrub:.6,anticipatePin:1,invalidateOnRefresh:true,onRefresh:geo}})
+      .to(prism,{rotationX:-240,ease:'none',duration:1},0);
+    return function(){ bb.classList.remove('is-p'); };
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+/* Woordmerk als CSS-lockup: «zichtbaar» zwaar, «media» cursief, binnen camerahoeken. Kleur via currentColor. */
+.zm-logo{display:inline-block;position:relative;padding:.42em .75em;font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:1.25rem;line-height:1;letter-spacing:-.02em;text-decoration:none;color:inherit;white-space:nowrap;
+ background:
+  linear-gradient(currentColor,currentColor) 0 0/.5em 2px no-repeat,
+  linear-gradient(currentColor,currentColor) 0 0/2px .5em no-repeat,
+  linear-gradient(currentColor,currentColor) 100% 0/.5em 2px no-repeat,
+  linear-gradient(currentColor,currentColor) 100% 0/2px .5em no-repeat,
+  linear-gradient(currentColor,currentColor) 0 100%/.5em 2px no-repeat,
+  linear-gradient(currentColor,currentColor) 0 100%/2px .5em no-repeat,
+  linear-gradient(currentColor,currentColor) 100% 100%/.5em 2px no-repeat,
+  linear-gradient(currentColor,currentColor) 100% 100%/2px .5em no-repeat}
+.zm-logo b{font-weight:800}
+.zm-logo i{font-weight:400;font-style:italic;margin-left:.15em}

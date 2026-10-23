@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zichtbaar Media, ontwerp 4: Raster</title>
+<script>(function(d){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r){d.classList.add('anim');setTimeout(function(){if(!window.__zm)d.classList.remove('anim')},5000)}})(document.documentElement)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/logo.css">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+:root{--paper:#F2EFE8;--ink:#101512;--bos:#1E5C45;--goud:#D7A93F;--kor:#C7563A;--line:rgba(16,21,18,.16);--bg:var(--paper);--prog:var(--kor);--pad:clamp(16px,3.2vw,48px);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:1.0625rem;line-height:1.5;overflow-x:hidden}
+main{overflow-x:clip}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.hd{font-weight:800;letter-spacing:-.045em;line-height:.88}
+.voorbeeld{position:fixed;left:12px;bottom:12px;z-index:200;background:var(--ink);color:var(--paper);font-size:.72rem;padding:6px 13px;border-radius:99px;max-width:calc(100vw - 24px)}
+
+/* zichtbaar raster */
+.grid{position:fixed;inset:0;z-index:0;pointer-events:none;display:grid;grid-template-columns:repeat(12,1fr);gap:0;padding:0 var(--pad)}
+.grid i{border-left:1px solid var(--line)}
+.grid i:last-child{border-right:1px solid var(--line)}
+main,header,footer{position:relative;z-index:1}
+
+header.top{position:fixed;left:0;right:0;top:0;z-index:100;mix-blend-mode:difference;color:#fff;pointer-events:none}
+header.top .in{display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad)}
+header.top a{pointer-events:auto}
+header.top nav{display:flex;gap:26px;font-weight:500;font-size:.88rem;align-items:center}
+header.top .pill{border:1.5px solid #fff;border-radius:4px;padding:8px 16px;font-weight:800}
+
+/* hero */
+.hero{min-height:max(100vh,760px);padding:clamp(86px,13vh,120px) var(--pad) 40px;display:grid;grid-template-rows:auto 1fr auto;gap:30px}
+.hero .meta{display:grid;grid-template-columns:repeat(12,1fr);gap:0 0}
+.hero .meta span:nth-child(1){grid-column:1/4}.hero .meta span:nth-child(2){grid-column:4/7}.hero .meta span:nth-child(3){grid-column:7/10}.hero .meta span:nth-child(4){grid-column:10/13;text-align:right}
+.hero h1{margin:0;font-size:clamp(3.4rem,9.4vw,11rem);grid-column:1/-1}
+.hero h1 .ln{display:block;overflow:visible}
+.hero h1 em{font-style:normal;color:var(--bos)}
+.hero h1 .o{color:var(--kor)}
+.kz{display:flex;flex-direction:column;gap:6px;height:clamp(210px,27vh,320px)}
+.kz .bar{display:flex;gap:8px;align-items:center;margin-bottom:4px}
+.kz .bar button{font:inherit;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1.5px solid var(--ink);padding:6px 12px;cursor:pointer;border-radius:3px}
+.kz .bar button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.kz .bar button:focus-visible{outline:3px solid var(--kor);outline-offset:2px}
+.krow{display:flex;gap:6px;flex:1;min-height:0;transition:flex-grow .6s var(--ease)}
+.krow.dim{flex-grow:.18}
+.kc{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border:1.5px solid var(--ink);background:var(--bg-c,var(--bos));color:var(--paper);transition:flex-grow .7s var(--ease);cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;padding:10px 12px;text-align:left;font:inherit;border-radius:0}
+.krow.off .kc{--bg-c:var(--kor)}
+.kc:hover,.kc:focus-visible,.kc.act{flex-grow:3.4;outline:none}
+.kc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;z-index:0}
+.kc:hover img,.kc:focus-visible img,.kc.act img{opacity:1}
+.kc .n,.kc .t{position:relative;z-index:2}
+.kc .t{font-weight:800;font-size:clamp(.9rem,1.3vw,1.2rem);line-height:1.05}
+.kc:hover .n,.kc:hover .t,.kc.act .n,.kc.act .t{background:var(--ink);padding:3px 7px;align-self:flex-start}
+.kc .n{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em}
+.hero .foot{display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap}
+.hero .foot p{margin:0;max-width:44ch;font-size:1.05rem}
+
+/* split: sticky beeld links, lijst rechts */
+.split{display:grid;grid-template-columns:repeat(12,1fr);padding:10vh var(--pad) 10vh;gap:0}
+.split .l{grid-column:1/6;position:sticky;top:12vh;align-self:start;height:76vh}
+.split .l .img{position:relative;height:100%;overflow:hidden;background:#222}
+.split .l .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.split .l .img img.on{opacity:1}
+.split .l .big{position:absolute;left:14px;bottom:8px;z-index:3;color:var(--paper);font-size:clamp(5rem,12vw,12rem);mix-blend-mode:difference}
+.split .l .cnt{position:absolute;right:14px;top:12px;z-index:3;color:#fff;mix-blend-mode:difference}
+.split .r{grid-column:7/13}
+.split .intro{margin:0 0 12vh;font-size:clamp(1.8rem,3.4vw,3.6rem);max-width:15em}
+.rw{border-top:1.5px solid var(--ink);padding:3.4vh 0 6.5vh;display:grid;grid-template-columns:5em minmax(0,1fr);gap:0 14px;opacity:.28;transition:opacity .5s}
+.rw.on{opacity:1}
+html:not(.anim) .rw{opacity:1}
+.rw .no{font-family:"IBM Plex Mono",monospace;font-size:.8rem;padding-top:.6em}
+.rw h3{margin:0 0 12px;font-size:clamp(2.2rem,4.6vw,5rem)}
+.rw p{margin:0 0 14px;max-width:38ch}
+.rw ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.rw li{border:1px solid var(--ink);padding:3px 10px;font-size:.8rem;font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.06em}
+.rw.on .no{color:var(--kor)}
+
+/* simulator */
+.sim{background:var(--ink);color:var(--paper);padding:12vh var(--pad) 12vh;position:relative}
+.sim .tp{display:grid;grid-template-columns:repeat(12,1fr);gap:0;margin-bottom:6vh;align-items:end}
+.sim h2{grid-column:1/8;margin:0;font-size:clamp(2.8rem,7.4vw,8rem)}
+.sim .tp p{grid-column:9/13;margin:0;opacity:.8}
+.sim .ctrl{display:flex;gap:18px;align-items:center;margin-bottom:22px;flex-wrap:wrap}
+.sim .play{font:inherit;font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;background:var(--goud);color:var(--ink);border:0;padding:10px 18px;cursor:pointer;border-radius:3px}
+.sim .play:focus-visible{outline:3px solid var(--paper);outline-offset:3px}
+.sim .wk{font-size:clamp(3rem,6vw,6rem);min-width:2.6em}
+.sim input[type=range]{flex:1;min-width:200px;accent-color:var(--goud);height:34px}
+.cal{border:1.5px solid rgba(242,239,232,.5)}
+.cr{display:grid;grid-template-columns:210px 1fr;border-top:1px solid rgba(242,239,232,.2)}
+.cr:first-child{border-top:0}
+.cr .nm{padding:10px 12px;font-size:.9rem;border-right:1px solid rgba(242,239,232,.2);transition:color .3s,background .3s}
+.cr .tr{position:relative;display:grid;grid-template-columns:repeat(12,1fr);align-items:center;min-height:38px}
+.cr .tr .b{height:18px;margin:0 2px;background:var(--bos);opacity:.45;transition:opacity .3s,background .3s}
+.cr.off .tr .b{background:var(--kor)}
+.cr.hdr{background:rgba(242,239,232,.08)}
+.cr.hdr .tr span{font-family:"IBM Plex Mono",monospace;font-size:.7rem;text-align:center;padding:9px 0;border-left:1px solid rgba(242,239,232,.2)}
+.cr.hdr .tr span.now{background:var(--goud);color:var(--ink)}
+.cr.live .nm{color:var(--goud)}
+.cr.live .tr .b{opacity:1}
+.cal .head{position:relative}
+.now-line{position:absolute;top:0;bottom:0;width:2px;background:var(--goud);left:0;z-index:3;pointer-events:none}
+.cal .body{position:relative}
+.det{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0;margin-top:22px;border:1.5px solid rgba(242,239,232,.5)}
+.det .im{min-height:240px;position:relative;background:#222}
+.det .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.det .tx{padding:22px 26px}
+.det .tx h3{margin:0 0 10px;font-size:clamp(1.6rem,3vw,3rem)}
+.det .tx ul{margin:0;padding-left:1.1em}
+
+/* cases tabel */
+.cases{padding:12vh var(--pad) 8vh}
+.cases .tp{display:grid;grid-template-columns:repeat(12,1fr);margin-bottom:6vh;align-items:end}
+.cases h2{grid-column:1/9;margin:0;font-size:clamp(2.8rem,7.4vw,8rem)}
+.cases .tp span{grid-column:10/13}
+.cs{border-top:1.5px solid var(--ink);display:block;position:relative;overflow:hidden}
+.cs:last-child{border-bottom:1.5px solid var(--ink)}
+.cs .rowh{display:grid;grid-template-columns:5em minmax(0,1fr) 12em 2em;gap:0 14px;align-items:center;padding:3.4vh 0;width:100%;text-align:left;background:none;border:0;font:inherit;color:inherit;cursor:pointer}
+.cs .rowh:focus-visible{outline:3px solid var(--kor);outline-offset:-3px}
+.cs .rowh h3{margin:0;font-size:clamp(2.6rem,7vw,8rem);transition:transform .5s var(--ease)}
+.cs .rowh:hover h3{transform:translateX(2vw)}
+.cs .pl{font-size:1.4rem;justify-self:end;transition:transform .4s}
+.cs.open .pl{transform:rotate(45deg)}
+.cs .dtl{height:0;overflow:hidden}
+.cs .dtl .ib{display:grid;grid-template-columns:repeat(12,1fr);gap:0 20px;padding:0 0 4vh}
+.cs .dtl .ph{grid-column:1/6;aspect-ratio:4/3;overflow:hidden;background:#222}
+.cs .dtl .ph img{width:100%;height:100%;object-fit:cover}
+.cs .dtl dl{grid-column:7/13;margin:0;display:grid;grid-template-columns:7em 1fr;gap:10px 14px;align-content:start}
+.cs .dtl dt{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--kor);padding-top:.2em}
+.cs .dtl dd{margin:0}
+.peek{position:fixed;left:0;top:0;width:min(26vw,360px);aspect-ratio:4/5;z-index:50;pointer-events:none;opacity:0;overflow:hidden;background:#222}
+.peek img{width:100%;height:100%;object-fit:cover}
+
+/* werkwijze */
+.wz{padding:10vh var(--pad) 12vh}
+.wz h2{margin:0 0 8vh;font-size:clamp(2.8rem,7.4vw,8rem)}
+.wz .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.wz .c{padding:0 2vw 0 0;position:relative}
+.wz .c .ln{display:block;height:3px;background:var(--ink);transform-origin:0 50%;margin-bottom:22px}
+.wz .c .no{display:block;font-size:clamp(4rem,8vw,8rem);color:var(--kor);margin-bottom:14px}
+.wz h3{margin:0 0 8px;font-size:clamp(1.4rem,2vw,2rem);letter-spacing:-.02em}
+.wz p{margin:0;max-width:26ch}
+
+/* contact */
+.ct{background:var(--kor);color:var(--paper);padding:12vh var(--pad) 36px;position:relative}
+.ct h2{margin:0;font-size:clamp(3.4rem,13vw,15rem)}
+.ct .row{display:grid;grid-template-columns:repeat(12,1fr);margin-top:7vh;gap:0 2vw;align-items:start}
+.ct .row .a{grid-column:1/6}
+.ct .row .a p{margin:0 0 22px;max-width:34ch}
+.ct .row form{grid-column:7/13}
+.cta{display:inline-block;background:var(--ink);color:var(--paper);padding:16px 28px;font-weight:800;border-radius:3px}
+form{display:grid;gap:16px}
+label{display:grid;gap:5px}
+input,textarea{font:inherit;font-size:1.05rem;text-transform:none;letter-spacing:0;background:transparent;color:var(--paper);border:0;border-bottom:1.5px solid rgba(242,239,232,.7);padding:9px 0;border-radius:0}
+input:focus-visible,textarea:focus-visible{outline:3px solid var(--goud);outline-offset:3px}
+textarea{min-height:76px;resize:vertical}
+.send{justify-self:start;font:inherit;font-weight:800;background:var(--paper);color:var(--ink);border:0;padding:14px 26px;cursor:pointer;border-radius:3px}
+.send:focus-visible{outline:3px solid var(--goud);outline-offset:3px}
+.nota{font-size:.78rem;margin:0;opacity:.85}
+.foot2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:10vh;padding-top:18px;border-top:1.5px solid rgba(242,239,232,.6);font-size:.85rem}
+
+@media (max-width:900px){
+ header.top nav a:not(.pill){display:none}
+ .hero .meta span:nth-child(2),.hero .meta span:nth-child(3){display:none}.hero .meta span:nth-child(1){grid-column:1/8}.hero .meta span:nth-child(4){grid-column:8/13}
+ .krow{flex-wrap:wrap}.kc{flex:1 1 30%;min-height:70px}.kc:hover,.kc.act{flex-grow:1}
+ .kz{height:auto}.krow{min-height:130px}
+ .split{display:block}.split .l{position:relative;top:auto;height:44vh;margin-bottom:6vh}
+ .rw{opacity:1}
+ .sim .tp,.cases .tp,.ct .row{display:block}.sim .tp p{margin-top:16px}
+ .cr{grid-template-columns:110px 1fr}.cr .nm{font-size:.74rem;padding:8px 6px}
+ .det{grid-template-columns:1fr}
+ .cs .rowh{grid-template-columns:3em minmax(0,1fr) 2em}.cs .rowh .mono:nth-child(3){display:none}
+ .cs .dtl .ph{grid-column:1/13;margin-bottom:16px}.cs .dtl dl{grid-column:1/13}
+ .wz .cols{grid-template-columns:1fr 1fr;gap:34px 4vw}
+ .peek{display:none}
+ .ct .row form{margin-top:30px}
+}
+@media (max-width:520px){.wz .cols{grid-template-columns:1fr}.hero h1{font-size:clamp(3.4rem,17vw,6rem)}}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<div class="voorbeeld">Voorbeeld 4 van 7 · teksten en cases verzonnen</div>
+<div class="grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<header class="top"><div class="in">
+ <a class="zm-logo" href="#top" aria-label="Zichtbaar Media"><b>zichtbaar</b><i>media</i></a>
+ <nav aria-label="Hoofdmenu"><a href="#aanbod" data-roll>Aanbod</a><a href="#sim" data-roll>Kalender</a><a href="#cases" data-roll>Werk</a><a class="pill" href="#contact" data-magnetic>Contact</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero">
+ <div class="meta mono" data-load><span>Zichtbaar Media</span><span>Full-service marketing</span><span>Online / Offline</span><span>Voorbeeld 4 / 7</span></div>
+ <h1 class="hd"><span class="ln" data-load data-split>Eén plan.</span><span class="ln" data-load data-split data-delay=".2">Elk <em>kanaal</em>,</span><span class="ln" data-load data-split data-delay=".4"><span class="o">online</span> en offline.</span></h1>
+ <div>
+  <div class="kz" data-load data-delay=".6">
+   <div class="bar"><span class="mono" style="margin-right:10px">Kanalen</span>
+    <button type="button" data-f="alles" aria-pressed="true">Alles</button><button type="button" data-f="on" aria-pressed="false">Online</button><button type="button" data-f="off" aria-pressed="false">Offline</button></div>
+   <div class="krow on" data-g="on">
+    <button class="kc" type="button"><img src="../assets/media/foto/wireframe.jpg" alt=""><span class="n">01</span><span class="t">Website</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/cijfers-bureau.jpg" alt=""><span class="n">02</span><span class="t">SEO</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/cijfers-bureau.jpg" alt=""><span class="n">03</span><span class="t">Google-ads</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/telefoon-schetsen.jpg" alt=""><span class="n">04</span><span class="t">Sociale media</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/bakkerij-rek.jpg" alt=""><span class="n">05</span><span class="t">Foto en video</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/team-plakbriefjes.jpg" alt=""><span class="n">06</span><span class="t">Strategie</span></button>
+   </div>
+   <div class="krow off" data-g="off">
+    <button class="kc" type="button"><img src="../assets/media/foto/gevel-winkel.jpg" alt=""><span class="n">07</span><span class="t">Gevel</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/drukpers.jpg" alt=""><span class="n">08</span><span class="t">Drukwerk</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/bestelwagen-a.jpg" alt=""><span class="n">09</span><span class="t">Voertuigen</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/affiche-plakken.jpg" alt=""><span class="n">10</span><span class="t">Affiches</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/radiostudio.jpg" alt=""><span class="n">11</span><span class="t">Radio</span></button>
+    <button class="kc" type="button"><img src="../assets/media/foto/beurshal.jpg" alt=""><span class="n">12</span><span class="t">Beurs en pers</span></button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="split" id="aanbod" aria-label="Aanbod">
+ <div class="l"><div class="img" id="simg">
+   <img class="on" src="../assets/media/foto/team-plakbriefjes.jpg" alt="">
+   <img src="../assets/media/foto/wireframe.jpg" alt=""><img src="../assets/media/foto/telefoon-schetsen.jpg" alt=""><img src="../assets/media/foto/drukpers.jpg" alt=""><img src="../assets/media/foto/bestelwagen-b.jpg" alt=""><img src="../assets/media/foto/radiostudio.jpg" alt=""><img src="../assets/media/foto/cijfers-bureau.jpg" alt="">
+   <span class="cnt mono" id="scnt">01 / 07</span><span class="big hd" id="sbig">01</span></div></div>
+ <div class="r">
+  <p class="intro hd" data-split>Zeven vakken. Elk met een eigen plek in hetzelfde plan.</p>
+  <div class="rw on" data-i="0"><span class="no">01</span><div><h3 class="hd">Strategie en merk</h3><p>Wie ben je, voor wie, en wat moet de markt onthouden. Eén blad waar al het andere werk uit volgt.</p><ul><li>Positionering</li><li>Huisstijl</li><li>Kanaalplan</li></ul></div></div>
+  <div class="rw" data-i="1"><span class="no">02</span><div><h3 class="hd">Websites en vindbaarheid</h3><p>Een site die snel laadt en leest als een boek op een gsm, en die gevonden wordt in Google.</p><ul><li>Website</li><li>Webshop</li><li>SEO</li><li>Google-ads</li></ul></div></div>
+  <div class="rw" data-i="2"><span class="no">03</span><div><h3 class="hd">Sociale media, foto en video</h3><p>Planning, beeld en opvolging van reacties op de kanalen waar je klanten zitten.</p><ul><li>Sociale media</li><li>Foto</li><li>Video</li></ul></div></div>
+  <div class="rw" data-i="3"><span class="no">04</span><div><h3 class="hd">Drukwerk en huisstijl</h3><p>Folders, menukaarten en verpakking, met proeven die jij goedkeurt vóór het naar de drukker gaat.</p><ul><li>Drukwerk</li><li>Verpakking</li></ul></div></div>
+  <div class="rw" data-i="4"><span class="no">05</span><div><h3 class="hd">Gevel, voertuigen en affiches</h3><p>Uithangborden, raamfolie en belettering. Je zaak, zichtbaar zodra iemand voorbijkomt.</p><ul><li>Gevelreclame</li><li>Belettering</li><li>Affiches</li></ul></div></div>
+  <div class="rw" data-i="5"><span class="no">06</span><div><h3 class="hd">Radio, beurzen en pers</h3><p>Spots die klinken zoals je zaak, een stand die opvalt en een verhaal dat de streekkrant wil drukken.</p><ul><li>Radio</li><li>Beurzen</li><li>Pers</li></ul></div></div>
+  <div class="rw" data-i="6"><span class="no">07</span><div><h3 class="hd">Data en opvolging</h3><p>Elke maand een korte balans: wat werkte, wat niet, en wat we de volgende maand anders doen.</p><ul><li>Rapportering</li><li>Bijsturen</li></ul></div></div>
+ </div>
+</section>
+
+<section class="sim" id="sim" aria-label="Campagnekalender">
+ <div class="tp"><h2 class="hd" data-split>Eén campagne, twaalf weken.</h2><p data-reveal>Verzonnen voorbeeld: een bakkerij opent een tweede winkel. Sleep door de weken of druk op afspelen en zie welke kanalen op dat moment werken.</p></div>
+ <div class="ctrl"><button class="play" id="play" type="button">Speel af</button><span class="wk hd" id="wk" aria-live="polite">Week 1</span><input id="rng" type="range" min="1" max="12" value="1" aria-label="Kies een week"></div>
+ <div class="cal" id="cal"><div class="head">
+  <div class="cr hdr"><div class="nm mono">Week</div><div class="tr" id="hdr"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div></div></div>
+  <div class="body" id="cbody">
+   <div class="cr" data-a="1,2"><div class="nm">Strategie en boodschap</div><div class="tr"><div class="b" style="grid-column:1/3"></div></div></div>
+   <div class="cr" data-a="2,3,4"><div class="nm">Merk en huisstijl</div><div class="tr"><div class="b" style="grid-column:2/5"></div></div></div>
+   <div class="cr off" data-a="5,6,7"><div class="nm">Gevel en raamfolie</div><div class="tr"><div class="b" style="grid-column:5/8"></div></div></div>
+   <div class="cr off" data-a="4,5,6"><div class="nm">Drukwerk en menukaarten</div><div class="tr"><div class="b" style="grid-column:4/7"></div></div></div>
+   <div class="cr off" data-a="7,8,9"><div class="nm">Huis-aan-huis en affiche</div><div class="tr"><div class="b" style="grid-column:7/10"></div></div></div>
+   <div class="cr off" data-a="8,9,10"><div class="nm">Radio en pers</div><div class="tr"><div class="b" style="grid-column:8/11"></div></div></div>
+   <div class="cr" data-a="3,4,5,6"><div class="nm">Website en bestelpagina</div><div class="tr"><div class="b" style="grid-column:3/7"></div></div></div>
+   <div class="cr" data-a="6,7,8,9,10,11,12"><div class="nm">Vindbaarheid (SEO)</div><div class="tr"><div class="b" style="grid-column:6/13"></div></div></div>
+   <div class="cr" data-a="8,9,10,11,12"><div class="nm">Google-advertenties</div><div class="tr"><div class="b" style="grid-column:8/13"></div></div></div>
+   <div class="cr" data-a="6,7,8,9,10,11,12"><div class="nm">Sociale media</div><div class="tr"><div class="b" style="grid-column:6/13"></div></div></div>
+   <div class="cr" data-a="9,10,11,12"><div class="nm">Data en maandbalans</div><div class="tr"><div class="b" style="grid-column:9/13"></div></div></div>
+   <div class="now-line" id="now"></div>
+  </div></div>
+ <div class="det"><div class="im"><img id="dimg" src="../assets/media/foto/team-plakbriefjes.jpg" alt=""></div><div class="tx"><span class="mono" id="dkick">Week 1</span><h3 class="hd" id="dtitle">Strategie en boodschap</h3><ul id="dlist"></ul></div></div>
+</section>
+
+<section class="cases" id="cases">
+ <div class="tp"><h2 class="hd" data-split>Voorbeeldwerk.</h2><span class="mono">Verzonnen bedrijven</span></div>
+ <div class="cs" data-img="bakkerij-toonbank"><button class="rowh" type="button" aria-expanded="false" data-cursor="Open"><span class="mono">01</span><h3 class="hd">Kruimelkeet</h3><span class="mono">Bakkerij</span><span class="pl">+</span></button><div class="dtl"><div class="ib"><div class="ph"><img src="../assets/media/foto/bakkerij-toonbank.jpg" alt="Toonbank van een bakkerij" loading="lazy"></div><dl><dt>Vraag</dt><dd>Een tweede winkel in de volgende wijk.</dd><dt>Offline</dt><dd>Raamfolie, menukaart, folder in de buurt, affiches.</dd><dt>Online</dt><dd>Site met voorbestelling, Google-bedrijfsprofiel.</dd><dt>Doel</dt><dd>Nieuwe klanten in de wijk.</dd></dl></div></div></div>
+ <div class="cs" data-img="bloemist"><button class="rowh" type="button" aria-expanded="false" data-cursor="Open"><span class="mono">02</span><h3 class="hd">Lenteveld</h3><span class="mono">Bloemisterij</span><span class="pl">+</span></button><div class="dtl"><div class="ib"><div class="ph"><img src="../assets/media/foto/bloemist.jpg" alt="Bloemiste wikkelt een boeket" loading="lazy"></div><dl><dt>Vraag</dt><dd>Een rustiger jaar buiten de feestdagen.</dd><dt>Offline</dt><dd>Gevelbord, abonnementskaarten, markstand.</dd><dt>Online</dt><dd>Webshop met leveringen, nieuwsbrief.</dd><dt>Doel</dt><dd>Boeketabonnementen en vaste zakelijke klanten.</dd></dl></div></div></div>
+ <div class="cs" data-img="installateur"><button class="rowh" type="button" aria-expanded="false" data-cursor="Open"><span class="mono">03</span><h3 class="hd">Dakruiter</h3><span class="mono">Installatie</span><span class="pl">+</span></button><div class="dtl"><div class="ib"><div class="ph"><img src="../assets/media/foto/installateur.jpg" alt="Installateur plaatst een leiding" loading="lazy"></div><dl><dt>Vraag</dt><dd>Vaste klanten en nieuw personeel.</dd><dt>Offline</dt><dd>Belettering op drie wagens, werfborden, radiospot.</dd><dt>Online</dt><dd>Offerteformulier, zoekadvertenties op spoed, vacaturepagina.</dd><dt>Doel</dt><dd>Meer aanvragen buiten het stookseizoen.</dd></dl></div></div></div>
+ <figure class="peek" id="peek" aria-hidden="true"><img alt="" src="../assets/media/foto/bakkerij-toonbank.jpg"></figure>
+</section>
+
+<section class="wz" id="werkwijze">
+ <h2 class="hd" data-split>Vier stappen.</h2>
+ <div class="cols">
+  <div class="c" data-reveal><i class="ln" data-ln></i><span class="no hd">01</span><h3>Kennismaking</h3><p>We luisteren en zeggen eerlijk wat we zouden laten liggen.</p></div>
+  <div class="c" data-reveal data-delay=".1"><i class="ln" data-ln></i><span class="no hd">02</span><h3>Plan op één blad</h3><p>Doelen, kanalen, budget en kalender naast elkaar.</p></div>
+  <div class="c" data-reveal data-delay=".2"><i class="ln" data-ln></i><span class="no hd">03</span><h3>Uitvoering</h3><p>Eén contactpersoon die met de drukker en de plaatser praat.</p></div>
+  <div class="c" data-reveal data-delay=".3"><i class="ln" data-ln></i><span class="no hd">04</span><h3>Opvolging</h3><p>Elke maand een korte balans, geen rapport van dertig pagina's.</p></div>
+ </div>
+</section>
+
+<section class="ct" id="contact">
+ <h2 class="hd" data-split>Laat je zien.</h2>
+ <div class="row">
+  <div class="a"><p>Vertel kort wat je zoekt. Je krijgt antwoord van een mens, met een voorstel voor een eerste gesprek.</p><a class="cta" href="#contact" data-magnetic><span data-mag-in>Plan een kennismaking</span></a></div>
+  <form onsubmit="return false">
+   <label class="mono">Naam<input type="text" name="naam" autocomplete="name"></label>
+   <label class="mono">E-mail<input type="email" name="email" autocomplete="email"></label>
+   <label class="mono">Waarmee kunnen we helpen?<textarea name="vraag"></textarea></label>
+   <button class="send" type="submit">Vraag een offerte</button>
+   <p class="nota">Voorbeeld: dit formulier is nog niet verbonden en verstuurt niets.</p>
+  </form>
+ </div>
+ <div class="foot2"><span>Zichtbaar Media, voorbeeldontwerp 4 van 7</span><a href="../index.html">Terug naar alle ontwerpen</a></div>
+</section>
+</main>
+
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
+<script src="../assets/zm-engine.js"></script>
+<script>
+(function(){
+  /* kanaalfilter */
+  var fb=document.querySelectorAll('.kz .bar button'), rows=document.querySelectorAll('.krow');
+  fb.forEach(function(b){ b.addEventListener('click',function(){
+    var v=b.getAttribute('data-f');
+    fb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    rows.forEach(function(r){ var g=r.getAttribute('data-g'); r.classList.toggle('dim', v!=='alles' && g!==v); });
+  }); });
+
+  /* kalendersimulator (werkt ook zonder animatie) */
+  var D={
+   1:['team-plakbriefjes','Strategie en boodschap',['Doelen en doelgroep scherp stellen','Boodschap in één zin']],
+   2:['brochure-kleurstalen','Merk en huisstijl',['Kleuren en lettertypes kiezen','Toon van de zaak vastleggen']],
+   3:['wireframe','Website wordt ontworpen',['Schets van de pagina\'s','Voorbestelformulier uitdenken']],
+   4:['drukpers','Drukwerk gaat naar de drukker',['Menukaart en folder in proef','Foto\'s van het bakproces']],
+   5:['raamfolie','Gevel en raamfolie',['Raamfolie wordt geplaatst','Website bijna klaar']],
+   6:['bakkerij-rek','Site live, vindbaarheid start',['Website gaat online','SEO en sociale media starten']],
+   7:['affiche-plakken','De wijk wordt zichtbaar',['Folders in de buurt','Affiches op de juiste plekken']],
+   8:['radiostudio','Radio en pers',['Spot op de streekzender','Bericht in de streekkrant','Google-advertenties starten']],
+   9:['beurshal','Openingsweek',['Openingsevenement met publiek','Alle kanalen tegelijk']],
+   10:['bakkerij-toonbank','Na de opening',['Radio loopt uit','Eerste reacties verwerken']],
+   11:['cijfers-bureau','Bijsturen',['Wat werkt blijft, wat niet verdwijnt']],
+   12:['cijfers-bureau','Maandbalans',['Korte balans en plan voor de volgende maand']]
+  };
+  var rng=document.getElementById('rng'), wk=document.getElementById('wk'), now=document.getElementById('now'), cal=document.getElementById('cal');
+  var rowsC=Array.prototype.slice.call(document.querySelectorAll('#cbody .cr')), hdr=document.querySelectorAll('#hdr span'), dimg=document.getElementById('dimg');
+  function setWeek(w){
+    w=Math.max(1,Math.min(12,Math.round(w)));
+    wk.textContent='Week '+w; rng.value=w;
+    hdr.forEach(function(s,i){ s.classList.toggle('now',i===w-1); });
+    rowsC.forEach(function(r){ var a=r.getAttribute('data-a').split(','); var live=a.indexOf(String(w))>-1; r.classList.toggle('live',live); });
+    var tr=document.querySelector('#cbody .tr'); var trl=tr.getBoundingClientRect(), cl=cal.getBoundingClientRect();
+    var left=trl.left-cl.left+(trl.width/12)*(w-0.5);
+    now.style.left=left+'px';
+    var d=D[w]; dimg.src='../assets/media/foto/'+d[0]+'.jpg';
+    document.getElementById('dkick').textContent='Week '+w; document.getElementById('dtitle').textContent=d[1];
+    document.getElementById('dlist').innerHTML=d[2].map(function(x){return '<li>'+x+'</li>'}).join('');
+  }
+  rng.addEventListener('input',function(){ setWeek(rng.value); });
+  window.addEventListener('resize',function(){ setWeek(rng.value); });
+  setWeek(1); setTimeout(function(){setWeek(rng.value)},400);
+  var playing=null, pb=document.getElementById('play');
+  pb.addEventListener('click',function(){
+    if(playing){ clearInterval(playing); playing=null; pb.textContent='Speel af'; return; }
+    pb.textContent='Pauzeer'; if(+rng.value>=12) setWeek(1);
+    playing=setInterval(function(){ var n=+rng.value+1; if(n>12){ clearInterval(playing); playing=null; pb.textContent='Speel af'; return; } setWeek(n); },1100);
+  });
+
+  /* cases: uitklappen */
+  var cs=document.querySelectorAll('.cs');
+  cs.forEach(function(c){
+    var b=c.querySelector('.rowh'), dt=c.querySelector('.dtl');
+    b.addEventListener('click',function(){
+      var open=c.classList.toggle('open'); b.setAttribute('aria-expanded',open?'true':'false');
+      if(window.gsap && document.documentElement.classList.contains('anim')) gsap.to(dt,{height:open?'auto':0,duration:.7,ease:'power3.inOut',onComplete:function(){ if(window.ScrollTrigger) ScrollTrigger.refresh(); }});
+      else dt.style.height=open?'auto':'0';
+    });
+  });
+  var firstOpen=cs[0]; if(firstOpen){ firstOpen.classList.add('open'); firstOpen.querySelector('.rowh').setAttribute('aria-expanded','true'); firstOpen.querySelector('.dtl').style.height='auto'; }
+
+  if(!window.gsap||!window.ZM||!document.documentElement.classList.contains('anim')) {
+    document.querySelectorAll('.rw').forEach(function(r){ r.classList.add('on'); });
+    return;
+  }
+  var desk=matchMedia('(min-width:901px)').matches;
+
+  /* aanbod: beeld links volgt de lijst rechts */
+  var imgs=document.querySelectorAll('#simg img'), rws=gsap.utils.toArray('.rw');
+  function act(i){ rws.forEach(function(r,k){ r.classList.toggle('on',k===i); }); imgs.forEach(function(m,k){ m.classList.toggle('on',k===i); });
+    document.getElementById('scnt').textContent=('0'+(i+1)).slice(-2)+' / 07'; document.getElementById('sbig').textContent=('0'+(i+1)).slice(-2); }
+  rws.forEach(function(r,i){ ScrollTrigger.create({trigger:r,start:'top 55%',end:'bottom 55%',onEnter:function(){act(i)},onEnterBack:function(){act(i)}}); });
+
+  /* lijnen tekenen */
+  document.querySelectorAll('[data-ln]').forEach(function(l){ gsap.fromTo(l,{scaleX:0},{scaleX:1,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:l,start:'top 90%',once:true}}); });
+  gsap.fromTo('.now-line',{opacity:0},{opacity:1,scrollTrigger:{trigger:'#sim',start:'top 60%',once:true}});
+
+  /* tabel: beeld volgt de muis */
+  if(matchMedia('(hover:hover) and (min-width:901px)').matches){
+    var peek=document.getElementById('peek'), pi=peek.querySelector('img');
+    var qx=gsap.quickTo(peek,'x',{duration:.5,ease:'power3'}), qy=gsap.quickTo(peek,'y',{duration:.5,ease:'power3'});
+    cs.forEach(function(c){
+      c.addEventListener('mouseenter',function(){ pi.src='../assets/media/foto/'+c.getAttribute('data-img')+'.jpg'; gsap.to(peek,{opacity:1,scale:1,duration:.3}); });
+      c.addEventListener('mousemove',function(e){ qx(e.clientX+30); qy(e.clientY-120); });
+      c.addEventListener('mouseleave',function(){ gsap.to(peek,{opacity:0,duration:.25}); });
+    });
+  }
+})();
+</script>
+</body>
+</html>
