@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Voorbeeldplatform (venster) | PlatforMaat</title>
+<link rel="stylesheet" href="venster.css">
+<script>document.documentElement.className += ' js' + (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches ? ' no-fx' : ' fx');</script>
+</head>
+<body class="venster">
+<svg class="sym" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<symbol id="st-draft" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2.2 2.2"/></symbol>
+<symbol id="st-todo" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.6" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="st-prog" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 3.6a3.4 3.4 0 0 1 0 6.8z" fill="currentColor"/></symbol>
+<symbol id="st-done" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6.3" fill="currentColor"/><path d="M4.4 7.2l1.9 1.9 3.4-3.8" fill="none" stroke="#0B101B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+<section class="demo" id="werkbank" aria-label="Voorbeeldplatform met verzonnen gegevens">
+  <div class="wrap">
+    <ul class="demo-try js-only" aria-label="Probeer bijvoorbeeld" hidden><li><button type="button" data-pf-go="dossier:D-1041">Open een dossier met een AI-concept</button></li><li><button type="button" data-pf-go="view:planning">Schuif iets naar een andere dag</button></li><li><button type="button" data-pf-go="view:assistent">Vraag het de assistent</button></li><li><button type="button" data-pf-go="mode:klant">Bekijk het als klant</button></li></ul>
+    <div class="pf" id="pf" data-mode="team" role="region" aria-label="Voorbeeldplatform met verzonnen gegevens">
+      <div class="pf-bar" id="pf-bar"></div>
+      <nav class="pf-side" id="pf-side" aria-label="Onderdelen van het voorbeeldplatform"></nav>
+      <div class="pf-main" id="pf-main" tabindex="-1"></div>
+      <aside class="pf-detail" id="pf-detail" hidden></aside>
+      <div class="pf-keys" aria-hidden="true"><span><kbd>N</kbd> Nieuw dossier</span><span><kbd><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 12.5v-9 M4.5 7L8 3.5 11.5 7"/></svg></kbd><kbd><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3.5v9 M4.5 9L8 12.5 11.5 9"/></svg></kbd> Kiezen</span><span><kbd><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M12.5 3.5v5h-8 M7.5 5.5l-3 3 3 3"/></svg></kbd> Openen</span><span><kbd>Esc</kbd> Sluiten</span></div>
+      <div class="pf-toast" id="pf-toast" role="status" aria-live="polite"></div>
+      <dialog class="pf-dlg" id="pf-dlg"></dialog>
+    </div>
+    <p class="demo-nojs">Dit voorbeeld heeft JavaScript nodig. Het toont een werkomgeving met overzicht, dossiers, planning, een assistent en koppelingen, en een klantportaal in dezelfde gegevens.</p>
+    <p class="demo-note">Voorbeeld met verzonnen gegevens · Klant A tot en met E bestaan niet</p>
+    <script type="application/json" id="pf-data">{"assistenten":["Klantenassistent","Planning-assistent","Rapport-assistent"]}</script>
+  </div>
+</section>
+<script src="platform.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.js-only').forEach(function (n) { n.hidden = false; });
+  var post = function () { try { parent.postMessage({ pmHoogte: document.documentElement.scrollHeight }, '*'); } catch (err) { /* mag ontbreken */ } };
+  if (window.ResizeObserver) new ResizeObserver(post).observe(document.body);
+  window.addEventListener('load', post); window.addEventListener('resize', post); post();
+});
+</script>
+</body>
+</html>
