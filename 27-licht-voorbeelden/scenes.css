@@ -282,9 +282,7 @@
 .hero-stage .connections path { animation: flow 1.6s linear infinite; }
 @keyframes flow { to { stroke-dashoffset: -16; } }
 .hero-stage .core { animation: hub 3.2s infinite; }
-.hero-stage .node-one, .hero-stage .node-four { animation: float 6s ease-in-out infinite; }
-.hero-stage .node-two, .hero-stage .node-three { animation: float 6s ease-in-out 3s infinite; }
-@keyframes float { 0%, 100% { transform: none; } 50% { transform: translateY(-5px); } }
+/* de lijnen worden met script berekend en lopen altijd van het midden van de kant van een kaartje naar het midden van de kern; de kaartjes zelf blijven daarom op hun plek */
 
 @media (max-width: 1150px) { .explorer { gap: 36px; } .ex-info { grid-template-columns: 1fr; gap: 18px; } }
 @media (max-width: 850px) {
