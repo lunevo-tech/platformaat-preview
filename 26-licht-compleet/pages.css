@@ -118,7 +118,7 @@
 @media (prefers-reduced-motion: reduce) { .dock a { transition: none; } }
 
 /* contrast: drie plekken in de oorspronkelijke ChatGPT-stijl haalden 4,5:1 niet (gemeten met _build/w3b-check.mjs) */
-.core small { color: #fff; font-size: 9px; }
+.core small { color: #fff; white-space: nowrap; }
 .number { color: #5b6578; }
 .possibilities .eyebrow { color: #2a52e0; }
 .example-number { color: #4a5878; }
